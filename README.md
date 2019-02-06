@@ -34,6 +34,7 @@ brand|品牌|Inter
 price|价格|价格区间：1200-2000，准确值：1200
 series|系列|酷睿i9
 slot|插槽|LGA 1151
+
 返回数据：
 ```
 {
@@ -63,6 +64,7 @@ slot|插槽|LGA 1151
 **<span id="graphics">显卡</span>**
 请求地址：/graphics?name=...
 请求参数（可选）：
+
 参数名|含义|说明
 ---|:--:|---:
 name|显卡名称|七彩虹iGame GeForce RTX 2080 Ti Advanced OC
@@ -72,6 +74,7 @@ capacity|显卡容量|11（GB）
 chip|显卡芯片|GeForce RTX 2080Ti
 image|显卡图片|https://2d.zol-img.com.cn/product/192_320x240/461/ce6ElKKfHpLuU.jpg
 type|显卡类型|发烧级
+
 返回数据：
 ```
 {
@@ -100,6 +103,7 @@ type|显卡类型|发烧级
 **<span id="memory">内存条</span>**
 请求地址：/memory?name=...
 请求参数（可选）：
+
 参数名|含义|说明
 ---|:--:|---:
 name|内存条名称|影驰GAMER 8GB DDR4 2400
@@ -109,6 +113,7 @@ capacity|内存容量|8（GB）
 frequency|内存主频|2400（MHz）
 image|内存条图片|https://2d.zol-img.com.cn/product/192_320x240/461/ce6ElKKfHpLuU.jpg
 type|内存类型|DDR4
+
 返回数据：
 ```
 {
