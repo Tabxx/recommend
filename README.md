@@ -10,11 +10,13 @@ npm install
 npm run dev
 ```
 
-### Compiles and minifies for production
+### 提交代码
 ```
-npm run build
+git add .
+git commit -m '描述'
+git pull
+git push
 ```
-
 
 ### 接口列表
 + [CPU](#cpu)
