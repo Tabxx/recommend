@@ -5,7 +5,7 @@ const mysql = require('mysql');
 const pool = mysql.createPool(config);
 
 // 查询语句
-const query = (sql, val) => {
+const query = async(sql, val) => {
     return new Promise((resolve, reject) => {
         pool.getConnection((err, connection) => {
             if (err) {
