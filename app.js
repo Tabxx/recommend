@@ -1,28 +1,44 @@
-const Koa = require('koa');
-const app = new Koa();
-const router = require('./router/router');
+const Koa = require('koa')
+const app = new Koa()
+const views = require('koa-views')
+const json = require('koa-json')
+const onerror = require('koa-onerror')
+const bodyparser = require('koa-bodyparser')
+const logger = require('koa-logger')
 
-// 配置文件
-const config = require('./config/default');
-const logger = require('./middleware/logger');
-const log = logger();
+const index = require('./routes/index')
+const users = require('./routes/users')
 
-// 日志文件
-app.use(logger());
+// error handler
+onerror(app)
 
-// 路由
-app
-    .use(router.routes())
-    .use(router.allowedMethods());
+// middlewares
+app.use(bodyparser({
+  enableTypes:['json', 'form', 'text']
+}))
+app.use(json())
+app.use(logger())
+app.use(require('koa-static')(__dirname + '/public'))
 
-// 错误处理
+app.use(views(__dirname + '/views', {
+  extension: 'pug'
+}))
+
+// logger
+app.use(async (ctx, next) => {
+  const start = new Date()
+  await next()
+  const ms = new Date() - start
+  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
+})
+
+// routes
+app.use(index.routes(), index.allowedMethods())
+app.use(users.routes(), users.allowedMethods())
+
+// error-handling
 app.on('error', (err, ctx) => {
-    console.log('server error', err);
-    ctx.response.status = err.statusCode || err.status || 500;
-    ctx.response.body = {
-        message: err.message || '服务器端错误'
-    };
+  console.error('server error', err, ctx)
 });
 
-app.listen(config.port);
-console.log(`server run in 127.0.0.1:${config.port}`)
+module.exports = app
