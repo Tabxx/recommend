@@ -34,6 +34,7 @@ git push
 
 ### 接口说明
 **<span id="cpu">CPU</span>**
+
 请求地址：/cpu?name=...
 
 请求参数（可选）：
@@ -71,6 +72,7 @@ slot|插槽|LGA 1151
 ---
 
 **<span id="cputypes">CPU分类信息</span>**
+
 请求地址：/cpu/gettypes?field=brand,series
 
 请求参数（可选）：
@@ -326,6 +328,7 @@ userid|当前用户id|1
 ```
 
 **<span id="list-get">获取配置清单</span>**
+
 请求地址：/list/getlist
 
 请求参数（可选）：
