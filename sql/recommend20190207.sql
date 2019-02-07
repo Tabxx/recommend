@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-02-07 14:08:50
+Date: 2019-02-07 15:37:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -93,6 +93,31 @@ INSERT INTO `hard_disk` VALUES ('2', '西部数据1TB 7200转 64MB SATA3 蓝盘�
 INSERT INTO `hard_disk` VALUES ('3', '西部数据500GB 7200转 16MB SATA3 蓝盘（WD5000AAKX）', '西部数据', '270', '500', '16', '7200', 'https://2f.zol-img.com.cn/product/58_320x240/667/ceaCtpuUXk3SU.jpg', '1');
 INSERT INTO `hard_disk` VALUES ('4', '东芝1TB 7200转 32MB（DT01ACA100）', '东芝', '269', '1000', '32', '7200', 'https://2c.zol-img.com.cn/product/108_320x240/96/ceE5L2Dt7zrNE.jpg', '1');
 INSERT INTO `hard_disk` VALUES ('5', '希捷BarraCuda 2TB 7200转 256MB（ST2000DM008）', '希捷', '389', '2000', '256', '7200', 'https://2c.zol-img.com.cn/product/190_320x240/514/ceOuHWfvQr06.jpg', '1');
+
+-- ----------------------------
+-- Table structure for list
+-- ----------------------------
+DROP TABLE IF EXISTS `list`;
+CREATE TABLE `list` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL COMMENT '清单名称',
+  `intro` text,
+  `cpu` varchar(255) DEFAULT NULL COMMENT 'CPU',
+  `graphics` varchar(255) DEFAULT NULL COMMENT '显卡',
+  `memory` varchar(255) DEFAULT NULL COMMENT '内存条',
+  `harddisk` varchar(255) DEFAULT NULL COMMENT '硬盘',
+  `mainboard` varchar(255) DEFAULT NULL COMMENT '主板',
+  `image` varchar(255) DEFAULT NULL,
+  `total` varchar(10) DEFAULT NULL COMMENT '总价',
+  `userid` varchar(11) DEFAULT NULL COMMENT '创建者id',
+  `status` tinyint(4) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of list
+-- ----------------------------
+INSERT INTO `list` VALUES ('2', '大神推荐', 'DNF专用配置，嘤嘤辉值得拥有', 'Intel 酷睿i9 9900K', '七彩虹iGame GeForce RTX 2080 Ti Advanced O', '影驰GAMER 8GB DDR4 240', '希捷Barracuda 1TB 7200转 64MB 单碟（ST1000DM003）', '华硕TUF B360M-PLUS GAMING S', '', '16635', '1', '1');
 
 -- ----------------------------
 -- Table structure for mainboard

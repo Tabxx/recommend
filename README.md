@@ -29,10 +29,13 @@ git push
    + [硬盘分类](#harddisktypes)
 + [主板](#main-board)
    + [主板分类](#mainboardtypes)
++ [配置清单](#list-add)
+   + [清单查询](#list-get)
 
 ### 接口说明
 **<span id="cpu">CPU</span>**
 请求地址：/cpu?name=...
+
 请求参数（可选）：
 
 参数名|含义|说明
@@ -69,6 +72,7 @@ slot|插槽|LGA 1151
 
 **<span id="cputypes">CPU分类信息</span>**
 请求地址：/cpu/gettypes?field=brand,series
+
 请求参数（可选）：
 
 参数名|含义|说明
@@ -116,7 +120,9 @@ field|需要获取的分类字段|brand,series(中间逗号隔开)
 ---
 
 **<span id="graphics">显卡</span>**
+
 请求地址：/graphics?name=...
+
 请求参数（可选）：
 
 参数名|含义|说明
@@ -151,7 +157,9 @@ type|显卡类型|发烧级
 ```
 
 **<span id="graphicstypes">显卡分类信息</span>**
+
 请求地址：/graphics/gettypes?filed=...
+
 同CPU分类
 
 ---
@@ -192,13 +200,17 @@ type|内存类型|DDR4
 ```
 
 **<span id="memorytypes">内存条分类信息</span>**
+
 请求地址：/memory/gettypes?filed=...
+
 同CPU分类
 
 ---
 
 **<span id="hard-disk">硬盘</span>**
+
 请求地址：/harddisk?name=...
+
 请求参数（可选）：
 
 参数名|含义|说明
@@ -233,13 +245,17 @@ speed|转速|7200(rpm)
 ```
 
 **<span id="harddisktypes">硬盘分类信息</span>**
+
 请求地址：/harddisk/gettypes?filed=...
+
 同CPU分类
 
 ---
 
 **<span id="main-board">主板</span>**
+
 请求地址：/mainboard?name=...
+
 请求参数（可选）：
 
 参数名|含义|说明
@@ -274,13 +290,17 @@ chipset|主芯片组|Intel B360
 ```
 
 **<span id="mainboardtypes">主板分类信息</span>**
+
 请求地址：/mainborad/gettypes?filed=...
+
 同CPU分类
 
 ---
 
-**<span id="add-list">添加配置清单</span>**
+**<span id="list-add">添加配置清单</span>**
+
 请求地址：/list/add  （POST请求）
+
 请求参数（必选）：
 
 参数名|含义|说明
@@ -305,8 +325,9 @@ userid|当前用户id|1
 }
 ```
 
-**<span id="get-list">获取配置清单</span>**
-请求地址：/list/getlist  
+**<span id="list-get">获取配置清单</span>**
+请求地址：/list/getlist
+
 请求参数（可选）：
 
 参数名|含义|说明
