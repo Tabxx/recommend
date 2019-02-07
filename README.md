@@ -249,7 +249,7 @@ brand|品牌|华硕
 price|价格|价格区间：1200-2000，准确值：1200
 cpu_slot|CPU插槽|LGA 1151
 version|版型|Micro ATX板型
-image|主板|https://2d.zol-img.com.cn/product/192_320x240/461/ce6ElKKfHpLuU.jpg
+image|主板图片|https://2d.zol-img.com.cn/product/192_320x240/461/ce6ElKKfHpLuU.jpg
 chipset|主芯片组|Intel B360
 
 返回数据：
@@ -272,6 +272,67 @@ chipset|主芯片组|Intel B360
     ]
 }
 ```
+
 **<span id="mainboardtypes">主板分类信息</span>**
 请求地址：/mainborad/gettypes?filed=...
 同CPU分类
+
+---
+
+**<span id="add-list">添加配置清单</span>**
+请求地址：/list/add  （POST请求）
+请求参数（必选）：
+
+参数名|含义|说明
+---|:--:|---:
+name|方案名称|大神推荐
+intro|方案描述|DNF专用配置，嘤嘤辉值得拥有
+cpu|cpu名称|Intel 酷睿i9 9900K
+graphics|显卡|七彩虹iGame GeForce RTX 2080 Ti Advanced O
+memory|内存条|影驰GAMER 8GB DDR4 240
+image|图片（可选）|https://2d.zol-img.com.cn/product/192_320x240/461/ce6ElKKfHpLuU.jpg
+harddisk|硬盘|希捷Barracuda 1TB 7200转 64MB 单碟（ST1000DM003）
+mainboard|主板|华硕TUF B360M-PLUS GAMING S
+total|总价|16635
+userid|当前用户id|1
+
+返回数据：
+```
+{
+    "code": 0,
+    "msg": "添加成功",
+    "result": 2 // 方案id
+}
+```
+
+**<span id="get-list">获取配置清单</span>**
+请求地址：/list/getlist  
+请求参数（可选）：
+
+参数名|含义|说明
+---|:--:|---:
+id|方案id|2
+
+返回数据：
+```
+{
+    "code": 0,
+    "msg": "",
+    "result": [
+        {
+            "id": 2,
+            "name": "大神推荐",
+            "intro": "DNF专用配置，嘤嘤辉值得拥有",
+            "cpu": "Intel 酷睿i9 9900K",
+            "graphics": "七彩虹iGame GeForce RTX 2080 Ti Advanced O",
+            "memory": "影驰GAMER 8GB DDR4 240",
+            "harddisk": "希捷Barracuda 1TB 7200转 64MB 单碟（ST1000DM003）",
+            "mainboard": "华硕TUF B360M-PLUS GAMING S",
+            "image": "",
+            "total": "16635",
+            "userid": "1",
+            "status": 1
+        }
+    ]
+}
+```
