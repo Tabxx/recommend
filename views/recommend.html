@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+       .search_btn{
+           width:70px;
+           height:35px;
+           text-align:center;
+       }
+       .my_table_height{
+           height:50px;
+           line-height:50px;
+           text-align: center;
+       }
+       .assess{
+           font-size:30px;
+           color:#ccc;
+           cursor: pointer;
+       }
+       .hs,.cs{
+           color:#f00;
+       }
+       .my_btn:hover,.cc{
+           background:rgb(0,122,204);
+       }
+    </style>
+    <title>方案推荐</title>
+</head>
+<body>
+    <div class="container">
+        <button class="btn btn-danger" data-toggle="modal" data-target="#demo">开始</button>
+        <div id="demo" class="modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>选择你的个性</h4>
+                        <button class="close" type="button" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <button class="my_btn btn mb-2 btn-sm btn-light">2000-3000</button>
+                        <button class="my_btn btn mb-2 btn-sm btn-light">3000-4000</button>
+                        <button class="my_btn btn mb-2 btn-sm btn-light">4000-5000</button>
+                        <button class="my_btn btn mb-2 btn-sm btn-light">5000-6000</button>
+                        <button class="my_btn btn mb-2 btn-sm btn-light">6000以上</button>
+                        <button class="my_btn btn mb-2 btn-sm btn-light">程序员</button>
+                        <button class="my_btn btn mb-2 btn-sm btn-light">设计专业</button>
+                        <button class="my_btn btn mb-2 btn-sm btn-light">热爱娱乐</button>
+                        <button class="my_btn btn mb-2 btn-sm btn-light">游戏玩家</button>
+                        <button class="my_btn btn mb-2 btn-sm btn-light">学生人群</button>  
+                        <button class="my_btn btn mb-2 btn-sm btn-light">追求完美</button>  
+                        <button class="my_btn btn mb-2 btn-sm btn-light">追求性价比</button>  
+                        <button class="my_btn btn mb-2 btn-sm btn-light">追求实惠</button>  
+                    </div>
+                    <script>
+                        $(".my_btn").click(function(){
+                            $(this).addClass('cc');
+                        })
+                    </script>
+                    <div class="modal-footer">
+                        <button type="button" id="remove" class="btn btn-warning">重置</button>
+                        <script>
+                           $("#remove").click(function(){
+                               $(".my_btn").removeClass("cc");
+                           })
+                        </script>
+                        
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="card mt-5">
+                    <div class="card-header">
+                        <h4>方案一</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table border">
+                            <tr class="my_table_height">
+                                <td class="border-right w-25">cpu：</td>
+                                <td></td>
+                            </tr>
+                            <tr class="my_table_height">
+                                <td class="border-right w-25">显卡：</td>
+                                <td></td>
+                            </tr>
+                            <tr class="my_table_height">
+                                <td class="border-right w-25">内存：</td>
+                                <td></td>
+                            </tr>
+                            <tr class="my_table_height">
+                                <td class="border-right w-25">主板：</td>
+                                <td></td>
+                            </tr>
+                            <tr class="my_table_height">
+                                <td class="border-right w-25">硬盘：</td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <p class="border">方案描述，对这个方案的介绍以及为什么选择这个方案<br><br><br><br></p>
+                    </div>
+                    <div class="card-footer">
+                        <h6>给出您的评价：</h6>
+                        <textarea name="" id="" cols="93" rows="5"></textarea>
+                        <ul class="list-unstyled d-flex ">
+                            <li class="assess"> &#9733; </li>
+                            <li class="assess"> &#9733; </li>
+                            <li class="assess"> &#9733; </li>
+                            <li class="assess"> &#9733; </li>
+                            <li class="assess"> &#9733; </li>
+                        </ul>
+                        <button class="btn btn-danger float-right">评价</button>
+                    </div>
+                </div>
+                <div class="card mt-5">
+                        <div class="card-header">
+                                <h4>方案二</h4>
+                            </div>
+                            <div class="card-body">
+                                <table class="table border">
+                                    <tr class="my_table_height">
+                                        <td class="border-right w-25">cpu：</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="my_table_height">
+                                        <td class="border-right w-25">显卡：</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="my_table_height">
+                                        <td class="border-right w-25">内存：</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="my_table_height">
+                                        <td class="border-right w-25">主板：</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="my_table_height">
+                                        <td class="border-right w-25">硬盘：</td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                                <p class="border">方案描述，对这个方案的介绍以及为什么选择这个方案<br><br><br><br></p>
+                            </div>
+                            <div class="card-footer">
+                                    <h6>给出您的评价：</h6>
+                                    <textarea name="" id="" cols="93" rows="5"></textarea>
+                                    <ul class="list-unstyled d-flex ">
+                                        <li class="assess"> &#9733; </li>
+                                        <li class="assess"> &#9733; </li>
+                                        <li class="assess"> &#9733; </li>
+                                        <li class="assess"> &#9733; </li>
+                                        <li class="assess"> &#9733; </li>
+                                    </ul> 
+                                    <button class="btn btn-danger float-right">评价</button>                              
+                            </div>                    
+                </div>
+                <script>
+                        $(function () {
+                            $("ul li").hover(function(){
+                                $(this).addClass('hs');
+                                $(this).prevAll().addClass('hs');
+                            },function(){
+                                $(this).removeClass('hs');
+                                $(this).prevAll().removeClass('hs');
+                            })
+                    
+                            $("ul li").click(function () {
+                                $(this).addClass('cs');
+                                $(this).prevAll().addClass('cs');
+                                $(this).nextAll().removeClass('cs');
+                            })
+                        })
+                </script>
+            </div>
+            <div class="col-4">
+                <div class="border mt-5">
+                    <h5 class="text-center bg-light p-2">优秀散热推荐</h5>
+                    <div class="p-1"><span>超频三东海X6</span><span class="float-right text-danger">￥129</span></div>
+                    <div class="p-2"><span>酷冷至尊海魔120</span><span class="float-right text-danger">￥229</span></div>
+                    <div class="p-2"><span>九州风神大霜塔</span><span class="float-right text-danger">￥219</span></div>
+                    <div class="p-2"><span>海盗船H100iv2</span><span class="float-right text-danger">￥859</span></div>
+                    <div class="p-2"><span>Tt零度水冷装备</span><span class="float-right text-danger">￥2899</span></div>
+                </div>
+                <div class="border mt-5">
+                    <h5 class="text-center bg-light p-2">优秀固态硬盘推荐</h5>
+                    <div class="p-1"><span>三星860EVOSATA3(250GB)</span><span class="float-right text-danger">￥399</span></div>
+                    <div class="p-2"><span>金士顿A400（240GB）</span><span class="float-right text-danger">￥399</span></div>
+                    <div class="p-2"><span>影驰铁甲战将（240GB）</span><span class="float-right text-danger">￥299</span></div>
+                    <div class="p-2"><span>Intel 760P M.2 2280（256GB）</span><span class="float-right text-danger">￥5298</span></div>
+                    <div class="p-2"><span>惠普EX950 M.2（2TB）</span><span class="float-right text-danger">￥3499</span></div>
+                </div>
+                <div class="border mt-5">
+                    <h5 class="text-center bg-light p-2">优秀外设推荐</h5>
+                    <div class="p-1"><span>Razer 酷黑特别版游戏外设套装</span><span class="float-right text-danger">￥999</span></div>
+                    <div class="p-2"><span>海盗船GLAIVE RGB游戏鼠标</span><span class="float-right text-danger">￥399</span></div>
+                    <div class="p-2"><span>雷柏V302幻彩RGB电竞游戏鼠标</span><span class="float-right text-danger">￥119</span></div>
+                    <div class="p-2"><span>Razer 炼狱蝰蛇2013鼠标</span><span class="float-right text-danger">￥199</span></div>
+                    <div class="p-2"><span>AOC AG273QCG</span><span class="float-right text-danger">￥5999</span></div>
+                    <div class="p-2"><span>航嘉X2772CK</span><span class="float-right text-danger">￥1899</span></div>
+                    <div class="p-2"><span>飞利浦499P9H1</span><span class="float-right text-danger">￥12899</span></div>
+                    <div class="p-2"><span>明基BL2480T</span><span class="float-right text-danger">￥1299</span></div>
+                    <div class="p-2"><span>罗技G903无线鼠标</span><span class="float-right text-danger">￥899</span></div>
+                    <div class="p-2"><span>优派VP2768-4K</span><span class="float-right text-danger">￥4599</span></div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

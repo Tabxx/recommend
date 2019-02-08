@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        body{margin:0;padding:0;
+        background:rgb(79,144,210)}
+        .main{background:white;}
+        li{list-style:none;}
+     a.my_a_style{
+         display:inline-block;
+         text-decoration: none;
+         font-size:0.9rem;
+         color:#000;
+         margin-left:18px;
+     }
+     .my_select{
+         padding-top: 10px;
+         padding-bottom: 10px;
+         background:rgb(245, 245,245);}
+     .my_table,.my_submit{
+         border:1px dotted #ccc; 
+         margin-bottom: 0;
+     }
+     .my_table tr{
+         height:60px;
+     }
+     .my_submit{border-top:0;padding-top:15px;}
+     .my_list{
+         height:100px;
+         border-top:1px solid #ccc;
+     }
+     .my_small_font{
+         font-size: 0.4rem;
+     }
+     .my_group{
+         padding-bottom: 10px;
+         padding-top: 10px;
+     }
+
+    </style>
+    <title>方案推荐</title>
+</head>
+<body>
+    <div class="container main">
+        <div class="top h3 font-weight-bold mb-4"><img src="img/programme.png" alt="">DIY硬件</div>
+        <div class="nav"></div>
+        <div>
+            <h5>请选择配置</h5>
+            <div class="row">
+                <div class="col-2"></div>
+            </div>
+            <div class="row">
+                <div class="col-5">
+                    <div class="text-center bg-primary text-white h5 pt-2 pb-2">配置清单</div>
+                    <table class="table my_table">
+                        <tr>
+                            <td>配件名称</td>
+                            <td>型号</td>
+                            <td>价格</td>
+                            <td>操作</td>
+                        </tr>
+                        <tr>
+                            <td>CPU</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>显卡</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>内存</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>硬盘</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>主板</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>总价</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    <table class="table my_submit">
+                        <tr>
+                            <td>名称:</td> 
+                            <td><input type="text"></td> 
+                        </tr> 
+                        <tr>
+                            <td>方案说明:</td> 
+                            <td><textarea name="" id="" cols="40" rows="6"></textarea></td>
+                         </tr> 
+                        <tr>
+                            <td><button class="btn btn-warning  b-1 text-white">提交方案</button></td>
+                        </tr>                        
+                    </table>
+                </div>
+                <div class="col-7">
+                    <ul class="nav nav-tabs d-flex">
+                        <li class="nav-item"> <a class="btn btn-md nav-link active btn-primary ml-2" data-toggle="tab" href="#cpu_select">cpu</a></li>
+                        <li class="nav-item"> <a class="btn btn-md nav-link btn-primary ml-2" data-toggle="tab" href="#xianka_select">显卡</a></li>
+                        <li class="nav-item"> <a class="btn btn-md nav-link btn-primary ml-2" data-toggle="tab" href="#neicun_select">内存</a></li>
+                        <li class="nav-item"> <a class="btn btn-md nav-link btn-primary ml-2" data-toggle="tab" href="#yingpan_select">硬盘</a></li>
+                        <li class="nav-item"> <a class="btn btn-md nav-link btn-primary ml-2" data-toggle="tab" href="#zhuban_select">主板</a></li>
+                    </ul>
+                    <div class="tab-content" id="select">
+                    <!--cpu的选择-->
+                        <div class="tab-pane active" id="cpu_select">
+                            <div>
+                                <h5 class="PL-4  my_select">筛选条件</h5>
+                                <ul class="d-flex">
+                                    <li>品牌</li>
+                                    <li><a href="#" class="my_a_style">不限</a></li>
+                                    <li><a href="#" class="my_a_style">Intel</a></li>
+                                    <li><a href="#" class="my_a_style">AMD</a></li>
+                                </ul>
+                                <ul class="d-flex">
+                                    <li>价格</li>
+                                    <li><a href="#" class="my_a_style">不限</a></li>
+                                    <li><a href="#" class="my_a_style">1000以下</a></li>
+                                    <li><a href="#" class="my_a_style">1000-2000</a></li>
+                                    <li><a href="#" class="my_a_style">2000-3000</a></li>
+                                    <li><a href="#" class="my_a_style">3000以上</a></li>
+                                </ul>
+                                <ul class="d-flex">
+                                    <li>系列</li>
+                                    <li><a href="#" class="my_a_style">不限</a></li>
+                                    <li><a href="#" class="my_a_style">酷睿i9</a></li>
+                                    <li><a href="#" class="my_a_style">酷睿i7</a></li>
+                                    <li><a href="#" class="my_a_style">酷睿i5</a></li>
+                                    <li><a href="#" class="my_a_style">酷睿i3</a></li>
+                                    <li><a href="#" class="my_a_style">锐龙Ryzen7</a></li>
+                                    <li><a href="#" class="my_a_style">锐龙Ryzen5</a></li>
+                                </ul>
+                                <ul class="d-flex">
+                                    <li>特性</li>
+                                    <li><a href="#" class="my_a_style">不限</a></li>
+                                    <li><a href="#" class="my_a_style">性能强</a></li>
+                                    <li><a href="#" class="my_a_style">性价比高</a></li>
+                                    <li><a href="#" class="my_a_style">能耗低</a></li>
+                                </ul>
+                            </div>
+                            <div class="">
+                                <h5 class="my_select">已找到的cpu</h5>
+                                <ul class="ul-unstyled">
+                                    <li class="my_list">
+                                        <div class=" row intr">
+                                            <div class="col-2"><img src="https://img.pconline.com.cn/images/pr
+                                                                    oduct/6427/642787/G4560_45_cn.jpg" alt="">
+                                            </div>
+                                            <div class="col-6">
+                                                    <p class="h6 mb-0">Intel 奔腾G4560</p>
+                                                    <div class="row my_small_font">
+                                                        <div class="col-6">核心类型:Kaby Lake(第7代)</div>
+                                                        <div class="col-6">接口类型:LGA 1151</div>
+                                                        <div class="col-6">三级缓存:3M</div>
+                                                        <div class="col-6">显示核心型号:Intel HD G</div>
+                                                    </div>
+                                                    <a href="#" class="text-danger ">查看详情</a> 
+                                            </div> 
+                                            <div class="col-4">
+                                                <p class="h4 text-danger">￥689</p>
+                                                <button class="btn btn-secondary">选用</button>
+                                            </div>                                      
+                                        </div>
+                                    </li>
+                                    <li class="my_list">
+                                            <div class=" row intr">
+                                                    <div class="col-2"><img src="https://img.pconline.com.cn/images/produ
+                                                                        ct/1083/1083147/5ab1f616N2fd767e9_cn.jpg" alt="">
+                                                    </div>
+                                                    <div class="col-6">
+                                                            <p class="h6 mb-0">Intel 奔腾G4560</p>
+                                                            <div class="row my_small_font">
+                                                                <div class="col-6">核心类型:Kaby Lake(第7代)</div>
+                                                                <div class="col-6">接口类型:LGA 1151</div>
+                                                                <div class="col-6">三级缓存:3M</div>
+                                                                <div class="col-6">显示核心型号:Intel HD G</div>
+                                                            </div>
+                                                            <a href="#" class="text-danger ">查看详情</a> 
+                                                    </div> 
+                                                    <div class="col-4">
+                                                        <p class="h4 text-danger">￥689</p>
+                                                        <button class="btn btn-secondary">选用</button>
+                                                    </div>                                      
+                                                </div> 
+                                    </li>
+                                    <li class="my_list"><div class=" row intr">
+                                            <div class="col-2"><img src="https://img.pconline.com.cn/images/pr
+                                                            oduct/1083/1083147/5ab1f616N2fd767e9_cn.jpg" alt="">
+                                            </div>
+                                            <div class="col-6">
+                                                    <p class="h6 mb-0">Intel 奔腾G4560</p>
+                                                    <div class="row my_small_font">
+                                                        <div class="col-6">核心类型:Kaby Lake(第7代)</div>
+                                                        <div class="col-6">接口类型:LGA 1151</div>
+                                                        <div class="col-6">三级缓存:3M</div>
+                                                        <div class="col-6">显示核心型号:Intel HD G</div>
+                                                    </div>
+                                                    <a href="#" class="text-danger ">查看详情</a> 
+                                            </div> 
+                                            <div class="col-4">
+                                                <p class="h4 text-danger">￥689</p>
+                                                <button class="btn btn-secondary">选用</button>
+                                            </div>                                      
+                                        </div> </li>
+                                    <li class="my_list">
+                                            <div class=" row intr">
+                                                    <div class="col-2"><img src="https://img.pconline.com.cn/images/prod
+                                                                      uct/1083/1083147/5ab1f616N2fd767e9_cn.jpg" alt="">
+                                                    </div>
+                                                    <div class="col-6">
+                                                            <p class="h6 mb-0">Intel 奔腾G4560</p>
+                                                            <div class="row my_small_font">
+                                                                <div class="col-6">核心类型:Kaby Lake(第7代)</div>
+                                                                <div class="col-6">接口类型:LGA 1151</div>
+                                                                <div class="col-6">三级缓存:3M</div>
+                                                                <div class="col-6">显示核心型号:Intel HD G</div>
+                                                            </div>
+                                                            <a href="#" class="text-danger ">查看详情</a> 
+                                                    </div> 
+                                                    <div class="col-4">
+                                                        <p class="h4 text-danger">￥689</p>
+                                                        <button class="btn btn-secondary">选用</button>
+                                                    </div>                                      
+                                            </div> 
+                                    </li>
+                                </ul>
+                        </div>
+                    </div>
+                   <!--显卡的选择 -->
+                    <div class="tab-pane" id="xianka_select">
+                        <div>
+                            <h5 class="PL-4  my_select">筛选条件</h5>
+                            <ul class="d-flex">
+                                <li>品牌</li>
+                                <li><a href="#" class="my_a_style">七彩虹</a></li>
+                                <li><a href="#" class="my_a_style">影驰</a></li>
+                                <li><a href="#" class="my_a_style">微星</a></li>
+                                <li><a href="#" class="my_a_style">技嘉</a></li>
+                                <li><a href="#" class="my_a_style">索泰</a></li>
+                            </ul>
+                            <ul class="d-flex">
+                                <li>价格</li>
+                                <li><a href="#" class="my_a_style">不限</a></li>
+                                <li><a href="#" class="my_a_style">1000以下</a></li>
+                                <li><a href="#" class="my_a_style">1000-2000</a></li>
+                                <li><a href="#" class="my_a_style">2000-3000</a></li>
+                                <li><a href="#" class="my_a_style">3000以上</a></li>
+                            </ul>
+                            <ul class="d-flex">
+                                <li>系列</li>
+                                <li><a href="#" class="my_a_style">英伟达7系</a></li>
+                                <li><a href="#" class="my_a_style">英伟达8系</a></li>
+                                <li><a href="#" class="my_a_style">英伟达9系</a></li>
+                                <li><a href="#" class="my_a_style">英伟达10系</a></li>
+                                <li><a href="#" class="my_a_style">英伟达20系</a></li>
+                                <li><a href="#" class="my_a_style">Titan系列</a></li>
+                            </ul>
+                            <ul class="d-flex">
+                                <li>特性</li>
+                                <li><a href="#" class="my_a_style">入门级</a></li>
+                                <li><a href="#" class="my_a_style">中端级</a></li>
+                                <li><a href="#" class="my_a_style">高端级</a></li>
+                                <li><a href="#" class="my_a_style">发烧级</a></li>
+                            </ul>
+                        </div>
+                        <div class="">
+                            <h5 class="my_select">已找到的显卡</h5>
+                            <ul class="ul-unstyled">
+                                <li class="my_list">
+                                    <div class=" row intr">
+                                        <div class="col-2"><img src="https://img.pconline.com.cn/images/pr
+                                                                oduct/6427/642787/G4560_45_cn.jpg" alt="">
+                                        </div>
+                                        <div class="col-6">
+                                                <p class="h6 mb-0">影驰GTX 1060 骁将</p>
+                                                <div class="row my_small_font">
+                                                    <div class="col-6">显卡类型:台式机显卡</div>
+                                                    <div class="col-6">芯片型号:NVIDIA GeForce...</div>
+                                                    <div class="col-6">芯片厂方:NVIDIA</div>
+                                                    <div class="col-6">输出接口:1×</div>
+                                                </div>
+                                                <a href="#" class="text-danger ">查看详情</a> 
+                                        </div> 
+                                        <div class="col-4">
+                                            <p class="h4 text-danger">￥1989</p>
+                                            <button class="btn btn-secondary">选用</button>
+                                        </div>                                      
+                                    </div>
+                                </li>
+                                <li class="my_list">
+                                        <div class=" row intr">
+                                                <div class="col-2"><img src="https://img.pconline.com.cn/images/produ
+                                                                    ct/1083/1083147/5ab1f616N2fd767e9_cn.jpg" alt="">
+                                                </div>
+                                                <div class="col-6">
+                                                        <p class="h6 mb-0">NVIDIA GeForce GTX 1080</p>
+                                                        <div class="row my_small_font">
+                                                            <div class="col-6">显卡类型:台式机显卡</div>
+                                                            <div class="col-6">芯片型号:NVIDIA GeForce</div>
+                                                            <div class="col-6">芯片厂方:NVIDIA</div>
+                                                            <div class="col-6">输出接口:1×</div>
+                                                        </div>
+                                                        <a href="#" class="text-danger ">查看详情</a> 
+                                                </div> 
+                                                <div class="col-4">
+                                                    <p class="h4 text-danger">￥4599</p>
+                                                    <button class="btn btn-secondary">选用</button>
+                                                </div>                                      
+                                            </div> 
+                                </li>
+                                <li class="my_list"><div class=" row intr">
+                                        <div class="col-2"><img src="https://img.pconline.com.cn/images/pr
+                                                        oduct/1083/1083147/5ab1f616N2fd767e9_cn.jpg" alt="">
+                                        </div>
+                                        <div class="col-6">
+                                                <p class="h6 mb-0">技嘉GeForce RTX 2080 WindForce OC 8G</p>
+                                                <div class="row my_small_font">
+                                                    <div class="col-6">显卡类型:台式机显卡</div>
+                                                    <div class="col-6">芯片型号:NVIDIA GeForce</div>
+                                                    <div class="col-6">芯片厂方:NVIDIA</div>
+                                                    <div class="col-6">输出接口:2×</div>
+                                                </div>
+                                                <a href="#" class="text-danger ">查看详情</a> 
+                                        </div> 
+                                        <div class="col-4">
+                                            <p class="h4 text-danger">￥6299</p>
+                                            <button class="btn btn-secondary">选用</button>
+                                        </div>                                      
+                                    </div> </li>
+                                <li class="my_list">
+                                        <div class=" row intr">
+                                                <div class="col-2"><img src="https://img.pconline.com.cn/images/prod
+                                                                  uct/1083/1083147/5ab1f616N2fd767e9_cn.jpg" alt="">
+                                                </div>
+                                                <div class="col-6">
+                                                        <p class="h6 mb-0">NVIDIA GeForce TITAN X</p>
+                                                        <div class="row my_small_font">
+                                                            <div class="col-6">显卡类型:台式机显卡</div>
+                                                            <div class="col-6">芯片型号:NVIDIA TITAN X</div>
+                                                            <div class="col-6">芯片厂方:NVIDIA</div>
+                                                            <div class="col-6">输出接口:1×DVI-D接口,1</div>
+                                                        </div>
+                                                        <a href="#" class="text-danger ">查看详情</a> 
+                                                </div> 
+                                                <div class="col-4">
+                                                    <p class="h4 text-danger">￥10599</p>
+                                                    <button class="btn btn-secondary">选用</button>
+                                                </div>                                      
+                                        </div> 
+                                </li>
+                            </ul>
+                    </div>
+                    </div>
+                  <!--内存的选择 -->
+                    <div class="tab-pane" id="neicun_select">
+                        <div>
+                            <h5 class="PL-4  my_select">筛选条件</h5>
+                            <ul class="d-flex">
+                                <li>品牌</li>
+                                <li><a href="#" class="my_a_style">不限</a></li>
+                                <li><a href="#" class="my_a_style">金士顿</a></li>
+                                <li><a href="#" class="my_a_style">威刚</a></li>
+                                <li><a href="#" class="my_a_style">海盗船</a></li>
+                                <li><a href="#" class="my_a_style">影驰</a></li>
+                            </ul>
+                            <ul class="d-flex">
+                                <li>价格</li>
+                                <li><a href="#" class="my_a_style">不限</a></li>
+                                <li><a href="#" class="my_a_style">200以下</a></li>
+                                <li><a href="#" class="my_a_style">200-400</a></li>
+                                <li><a href="#" class="my_a_style">400-800</a></li>
+                                <li><a href="#" class="my_a_style">800以上</a></li>
+                            </ul>
+                            <ul class="d-flex">
+                                <li>类型</li>
+                                <li><a href="#" class="my_a_style">DDR4</a></li>
+                                <li><a href="#" class="my_a_style">DDR3</a></li>
+                                <li><a href="#" class="my_a_style">DDR2</a></li>
+                            </ul>
+                            <ul class="d-flex">
+                                <li>容量</li>
+                                <li><a href="#" class="my_a_style">16G</a></li>
+                                <li><a href="#" class="my_a_style">8G</a></li>
+                                <li><a href="#" class="my_a_style">4G</a></li>
+                            </ul>
+                        </div>
+                        <div class="">
+                            <h5 class="my_select">已找到的内存</h5>
+                            <ul class="ul-unstyled">
+                                <li class="my_list">
+                                    <div class=" row intr">
+                                        <div class="col-2"><img src="https://img.pconline.com.cn/images/pr
+                                                                oduct/6427/642787/G4560_45_cn.jpg" alt="">
+                                        </div>
+                                        <div class="col-6">
+                                                <p class="h6 mb-0">金士顿DDR4 2400 8G</p>
+                                                <div class="row my_small_font">
+                                                    <div class="col-6">内存类型:DDR IV</div>
+                                                    <div class="col-6">内存主频:DDR4 2400</div>
+                                                    <div class="col-6">内存总容量:8G</div>
+                                                    <div class="col-6">内存容量描述:单条,1×8G</div>
+                                                </div>
+                                                <a href="#" class="text-danger ">查看详情</a> 
+                                        </div> 
+                                        <div class="col-4">
+                                            <p class="h4 text-danger">￥669</p>
+                                            <button class="btn btn-secondary">选用</button>
+                                        </div>                                      
+                                    </div>
+                                </li>
+                                <li class="my_list">
+                                        <div class=" row intr">
+                                                <div class="col-2"><img src="https://img.pconline.com.cn/images/produ
+                                                                    ct/1083/1083147/5ab1f616N2fd767e9_cn.jpg" alt="">
+                                                </div>
+                                                <div class="col-6">
+                                                        <p class="h6 mb-0">威刚XPG DDR4 3200 8G</p>
+                                                        <div class="row my_small_font">
+                                                            <div class="col-6">内存类型:DDR IV</div>
+                                                            <div class="col-6">内存主频:DDR4 3200</div>
+                                                            <div class="col-6">内存总容量:8G</div>
+                                                            <div class="col-6">内存容量描述:单条,1×8G</div>
+                                                        </div>
+                                                        <a href="#" class="text-danger ">查看详情</a> 
+                                                </div> 
+                                                <div class="col-4">
+                                                    <p class="h4 text-danger">￥229</p>
+                                                    <button class="btn btn-secondary">选用</button>
+                                                </div>                                      
+                                            </div> 
+                                </li>
+                                <li class="my_list"><div class=" row intr">
+                                        <div class="col-2"><img src="https://img.pconline.com.cn/images/pr
+                                                        oduct/1083/1083147/5ab1f616N2fd767e9_cn.jpg" alt="">
+                                        </div>
+                                        <div class="col-6">
+                                                <p class="h6 mb-0">金士顿DDR4 2400 4G</p>
+                                                <div class="row my_small_font">
+                                                    <div class="col-6">内存类型:DDR IV</div>
+                                                    <div class="col-6">内存主频:DDR4 2400</div>
+                                                    <div class="col-6">内存总容量:4G</div>
+                                                    <div class="col-6">内存容量描述:单条,1×4G</div>
+                                                </div>
+                                                <a href="#" class="text-danger ">查看详情</a> 
+                                        </div> 
+                                        <div class="col-4">
+                                            <p class="h4 text-danger">￥429</p>
+                                            <button class="btn btn-secondary">选用</button>
+                                        </div>                                      
+                                    </div> </li>
+                                <li class="my_list">
+                                        <div class=" row intr">
+                                                <div class="col-2"><img src="https://img.pconline.com.cn/images/prod
+                                                                  uct/1083/1083147/5ab1f616N2fd767e9_cn.jpg" alt="">
+                                                </div>
+                                                <div class="col-6">
+                                                        <p class="h6 mb-0">芝奇AEGIS系列 DDR4 2400 16G</p>
+                                                        <div class="row my_small_font">
+                                                            <div class="col-6">内存类型:DDR IV</div>
+                                                            <div class="col-6">内存主频:DDR4 2400</div>
+                                                            <div class="col-6">内存总容量:16G</div>
+                                                            <div class="col-6">内存容量描述:单条,1×16G</div>
+                                                        </div>
+                                                        <a href="#" class="text-danger ">查看详情</a> 
+                                                </div> 
+                                                <div class="col-4">
+                                                    <p class="h4 text-danger">￥999</p>
+                                                    <button class="btn btn-secondary">选用</button>
+                                                </div>                                      
+                                        </div> 
+                                </li>
+                            </ul>
+                    </div>
+                    </div>
+                  <!--主板的选择-->
+                    <div class="tab-pane" id="zhuban_select">
+                        <div>
+                            <h5 class="PL-4  my_select">筛选条件</h5>
+                            <ul class="d-flex">
+                                <li>品牌</li>
+                                <li><a href="#" class="my_a_style">不限</a></li>
+                                <li><a href="#" class="my_a_style">Intel</a></li>
+                                <li><a href="#" class="my_a_style">AMD</a></li>
+                            </ul>
+                            <ul class="d-flex">
+                                <li>价格</li>
+                                <li><a href="#" class="my_a_style">不限</a></li>
+                                <li><a href="#" class="my_a_style">1000以下</a></li>
+                                <li><a href="#" class="my_a_style">1000-2000</a></li>
+                                <li><a href="#" class="my_a_style">2000-3000</a></li>
+                                <li><a href="#" class="my_a_style">3000以上</a></li>
+                            </ul>
+                            <ul class="d-flex">
+                                <li>系列</li>
+                                <li><a href="#" class="my_a_style">不限</a></li>
+                                <li><a href="#" class="my_a_style">酷睿i9</a></li>
+                                <li><a href="#" class="my_a_style">酷睿i7</a></li>
+                                <li><a href="#" class="my_a_style">酷睿i5</a></li>
+                                <li><a href="#" class="my_a_style">酷睿i3</a></li>
+                                <li><a href="#" class="my_a_style">锐龙Ryzen7</a></li>
+                                <li><a href="#" class="my_a_style">锐龙Ryzen5</a></li>
+                            </ul>
+                            <ul class="d-flex">
+                                <li>特性</li>
+                                <li><a href="#" class="my_a_style">不限</a></li>
+                                <li><a href="#" class="my_a_style">性能强</a></li>
+                                <li><a href="#" class="my_a_style">性价比高</a></li>
+                                <li><a href="#" class="my_a_style">能耗低</a></li>
+                            </ul>
+                        </div>
+                        <div class="">
+                            <h5 class="my_select">已找到的cpu</h5>
+                            <ul class="ul-unstyled">
+                                <li class="my_list">
+                                    <div class=" row intr">
+                                        <div class="col-2"><img src="https://img.pconline.com.cn/images/pr
+                                                                oduct/6427/642787/G4560_45_cn.jpg" alt="">
+                                        </div>
+                                        <div class="col-6">
+                                                <p class="h6 mb-0">Intel 奔腾G4560</p>
+                                                <div class="row my_small_font">
+                                                    <div class="col-6">核心类型:Kaby Lake(第7代)</div>
+                                                    <div class="col-6">接口类型:LGA 1151</div>
+                                                    <div class="col-6">三级缓存:3M</div>
+                                                    <div class="col-6">显示核心型号:Intel HD G</div>
+                                                </div>
+                                                <a href="#" class="text-danger ">查看详情</a> 
+                                        </div> 
+                                        <div class="col-4">
+                                            <p class="h4 text-danger">￥689</p>
+                                            <button class="btn btn-secondary">选用</button>
+                                        </div>                                      
+                                    </div>
+                                </li>
+                                <li class="my_list">
+                                        <div class=" row intr">
+                                                <div class="col-2"><img src="https://img.pconline.com.cn/images/produ
+                                                                    ct/1083/1083147/5ab1f616N2fd767e9_cn.jpg" alt="">
+                                                </div>
+                                                <div class="col-6">
+                                                        <p class="h6 mb-0">Intel 奔腾G4560</p>
+                                                        <div class="row my_small_font">
+                                                            <div class="col-6">核心类型:Kaby Lake(第7代)</div>
+                                                            <div class="col-6">接口类型:LGA 1151</div>
+                                                            <div class="col-6">三级缓存:3M</div>
+                                                            <div class="col-6">显示核心型号:Intel HD G</div>
+                                                        </div>
+                                                        <a href="#" class="text-danger ">查看详情</a> 
+                                                </div> 
+                                                <div class="col-4">
+                                                    <p class="h4 text-danger">￥689</p>
+                                                    <button class="btn btn-secondary">选用</button>
+                                                </div>                                      
+                                            </div> 
+                                </li>
+                                <li class="my_list"><div class=" row intr">
+                                        <div class="col-2"><img src="https://img.pconline.com.cn/images/pr
+                                                        oduct/1083/1083147/5ab1f616N2fd767e9_cn.jpg" alt="">
+                                        </div>
+                                        <div class="col-6">
+                                                <p class="h6 mb-0">Intel 奔腾G4560</p>
+                                                <div class="row my_small_font">
+                                                    <div class="col-6">核心类型:Kaby Lake(第7代)</div>
+                                                    <div class="col-6">接口类型:LGA 1151</div>
+                                                    <div class="col-6">三级缓存:3M</div>
+                                                    <div class="col-6">显示核心型号:Intel HD G</div>
+                                                </div>
+                                                <a href="#" class="text-danger ">查看详情</a> 
+                                        </div> 
+                                        <div class="col-4">
+                                            <p class="h4 text-danger">￥689</p>
+                                            <button class="btn btn-secondary">选用</button>
+                                        </div>                                      
+                                    </div> </li>
+                                <li class="my_list">
+                                        <div class=" row intr">
+                                                <div class="col-2"><img src="https://img.pconline.com.cn/images/prod
+                                                                  uct/1083/1083147/5ab1f616N2fd767e9_cn.jpg" alt="">
+                                                </div>
+                                                <div class="col-6">
+                                                        <p class="h6 mb-0">Intel 奔腾G4560</p>
+                                                        <div class="row my_small_font">
+                                                            <div class="col-6">核心类型:Kaby Lake(第7代)</div>
+                                                            <div class="col-6">接口类型:LGA 1151</div>
+                                                            <div class="col-6">三级缓存:3M</div>
+                                                            <div class="col-6">显示核心型号:Intel HD G</div>
+                                                        </div>
+                                                        <a href="#" class="text-danger ">查看详情</a> 
+                                                </div> 
+                                                <div class="col-4">
+                                                    <p class="h4 text-danger">￥689</p>
+                                                    <button class="btn btn-secondary">选用</button>
+                                                </div>                                      
+                                        </div> 
+                                </li>
+                            </ul>
+                    </div>
+                    </div>
+                    <!--硬盘的选择-->
+                    <div class="tab-pane" id="yingpan_select">
+                        <div>
+                            <h5 class="PL-4  my_select">筛选条件</h5>
+                            <ul class="d-flex">
+                                <li>品牌</li>
+                                <li><a href="#" class="my_a_style">不限</a></li>
+                                <li><a href="#" class="my_a_style">Intel</a></li>
+                                <li><a href="#" class="my_a_style">AMD</a></li>
+                            </ul>
+                            <ul class="d-flex">
+                                <li>价格</li>
+                                <li><a href="#" class="my_a_style">不限</a></li>
+                                <li><a href="#" class="my_a_style">1000以下</a></li>
+                                <li><a href="#" class="my_a_style">1000-2000</a></li>
+                                <li><a href="#" class="my_a_style">2000-3000</a></li>
+                                <li><a href="#" class="my_a_style">3000以上</a></li>
+                            </ul>
+                            <ul class="d-flex">
+                                <li>系列</li>
+                                <li><a href="#" class="my_a_style">不限</a></li>
+                                <li><a href="#" class="my_a_style">酷睿i9</a></li>
+                                <li><a href="#" class="my_a_style">酷睿i7</a></li>
+                                <li><a href="#" class="my_a_style">酷睿i5</a></li>
+                                <li><a href="#" class="my_a_style">酷睿i3</a></li>
+                                <li><a href="#" class="my_a_style">锐龙Ryzen7</a></li>
+                                <li><a href="#" class="my_a_style">锐龙Ryzen5</a></li>
+                            </ul>
+                            <ul class="d-flex">
+                                <li>特性</li>
+                                <li><a href="#" class="my_a_style">不限</a></li>
+                                <li><a href="#" class="my_a_style">性能强</a></li>
+                                <li><a href="#" class="my_a_style">性价比高</a></li>
+                                <li><a href="#" class="my_a_style">能耗低</a></li>
+                            </ul>
+                        </div>
+                        <div class="">
+                            <h5 class="my_select">已找到的cpu</h5>
+                            <ul class="ul-unstyled">
+                                <li class="my_list">
+                                    <div class=" row intr">
+                                        <div class="col-2"><img src="https://img.pconline.com.cn/images/pr
+                                                                oduct/6427/642787/G4560_45_cn.jpg" alt="">
+                                        </div>
+                                        <div class="col-6">
+                                                <p class="h6 mb-0">Intel 奔腾G4560</p>
+                                                <div class="row my_small_font">
+                                                    <div class="col-6">核心类型:Kaby Lake(第7代)</div>
+                                                    <div class="col-6">接口类型:LGA 1151</div>
+                                                    <div class="col-6">三级缓存:3M</div>
+                                                    <div class="col-6">显示核心型号:Intel HD G</div>
+                                                </div>
+                                                <a href="#" class="text-danger ">查看详情</a> 
+                                        </div> 
+                                        <div class="col-4">
+                                            <p class="h4 text-danger">￥689</p>
+                                            <button class="btn btn-secondary">选用</button>
+                                        </div>                                      
+                                    </div>
+                                </li>
+                                <li class="my_list">
+                                        <div class=" row intr">
+                                                <div class="col-2"><img src="https://img.pconline.com.cn/images/produ
+                                                                    ct/1083/1083147/5ab1f616N2fd767e9_cn.jpg" alt="">
+                                                </div>
+                                                <div class="col-6">
+                                                        <p class="h6 mb-0">Intel 奔腾G4560</p>
+                                                        <div class="row my_small_font">
+                                                            <div class="col-6">核心类型:Kaby Lake(第7代)</div>
+                                                            <div class="col-6">接口类型:LGA 1151</div>
+                                                            <div class="col-6">三级缓存:3M</div>
+                                                            <div class="col-6">显示核心型号:Intel HD G</div>
+                                                        </div>
+                                                        <a href="#" class="text-danger ">查看详情</a> 
+                                                </div> 
+                                                <div class="col-4">
+                                                    <p class="h4 text-danger">￥689</p>
+                                                    <button class="btn btn-secondary">选用</button>
+                                                </div>                                      
+                                            </div> 
+                                </li>
+                                <li class="my_list"><div class=" row intr">
+                                        <div class="col-2"><img src="https://img.pconline.com.cn/images/pr
+                                                        oduct/1083/1083147/5ab1f616N2fd767e9_cn.jpg" alt="">
+                                        </div>
+                                        <div class="col-6">
+                                                <p class="h6 mb-0">Intel 奔腾G4560</p>
+                                                <div class="row my_small_font">
+                                                    <div class="col-6">核心类型:Kaby Lake(第7代)</div>
+                                                    <div class="col-6">接口类型:LGA 1151</div>
+                                                    <div class="col-6">三级缓存:3M</div>
+                                                    <div class="col-6">显示核心型号:Intel HD G</div>
+                                                </div>
+                                                <a href="#" class="text-danger ">查看详情</a> 
+                                        </div> 
+                                        <div class="col-4">
+                                            <p class="h4 text-danger">￥689</p>
+                                            <button class="btn btn-secondary">选用</button>
+                                        </div>                                      
+                                    </div> </li>
+                                <li class="my_list">
+                                        <div class=" row intr">
+                                                <div class="col-2"><img src="https://img.pconline.com.cn/images/prod
+                                                                  uct/1083/1083147/5ab1f616N2fd767e9_cn.jpg" alt="">
+                                                </div>
+                                                <div class="col-6">
+                                                        <p class="h6 mb-0">Intel 奔腾G4560</p>
+                                                        <div class="row my_small_font">
+                                                            <div class="col-6">核心类型:Kaby Lake(第7代)</div>
+                                                            <div class="col-6">接口类型:LGA 1151</div>
+                                                            <div class="col-6">三级缓存:3M</div>
+                                                            <div class="col-6">显示核心型号:Intel HD G</div>
+                                                        </div>
+                                                        <a href="#" class="text-danger ">查看详情</a> 
+                                                </div> 
+                                                <div class="col-4">
+                                                    <p class="h4 text-danger">￥689</p>
+                                                    <button class="btn btn-secondary">选用</button>
+                                                </div>                                      
+                                        </div> 
+                                </li>
+                            </ul>
+                    </div>
+                    </div>
+                </div>
+                <ul class="pagination pagination-lg">
+                        <li class="page-item disabled">
+                            <a href="#" class="page-link">上一页</a>
+                        </li>
+                        <li class="page-item  active">
+                            <a href="#" class="page-link">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a href="#" class="page-link">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a href="#" class="page-link">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a href="#" class="page-link">4</a>
+                        </li>
+                        <li class="page-item">
+                            <a href="#" class="page-link">5</a>
+                        </li>
+                        <li class="page-item">
+                            <a href="#" class="page-link">下一页</a>
+                        </li>
+                </ul>            
+            </div>    
+            </div>
+        </div>
+        <div>
+            <h3 class="text-primary">装机推荐</h3>
+            <div class="row">
+                <div class="col-8">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item"><a class="nav-link active" href="#d1" data-toggle="tab">2000-3000元</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#d2" data-toggle="tab">3000-5000元</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#d3" data-toggle="tab">5000元以上</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="d1" class="tab-pane active">
+                            <div class="row">
+                                <div class="col-6"> 
+                                    <table class="table ">
+                                        <thead><p class="pt-2">i3 6100极速商务办公主机</p></thead>
+                                        <tr>
+                                            <td>CPU</td>
+                                            <td>Intel酷睿i3-6100（散片）</td>
+                                            <td>¥669</td>
+                                        </tr>
+                                        <tr>
+                                            <td>显卡</td>
+                                            <td>待选</td>
+                                            <td>￥0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>内存</td>
+                                            <td>芝奇Ripjaws4 DDR4 8G</td>
+                                            <td>¥338</td>
+                                        </tr>
+                                        <tr>
+                                            <td>硬盘</td>
+                                            <td>待选</td>
+                                            <td>￥0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>主板</td>
+                                            <td>技嘉 B150M-D3H</td>
+                                            <td>¥499</td>
+                                        </tr>
+                                        <tr>
+                                            <td>外设</td>
+                                            <td>待选</td>
+                                            <td>￥0</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="w-50">总价：￥1506</span></td>  
+                                        </tr>
+                                    </table>   
+                                </div>
+                                <div class="col-6">
+                                        <table class="table">
+                                                <thead><p class="pt-2">i3 6100极速商务办公主机</p></thead>
+                                                <tr>
+                                                    <td>CPU</td>
+                                                    <td>Intel酷睿i3-6100（散片）</td>
+                                                    <td>¥669</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>显卡</td>
+                                                    <td>待选</td>
+                                                    <td>￥0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>内存</td>
+                                                    <td>芝奇Ripjaws4 DDR4 8G</td>
+                                                    <td>¥338</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>硬盘</td>
+                                                    <td>待选</td>
+                                                    <td>￥0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>主板</td>
+                                                    <td>技嘉 B150M-D3H</td>
+                                                    <td>¥499</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>外设</td>
+                                                    <td>待选</td>
+                                                    <td>￥0</td>
+                                                </tr>
+                                                <tr>
+                                                   <td>总价：￥1506</td> 
+                                                </tr>
+                                            </table>   
+                                </div>                                                       
+                            </div>                         
+                        </div>
+                        <div id="d2" class="row tab-pane">
+                                <div class="row">
+                                        <div class="col-6"> 
+                                            <table class="table ">
+                                                <thead>i3 6100极速商务办公主机</thead>
+                                                <tr>
+                                                    <td>CPU</td>
+                                                    <td>Intel酷睿i3-6100（散片）</td>
+                                                    <td>¥669</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>显卡</td>
+                                                    <td>待选</td>
+                                                    <td>￥0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>内存</td>
+                                                    <td>芝奇Ripjaws4 DDR4 8G</td>
+                                                    <td>¥338</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>硬盘</td>
+                                                    <td>待选</td>
+                                                    <td>￥0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>主板</td>
+                                                    <td>技嘉 B150M-D3H</td>
+                                                    <td>¥499</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>外设</td>
+                                                    <td>待选</td>
+                                                    <td>￥0</td>
+                                                </tr>
+                                                <tfoot>
+                                                    总价：￥1506
+                                                </tfoot>
+                                            </table>   
+                                        </div>
+                                        <div class="col-6">
+                                                <table class="table ">
+                                                        <thead>i3 6100极速商务办公主机</thead>
+                                                        <tr>
+                                                            <td>CPU</td>
+                                                            <td>Intel酷睿i3-6100（散片）</td>
+                                                            <td>¥669</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>显卡</td>
+                                                            <td>待选</td>
+                                                            <td>￥0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>内存</td>
+                                                            <td>芝奇Ripjaws4 DDR4 8G</td>
+                                                            <td>¥338</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>硬盘</td>
+                                                            <td>待选</td>
+                                                            <td>￥0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>主板</td>
+                                                            <td>技嘉 B150M-D3H</td>
+                                                            <td>¥499</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>外设</td>
+                                                            <td>待选</td>
+                                                            <td>￥0</td>
+                                                        </tr>
+                                                        <tfoot>
+                                                            总价：￥1506
+                                                        </tfoot>
+                                                    </table>   
+                                        </div>                                                       
+                                    </div>     
+                        </div>
+                        <div id="d3" class="row tab-pane">
+                                <div class="row">
+                                        <div class="col-6"> 
+                                            <table class="table ">
+                                                <thead>i3 6100极速商务办公主机</thead>
+                                                <tr>
+                                                    <td>CPU</td>
+                                                    <td>Intel酷睿i3-6100（散片）</td>
+                                                    <td>¥669</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>显卡</td>
+                                                    <td>待选</td>
+                                                    <td>￥0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>内存</td>
+                                                    <td>芝奇Ripjaws4 DDR4 8G</td>
+                                                    <td>¥338</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>硬盘</td>
+                                                    <td>待选</td>
+                                                    <td>￥0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>主板</td>
+                                                    <td>技嘉 B150M-D3H</td>
+                                                    <td>¥499</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>外设</td>
+                                                    <td>待选</td>
+                                                    <td>￥0</td>
+                                                </tr>
+                                                <tfoot>
+                                                    总价：￥1506
+                                                </tfoot>
+                                            </table>   
+                                        </div>
+                                        <div class="col-6">
+                                                <table class="table ">
+                                                        <thead>i3 6100极速商务办公主机</thead>
+                                                        <tr>
+                                                            <td>CPU</td>
+                                                            <td>Intel酷睿i3-6100（散片）</td>
+                                                            <td>¥669</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>显卡</td>
+                                                            <td>待选</td>
+                                                            <td>￥0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>内存</td>
+                                                            <td>芝奇Ripjaws4 DDR4 8G</td>
+                                                            <td>¥338</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>硬盘</td>
+                                                            <td>待选</td>
+                                                            <td>￥0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>主板</td>
+                                                            <td>技嘉 B150M-D3H</td>
+                                                            <td>¥499</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>外设</td>
+                                                            <td>待选</td>
+                                                            <td>￥0</td>
+                                                        </tr>
+                                                        <tfoot>
+                                                            总价：￥1506
+                                                        </tfoot>
+                                                    </table>   
+                                        </div>                                                       
+                                    </div>     
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <a href="#" class="h5 text-primary">方案排行榜</a>
+                    <ul class="list-unstyled">
+                            <li class="list-group-item my_group">
+                                    <div class="media">
+                                        <img class="rounded mr-3" src="img/a01.png"/>
+                                        <div class="media-body">
+                                            <h5>i7-6700k水冷主机</h5>
+                                            <p>￥6666</p>
+                                            <a href="#">查看详情</a>
+                                        </div>
+                                    </div>
+                            </li>
+                            <li class="list-group-item my_group">
+                                    <div class="media">
+                                        <img class="rounded mr-3" src="img/a02.png"/>
+                                        <div class="media-body">
+                                            <h5>四核i5-4590/GTX950</h5>
+                                            <p>￥3099</p>
+                                            <a href="#">查看详情</a>
+                                        </div>
+                                    </div>
+                            </li>
+                            <li class="list-group-item my_group">
+                                    <div class="media">
+                                        <img class="rounded mr-3" src="img/a03.png"/>
+                                        <div class="media-body">
+                                            <h5>四代i3游戏主机</h5>
+                                            <p>￥2574</p>
+                                            <a href="#">查看详情</a>
+                                        </div>
+                                    </div>
+                            </li>
+                            <li class="list-group-item my_group">
+                                    <div class="media">
+                                        <img class="rounded mr-3" src="img/a04.png"/>
+                                        <div class="media-body">
+                                            <h5>六核独显游戏主机</h5>
+                                            <p>￥6999</p>
+                                            <a href="#">查看详情</a>
+                                        </div>
+                                    </div>
+                            </li>                                
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="mt-3">
+            <h3 class="text-primary">DIY装机交流论坛</h3>
+            <div>
+                <table class="table">
+                    <tr>
+                        <td>家用级主板，华擎Z390 PRO4</td>
+                        <td><img src="img/user-icon.png" alt=""><a href="#">wanglei666</a></td>
+                        <td>2019-02-01</td>
+                    </tr>
+                    <tr>
+                        <td>求指点</td>
+                        <td><img src="img/user-icon.png" alt=""><a href="#">feifei666</a></td>
+                        <td>2019-02-01</td>
+                    </tr>
+                    <tr>
+                        <td>CPU什么的还有换的价值吗</td>
+                        <td><img src="img/user-icon.png" alt=""><a href="#">chenchen666</a></td>
+                        <td>2019-01-31</td>
+                    </tr>
+                    <tr>
+                        <td>预算2万 各位看下合理不</td>
+                        <td><img src="img/user-icon.png" alt=""><a href="#">xiaozhu666</a></td>
+                        <td>2019-01-25</td>
+                    </tr>
+                    <tr>
+                        <td>请大神给看看，我这配置玩吃鸡如何升级</td>
+                        <td><img src="img/user-icon.png" alt=""><a href="#">pengpeng666</a></td>
+                        <td>2019-01-24</td>
+                    </tr>
+                    <tr>
+                        <td>报价的大神们都不看私信？</td>
+                        <td><img src="img/user-icon.png" alt=""><a href="#">tantan666</a></td>
+                        <td>2019-01-05</td>
+                    </tr>
+                    <tr>
+                        <td>GTX1050Ti什么价位入好</td>
+                        <td><img src="img/user-icon.png" alt=""><a href="#">chaowei666</a></td>
+                        <td>2019-01-05</td>
+                    </tr>
+                    <tr>
+                        <td>求大神推荐配置</td>
+                        <td><img src="img/user-icon.png" alt=""><a href="#">jiji666</a></td>
+                        <td>2018-12-31</td>
+                    </tr>
+                </table>
+                <button class="btn btn-primary ">我要发帖</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
