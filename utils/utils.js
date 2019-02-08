@@ -31,20 +31,20 @@ const QUERY_HARDWARE = async(ctx, tablename) => {
 }
 
 const QUERY_TYPES = async(tablename, field, format) => {
+    // 字段分割
     let fields = field.split(',');
     let types = []
 
     for (let item of fields) {
-        console.log(`SELECT ${item} from ${tablename} GROUP BY ${item} HAVING count(id)>0`)
-        let col = await query.query(`SELECT ${item} from ${tablename} GROUP BY ${item} HAVING count(id)>0`);
+        // 查询字段
+        let col = await query.query(`SELECT ${item} from ${tablename} GROUP BY ${item ? item : 'id'} HAVING count(id)>0`);
+        // 去重
         types.push({
             title: format[item],
             data: Array.from(new Set(col))
         });
     }
     return types;
-    // 查询符合条件的列表
-    // let types = await query.query(sql.QUERY_TABLE(tablename, '*', where.join(' AND ')))
 }
 
 module.exports = {

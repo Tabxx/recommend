@@ -2,6 +2,9 @@ const router = require('koa-router')();
 const cpu = require('./cpu');
 const graphics = require('./graphics');
 const memory = require('./memory');
+const HardDisk = require('./HardDisk');
+const mainboard = require('./mainboard');
+const list = require('./list');
 
 // CPU
 router.use('/cpu', cpu.routes());
@@ -9,6 +12,12 @@ router.use('/cpu', cpu.routes());
 router.use('/graphics', graphics.routes());
 // 内存条
 router.use('/memory', memory.routes());
+// 硬盘
+router.use('/harddisk', HardDisk.routes());
+// 主板
+router.use('/mainboard', mainboard.routes());
+// 配置清单
+router.use('/list', list.routes());
 
 router.get('/', async(ctx, next) => {
     await ctx.render('index', {
