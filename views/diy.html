@@ -43,7 +43,10 @@
          padding-bottom: 10px;
          padding-top: 10px;
      }
-
+     .tab-content img {
+        width: 100px;
+        height: 75px;
+     }
     </style>
     <title>方案推荐</title>
 </head>
@@ -162,7 +165,7 @@
                             </div>
                             <div class="">
                                 <h5 class="my_select">已找到的cpu</h5>
-                                <ul class="ul-unstyled">
+                                <ul class="ul-unstyled" id="cpu-list">
                                     <li class="my_list">
                                         <div class=" row intr">
                                             <div class="col-2"><img src="https://img.pconline.com.cn/images/pr
@@ -1123,10 +1126,36 @@
              url:'/cpu',
              type:'get',
              dataType:'json',
-             success:function(){
-                 alert("成功");
-                 console.log(res);
-             },error:function(){
+             success:function(res){
+                 if(res.code == 0 && res.result && res.result.length){
+                    let html = '';
+                    for(let item of res.result){
+                        html += `<li class="my_list">
+                                        <div class=" row intr">
+                                            <div class="col-2"><img src="${item.image}" alt="">
+                                            </div>
+                                            <div class="col-6">
+                                                    <p class="h6 mb-0">${item.name}</p>
+                                                    <div class="row my_small_font">
+                                                        <div class="col-6">核心类型:${item}</div>
+                                                        <div class="col-6">接口类型:LGA 1151</div>
+                                                        <div class="col-6">三级缓存:3M</div>
+                                                        <div class="col-6">显示核心型号:Intel HD G</div>
+                                                    </div>
+                                                    <a href="#" class="text-danger ">查看详情</a> 
+                                            </div> 
+                                            <div class="col-4">
+                                                <p class="h4 text-danger">￥${item.price}</p>
+                                                <button class="btn btn-secondary">选用</button>
+                                            </div>                                      
+                                        </div>
+                                    </li>`
+                    }
+
+                    $('#cpu-list').html(html);
+                 } 
+             },error:function(error){
+                console.log(error);
                  alert("失败");
              }
              })
