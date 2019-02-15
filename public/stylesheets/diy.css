@@ -36,3 +36,13 @@ body{margin:0;padding:0;
     width: 100px;
     height: 75px;
  }
+ .text_sm{
+     font-size: 0.9rem;
+ }
+ #get_total{
+     width:100px;
+     height:50px;
+ }
+ .delete{
+     cursor: pointer;
+ }

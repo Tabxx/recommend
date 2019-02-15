@@ -9,17 +9,17 @@
         success:function(res){
             if(res.code == 0 && res.result && res.result.length){
                 let a=res.result[0].data;
-                let html = `<li>${res.result[0].title}</li><li><a href="#" class="my_a_style">不限</a></li>`;
+                let html = `<li>${res.result[0].title}</li><li><a href="#" class="my_a_style all">不限</a></li>`;
                 for(let i=0;i<a.length;i++){
                     var obj=res.result[0].data[i];
                     for(let j in obj){
                         let pp=obj[j];
                         if(j=='capacity'){
-                            html+=`<li><a href="#" class="my_a_style selector">${pp}GB</a></li>`;  
+                            html+=`<li><a href="#" class="my_a_style selector" data-type="${j}">${pp}GB</a></li>`;  
                         }else if(j=='cache'){
-                            html+=`<li><a href="#" class="my_a_style selector">${pp}MB</a></li>`; 
+                            html+=`<li><a href="#" class="my_a_style selector" data-type="${j}">${pp}MB</a></li>`; 
                         }else{
-                            html+=`<li><a href="#" class="my_a_style selector">${pp}</a></li>`;
+                            html+=`<li><a href="#" class="my_a_style selector" data-type="${j}">${pp}</a></li>`;
                         }
                     }
                 }
@@ -86,7 +86,6 @@
         success:function(res){
             if(res.code == 0 && res.result && res.result.length){
                let html = '';
-               console.log(res.result);
                for(let item of res.result){
                    html += `<li class="my_list">
                                    <div class=" row intr">
@@ -104,7 +103,7 @@
                                        </div> 
                                        <div class="col-4">
                                            <p class="h4 text-danger">￥${item.price}</p>
-                                           <button class="btn btn-secondary">选用</button>
+                                           <button class="btn btn-secondary choose" data-ss="cpu">选用</button>
                                        </div>                                      
                                    </div>
                                </li>`
@@ -119,20 +118,18 @@
         }
         }) 
   }
-    //默认(不限)
+    //cpu默认(不限)
     get_cpu('/cpu');
-    //条件
-   var selector=document.getElementById('cpu_select');
-   var selecters=selector.getElementsByClassName('selector');
-    console.log(selecters);
-    for(var selecter of selecters){
-        selecter.onclick=function(e){
-            preventDefault(e);   
-            alert('aa');
-            var selecter=this;
-        }
-        
-    }
+    $("body").on("click","#cpu_select .all",function(){
+        let b=this.getAttribute('data-type');
+        get_cpu(`/cpu`);
+    })
+    //cpu条件
+   $("body").on("click","#cpu_select .selector ",function(){ 
+     let a=this.innerHTML;
+     let b=this.getAttribute('data-type');
+     get_cpu(`/cpu?${b}=${a}`);
+  })
        //显卡列表
        function get_gpu(url){
         $.ajax({
@@ -159,7 +156,7 @@
                                            </div> 
                                            <div class="col-4">
                                                <p class="h4 text-danger">￥${item.price}</p>
-                                               <button class="btn btn-secondary">选用</button>
+                                               <button class="btn btn-secondary choose" data-ss="gpu">选用</button>
                                            </div>                                      
                                        </div>
                                    </li>`
@@ -174,6 +171,16 @@
        }
        //默认
        get_gpu('/graphics');
+       $("body").on("click","#xianka_select .all",function(){
+        let b=this.getAttribute('data-type');
+        get_gpu(`/graphics`);
+    })
+    //显卡条件
+      $("body").on("click","#xianka_select .selector ",function(){ 
+        let a=this.innerHTML;
+        let b=this.getAttribute('data-type');
+        get_gpu(`/graphics?${b}=${a}`);
+    })
             
              //内存列表
     function get_memory(url){
@@ -201,7 +208,7 @@
                                            </div> 
                                            <div class="col-4">
                                                <p class="h4 text-danger">￥${item.price}</p>
-                                               <button class="btn btn-secondary">选用</button>
+                                               <button class="btn btn-secondary choose" data-ss="memory">选用</button>
                                            </div>                                      
                                        </div>
                                    </li>`
@@ -216,7 +223,16 @@
     }
       //默认
       get_memory('/memory');
-
+      $("body").on("click","#neicun_select .all",function(){
+        let b=this.getAttribute('data-type');
+        get_memory(`/memory`);
+    })
+         //内存条件
+        $("body").on("click","#neicun_select .selector ",function(){ 
+         let a=this.innerHTML;
+         let b=this.getAttribute('data-type');
+         get_memory(`/memory?${b}=${a}`);
+    })
         //硬盘列表
         function get_harddisk(url){
         $.ajax({
@@ -243,7 +259,7 @@
                                            </div> 
                                            <div class="col-4">
                                                <p class="h4 text-danger">￥${item.price}</p>
-                                               <button class="btn btn-secondary">选用</button>
+                                               <button class="btn btn-secondary choose" data-ss="harddisk">选用</button>
                                            </div>                                      
                                        </div>
                                    </li>`
@@ -258,6 +274,16 @@
         }
         //默认
         get_harddisk('/harddisk');
+        $("body").on("click","#yingpan_select .all",function(){
+          let b=this.getAttribute('data-type');
+          get_harddisk(`/harddisk`);
+      })
+      //硬盘条件
+      $("body").on("click","#yingpan_select .selector ",function(){ 
+        let a=this.innerHTML;
+        let b=this.getAttribute('data-type');
+        get_harddisk(`/harddisk?${b}=${a}`);
+   })
 
             //主板列表
            function get_mainboard(url){
@@ -271,8 +297,7 @@
                        for(let item of res.result){
                            html += `<li class="my_list">
                                            <div class=" row intr">
-                                               <div class="col-2"><img src="${item.image}" alt="">
-                                               </div>
+                                               <div class="col-2"><img src="${item.image}" alt=""></div>
                                                <div class="col-6">
                                                        <p class="h6 mb-0">${item.name}</p>
                                                        <div class="row my_small_font">
@@ -285,20 +310,12 @@
                                                </div> 
                                                <div class="col-4">
                                                    <p class="h4 text-danger">￥${item.price}</p>
-                                                   <button class="btn btn-secondary">选用</button>
+                                                   <button class="btn btn-secondary choose" data-ss="mainboard">选用</button>
                                                </div>                                      
                                            </div>
                                        </li>`
                        }
                        $('#main_board_list').html(html);
-                       var chooses=document.querySelectorAll('li>div>div>button');
-                       for(var choose of chooses){
-                           console.log(choose);
-                           choose=this;
-                           this.onclick=function(){
-                               alert('mapi');
-                           }
-                       }
                     } 
                 },error:function(error){
                    console.log(error);
@@ -308,8 +325,92 @@
            } 
            //默认
            get_mainboard('/mainboard');
-              
- 
+           $("body").on("click","#zhuban_select .all",function(){
+            let b=this.getAttribute('data-type');
+            get_mainboard(`/mainboard`);
+            })
+            //主板条件
+            $("body").on("click","#zhuban_select .selector ",function(){ 
+                let a=this.innerHTML;
+                let b=this.getAttribute('data-type');
+                get_mainboard(`/mainboard?${b}=${a}`);
+           })
 
+         //选择硬件添加到列表中去
+         //给button按钮添加点击事件
+         $("body").on("click",".choose",function(){ 
+            //获取名字和价格标签
+            let a=this.parentElement.previousElementSibling.firstElementChild;
+            let b=this.parentElement.firstElementChild; 
+            //获取自定义属性的值
+            let c=this.getAttribute('data-ss');
+            //遍历table
+            let table=document.getElementById('list_table');
+            let trs=table.querySelectorAll('tr');
+            for(let tr of trs){
+                if(tr.id==c){
+                    tr.children[1].innerHTML=a.innerHTML;
+                    tr.children[2].innerHTML=b.innerHTML;
+                }
+            }
+
+          //计算总价
+          let total=document.querySelector('#get_total');
+          let prices=table.querySelectorAll('.prices');
+          var sum=0;
+          for(price of prices){
+              let a=price.innerHTML.slice(1);
+              sum+= +a;
+          }
+          total.innerHTML=`￥${sum}`; 
+        })
+       
+        //方案提交
+        //let submit=document.querySelector('#list_sub');
+        $("body").on("click","#list_sub",function(){ 
+              //名称
+              let arr=[];
+              var name=$('#list_name').val();
+              //说明
+              arr.push(name);
+              var intro=$('#intr').val();
+              arr.push(intro);
+              var hardwares=document.querySelectorAll('.hardware_name');
+                for(let hardware of hardwares){
+                 let hardwareName=hardware.innerHTML;
+                 arr.push(hardwareName);
+                }
+                var total=$('#get_total').html().slice(1);
+                arr.push(total);
+                var list_data={name:'a',intro:'a',cpu:'a',graphics:'a',memory:'a',harddisk:'a',mainboard:'a',total:'a'};
+                var t=0;
+                for(let i in list_data){
+                    //console.log(i);
+                    list_data[i]=arr[t];
+                    t++;
+                }
+                $.ajax({
+                  url:'/list/add',
+                  type:'post',
+                  dataType:'json',
+                  data:list_data,
+                  success:function(){
+                     alert('添加成功');
+                     location.reload();
+                  },error:function(error){
+                    console.log(error);
+                    alert("失败");
+                  }
+              }) 
+        })
+                    //删除硬件
+                    $("body").on("click",".delete",function(){ 
+                        let brother1=$(this).parent().prev();
+                        let brother2=brother1.prev();
+                        brother1.empty();
+                        brother2.empty();
+                       //console.log($(this).parent().prev().html());
+                      // console.log($(this).parent().prev().prev().html());
+                    })
    })
 

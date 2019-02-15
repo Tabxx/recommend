@@ -23,59 +23,56 @@
             <div class="row">
                 <div class="col-5">
                     <div class="text-center bg-primary text-white h5 pt-2 pb-2">配置清单</div>
-                    <table class="table my_table">
+                    <table class="table my_table" id="list_table">
                         <tr>
                             <td>配件名称</td>
                             <td>型号</td>
                             <td>价格</td>
                             <td>操作</td>
                         </tr>
-                        <tr>
+                        <tr id='cpu'>
                             <td>CPU</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td class="text_sm w-50 hardware_name"></td>
+                            <td class="text_sm prices"></td>
+                            <td><img class="ml-2 delete" src="/img/delete.png" alt=""> </td>
                         </tr>
-                        <tr>
+                        <tr id='gpu'>
                             <td>显卡</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td class="text_sm w-50 hardware_name"></td>
+                            <td class="text_sm prices"></td>
+                            <td><img class="ml-2 delete" src="/img/delete.png" alt=""> </td>
                         </tr>
-                        <tr>
+                        <tr id='memory'>
                             <td>内存</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td class="text_sm w-50 hardware_name"></td>
+                            <td class="text_sm prices"></td>
+                            <td><img class="ml-2 delete" src="/img/delete.png" alt=""> </td>
                         </tr>
-                        <tr>
+                        <tr id='harddisk'>
                             <td>硬盘</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td class="text_sm w-50 hardware_name"></td>
+                            <td class="text_sm prices"></td>
+                            <td><img class="ml-2 delete" src="/img/delete.png" alt=""> </td>
                         </tr>
-                        <tr>
+                        <tr id='mainboard'>
                             <td>主板</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>总价</td>
-                            <td></td>
+                            <td class="text_sm w-50 hardware_name"></td>
+                            <td class="text_sm prices"></td>
+                            <td><img class="ml-2 delete" src="/img/delete.png" alt=""> </td>
                         </tr>
                     </table>
+                       <div class="h5 float-right pt-2 pb-2 pr-2">总价: <span id="get_total"></span></div>
                     <table class="table my_submit">
                         <tr>
                             <td>名称:</td> 
-                            <td><input type="text"></td> 
+                            <td><input type="text" id="list_name"></td> 
                         </tr> 
                         <tr>
                             <td>方案说明:</td> 
-                            <td><textarea name="" id="" cols="40" rows="6"></textarea></td>
+                            <td><textarea name="" id="intr" cols="40" rows="6"></textarea></td>
                          </tr> 
                         <tr>
-                            <td><button class="btn btn-warning  b-1 text-white">提交方案</button></td>
+                            <td><button class="btn btn-warning  b-1 text-white" id="list_sub">提交方案</button></td>
                         </tr>                        
                     </table>
                 </div>
