@@ -2,7 +2,7 @@ const mysql = {
     user: 'root',
     password: 'root',
     database: 'recommend',
-    host: '120.78.173.86',
+    host: '127.0.0.1',
     port: 3306
 }
 
