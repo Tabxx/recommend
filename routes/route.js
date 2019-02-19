@@ -5,6 +5,7 @@ const memory = require('./memory');
 const HardDisk = require('./HardDisk');
 const mainboard = require('./mainboard');
 const list = require('./list');
+const user = require('./user');
 
 // CPU
 router.use('/cpu', cpu.routes());
@@ -18,8 +19,10 @@ router.use('/harddisk', HardDisk.routes());
 router.use('/mainboard', mainboard.routes());
 // 配置清单
 router.use('/list', list.routes());
+// 用户
+router.use('/user', user.routes());
 
-router.get('/', async(ctx, next) => {
+router.get('/', async (ctx, next) => {
     await ctx.render('index', {
         title: 'Hello Koa 2!'
     })
