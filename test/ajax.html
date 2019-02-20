@@ -9,13 +9,18 @@
 </head>
 
 <body>
+	
+	<form action="http://127.0.0.1:3000/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file"/>
+        <input type="submit" value="上传文件"/>
+    </form>
 
     <button id="send">发送请求</button>
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script>
         $("#send").click(() => {
             $.ajax({
-                url: 'http://localhost:3000/user/login',
+                url: 'http://localhost:3000/user/getTags',
                 data: {
                     username:'Tab',
 					password:'123456'

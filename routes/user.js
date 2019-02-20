@@ -72,4 +72,25 @@ router.get('/login', async (ctx, next) => {
     }
 })
 
+// 获取所有标签
+router.get('/getTags', async (ctx, next)=>{
+	let tags = await query.query(sql.QUERY_TABLE('tag', 'tid,name', 'status=1'));
+	ctx.body = {
+		code: 0,
+		msg: '',
+		result: tags
+	}
+})
+
+// 用户行为记录
+router.get('/action', async (ctx, next)=>{
+	let {userid, tid} = ctx.request.query;
+	let add_sql = sql.INERT_TABLE('action', 'uid,tid', `'${userid}','${tid}'`);
+    ctx.body = {
+		code: 0,
+		msg:'',
+		result: null
+	}
+})
+
 module.exports = router;

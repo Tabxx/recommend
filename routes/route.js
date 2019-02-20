@@ -6,6 +6,7 @@ const HardDisk = require('./HardDisk');
 const mainboard = require('./mainboard');
 const list = require('./list');
 const user = require('./user');
+const upload = require('./upload');
 
 // CPU
 router.use('/cpu', cpu.routes());
@@ -21,6 +22,8 @@ router.use('/mainboard', mainboard.routes());
 router.use('/list', list.routes());
 // 用户
 router.use('/user', user.routes());
+// 上传文件
+router.use('/upload', upload.routes());
 
 router.get('/', async (ctx, next) => {
     await ctx.render('index', {
