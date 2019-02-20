@@ -87,7 +87,7 @@
             if(res.code == 0 && res.result && res.result.length){
                let html = '';
                for(let item of res.result){
-                   html += `<li class="my_list">
+                   html += `<li class="my_list page_show">
                                    <div class=" row intr">
                                        <div class="col-2"><img src="${item.image}" alt="">
                                        </div>
@@ -109,8 +109,58 @@
                                </li>`
                }
                $('#cpu-list').html(html);
-                       //选择硬件
- 
+               //分页显示
+               //获取全部列表
+                var lists=$('#cpu-list').children();
+                //获取列表的长度除以4向上取整
+                var length=Math.ceil(($(lists).length/4));
+                //默认第四个以后全部隐藏
+                $(lists[3]).nextAll().addClass('hid');
+                var pages=$('.pag');
+                var len=pages.length;
+                for(var page of pages){
+                    //隐藏掉多余的页码
+                   if($(page).html()>length){
+                       $(page).parent().addClass('hid');
+                   }
+                   //显示当前页码对应的页
+                   function get_list(index,pa){
+                    var first=4*(index-1);
+                    var last=4*index-1;
+                    $(lists).removeClass('hid');
+                    $(lists[first]).prevAll().addClass('hid');
+                    $(lists[last]).nextAll().addClass('hid');
+                    $(pages).parent().removeClass('active');
+                    $(pa).parent().addClass('active');
+                   }
+                   //改变按钮样式
+                   $(page).click(function(e){
+                       e.preventDefault();
+                       var index=$(this).html();
+                       get_list(index,this);
+                   })
+                }  
+                //上一页
+                $('#prev').click(function(e){
+                    e.preventDefault();
+                    //获得当前active的元素
+                    var k=$('.pages>.active').prev().children();
+                    var j=$('.pages>.active').children().html();
+                    if(j>1){
+                        get_list(j-1,k);
+                    }
+                })  
+                //下一页
+                $('#next').click(function(e){
+                  e.preventDefault();
+                  var k=$('.pages>.active').next().children();
+                  var j=$('.pages>.active').children().html(); 
+                    if(j<=length){
+                        console.log(j);
+                        //1 2 3 4 5
+                      get_list(j,k);
+                    }
+                })  
             } 
         },error:function(error){
            console.log(error);
@@ -140,7 +190,7 @@
                 if(res.code == 0 && res.result && res.result.length){
                    let html = '';
                    for(let item of res.result){
-                       html += `<li class="my_list">
+                       html += `<li class="my_list page_show">
                                        <div class=" row intr">
                                            <div class="col-2"><img src="${item.image}" alt="">
                                            </div>
@@ -193,7 +243,7 @@
                    let html = '';
                    for(let item of res.result){
                        html += `<li class="my_list">
-                                       <div class=" row intr">
+                                       <div class=" row intr page_show">
                                            <div class="col-2"><img src="${item.image}" alt="">
                                            </div>
                                            <div class="col-6">
@@ -243,7 +293,7 @@
                 if(res.code == 0 && res.result && res.result.length){
                    let html = '';
                    for(let item of res.result){
-                       html += `<li class="my_list">
+                       html += `<li class="my_list page_show">
                                        <div class=" row intr">
                                            <div class="col-2"><img src="${item.image}" alt="">
                                            </div>
@@ -295,7 +345,7 @@
                     if(res.code == 0 && res.result && res.result.length){
                        let html = '';
                        for(let item of res.result){
-                           html += `<li class="my_list">
+                           html += `<li class="my_list page_show">
                                            <div class=" row intr">
                                                <div class="col-2"><img src="${item.image}" alt=""></div>
                                                <div class="col-6">
@@ -411,6 +461,6 @@
                         brother2.empty();
                        //console.log($(this).parent().prev().html());
                       // console.log($(this).parent().prev().prev().html());
-                    })
-   })
+                    }); 
+})
 
