@@ -1,8 +1,8 @@
 const mysql = {
     user: 'root',
-    password: 'root',
+    password: 'bgg8384495',
     database: 'recommend',
-    host: '127.0.0.1',
+    host: '47.101.217.144',
     port: 3306
 }
 
