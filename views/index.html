@@ -9,6 +9,7 @@
     <script src="/js/popper.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/stylesheets/index.css">
+    <script src="/js/index.js"></script>
     <title>主页</title>
 </head>
 <body>
@@ -22,8 +23,26 @@
                         <li class="nav-item"><a class="nav-link text-white mt-2" href="#">开始</a></li>
                         <li class="nav-item"><a class="nav-link text-white mt-2" href="#">硬件分析</a></li>
                         <li class="nav-item"><a class="nav-link text-white mt-2" href="#">帮助</a></li>
+                        <li class="nav-item"><a class="nav-link text-white mt-2" href="#"  data-toggle="modal" data-target="#modal">登录</a></li>
                         <li class="nav-item"><a class="nav-link text-white mt-2" href="#">个人中心</a></li>
                     </ul>
+            </div>
+            <div class="modal fade" id="modal"><!--固定定位-->
+                <div class="modal-dialog"><!--响应式-->
+                    <div class="modal-content"><!--弹性-->
+                        <div class="modal-header">
+                            <h4 class="text-primary text-center lg">登录</h4>
+                            <button class="close ml-0" type="button" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body text-center">
+                             用户名：<input type="text" class="mt-4 mb-4" id="username"><br>
+                             &nbsp;&nbsp;密码：&nbsp;&nbsp;<input type="text" id="pwd" class="mb-4">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary bn" id="login">登录</button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <p class="h2 text-center text-white mt-4">欢迎使用</p>
             <p class="h3 text-center text-white mt-3">按下这个按钮，为您提供合适您的方案</p>

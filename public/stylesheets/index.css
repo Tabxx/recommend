@@ -34,3 +34,16 @@ body{
     display:block;
     margin-left:30%;
 }
+.lg{
+    margin-left:45%;
+}
+.bn{
+    width:20%;
+    margin-right:40%;
+}
+.modal.fade.in{
+    top:90px;  
+}
+#modal{
+    margin-top:200px;
+}
