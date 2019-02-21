@@ -91,17 +91,17 @@
                                    <div class=" row intr">
                                        <div class="col-2"><img src="${item.image}" alt="">
                                        </div>
-                                       <div class="col-6">
-                                               <p class="h6 mb-0">${item.name}</p>
+                                       <div class="col-7">
+                                               <p class="h6 mb-0 item-title">${item.name}</p>
                                                <div class="row my_small_font">
-                                                   <div class="col-6">厂家:${item.brand}</div>
-                                                   <div class="col-6">系列:${item.series}</div>
-                                                   <div class="col-6">接口:${item.slot}</div>
-                                                   <div class="col-6">类型:${item.features}</div>
+                                                   <div class="col-6">厂家：${item.brand}</div>
+                                                   <div class="col-6">系列：${item.series}</div>
+                                                   <div class="col-6">接口：${item.slot}</div>
+                                                   <div class="col-6">类型：${item.features}</div>
                                                </div>
-                                               <a href="#" class="text-danger ">查看详情</a> 
+                                               <a href="#" class="text-danger ">查看详情</a>
                                        </div> 
-                                       <div class="col-4">
+                                       <div class="col-3 price-choose">
                                            <p class="h4 text-danger">￥${item.price}</p>
                                            <button class="btn btn-secondary choose" data-ss="cpu">选用</button>
                                        </div>                                      
@@ -128,6 +128,7 @@
                     var first=4*(index-1);
                     var last=4*index-1;
                     $(lists).removeClass('hid');
+                    console.log(first, last, index);
                     $(lists[first]).prevAll().addClass('hid');
                     $(lists[last]).nextAll().addClass('hid');
                     $(pages).parent().removeClass('active');
@@ -153,13 +154,15 @@
                 //下一页
                 $('#next').click(function(e){
                   e.preventDefault();
-                  var k=$('.pages>.active').next().children();
                   var j=$('.pages>.active').children().html(); 
-                    if(j<=length){
-                        console.log(j);
-                        //1 2 3 4 5
-                      get_list(j,k);
-                    }
+                  // 字符串转数字
+                  j = Number(j);
+                  if(j<length){
+                    var k=$('.pages>.active').next().children();
+                      console.log(j);
+                      //1 2 3 4 5
+                      get_list(Number(j)+1,k);
+                  }
                 })  
             } 
         },error:function(error){
@@ -194,17 +197,17 @@
                                        <div class=" row intr">
                                            <div class="col-2"><img src="${item.image}" alt="">
                                            </div>
-                                           <div class="col-6">
+                                           <div class="col-7">
                                                    <p class="h6 mb-0">${item.name}</p>
                                                    <div class="row my_small_font">
-                                                       <div class="col-6">厂家:${item.brand}</div>
-                                                       <div class="col-6">显存:${item.capacity}GB</div>
-                                                       <div class="col-6">型号:${item.chip}</div>
-                                                       <div class="col-6">显示核心型号:Intel HD G</div>
+                                                       <div class="col-6">厂家：${item.brand}</div>
+                                                       <div class="col-6">显存：${item.capacity}GB</div>
+                                                       <div class="col-6">型号：${item.chip}</div>
+                                                       <div class="col-6">显示核心型号：Intel HD G</div>
                                                    </div>
                                                    <a href="#" class="text-danger ">查看详情</a> 
                                            </div> 
-                                           <div class="col-4">
+                                           <div class="col-3 price-choose">
                                                <p class="h4 text-danger">￥${item.price}</p>
                                                <button class="btn btn-secondary choose" data-ss="gpu">选用</button>
                                            </div>                                      
@@ -246,17 +249,17 @@
                                        <div class=" row intr page_show">
                                            <div class="col-2"><img src="${item.image}" alt="">
                                            </div>
-                                           <div class="col-6">
+                                           <div class="col-7">
                                                    <p class="h6 mb-0">${item.name}</p>
                                                    <div class="row my_small_font">
-                                                       <div class="col-6">厂家:${item.brand}</div>
-                                                       <div class="col-6">类型:${item.type}</div>
-                                                       <div class="col-6">容量:${item.capacity}GB</div>
-                                                       <div class="col-6">显示核心型号:Intel HD G</div>
+                                                       <div class="col-6">厂家：${item.brand}</div>
+                                                       <div class="col-6">类型：${item.type}</div>
+                                                       <div class="col-6">容量：${item.capacity}GB</div>
+                                                       <div class="col-6">显示核心型号：Intel HD G</div>
                                                    </div>
                                                    <a href="#" class="text-danger ">查看详情</a> 
                                            </div> 
-                                           <div class="col-4">
+                                           <div class="col-3 price-choose">
                                                <p class="h4 text-danger">￥${item.price}</p>
                                                <button class="btn btn-secondary choose" data-ss="memory">选用</button>
                                            </div>                                      
@@ -297,17 +300,17 @@
                                        <div class=" row intr">
                                            <div class="col-2"><img src="${item.image}" alt="">
                                            </div>
-                                           <div class="col-6">
+                                           <div class="col-7">
                                                    <p class="h6 mb-0">${item.name}</p>
                                                    <div class="row my_small_font">
-                                                       <div class="col-6">厂家:${item.brand}</div>
-                                                       <div class="col-6">容量:${item.capacity}GB</div>
-                                                       <div class="col-6">缓存:${item.cache}MB</div>
-                                                       <div class="col-6">转速:${item.speed}RPM</div>
+                                                       <div class="col-6">厂家：${item.brand}</div>
+                                                       <div class="col-6">容量：${item.capacity}GB</div>
+                                                       <div class="col-6">缓存：${item.cache}MB</div>
+                                                       <div class="col-6">转速：${item.speed}RPM</div>
                                                    </div>
                                                    <a href="#" class="text-danger">查看详情</a> 
                                            </div> 
-                                           <div class="col-4">
+                                           <div class="col-3 price-choose">
                                                <p class="h4 text-danger">￥${item.price}</p>
                                                <button class="btn btn-secondary choose" data-ss="harddisk">选用</button>
                                            </div>                                      
@@ -348,17 +351,17 @@
                            html += `<li class="my_list page_show">
                                            <div class=" row intr">
                                                <div class="col-2"><img src="${item.image}" alt=""></div>
-                                               <div class="col-6">
+                                               <div class="col-7">
                                                        <p class="h6 mb-0">${item.name}</p>
                                                        <div class="row my_small_font">
-                                                           <div class="col-6">厂家:${item.brand}</div>
-                                                           <div class="col-6">接口:${item.cpu_slot}</div>
-                                                           <div class="col-6">版型:${item.version}</div>
-                                                           <div class="col-6">型号:${item.chipset}</div>
+                                                           <div class="col-6">厂家：${item.brand}</div>
+                                                           <div class="col-6">接口：${item.cpu_slot}</div>
+                                                           <div class="col-6">版型：${item.version}</div>
+                                                           <div class="col-6">型号：${item.chipset}</div>
                                                        </div>
                                                        <a href="#" class="text-danger ">查看详情</a> 
                                                </div> 
-                                               <div class="col-4">
+                                               <div class="col-3 price-choose">
                                                    <p class="h4 text-danger">￥${item.price}</p>
                                                    <button class="btn btn-secondary choose" data-ss="mainboard">选用</button>
                                                </div>                                      

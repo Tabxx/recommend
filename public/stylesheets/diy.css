@@ -50,4 +50,64 @@ body{margin:0;padding:0;
      display:none;
  }
 
- 
+.d-flex {
+    margin: 0 0 .5rem 0;
+}
+
+.d-flex.nav-tabs {
+    border: 0;
+}
+
+.d-flex .ml-2 {
+    margin-left: 0 !important;
+}
+
+.d-flex .nav-item {
+    margin: 0 10px 0 0;
+}
+
+.my_select {
+    font-size: 16px;
+    font-weight: bold;
+    padding: .8rem 1.2rem;
+}
+
+#cpu_select .d-flex,
+#xianka_select .d-flex,
+#neicun_select .d-flex,
+#yingpan_select .d-flex,
+#zhuban_select .d-flex {
+    padding-left: 1.4rem;
+}
+
+#cpu-list,
+#gpu-list,
+#memory_list,
+#hard_disk_list,
+#main_board_list {
+    padding-left: 0;
+}
+
+#cpu-list .my_list,
+#gpu-list .my_list,
+#memory_list .my_list,
+#hard_disk_list .my_list,
+#main_board_list .my_list {
+    border: 0;
+    border-bottom: 1px solid #f0f0f0; 
+}
+
+.item-title {
+    margin-bottom: 10px !important;
+}
+
+.my_list .choose{
+    background-color: #3891ed;
+    border-color: #3891ed;
+    border-radius: 2px;
+}
+
+.my_list .price-choose{
+    text-align: center;
+}
+
