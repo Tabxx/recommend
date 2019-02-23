@@ -63,7 +63,21 @@ slot|插槽|LGA 1151
             "slot": "LGA 1151", // 插槽
             "tag": null,    // 标签
             "status": 1,    // 状态
-            "image":"https://2b.zol-img.com.cn/product/190_320x240/577/cenD00LUkiNlI.jpg"   // 图片
+            "image":"https://2b.zol-img.com.cn/product/190_320x240/577/cenD00LUkiNlI.jpg",   // 图片
+            "process": "14纳米",    // 制作工艺
+            "frequency": 3.6,     // CPU主频（GHz）
+            "core_code": "Coffee Lake", // 核心代号
+            "core_number": 8,  // 核心数量(八核心)
+            "threads_number": 16,   // 线程数量(十六线程)
+            "power_consumption": 95,    // 功耗（W）
+            "max_memory": 64,   // 支持最大内存（GB）
+            "bus_specification": "DMI3 8GT/s",  // 总线规格
+            "tree_cache": 16,   // 三级缓存（MB）
+            "memory_type": "DDR4 2666MHz",  // 内存类型
+            "is_Integ_graphics": 1, // 是否集成显卡
+            "graphics_max_frequency": 1.2,  // 显卡最大动态频率(GHZ)
+            "graphice_base_frequency": 350, // 显卡基本频率(MHz)
+            "Integ_graphics": "",   // 集成显卡（没有就为空或者null）
         }
     ]
 }
