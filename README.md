@@ -166,7 +166,18 @@ type|显卡类型|发烧级
             "chip": "GeForce RTX 2080Ti",   // 显卡芯片
             "image": "https://2d.zol-img.com.cn/product/192_320x240/461/ce6ElKKfHpLuU.jpg", // 显卡图片
             "type": "发烧级",   // 显卡类型
-            "status": 1
+            "status": 1,
+            "chip_type": "NVIDIA RTX 20系列",   // 显示芯片系列
+            "core_code": "TU102-300A",  // 核心代号
+            "cuda": 4352, //CUDA核心(个)
+            "frequency": 14000, // 显存频率（MHz）
+            "existing_type": "GDDR6",   // 显存类型
+            "bitwide": 352, // 显存位宽(Bit)
+            "max_resolution": "7680×4320",  // 最大分辨率
+            "graphics_interface_type": "PCI Express 3.0 16X",  // 显卡接口类型
+            "io_interface": "	HDMI接口，3×DisplayPort接口，USB Type-C接口",   // I/O接口
+            "power": "8pin+8pin",   // 电源
+            "radiating": "三风扇散热",    // 散热方式
         }
     ]
 }
@@ -209,7 +220,12 @@ type|内存类型|DDR4
             "capacity": 8,  // 内存容量
             "image": "https://2f.zol-img.com.cn/product/173_320x240/791/ceZMhVCgEfffk.jpg", // 图片
             "frequency": 2400,  // 主频
-            "status": 1
+            "status": 1,
+            "stitch_count": 288,    // 针脚数pin
+            "slot_type": "DIMM",    // 插槽类型
+            "cl_delay": "15-15-15-35",  // 插槽延迟
+            "work_voltage": 12, // 工作电压（V）
+            "radiating": 1, // 是否有散热片，1-有，0-没有
         }
     ]
 }
@@ -254,7 +270,10 @@ speed|转速|7200(rpm)
             "cache": 16,    // 缓存
             "speed": 7200,  // 转速
             "image": "https://2f.zol-img.com.cn/product/58_320x240/667/ceaCtpuUXk3SU.jpg",  // 图片
-            "status": 1
+            "status": 1,
+            "interface_type": "SATA3.0",    // 接口类型
+            "interface_rate": 6,    // 接口速率6Gb/秒
+            "power": '',    // 功率
         }
     ]
 }
@@ -299,7 +318,20 @@ chipset|主芯片组|Intel B360
             "version": "Micro ATX板型", // 版型
             "chipset": "Intel B360",    // 主芯片组
             "image": "https://2a.zol-img.com.cn/product/191_120x90/174/celVra79B2.jpg", // 图片
-            "status": 1
+            "status": 1,
+            "display_chip": "CPU内置显示芯片（需要CPU支持）",   // 显示芯片
+            "audio_chips": "集成Realtek ALC887 8声道音效芯片",  // 音频芯片
+            "network_chip": "板载Intel I219V千兆网卡",  // 网卡芯片
+            "cpu_type": "第八代Core i7/i5/i3/Pentium/Celeron",  // cpu类型
+            "memory_type": "4×DDR4 DIMM",   // 内存类型
+            "memory_size": 64,  // 64（GB）
+            "pcie": "PCI-E 3.0",    // PCI-E标准
+            "pcie_slot": "1×PCI-E X16显卡插槽，2×PCI-E X1插槽", // PCI-E插槽
+            "storage_interface": "1×PCI-E X16显卡插槽，2×PCI-E X1插槽", // 存储接口
+            "usb_interface": "2×USB3.1 Gen2 接口（2背板），3×USB3.1 Gen1 接口（2内置+1背板），6×USB2.0接口",    // usb接口
+            "video_interface": "1×DVI接口，1×HDMI接口", // 视频接口
+            "power_interface": "一个8针，一个24针电源接口", // 电源接口
+            "power_mode": "4+3相",  //供电模式
         }
     ]
 }
