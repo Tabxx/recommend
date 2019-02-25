@@ -1,39 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <!-- <link rel="stylesheet" href="/stylesheets/bootstrap.css"> -->
     <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/index.css">
     <title>主页</title>
 </head>
+
 <body>
     <div class="top">
         <div class="container">
             <div class="navbar pt-3">
-                    <a href="#" class="h1 text-white ">LOGO</a>
-                    <ul class="list-unstyled d-flex">
-                        <li class="nav-item"><a class="nav-link text-white mt-2" href="#">首页</a></li>
-                        <li class="nav-item"><a class="nav-link text-white mt-2" href="#">关于我们</a></li>
-                        <li class="nav-item"><a class="nav-link text-white mt-2" href="#">开始</a></li>
-                        <li class="nav-item"><a class="nav-link text-white mt-2" href="#">硬件分析</a></li>
-                        <li class="nav-item"><a class="nav-link text-white mt-2" href="#">帮助</a></li>
-                        <li class="nav-item"><a class="nav-link text-white mt-2" href="#"  data-toggle="modal" data-target="#modal">登录</a></li>
-                        <li class="nav-item"><a class="nav-link text-white mt-2" href="#">个人中心</a></li>
-                    </ul>
+                <a href="#" class="h1 text-white ">LOGO</a>
+                <ul class="list-unstyled d-flex">
+                    <li class="nav-item"><a class="nav-link text-white mt-2" href="#">首页</a></li>
+                    <li class="nav-item"><a class="nav-link text-white mt-2" href="#">关于我们</a></li>
+                    <li class="nav-item"><a class="nav-link text-white mt-2" href="#">开始</a></li>
+                    <li class="nav-item"><a class="nav-link text-white mt-2" href="#">硬件分析</a></li>
+                    <li class="nav-item"><a class="nav-link text-white mt-2" href="#">帮助</a></li>
+                    <li class="nav-item"><a class="nav-link text-white mt-2" href="#" data-toggle="modal" data-target="#modal">登录</a></li>
+                    <li class="nav-item"><a class="nav-link text-white mt-2" href="#">个人中心</a></li>
+                </ul>
             </div>
-            <div class="modal fade" id="modal"><!--固定定位-->
-                <div class="modal-dialog"><!--响应式-->
-                    <div class="modal-content"><!--弹性-->
+            <div class="modal fade" id="modal">
+                <!--固定定位-->
+                <div class="modal-dialog">
+                    <!--响应式-->
+                    <div class="modal-content">
+                        <!--弹性-->
                         <div class="modal-header">
                             <h4 class="text-primary text-center lg">登录</h4>
                             <button class="close ml-0" type="button" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body text-center">
-                             用户名：<input type="text" class="mt-4 mb-4" id="username"><br>
-                             &nbsp;&nbsp;密码：&nbsp;&nbsp;<input type="text" id="pwd" class="mb-4">
+                            用户名：<input type="password" class="mt-4 mb-4" id="username"><br> &nbsp;&nbsp;密码：&nbsp;&nbsp;
+                            <input type="password" id="pwd" class="mb-4">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary bn" id="login">登录</button>
@@ -45,7 +50,7 @@
             <p class="h3 text-center text-white mt-3">按下这个按钮，为您提供合适您的方案</p>
             <a class="btn start_btn text-white mt-4" href="#">开始使用</a>
             <div class="my_div">
-            </div>    
+            </div>
         </div>
     </div>
     <div class="main">
@@ -57,67 +62,67 @@
                         <h3 class="text-center font-weight-bold">关于我们</h3>
                         <div class="row">
                             <div class="col-md-5 col-sm-12 mt-5 ml-5 pr-0">
-                                    <h4>硬件介绍</h4>
-                                    <p>我们能用简洁的语言来为您介绍计算机硬件信息，让您了解计算机各硬件的信息以及在购买计算机硬件时需要注意的事情</p>	
+                                <h4>硬件介绍</h4>
+                                <p>我们能用简洁的语言来为您介绍计算机硬件信息，让您了解计算机各硬件的信息以及在购买计算机硬件时需要注意的事情</p>
                             </div>
                             <div class="col-md-5 col-sm-12 mt-5 ml-5 pr-0">
-                                    <h4>提供方案</h4>
-                                    <p>我们根据您的个人信息以及您想要的价格区间，为您筛选出一套性能优秀且适合您的个性的计算机配置方案</p>
+                                <h4>提供方案</h4>
+                                <p>我们根据您的个人信息以及您想要的价格区间，为您筛选出一套性能优秀且适合您的个性的计算机配置方案</p>
                             </div>
                             <div class="col-md-5 col-sm-12 mt-5 ml-5 pr-0">
-                                    <h4>方案分析</h4>
-                                    <p>在为您推荐计算机配置方案的同时，我们会给出方案的分析，给出一个参考，让您在购买计算机硬件的时候能有一个明确的想法</p>
+                                <h4>方案分析</h4>
+                                <p>在为您推荐计算机配置方案的同时，我们会给出方案的分析，给出一个参考，让您在购买计算机硬件的时候能有一个明确的想法</p>
                             </div>
                             <div class="col-md-5 col-sm-12 mt-5 ml-5 pr-0">
-                                    <h4>用户评价</h4>
-                                    <p>得到我们的方案后，十分诚挚的希望您给我们的方案给出评价，我们会将评价好的方案放到网站上，同时对评价不好的方案进行改进和优化</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>       
-        <div id="parent">
-            <div class="card">
-                <div class="card-header">
-                    <a class="card-link font_gray h4" href="#coll-cpu" data-toggle="collapse">CPU</a>
-                </div>
-                <div class="collapse show" id="coll-cpu" data-parent="#parent">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-8">
-                                    <div id="parameter">
-                                            <span class="font_gray">规格参数<img class="ml-3" src="/img/parameter.png" alt=""></span> 
-                                            <div class="row  mt-4">
-                                                <div class="col-4 font_ssm mb-4">主频：单位(Ghz)</div>
-                                                <div class="col-4 font_ssm mb-4">外频：单位(Ghz)</div>
-                                                <div class="col-4 font_ssm mb-4">接口：卡式接口(SLOT)、针脚式接口(Socket)</div>
-                                                <div class="col-4 font_ssm mb-4">缓存：单位(K)</div>
-                                                <div class="col-4 font_ssm mb-4">多媒体指令集：MMX、SSE/SSE2、3D NOW</div>
-                                                <div class="col-4 font_ssm mb-4">电压：单位(v)</div>
-                                            </div>                 
-                                    </div>
-                                    <div id="introduce" class="mt-4">
-                                            <span class="font_gray">详细介绍<img src="/img/introduce.png" class="ml-3" alt=""></span>
-                                            <div class="mt-3 bg-white">
-                                                <h3 class="my_title">中央处理器</h3>
-                                                <p class="h4 font_gray font-weight-light">cpu，中央处理器，是计算机的大脑，负责计算机的运算。它的性能决定了计算机的性能，是计算机的最重要的一个硬件。cpu最主要的几个参数分别为主频（单位GHZ）、外频（单位GHZ）和缓存（单位MB），缓存又分为二级和三级缓存，有三级的性能一般较好，这些参数值越高，性能就越好。部分cpu还有超频的功能，即强制增大cpu的核心频率，提升cpu的性能，但是对cpu的寿命有很大影响。</p>
-                                            </div>
-                                    </div>
-                                    <div id="suggest" class="mt-5">
-                                            <img src="/img/suggest.png" alt="">
-                                            <h5 class="suggest_title">购买CPU有什么要注意的？</h5>
-                                            <p class="mt-4">购买cpu一定要看好它的参数和价格，尽量找大的商家购买。同时，根据自己的经济条件和个人条件酌情购买，最好的不一定是最适合自己的，cpu过好会存在性能溢出，自己够用就好。</p>
-                                    </div>                                
-                            </div>
-                            <div class="col-4">
-                                 <img class="ml-5 mb-4" src="/img/cpuicon.jpg" alt="">
-                                <img class="mt-5" src="/img/cpu.png" alt="">
+                                <h4>用户评价</h4>
+                                <p>得到我们的方案后，十分诚挚的希望您给我们的方案给出评价，我们会将评价好的方案放到网站上，同时对评价不好的方案进行改进和优化</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card">
+            <div id="parent">
+                <div class="card">
+                    <div class="card-header">
+                        <a class="card-link font_gray h4" href="#coll-cpu" data-toggle="collapse">CPU</a>
+                    </div>
+                    <div class="collapse show" id="coll-cpu" data-parent="#parent">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-8">
+                                    <div id="parameter">
+                                        <span class="font_gray">规格参数<img class="ml-3" src="/img/parameter.png" alt=""></span>
+                                        <div class="row  mt-4">
+                                            <div class="col-4 font_ssm mb-4">主频：单位(Ghz)</div>
+                                            <div class="col-4 font_ssm mb-4">外频：单位(Ghz)</div>
+                                            <div class="col-4 font_ssm mb-4">接口：卡式接口(SLOT)、针脚式接口(Socket)</div>
+                                            <div class="col-4 font_ssm mb-4">缓存：单位(K)</div>
+                                            <div class="col-4 font_ssm mb-4">多媒体指令集：MMX、SSE/SSE2、3D NOW</div>
+                                            <div class="col-4 font_ssm mb-4">电压：单位(v)</div>
+                                        </div>
+                                    </div>
+                                    <div id="introduce" class="mt-4">
+                                        <span class="font_gray">详细介绍<img src="/img/introduce.png" class="ml-3" alt=""></span>
+                                        <div class="mt-3 bg-white">
+                                            <h3 class="my_title">中央处理器</h3>
+                                            <p class="h4 font_gray font-weight-light">cpu，中央处理器，是计算机的大脑，负责计算机的运算。它的性能决定了计算机的性能，是计算机的最重要的一个硬件。cpu最主要的几个参数分别为主频（单位GHZ）、外频（单位GHZ）和缓存（单位MB），缓存又分为二级和三级缓存，有三级的性能一般较好，这些参数值越高，性能就越好。部分cpu还有超频的功能，即强制增大cpu的核心频率，提升cpu的性能，但是对cpu的寿命有很大影响。</p>
+                                        </div>
+                                    </div>
+                                    <div id="suggest" class="mt-5">
+                                        <img src="/img/suggest.png" alt="">
+                                        <h5 class="suggest_title">购买CPU有什么要注意的？</h5>
+                                        <p class="mt-4">购买cpu一定要看好它的参数和价格，尽量找大的商家购买。同时，根据自己的经济条件和个人条件酌情购买，最好的不一定是最适合自己的，cpu过好会存在性能溢出，自己够用就好。</p>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <img class="ml-5 mb-4" src="/img/cpuicon.jpg" alt="">
+                                    <img class="mt-5" src="/img/cpu.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
                     <div class="card-header">
                         <a class="card-link font_gray h4" href="#coll-gpu" data-toggle="collapse">显卡</a>
                     </div>
@@ -125,39 +130,39 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-8">
-                                        <div>
-                                                <span class="font_gray">规格参数<img class="ml-3" src="/img/parameter.png" alt=""></span> 
-                                                <div class="row  mt-4">
-                                                    <div class="col-4 font_ssm mb-4">显存：单位(G)</div>
-                                                    <div class="col-4 font_ssm mb-4">位宽：单位(bit)</div>
-                                                    <div class="col-4 font_ssm mb-4">流处理器单元：个</div>
-                                                    <div class="col-4 font_ssm mb-4">核心频率：单位(Mhz)</div>
-                                                    <div class="col-4 font_ssm mb-4">显存频率：单位(Mhz)</div>
-                                                    <div class="col-4 font_ssm mb-4">显存类型：DDR3/DDR4/DDR5</div>
-                                                </div>                 
+                                    <div>
+                                        <span class="font_gray">规格参数<img class="ml-3" src="/img/parameter.png" alt=""></span>
+                                        <div class="row  mt-4">
+                                            <div class="col-4 font_ssm mb-4">显存：单位(G)</div>
+                                            <div class="col-4 font_ssm mb-4">位宽：单位(bit)</div>
+                                            <div class="col-4 font_ssm mb-4">流处理器单元：个</div>
+                                            <div class="col-4 font_ssm mb-4">核心频率：单位(Mhz)</div>
+                                            <div class="col-4 font_ssm mb-4">显存频率：单位(Mhz)</div>
+                                            <div class="col-4 font_ssm mb-4">显存类型：DDR3/DDR4/DDR5</div>
                                         </div>
-                                        <div class="mt-4">
-                                                <span class="font_gray">详细介绍<img src="/img/introduce.png" class="ml-3" alt=""></span>
-                                                <div class="mt-3 bg-white">
-                                                    <h3 class="my_title">显卡</h3>
-                                                    <p class="h4 font_gray font-weight-light">gpu，显卡，又名图形处理器，负责将各种图像信息传到显示器呈现给我们。它同样是计算机不可或缺的重要一部分，尤其对于一些喜爱玩游戏、看视频以及一些从事设计等工作的人来说，显卡的重要程度，甚至超过了cpu。它的性能好坏，也极大的影响了用户体验。显卡的主要参数分别为流处理器、核心频率、显存和位宽。流处理器是显卡性能最重要的一个参数，同样其他参数的显卡，流处理器的数量越多，性能越出色。核心频率是非公版厂家相互竞争的一个领域，为了增强性能，而增加的频率，同样也具有副作用。显存和位宽越大，显卡表现越好，尤其是在高分辨率和高抗锯齿等条件下，如果说流处理器的个数决定了显卡的下限的话，那么显卡的显存和位宽则决定了显卡的上限。</p>
-                                                </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <span class="font_gray">详细介绍<img src="/img/introduce.png" class="ml-3" alt=""></span>
+                                        <div class="mt-3 bg-white">
+                                            <h3 class="my_title">显卡</h3>
+                                            <p class="h4 font_gray font-weight-light">gpu，显卡，又名图形处理器，负责将各种图像信息传到显示器呈现给我们。它同样是计算机不可或缺的重要一部分，尤其对于一些喜爱玩游戏、看视频以及一些从事设计等工作的人来说，显卡的重要程度，甚至超过了cpu。它的性能好坏，也极大的影响了用户体验。显卡的主要参数分别为流处理器、核心频率、显存和位宽。流处理器是显卡性能最重要的一个参数，同样其他参数的显卡，流处理器的数量越多，性能越出色。核心频率是非公版厂家相互竞争的一个领域，为了增强性能，而增加的频率，同样也具有副作用。显存和位宽越大，显卡表现越好，尤其是在高分辨率和高抗锯齿等条件下，如果说流处理器的个数决定了显卡的下限的话，那么显卡的显存和位宽则决定了显卡的上限。</p>
                                         </div>
-                                        <div class="mt-5">
-                                                <img src="/img/suggest.png" alt="">
-                                                <h5 class="suggest_title">购买GPU有什么要注意的？</h5>
-                                                <p class="mt-4">购买gpu同样要注意不良商家，当心买到矿卡。同时也要根据自己需要谨慎购买。</p>
-                                        </div>                                
+                                    </div>
+                                    <div class="mt-5">
+                                        <img src="/img/suggest.png" alt="">
+                                        <h5 class="suggest_title">购买GPU有什么要注意的？</h5>
+                                        <p class="mt-4">购买gpu同样要注意不良商家，当心买到矿卡。同时也要根据自己需要谨慎购买。</p>
+                                    </div>
                                 </div>
                                 <div class="col-4">
-                                     <img class="ml-5 mb-4" src="/img/cpuicon.jpg" alt="">
+                                    <img class="ml-5 mb-4" src="/img/cpuicon.jpg" alt="">
                                     <img class="mt-5" src="/img/cpu.png" alt="">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            <div class="card">
+                <div class="card">
                     <div class="card-header">
                         <a class="card-link font_gray h4" href="#coll-neicun" data-toggle="collapse">内存</a>
                     </div>
@@ -165,36 +170,36 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-8">
-                                        <div>
-                                                <span class="font_gray">规格参数<img class="ml-3" src="/img/parameter.png" alt=""></span> 
-                                                <div class="row  mt-4">
-                                                    <div class="col-4 font_ssm mb-4">容量：单位(GB)</div>
-                                                    <div class="col-4 font_ssm mb-4">速度：DDR3/DDR4</div>
-                                                    <div class="col-4 font_ssm mb-4">电压：单位(V)</div>
-                                                </div>                 
+                                    <div>
+                                        <span class="font_gray">规格参数<img class="ml-3" src="/img/parameter.png" alt=""></span>
+                                        <div class="row  mt-4">
+                                            <div class="col-4 font_ssm mb-4">容量：单位(GB)</div>
+                                            <div class="col-4 font_ssm mb-4">速度：DDR3/DDR4</div>
+                                            <div class="col-4 font_ssm mb-4">电压：单位(V)</div>
                                         </div>
-                                        <div class="mt-4">
-                                                <span class="font_gray">详细介绍<img src="/img/introduce.png" class="ml-3" alt=""></span>
-                                                <div class="mt-3 bg-white">
-                                                    <h3 class="my_title">内存</h3>
-                                                    <p class="h4 font_gray font-weight-light">内存，是计算机中的重要部件之一，是与cpu惊醒沟通的桥梁。它负责运行和存储计算机运行的程序，它大大决定了计算机的性能，如果内存放不下运行的程序，计算机会变得非常卡，性能会非常低，甚至会出现死机的现象。内存主要有内存容量、电压、核心频率、接口类型。内存容量决定了内存可运行的程序容量多少，核心频率决定了内存的处理速度的快慢。接口类型分为DDR3和DDR4，DDR4的性能远超DDR3，现在的计算机一般都使用接口类型为DDR4的内存。同时，内存也具有超频的功能。</p>
-                                                </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <span class="font_gray">详细介绍<img src="/img/introduce.png" class="ml-3" alt=""></span>
+                                        <div class="mt-3 bg-white">
+                                            <h3 class="my_title">内存</h3>
+                                            <p class="h4 font_gray font-weight-light">内存，是计算机中的重要部件之一，是与cpu惊醒沟通的桥梁。它负责运行和存储计算机运行的程序，它大大决定了计算机的性能，如果内存放不下运行的程序，计算机会变得非常卡，性能会非常低，甚至会出现死机的现象。内存主要有内存容量、电压、核心频率、接口类型。内存容量决定了内存可运行的程序容量多少，核心频率决定了内存的处理速度的快慢。接口类型分为DDR3和DDR4，DDR4的性能远超DDR3，现在的计算机一般都使用接口类型为DDR4的内存。同时，内存也具有超频的功能。</p>
                                         </div>
-                                        <div class="mt-5">
-                                                <img src="/img/suggest.png" alt="">
-                                                <h5 class="suggest_title">购买内存要注意什么？</h5>
-                                                <p class="mt-4">购买内存条，要注意内存的厂商和价格，有的厂商价格很贵，但是只是品牌效应，大品牌不一定最好，小品牌不一定性能差。</p>
-                                        </div>                                
+                                    </div>
+                                    <div class="mt-5">
+                                        <img src="/img/suggest.png" alt="">
+                                        <h5 class="suggest_title">购买内存要注意什么？</h5>
+                                        <p class="mt-4">购买内存条，要注意内存的厂商和价格，有的厂商价格很贵，但是只是品牌效应，大品牌不一定最好，小品牌不一定性能差。</p>
+                                    </div>
                                 </div>
                                 <div class="col-4">
-                                     <img class="ml-5 mb-4" src="/img/cpuicon.jpg" alt="">
+                                    <img class="ml-5 mb-4" src="/img/cpuicon.jpg" alt="">
                                     <img class="mt-5" src="/img/cpu.png" alt="">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            <div class="card">
+                <div class="card">
                     <div class="card-header">
                         <a class="card-link font_gray h4" href="#coll-zhuban" data-toggle="collapse">CPU</a>
                     </div>
@@ -202,39 +207,39 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-8">
-                                        <div>
-                                                <span class="font_gray">规格参数<img class="ml-3" src="/img/parameter.png" alt=""></span> 
-                                                <div class="row  mt-4">
-                                                    <div class="col-4 font_ssm mb-4">主频：单位(Ghz)</div>
-                                                    <div class="col-4 font_ssm mb-4">外频：单位(Ghz)</div>
-                                                    <div class="col-4 font_ssm mb-4">接口：卡式接口(SLOT)、针脚式接口(Socket)</div>
-                                                    <div class="col-4 font_ssm mb-4">缓存：单位(K)</div>
-                                                    <div class="col-4 font_ssm mb-4">多媒体指令集：MMX、SSE/SSE2、3D NOW</div>
-                                                    <div class="col-4 font_ssm mb-4">电压：单位(v)</div>
-                                                </div>                 
+                                    <div>
+                                        <span class="font_gray">规格参数<img class="ml-3" src="/img/parameter.png" alt=""></span>
+                                        <div class="row  mt-4">
+                                            <div class="col-4 font_ssm mb-4">主频：单位(Ghz)</div>
+                                            <div class="col-4 font_ssm mb-4">外频：单位(Ghz)</div>
+                                            <div class="col-4 font_ssm mb-4">接口：卡式接口(SLOT)、针脚式接口(Socket)</div>
+                                            <div class="col-4 font_ssm mb-4">缓存：单位(K)</div>
+                                            <div class="col-4 font_ssm mb-4">多媒体指令集：MMX、SSE/SSE2、3D NOW</div>
+                                            <div class="col-4 font_ssm mb-4">电压：单位(v)</div>
                                         </div>
-                                        <div class="mt-4">
-                                                <span class="font_gray">详细介绍<img src="/img/introduce.png" class="ml-3" alt=""></span>
-                                                <div class="mt-3 bg-white">
-                                                    <h3 class="my_title">中央处理器</h3>
-                                                    <p class="h4 font_gray font-weight-light">cpu，中央处理器，是计算机的大脑，负责计算机的运算。它的性能决定了计算机的性能，是计算机的最重要的一个硬件。cpu最主要的几个参数分别为主频（单位GHZ）、外频（单位GHZ）和缓存（单位MB），缓存又分为二级和三级缓存，有三级的性能一般较好，这些参数值越高，性能就越好。部分cpu还有超频的功能，即强制增大cpu的核心频率，提升cpu的性能，但是对cpu的寿命有很大影响。</p>
-                                                </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <span class="font_gray">详细介绍<img src="/img/introduce.png" class="ml-3" alt=""></span>
+                                        <div class="mt-3 bg-white">
+                                            <h3 class="my_title">中央处理器</h3>
+                                            <p class="h4 font_gray font-weight-light">cpu，中央处理器，是计算机的大脑，负责计算机的运算。它的性能决定了计算机的性能，是计算机的最重要的一个硬件。cpu最主要的几个参数分别为主频（单位GHZ）、外频（单位GHZ）和缓存（单位MB），缓存又分为二级和三级缓存，有三级的性能一般较好，这些参数值越高，性能就越好。部分cpu还有超频的功能，即强制增大cpu的核心频率，提升cpu的性能，但是对cpu的寿命有很大影响。</p>
                                         </div>
-                                        <div class="mt-5">
-                                                <img src="/img/suggest.png" alt="">
-                                                <h5 class="suggest_title">购买CPU有什么要注意的？</h5>
-                                                <p class="mt-4">购买cpu一定要看好它的参数和价格，尽量找大的商家购买。同时，根据自己的经济条件和个人条件酌情购买，最好的不一定是最适合自己的，cpu过好会存在性能溢出，自己够用就好。</p>
-                                        </div>                                
+                                    </div>
+                                    <div class="mt-5">
+                                        <img src="/img/suggest.png" alt="">
+                                        <h5 class="suggest_title">购买CPU有什么要注意的？</h5>
+                                        <p class="mt-4">购买cpu一定要看好它的参数和价格，尽量找大的商家购买。同时，根据自己的经济条件和个人条件酌情购买，最好的不一定是最适合自己的，cpu过好会存在性能溢出，自己够用就好。</p>
+                                    </div>
                                 </div>
                                 <div class="col-4">
-                                     <img class="ml-5 mb-4" src="/img/cpuicon.jpg" alt="">
+                                    <img class="ml-5 mb-4" src="/img/cpuicon.jpg" alt="">
                                     <img class="mt-5" src="/img/cpu.png" alt="">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            <div class="card">
+                <div class="card">
                     <div class="card-header">
                         <a class="card-link font_gray h4" href="#coll-yingpan" data-toggle="collapse">CPU</a>
                     </div>
@@ -242,32 +247,32 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-8">
-                                        <div>
-                                                <span class="font_gray">规格参数<img class="ml-3" src="/img/parameter.png" alt=""></span> 
-                                                <div class="row  mt-4">
-                                                    <div class="col-4 font_ssm mb-4">主频：单位(Ghz)</div>
-                                                    <div class="col-4 font_ssm mb-4">外频：单位(Ghz)</div>
-                                                    <div class="col-4 font_ssm mb-4">接口：卡式接口(SLOT)、针脚式接口(Socket)</div>
-                                                    <div class="col-4 font_ssm mb-4">缓存：单位(K)</div>
-                                                    <div class="col-4 font_ssm mb-4">多媒体指令集：MMX、SSE/SSE2、3D NOW</div>
-                                                    <div class="col-4 font_ssm mb-4">电压：单位(v)</div>
-                                                </div>                 
+                                    <div>
+                                        <span class="font_gray">规格参数<img class="ml-3" src="/img/parameter.png" alt=""></span>
+                                        <div class="row  mt-4">
+                                            <div class="col-4 font_ssm mb-4">主频：单位(Ghz)</div>
+                                            <div class="col-4 font_ssm mb-4">外频：单位(Ghz)</div>
+                                            <div class="col-4 font_ssm mb-4">接口：卡式接口(SLOT)、针脚式接口(Socket)</div>
+                                            <div class="col-4 font_ssm mb-4">缓存：单位(K)</div>
+                                            <div class="col-4 font_ssm mb-4">多媒体指令集：MMX、SSE/SSE2、3D NOW</div>
+                                            <div class="col-4 font_ssm mb-4">电压：单位(v)</div>
                                         </div>
-                                        <div class="mt-4">
-                                                <span class="font_gray">详细介绍<img src="/img/introduce.png" class="ml-3" alt=""></span>
-                                                <div class="mt-3 bg-white">
-                                                    <h3 class="my_title">中央处理器</h3>
-                                                    <p class="h4 font_gray font-weight-light">cpu，中央处理器，是计算机的大脑，负责计算机的运算。它的性能决定了计算机的性能，是计算机的最重要的一个硬件。cpu最主要的几个参数分别为主频（单位GHZ）、外频（单位GHZ）和缓存（单位MB），缓存又分为二级和三级缓存，有三级的性能一般较好，这些参数值越高，性能就越好。部分cpu还有超频的功能，即强制增大cpu的核心频率，提升cpu的性能，但是对cpu的寿命有很大影响。</p>
-                                                </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <span class="font_gray">详细介绍<img src="/img/introduce.png" class="ml-3" alt=""></span>
+                                        <div class="mt-3 bg-white">
+                                            <h3 class="my_title">中央处理器</h3>
+                                            <p class="h4 font_gray font-weight-light">cpu，中央处理器，是计算机的大脑，负责计算机的运算。它的性能决定了计算机的性能，是计算机的最重要的一个硬件。cpu最主要的几个参数分别为主频（单位GHZ）、外频（单位GHZ）和缓存（单位MB），缓存又分为二级和三级缓存，有三级的性能一般较好，这些参数值越高，性能就越好。部分cpu还有超频的功能，即强制增大cpu的核心频率，提升cpu的性能，但是对cpu的寿命有很大影响。</p>
                                         </div>
-                                        <div class="mt-5">
-                                                <img src="/img/suggest.png" alt="">
-                                                <h5 class="suggest_title">购买CPU有什么要注意的？</h5>
-                                                <p class="mt-4">购买cpu一定要看好它的参数和价格，尽量找大的商家购买。同时，根据自己的经济条件和个人条件酌情购买，最好的不一定是最适合自己的，cpu过好会存在性能溢出，自己够用就好。</p>
-                                        </div>                                
+                                    </div>
+                                    <div class="mt-5">
+                                        <img src="/img/suggest.png" alt="">
+                                        <h5 class="suggest_title">购买CPU有什么要注意的？</h5>
+                                        <p class="mt-4">购买cpu一定要看好它的参数和价格，尽量找大的商家购买。同时，根据自己的经济条件和个人条件酌情购买，最好的不一定是最适合自己的，cpu过好会存在性能溢出，自己够用就好。</p>
+                                    </div>
                                 </div>
                                 <div class="col-4">
-                                     <img class="ml-5 mb-4" src="/img/cpuicon.jpg" alt="">
+                                    <img class="ml-5 mb-4" src="/img/cpuicon.jpg" alt="">
                                     <img class="mt-5" src="/img/cpu.png" alt="">
                                 </div>
                             </div>
@@ -280,7 +285,12 @@
 
     <script src="/js/jquery.min.js"></script>
     <script src="/js/popper.min.js"></script>
+<<<<<<< HEAD
     <script src="/js/bootstrap.min.js"></script>
+=======
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+>>>>>>> ff87ff7e6610733ad066f5b60e931ff4164e8351
     <script src="/js/index.js"></script>
 </body>
+
 </html>
