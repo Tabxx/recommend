@@ -20,15 +20,16 @@
     <script>
         $("#send").click(() => {
             $.ajax({
-                url: 'http://localhost:3000/user/getTags',
+                url: 'http://localhost:3000/comment/getcomment',
                 data: {
-                    username:'Tab',
-					password:'123456'
+           
+                    type: 2,
+                    pid: 1,
+         
                 },
                 type: 'GET',
                 success(result) {
                     console.log(result);
-					document.cookie = `userid=${result.userid}`
                 }
             })
         })

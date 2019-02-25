@@ -7,6 +7,7 @@ const mainboard = require('./mainboard');
 const list = require('./list');
 const user = require('./user');
 const upload = require('./upload');
+const comment = require('./comment');
 
 // CPU
 router.use('/cpu', cpu.routes());
@@ -24,6 +25,8 @@ router.use('/list', list.routes());
 router.use('/user', user.routes());
 // 上传文件
 router.use('/upload', upload.routes());
+// 评论
+router.use('/comment', comment.routes());
 
 router.get('/', async (ctx, next) => {
     await ctx.render('index', {
