@@ -99,7 +99,7 @@
                                                    <div class="col-6">接口：${item.slot}</div>
                                                    <div class="col-6">类型：${item.features}</div>
                                                </div>
-                                               <a href="#" class="text-danger ">查看详情</a>
+                                               <a href="#" class="text-danger detail">查看详情</a>
                                        </div> 
                                        <div class="col-3 price-choose">
                                            <p class="h4 text-danger">￥${item.price}</p>
@@ -111,6 +111,11 @@
                $('#cpu-list').html(html);
                //分页显示
                //获取全部列表
+               var hardware_li=$('.founded>ul');
+               //console.log(hardware_li);
+               for(var i of hardware_li){
+                   console.log(i.id);
+               }
                 var lists=$('#cpu-list').children();
                 //获取列表的长度除以4向上取整
                 var length=Math.ceil(($(lists).length/4));
@@ -205,7 +210,7 @@
                                                        <div class="col-6">型号：${item.chip}</div>
                                                        <div class="col-6">显示核心型号：Intel HD G</div>
                                                    </div>
-                                                   <a href="#" class="text-danger ">查看详情</a> 
+                                                   <a href="#" class="text-danger detail">查看详情</a> 
                                            </div> 
                                            <div class="col-3 price-choose">
                                                <p class="h4 text-danger">￥${item.price}</p>
@@ -257,7 +262,7 @@
                                                        <div class="col-6">容量：${item.capacity}GB</div>
                                                        <div class="col-6">显示核心型号：Intel HD G</div>
                                                    </div>
-                                                   <a href="#" class="text-danger ">查看详情</a> 
+                                                   <a href="#" class="text-danger detail">查看详情</a> 
                                            </div> 
                                            <div class="col-3 price-choose">
                                                <p class="h4 text-danger">￥${item.price}</p>
@@ -308,7 +313,7 @@
                                                        <div class="col-6">缓存：${item.cache}MB</div>
                                                        <div class="col-6">转速：${item.speed}RPM</div>
                                                    </div>
-                                                   <a href="#" class="text-danger">查看详情</a> 
+                                                   <a href="#" class="text-danger detail">查看详情</a> 
                                            </div> 
                                            <div class="col-3 price-choose">
                                                <p class="h4 text-danger">￥${item.price}</p>
@@ -359,7 +364,7 @@
                                                            <div class="col-6">版型：${item.version}</div>
                                                            <div class="col-6">型号：${item.chipset}</div>
                                                        </div>
-                                                       <a href="#" class="text-danger ">查看详情</a> 
+                                                       <a href="#" class="text-danger detail">查看详情</a> 
                                                </div> 
                                                <div class="col-3 price-choose">
                                                    <p class="h4 text-danger">￥${item.price}</p>
@@ -388,7 +393,13 @@
                 let b=this.getAttribute('data-type');
                 get_mainboard(`/mainboard?${b}=${a}`);
            })
-
+           $('body').on("click",".detail",function(e){
+               e.preventDefault();
+               var hardware_name=$(this).parent().children(':first').html();
+               console.log(hardware_name);
+               var name=$(this).parent().parent().parent().parent().prev().html().split('的')[1];
+               $(window).attr('location', `Hardware.html?hardware=${name}&name=${hardware_name}`);
+           })
          //选择硬件添加到列表中去
          //给button按钮添加点击事件
          $("body").on("click",".choose",function(){ 

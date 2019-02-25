@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+     *{margin:0;padding:0}
+       body{
+        background:url('/img/re_bg.jpg')no-repeat;   
+        background-size:100%;}
+        #main{
+            width:400px;
+            height:360px;
+            margin:150px auto;
+            background:white;
+            text-align: center;
+        }
+        h2{ margin-top: 20px;}
+        input,button{margin-top:40px;}
+        input{height:25px;border:1px solid #ccc;border-radius: 5px;}
+        button{width:70px;height:40px;border:1px solid black;border-radius: 6px;outline: none;}
+    </style>
+    <title>注册</title>
+</head>
+<body>
+    <div id="main">
+        <table></table>
+        <h2>注册</h2>
+        用户名：<input type="text"><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;密码：<input type="text"><br>
+        确认密码：<input type="text"><br>
+        <button>注册</button>
+    </div> 
+    <script src="/js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('button').click(function(){
+               $.ajax({
+                   url:'http://localhost:3000/user/add',
+                   type:'POST',
+                   dataType:'json',
+                   data:{ username:`${$("input:eq(0)").val()}`,password:`${$("input:eq(1)").val()}`},
+                   success:function(result){
+                     alert(result.msg);
+                  },error:function(error){
+                    console.log(error);
+                  }
+               }) 
+            })
+        })
+     </script>
+</body>
+</html>
