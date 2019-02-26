@@ -10,3 +10,5 @@ run/
 .DS_Store
 *.sw*
 *.un~
+views/admin/node_modules/
+views/admin/package-lock.json
