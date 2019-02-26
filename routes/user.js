@@ -73,24 +73,32 @@ router.get('/login', async (ctx, next) => {
 })
 
 // 获取所有标签
-router.get('/getTags', async (ctx, next)=>{
-	let tags = await query.query(sql.QUERY_TABLE('tag', 'tid,name', 'status=1'));
-	ctx.body = {
-		code: 0,
-		msg: '',
-		result: tags
-	}
+router.get('/getTags', async (ctx, next) => {
+    let tags = await query.query(sql.QUERY_TABLE('tag', 'tid,name', 'status=1'));
+    ctx.body = {
+        code: 0,
+        msg: '',
+        result: tags
+    }
 })
 
 // 用户行为记录
-router.get('/action', async (ctx, next)=>{
-	let {userid, tid} = ctx.request.query;
-	let add_sql = sql.INERT_TABLE('action', 'uid,tid', `'${userid}','${tid}'`);
+router.get('/action', async (ctx, next) => {
+    let {
+        userid,
+        tid
+    } = ctx.request.query;
+    // 用户是否存在
+    let hasUser = await query.query(sql.QUERY_TABLE('user', 'id,username,tag', `username='${username}' AND password='${md5(password)}'`));
+    if (hasUser.length) {
+        let add_sql = sql.INERT_TABLE('action', 'uid,tid', `'${userid}','${tid}'`);
+        let result = await query.query(add_sql);
+    }
     ctx.body = {
-		code: 0,
-		msg:'',
-		result: null
-	}
+        code: 0,
+        msg: '',
+        result: null
+    }
 })
 
 module.exports = router;

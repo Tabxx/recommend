@@ -152,6 +152,7 @@
                     //获得当前active的元素
                     var k=$('.pages>.active').prev().children();
                     var j=$('.pages>.active').children().html();
+                    j = Number(j);
                     if(j>1){
                         get_list(j-1,k);
                     }
