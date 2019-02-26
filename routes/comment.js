@@ -60,7 +60,7 @@ router.get('/getcomment', async (ctx, next) => {
     }
     // 字段过滤
     let field = 'username,avatar,c.id as cid,content,time'
-    let comments = await query.query(sql.QUERY_TABLE('user u,comments c', field, `c.uid = u.id`));
+    let comments = await query.query(sql.QUERY_TABLE('user u,comments c', field, `c.uid = u.id AND c.pid = ${pid} AND c.type = ${type}`));
     ctx.body = {
         code: 0,
         msg: 'success',
