@@ -1,36 +1,34 @@
-
-
-$(document).ready(function(){
+$(document).ready(function () {
     //var hardware='cpu';
-    var href=decodeURI(window.location.href);
+    var href = decodeURI(window.location.href);
     var url = href.split("?")[1];
     var para = url.split("&");
-    var arr=[];
-    for(var i=0;i<para.length;i++){
-        arr[i]=para[i].split('=');
+    var arr = [];
+    for (var i = 0; i < para.length; i++) {
+        arr[i] = para[i].split('=');
     }
     //硬件名称 cpu/gpu....
-    var hardware=arr[0][1];
+    var hardware = arr[0][1];
     //详细名称
-    var name=arr[1][1];
+    var name = arr[1][1];
     //获取详情
-    var getdetail=(function(){
+    var getdetail = (function () {
         $.ajax({
-            url:`/${hardware}?name=${name}`,
-            type:'get',
-            dataType:'json',
-            success:function(res){
-              var a=res.result[0];
-              var pid=a.id;
-              for(var x in a){
-                  if(a[x]==null){
-                      a[x]='暂无数据';
-                  }
-              }
-              var html;
-              switch(a.hardware_name){
-                  case 'cpu':
-                   html=` <h4 class="text-primary hardware_title pt-2 pb-2">${a.name}</h4>
+            url: `/${hardware}?name=${name}`,
+            type: 'get',
+            dataType: 'json',
+            success: function (res) {
+                var a = res.result[0];
+                var pid = a.id;
+                for (var x in a) {
+                    if (a[x] == null) {
+                        a[x] = '暂无数据';
+                    }
+                }
+                var html;
+                switch (a.hardware_name) {
+                    case 'cpu':
+                        html = ` <h4 class="text-primary hardware_title pt-2 pb-2">${a.name}</h4>
                   <h5 class="pt-2 pb-2 bg-light mb-0 mt-4">基本参数</h5>
                   <table class="table">
                       <tr>
@@ -98,9 +96,9 @@ $(document).ready(function(){
                           <td class="hardware_small_font">${a.features}</td>
                       </tr>
                   </table>`;
-                  break;
-                  case 'gpu':
-                  html=` <h4 class="text-primary hardware_title pt-2 pb-2">${a.name}</h4>
+                        break;
+                    case 'gpu':
+                        html = ` <h4 class="text-primary hardware_title pt-2 pb-2">${a.name}</h4>
                   <h5 class="pt-2 pb-2 bg-light mb-0 mt-4">显卡核心</h5>
                   <table class="table">
                       <tr>
@@ -169,9 +167,9 @@ $(document).ready(function(){
                           <td class="hardware_small_font">${a.radiating}</td>
                       </tr>
                   </table>`;
-                  break;
-                  case 'memory':
-                  html=` <h4 class="text-primary hardware_title pt-2 pb-2">${a.name}</h4>
+                        break;
+                    case 'memory':
+                        html = ` <h4 class="text-primary hardware_title pt-2 pb-2">${a.name}</h4>
                   <h5 class="pt-2 pb-2 bg-light mb-0 mt-4">基本参数</h5>
                   <table class="table">
                       <tr>
@@ -209,9 +207,9 @@ $(document).ready(function(){
                           <td class="hardware_small_font">${a.work_voltage}V</td>
                       </tr>
                   </table>`;
-                  break;
-                  case 'hard_disk':
-                  html=` <h4 class="text-primary hardware_title pt-2 pb-2">${a.name}</h4>
+                        break;
+                    case 'hard_disk':
+                        html = ` <h4 class="text-primary hardware_title pt-2 pb-2">${a.name}</h4>
                   <h5 class="pt-2 pb-2 bg-light mb-0 mt-4">基本参数</h5>
                   <table class="table">
                       <tr>
@@ -242,9 +240,9 @@ $(document).ready(function(){
                           <td class="hardware_small_font">${a.power}</td>
                       </tr>
                   </table>`;
-                  break;
-                  case 'mainboard':
-                  html=` <h4 class="text-primary hardware_title pt-2 pb-2">${a.name}</h4>
+                        break;
+                    case 'mainboard':
+                        html = ` <h4 class="text-primary hardware_title pt-2 pb-2">${a.name}</h4>
                   <h5 class="pt-2 pb-2 bg-light mb-0 mt-4">主板芯片</h5>
                   <table class="table">
                       <tr>
@@ -331,57 +329,66 @@ $(document).ready(function(){
                       </tr>
                   </table>
                 `;
-                  break;
-                  default:
-                  alert('找不到');
-                  break;
-              }         
-              $('#hardware_detail').append(html);
-              console.log(pid);
-            },error:function(error){
+                        break;
+                    default:
+                        alert('找不到');
+                        break;
+                }
+                $('#hardware_detail').append(html);
+                console.log(pid);
+                getComment();
+            },
+            error: function (error) {
                 alert('失败');
                 console.log(error);
             }
         });
     })();
-   //获取评论
-    var getComment=(function (){
-        switch(hardware){
+    //获取评论
+    var getComment = function () {
+        switch (hardware) {
             case 'cpu':
-            type=2; break;
+                type = 2;
+                break;
             case 'graphics':
-            type=3;break;
+                type = 3;
+                break;
             case 'memory':
-            type=4;break;
+                type = 4;
+                break;
             case 'harddisk':
-            type=5;break;
+                type = 5;
+                break;
             case 'mainboard':
-            type=6;break;
+                type = 6;
+                break;
         }
         //console.log(pid);
         console.log(type);
         $.ajax({
-            url:'/comment/getcomment?type=2&&pid=1',
-            type:'get',
-            dataType:'json',
-            success:function(res){
-                var result=res.result;
-                var html=`<h4 class="text-primary mt-4 hardware_title pt-2 pb-2">${name}</h4>`;
-                for(var comment of result){
-                   html+=`<div class="border-bottom">
-                          <div class="d-flex mt-3">
-                          <span class="hardware_small_font">${comment.username}</span>
-                          <span class="hardware_small_font">${comment.time}</span>
-                          </div>
-                          <p>${comment.content}</p>
+            url: '/comment/getcomment?type=2&&pid=1',
+            type: 'get',
+            dataType: 'json',
+            success: function (res) {
+                var result = res.result;
+                var html = `<h4 class="text-primary mt-4 hardware_title pt-2 pb-2">${name}</h4>`;
+                for (var comment of result) {
+                    html += `<div class="border-bottom">
+                            <div class="d-flex mt-3 align-items-center">
+                            <img src="${comment.avatar}" class="rounded-circle userhead mr-2">
+                            <span class="hardware_small_font mr-2"><strong>${comment.username}</strong></span>
+                            <span class="hardware_small_font">${new Date(comment.time*1000).format('yyyy-MM-dd hh:mm:ss')}</span>
+                            </div>
+                            <p>${comment.content}</p>
                           </div>`;
                 }
-                html+="</div><p class='hardware_bg_soft text-center'>查看所有评论</p>";
+                html += "</div><p class='hardware_bg_soft text-center'>查看所有评论</p>";
                 $('#hardware_detail').append(html);
-            },error:function(error){
+            },
+            error: function (error) {
                 console.log(error);
                 alert("失败");
             }
-        }) 
-    })(); 
+        })
+    };
 })
