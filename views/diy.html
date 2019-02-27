@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="/stylesheets/diy.css">
     <title>方案推荐</title>
 </head>
+
 <body>
     <div class="container main">
         <div class="top h3 font-weight-bold mb-4"><img src="/img/programme.png" alt="">DIY硬件</div>
@@ -58,31 +60,36 @@
                             <td><img class="ml-2 delete" src="/img/delete.png" alt=""> </td>
                         </tr>
                     </table>
-                       <div class="h5 float-right pt-2 pb-2 pr-2">总价: <span id="get_total"></span></div>
+                    <div class="h5 float-right pt-2 pb-2 pr-2">总价: <span id="get_total"></span></div>
                     <table class="table my_submit">
                         <tr>
-                            <td>名称:</td> 
-                            <td><input type="text" id="list_name"></td> 
-                        </tr> 
+                            <td>名称:</td>
+                            <td><input type="text" id="list_name"></td>
+                        </tr>
                         <tr>
-                            <td>方案说明:</td> 
+                            <td>方案说明:</td>
                             <td><textarea name="" id="intr" cols="40" rows="6"></textarea></td>
-                         </tr> 
+                        </tr>
                         <tr>
                             <td><button class="btn btn-warning  b-1 text-white" id="list_sub">提交方案</button></td>
-                        </tr>                        
+                        </tr>
                     </table>
                 </div>
                 <div class="col-7">
                     <ul class="nav nav-tabs d-flex">
-                        <li class="nav-item"> <a class="btn btn-md nav-link active btn-primary ml-2" data-toggle="tab" href="#cpu_select">cpu</a></li>
-                        <li class="nav-item"> <a id="gpubtn" class="btn btn-md nav-link btn-primary ml-2" data-toggle="tab" href="#xianka_select">显卡</a></li>
-                        <li class="nav-item"> <a id="memory" class="btn btn-md nav-link btn-primary ml-2" data-toggle="tab" href="#neicun_select">内存</a></li>
-                        <li class="nav-item"> <a id="hard_disk" class="btn btn-md nav-link btn-primary ml-2" data-toggle="tab" href="#yingpan_select">硬盘</a></li>
-                        <li class="nav-item"> <a id="main_board" class="btn btn-md nav-link btn-primary ml-2" data-toggle="tab" href="#zhuban_select">主板</a></li>
+                        <li class="nav-item"> <a class="btn btn-md nav-link active btn-primary ml-2" data-toggle="tab"
+                                href="#cpu_select">cpu</a></li>
+                        <li class="nav-item"> <a id="gpubtn" class="btn btn-md nav-link btn-primary ml-2" data-toggle="tab"
+                                href="#xianka_select">显卡</a></li>
+                        <li class="nav-item"> <a id="memory" class="btn btn-md nav-link btn-primary ml-2" data-toggle="tab"
+                                href="#neicun_select">内存</a></li>
+                        <li class="nav-item"> <a id="hard_disk" class="btn btn-md nav-link btn-primary ml-2"
+                                data-toggle="tab" href="#yingpan_select">硬盘</a></li>
+                        <li class="nav-item"> <a id="main_board" class="btn btn-md nav-link btn-primary ml-2"
+                                data-toggle="tab" href="#zhuban_select">主板</a></li>
                     </ul>
                     <div class="tab-content" id="select">
-                    <!--cpu的选择-->
+                        <!--cpu的选择-->
                         <div class="tab-pane active" id="cpu_select">
                             <div>
                                 <h5 class="PL-4  my_select">筛选条件</h5>
@@ -108,118 +115,118 @@
                                 <h5 class="my_select">已找到的cpu</h5>
                                 <ul class="ul-unstyled" id="cpu-list"></ul>
                             </div>
-                    </div>
-                   <!--显卡的选择 -->
-                    <div class="tab-pane" id="xianka_select">
-                        <div>
-                            <h5 class="PL-4  my_select">筛选条件</h5>
-                            <ul class="d-flex" id="gpu_brand">
-
-                            </ul>
-                            <ul class="d-flex" id="gpu_price">
-                                <li>价格</li>
-                                <li><a href="#" class="my_a_style">不限</a></li>
-                                <li><a href="#" class="my_a_style">1000以下</a></li>
-                                <li><a href="#" class="my_a_style">1000-2000</a></li>
-                                <li><a href="#" class="my_a_style">2000-3000</a></li>
-                                <li><a href="#" class="my_a_style">3000以上</a></li>
-                            </ul>
-                            <ul class="d-flex" id="gpu_capacity">
-
-                            </ul>
-                            <ul class="d-flex" id="gpu_type">
-
-                            </ul>
                         </div>
-                        <div class="founded">
-                            <h5 class="my_select">已找到的graphics</h5>
-                            <ul class="ul-unstyled" id="gpu-list"></ul>
-                    </div>
-                    </div>
-                  <!--内存的选择 -->
-                    <div class="tab-pane" id="neicun_select">
-                        <div>
-                            <h5 class="PL-4  my_select">筛选条件</h5>
-                            <ul class="d-flex" id="memory_brand">
+                        <!--显卡的选择 -->
+                        <div class="tab-pane" id="xianka_select">
+                            <div>
+                                <h5 class="PL-4  my_select">筛选条件</h5>
+                                <ul class="d-flex" id="gpu_brand">
 
-                            </ul>
-                            <ul class="d-flex" id="memory_price">
-                                <li>价格</li>
-                                <li><a href="#" class="my_a_style">不限</a></li>
-                                <li><a href="#" class="my_a_style">200以下</a></li>
-                                <li><a href="#" class="my_a_style">200-400</a></li>
-                                <li><a href="#" class="my_a_style">400-600</a></li>
-                                <li><a href="#" class="my_a_style">600以上</a></li>
-                            </ul>
-                            <ul class="d-flex" id="memory_capacity">
+                                </ul>
+                                <ul class="d-flex" id="gpu_price">
+                                    <li>价格</li>
+                                    <li><a href="#" class="my_a_style">不限</a></li>
+                                    <li><a href="#" class="my_a_style">1000以下</a></li>
+                                    <li><a href="#" class="my_a_style">1000-2000</a></li>
+                                    <li><a href="#" class="my_a_style">2000-3000</a></li>
+                                    <li><a href="#" class="my_a_style">3000以上</a></li>
+                                </ul>
+                                <ul class="d-flex" id="gpu_capacity">
 
-                            </ul>
-                            <ul class="d-flex" id="memory_type">
+                                </ul>
+                                <ul class="d-flex" id="gpu_type">
 
-                            </ul>
+                                </ul>
+                            </div>
+                            <div class="founded">
+                                <h5 class="my_select">已找到的graphics</h5>
+                                <ul class="ul-unstyled" id="gpu-list"></ul>
+                            </div>
                         </div>
-                        <div class="founded">
-                            <h5 class="my_select">已找到的memory</h5>
-                            <ul class="ul-unstyled" id="memory_list"></ul>
-                    </div>
-                    </div>
-                  <!--主板的选择-->
-                    <div class="tab-pane" id="zhuban_select">
-                        <div>
-                            <h5 class="PL-4  my_select">筛选条件</h5>
-                            <ul class="d-flex" id="mainboard_brand">
+                        <!--内存的选择 -->
+                        <div class="tab-pane" id="neicun_select">
+                            <div>
+                                <h5 class="PL-4  my_select">筛选条件</h5>
+                                <ul class="d-flex" id="memory_brand">
 
-                            </ul>
-                            <ul class="d-flex" id="mainboard_price">
-                                <li>价格</li>
-                                <li><a href="#" class="my_a_style">不限</a></li>
-                                <li><a href="#" class="my_a_style">1000以下</a></li>
-                                <li><a href="#" class="my_a_style">1000-2000</a></li>
-                                <li><a href="#" class="my_a_style">2000-3000</a></li>
-                                <li><a href="#" class="my_a_style">3000以上</a></li>
-                            </ul>
-                            <ul class="d-flex" id="mainboard_slot">
+                                </ul>
+                                <ul class="d-flex" id="memory_price">
+                                    <li>价格</li>
+                                    <li><a href="#" class="my_a_style">不限</a></li>
+                                    <li><a href="#" class="my_a_style">200以下</a></li>
+                                    <li><a href="#" class="my_a_style">200-400</a></li>
+                                    <li><a href="#" class="my_a_style">400-600</a></li>
+                                    <li><a href="#" class="my_a_style">600以上</a></li>
+                                </ul>
+                                <ul class="d-flex" id="memory_capacity">
 
-                            </ul>
-                            <ul class="d-flex" id="mainboard_version">
+                                </ul>
+                                <ul class="d-flex" id="memory_type">
 
-                            </ul>
+                                </ul>
+                            </div>
+                            <div class="founded">
+                                <h5 class="my_select">已找到的memory</h5>
+                                <ul class="ul-unstyled" id="memory_list"></ul>
+                            </div>
                         </div>
-                        <div class="founded">
-                            <h5 class="my_select">已找到的mainboard</h5>
-                            <ul class="ul-unstyled" id="main_board_list">
-                            </ul>
-                    </div>
-                    </div>
-                    <!--硬盘的选择-->
-                    <div class="tab-pane" id="yingpan_select">
-                        <div>
-                            <h5 class="PL-4  my_select">筛选条件</h5>
-                            <ul class="d-flex" id="harddisk_brand">
+                        <!--主板的选择-->
+                        <div class="tab-pane" id="zhuban_select">
+                            <div>
+                                <h5 class="PL-4  my_select">筛选条件</h5>
+                                <ul class="d-flex" id="mainboard_brand">
 
-                            </ul>
-                            <ul class="d-flex" id="harddisk_price">
-                                <li>价格</li>
-                                <li><a href="#" class="my_a_style">不限</a></li>
-                                <li><a href="#" class="my_a_style">1000以下</a></li>
-                                <li><a href="#" class="my_a_style">1000-2000</a></li>
-                                <li><a href="#" class="my_a_style">2000-3000</a></li>
-                                <li><a href="#" class="my_a_style">3000以上</a></li>
-                            </ul>
-                            <ul class="d-flex" id="harddisk_capacity">
+                                </ul>
+                                <ul class="d-flex" id="mainboard_price">
+                                    <li>价格</li>
+                                    <li><a href="#" class="my_a_style">不限</a></li>
+                                    <li><a href="#" class="my_a_style">1000以下</a></li>
+                                    <li><a href="#" class="my_a_style">1000-2000</a></li>
+                                    <li><a href="#" class="my_a_style">2000-3000</a></li>
+                                    <li><a href="#" class="my_a_style">3000以上</a></li>
+                                </ul>
+                                <ul class="d-flex" id="mainboard_slot">
 
-                            </ul>
-                            <ul class="d-flex" id="harddisk_cache">
+                                </ul>
+                                <ul class="d-flex" id="mainboard_version">
 
-                            </ul>
+                                </ul>
+                            </div>
+                            <div class="founded">
+                                <h5 class="my_select">已找到的mainboard</h5>
+                                <ul class="ul-unstyled" id="main_board_list">
+                                </ul>
+                            </div>
                         </div>
-                        <div class="founded">
-                            <h5 class="my_select">已找到的harddisk</h5>
-                            <ul class="ul-unstyled" id="hard_disk_list"></ul>
+                        <!--硬盘的选择-->
+                        <div class="tab-pane" id="yingpan_select">
+                            <div>
+                                <h5 class="PL-4  my_select">筛选条件</h5>
+                                <ul class="d-flex" id="harddisk_brand">
+
+                                </ul>
+                                <ul class="d-flex" id="harddisk_price">
+                                    <li>价格</li>
+                                    <li><a href="#" class="my_a_style">不限</a></li>
+                                    <li><a href="#" class="my_a_style">1000以下</a></li>
+                                    <li><a href="#" class="my_a_style">1000-2000</a></li>
+                                    <li><a href="#" class="my_a_style">2000-3000</a></li>
+                                    <li><a href="#" class="my_a_style">3000以上</a></li>
+                                </ul>
+                                <ul class="d-flex" id="harddisk_capacity">
+
+                                </ul>
+                                <ul class="d-flex" id="harddisk_cache">
+
+                                </ul>
+                            </div>
+                            <div class="founded">
+                                <h5 class="my_select">已找到的harddisk</h5>
+                                <ul class="ul-unstyled" id="hard_disk_list"></ul>
+                            </div>
+                        </div>
                     </div>
-                    </div>
-                </div>
-                <ul class="pagination pagination-md pages">
+                    <ul class="pagination pagination-md pages">
                         <li class="page-item">
                             <a href="#" class="page-link" id="prev">上一页</a>
                         </li>
@@ -256,8 +263,8 @@
                         <li class="page-item">
                             <a href="#" class="page-link" id="next">下一页</a>
                         </li>
-                </ul>            
-            </div>    
+                    </ul>
+                </div>
             </div>
         </div>
         <div>
@@ -272,9 +279,11 @@
                     <div class="tab-content">
                         <div id="d1" class="tab-pane active">
                             <div class="row">
-                                <div class="col-6"> 
+                                <div class="col-6">
                                     <table class="table ">
-                                        <thead><p class="pt-2">i3 6100极速商务办公主机</p></thead>
+                                        <thead>
+                                            <p class="pt-2">i3 6100极速商务办公主机</p>
+                                        </thead>
                                         <tr>
                                             <td>CPU</td>
                                             <td>Intel酷睿i3-6100（散片）</td>
@@ -306,255 +315,257 @@
                                             <td>￥0</td>
                                         </tr>
                                         <tr>
-                                            <td><span class="w-50">总价：￥1506</span></td>  
+                                            <td><span class="w-50">总价：￥1506</span></td>
                                         </tr>
-                                    </table>   
+                                    </table>
                                 </div>
                                 <div class="col-6">
-                                        <table class="table">
-                                                <thead><p class="pt-2">i3 6100极速商务办公主机</p></thead>
-                                                <tr>
-                                                    <td>CPU</td>
-                                                    <td>Intel酷睿i3-6100（散片）</td>
-                                                    <td>¥669</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>显卡</td>
-                                                    <td>待选</td>
-                                                    <td>￥0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>内存</td>
-                                                    <td>芝奇Ripjaws4 DDR4 8G</td>
-                                                    <td>¥338</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>硬盘</td>
-                                                    <td>待选</td>
-                                                    <td>￥0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>主板</td>
-                                                    <td>技嘉 B150M-D3H</td>
-                                                    <td>¥499</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>外设</td>
-                                                    <td>待选</td>
-                                                    <td>￥0</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>总价：￥1506</td> 
-                                                </tr>
-                                            </table>   
-                                </div>                                                       
-                            </div>                         
+                                    <table class="table">
+                                        <thead>
+                                            <p class="pt-2">i3 6100极速商务办公主机</p>
+                                        </thead>
+                                        <tr>
+                                            <td>CPU</td>
+                                            <td>Intel酷睿i3-6100（散片）</td>
+                                            <td>¥669</td>
+                                        </tr>
+                                        <tr>
+                                            <td>显卡</td>
+                                            <td>待选</td>
+                                            <td>￥0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>内存</td>
+                                            <td>芝奇Ripjaws4 DDR4 8G</td>
+                                            <td>¥338</td>
+                                        </tr>
+                                        <tr>
+                                            <td>硬盘</td>
+                                            <td>待选</td>
+                                            <td>￥0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>主板</td>
+                                            <td>技嘉 B150M-D3H</td>
+                                            <td>¥499</td>
+                                        </tr>
+                                        <tr>
+                                            <td>外设</td>
+                                            <td>待选</td>
+                                            <td>￥0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>总价：￥1506</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                         <div id="d2" class="row tab-pane">
-                                <div class="row">
-                                        <div class="col-6"> 
-                                            <table class="table ">
-                                                <thead>i3 6100极速商务办公主机</thead>
-                                                <tr>
-                                                    <td>CPU</td>
-                                                    <td>Intel酷睿i3-6100（散片）</td>
-                                                    <td>¥669</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>显卡</td>
-                                                    <td>待选</td>
-                                                    <td>￥0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>内存</td>
-                                                    <td>芝奇Ripjaws4 DDR4 8G</td>
-                                                    <td>¥338</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>硬盘</td>
-                                                    <td>待选</td>
-                                                    <td>￥0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>主板</td>
-                                                    <td>技嘉 B150M-D3H</td>
-                                                    <td>¥499</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>外设</td>
-                                                    <td>待选</td>
-                                                    <td>￥0</td>
-                                                </tr>
-                                                <tfoot>
-                                                    总价：￥1506
-                                                </tfoot>
-                                            </table>   
-                                        </div>
-                                        <div class="col-6">
-                                                <table class="table ">
-                                                        <thead>i3 6100极速商务办公主机</thead>
-                                                        <tr>
-                                                            <td>CPU</td>
-                                                            <td>Intel酷睿i3-6100（散片）</td>
-                                                            <td>¥669</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>显卡</td>
-                                                            <td>待选</td>
-                                                            <td>￥0</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>内存</td>
-                                                            <td>芝奇Ripjaws4 DDR4 8G</td>
-                                                            <td>¥338</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>硬盘</td>
-                                                            <td>待选</td>
-                                                            <td>￥0</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>主板</td>
-                                                            <td>技嘉 B150M-D3H</td>
-                                                            <td>¥499</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>外设</td>
-                                                            <td>待选</td>
-                                                            <td>￥0</td>
-                                                        </tr>
-                                                        <tfoot>
-                                                            总价：￥1506
-                                                        </tfoot>
-                                                    </table>   
-                                        </div>                                                       
-                                    </div>     
+                            <div class="row">
+                                <div class="col-6">
+                                    <table class="table ">
+                                        <thead>i3 6100极速商务办公主机</thead>
+                                        <tr>
+                                            <td>CPU</td>
+                                            <td>Intel酷睿i3-6100（散片）</td>
+                                            <td>¥669</td>
+                                        </tr>
+                                        <tr>
+                                            <td>显卡</td>
+                                            <td>待选</td>
+                                            <td>￥0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>内存</td>
+                                            <td>芝奇Ripjaws4 DDR4 8G</td>
+                                            <td>¥338</td>
+                                        </tr>
+                                        <tr>
+                                            <td>硬盘</td>
+                                            <td>待选</td>
+                                            <td>￥0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>主板</td>
+                                            <td>技嘉 B150M-D3H</td>
+                                            <td>¥499</td>
+                                        </tr>
+                                        <tr>
+                                            <td>外设</td>
+                                            <td>待选</td>
+                                            <td>￥0</td>
+                                        </tr>
+                                        <tfoot>
+                                            总价：￥1506
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <div class="col-6">
+                                    <table class="table ">
+                                        <thead>i3 6100极速商务办公主机</thead>
+                                        <tr>
+                                            <td>CPU</td>
+                                            <td>Intel酷睿i3-6100（散片）</td>
+                                            <td>¥669</td>
+                                        </tr>
+                                        <tr>
+                                            <td>显卡</td>
+                                            <td>待选</td>
+                                            <td>￥0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>内存</td>
+                                            <td>芝奇Ripjaws4 DDR4 8G</td>
+                                            <td>¥338</td>
+                                        </tr>
+                                        <tr>
+                                            <td>硬盘</td>
+                                            <td>待选</td>
+                                            <td>￥0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>主板</td>
+                                            <td>技嘉 B150M-D3H</td>
+                                            <td>¥499</td>
+                                        </tr>
+                                        <tr>
+                                            <td>外设</td>
+                                            <td>待选</td>
+                                            <td>￥0</td>
+                                        </tr>
+                                        <tfoot>
+                                            总价：￥1506
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                         <div id="d3" class="row tab-pane">
-                                <div class="row">
-                                        <div class="col-6"> 
-                                            <table class="table ">
-                                                <thead>i3 6100极速商务办公主机</thead>
-                                                <tr>
-                                                    <td>CPU</td>
-                                                    <td>Intel酷睿i3-6100（散片）</td>
-                                                    <td>¥669</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>显卡</td>
-                                                    <td>待选</td>
-                                                    <td>￥0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>内存</td>
-                                                    <td>芝奇Ripjaws4 DDR4 8G</td>
-                                                    <td>¥338</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>硬盘</td>
-                                                    <td>待选</td>
-                                                    <td>￥0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>主板</td>
-                                                    <td>技嘉 B150M-D3H</td>
-                                                    <td>¥499</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>外设</td>
-                                                    <td>待选</td>
-                                                    <td>￥0</td>
-                                                </tr>
-                                                <tfoot>
-                                                    总价：￥1506
-                                                </tfoot>
-                                            </table>   
-                                        </div>
-                                        <div class="col-6">
-                                                <table class="table ">
-                                                        <thead>i3 6100极速商务办公主机</thead>
-                                                        <tr>
-                                                            <td>CPU</td>
-                                                            <td>Intel酷睿i3-6100（散片）</td>
-                                                            <td>¥669</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>显卡</td>
-                                                            <td>待选</td>
-                                                            <td>￥0</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>内存</td>
-                                                            <td>芝奇Ripjaws4 DDR4 8G</td>
-                                                            <td>¥338</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>硬盘</td>
-                                                            <td>待选</td>
-                                                            <td>￥0</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>主板</td>
-                                                            <td>技嘉 B150M-D3H</td>
-                                                            <td>¥499</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>外设</td>
-                                                            <td>待选</td>
-                                                            <td>￥0</td>
-                                                        </tr>
-                                                        <tfoot>
-                                                            总价：￥1506
-                                                        </tfoot>
-                                                    </table>   
-                                        </div>                                                       
-                                    </div>     
+                            <div class="row">
+                                <div class="col-6">
+                                    <table class="table ">
+                                        <thead>i3 6100极速商务办公主机</thead>
+                                        <tr>
+                                            <td>CPU</td>
+                                            <td>Intel酷睿i3-6100（散片）</td>
+                                            <td>¥669</td>
+                                        </tr>
+                                        <tr>
+                                            <td>显卡</td>
+                                            <td>待选</td>
+                                            <td>￥0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>内存</td>
+                                            <td>芝奇Ripjaws4 DDR4 8G</td>
+                                            <td>¥338</td>
+                                        </tr>
+                                        <tr>
+                                            <td>硬盘</td>
+                                            <td>待选</td>
+                                            <td>￥0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>主板</td>
+                                            <td>技嘉 B150M-D3H</td>
+                                            <td>¥499</td>
+                                        </tr>
+                                        <tr>
+                                            <td>外设</td>
+                                            <td>待选</td>
+                                            <td>￥0</td>
+                                        </tr>
+                                        <tfoot>
+                                            总价：￥1506
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <div class="col-6">
+                                    <table class="table ">
+                                        <thead>i3 6100极速商务办公主机</thead>
+                                        <tr>
+                                            <td>CPU</td>
+                                            <td>Intel酷睿i3-6100（散片）</td>
+                                            <td>¥669</td>
+                                        </tr>
+                                        <tr>
+                                            <td>显卡</td>
+                                            <td>待选</td>
+                                            <td>￥0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>内存</td>
+                                            <td>芝奇Ripjaws4 DDR4 8G</td>
+                                            <td>¥338</td>
+                                        </tr>
+                                        <tr>
+                                            <td>硬盘</td>
+                                            <td>待选</td>
+                                            <td>￥0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>主板</td>
+                                            <td>技嘉 B150M-D3H</td>
+                                            <td>¥499</td>
+                                        </tr>
+                                        <tr>
+                                            <td>外设</td>
+                                            <td>待选</td>
+                                            <td>￥0</td>
+                                        </tr>
+                                        <tfoot>
+                                            总价：￥1506
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-4">
                     <a href="#" class="h5 text-primary">方案排行榜</a>
                     <ul class="list-unstyled">
-                            <li class="list-group-item my_group">
-                                    <div class="media">
-                                        <img class="rounded mr-3" src="/img/a01.png"/>
-                                        <div class="media-body">
-                                            <h5>i7-6700k水冷主机</h5>
-                                            <p>￥6666</p>
-                                            <a href="#">查看详情</a>
-                                        </div>
-                                    </div>
-                            </li>
-                            <li class="list-group-item my_group">
-                                    <div class="media">
-                                        <img class="rounded mr-3" src="/img/a02.png"/>
-                                        <div class="media-body">
-                                            <h5>四核i5-4590/GTX950</h5>
-                                            <p>￥3099</p>
-                                            <a href="#">查看详情</a>
-                                        </div>
-                                    </div>
-                            </li>
-                            <li class="list-group-item my_group">
-                                    <div class="media">
-                                        <img class="rounded mr-3" src="/img/a03.png"/>
-                                        <div class="media-body">
-                                            <h5>四代i3游戏主机</h5>
-                                            <p>￥2574</p>
-                                            <a href="#">查看详情</a>
-                                        </div>
-                                    </div>
-                            </li>
-                            <li class="list-group-item my_group">
-                                    <div class="media">
-                                        <img class="rounded mr-3" src="/img/a04.png"/>
-                                        <div class="media-body">
-                                            <h5>六核独显游戏主机</h5>
-                                            <p>￥6999</p>
-                                            <a href="#">查看详情</a>
-                                        </div>
-                                    </div>
-                            </li>                                
+                        <li class="list-group-item my_group">
+                            <div class="media">
+                                <img class="rounded mr-3" src="/img/a01.png" />
+                                <div class="media-body">
+                                    <h5>i7-6700k水冷主机</h5>
+                                    <p>￥6666</p>
+                                    <a href="#">查看详情</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item my_group">
+                            <div class="media">
+                                <img class="rounded mr-3" src="/img/a02.png" />
+                                <div class="media-body">
+                                    <h5>四核i5-4590/GTX950</h5>
+                                    <p>￥3099</p>
+                                    <a href="#">查看详情</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item my_group">
+                            <div class="media">
+                                <img class="rounded mr-3" src="/img/a03.png" />
+                                <div class="media-body">
+                                    <h5>四代i3游戏主机</h5>
+                                    <p>￥2574</p>
+                                    <a href="#">查看详情</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item my_group">
+                            <div class="media">
+                                <img class="rounded mr-3" src="/img/a04.png" />
+                                <div class="media-body">
+                                    <h5>六核独显游戏主机</h5>
+                                    <p>￥6999</p>
+                                    <a href="#">查看详情</a>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -608,10 +619,12 @@
             </div>
         </div>
     </div>
-    
+
     <script src="/js/jquery.min.js"></script>
     <script src="/js/popper.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/util.js"></script>
     <script src="/js/diy.js"></script>
 </body>
+
 </html>

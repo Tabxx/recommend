@@ -4,8 +4,9 @@ const query = require('../utils/query');
 const utils = require('../utils/utils');
 
 // 获取硬盘列表
-router.post('/add', async(ctx, next) => {
+router.post('/add', async (ctx, next) => {
     let param = ctx.request.body;
+
     // 用户信息
     if (!param.userid) {
         ctx.body = {
@@ -13,7 +14,10 @@ router.post('/add', async(ctx, next) => {
             msg: "用户信息不存在",
             result: null
         }
+        return;
     }
+    // 添加当前时间
+    param.time = parseInt(Date.now() / 1000);
     // 获取参数信息
     let key = Object.getOwnPropertyNames(param);
     let val = Object.values(param);
@@ -39,7 +43,7 @@ router.post('/add', async(ctx, next) => {
 })
 
 // 获取方案列表
-router.get('/getlist', async(ctx, next) => {
+router.get('/getlist', async (ctx, next) => {
     let id = ctx.request.query.id;
     let list = [];
     if (!id) {
@@ -55,4 +59,14 @@ router.get('/getlist', async(ctx, next) => {
     }
 })
 
+/**
+ * 方案点击量添加
+ */
+router.get('/addClick', async (ctx, next) => {
+    let list_id = ctx.query.id;
+    if (list_id) {
+        let add_sql = `update list set clicks=clicks+1 where id=${list_id}`;
+        await query.query(add_sql);
+    }
+})
 module.exports = router;
