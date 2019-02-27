@@ -60,8 +60,7 @@ router.get('/getlist', async (ctx, next) => {
     // 兼容type为字符串
     type = Number(type);
     if ([1, 2, 3].includes(type)) {
-        // TODO:用户信息未返回，后期连表查询
-        let query_sql = `SELECT * from list ORDER BY ${sortRule[type]} ${sortby == 1 ? 'ASC' : 'DESC'} limit 10`
+        let query_sql = `SELECT l.*, u.username, u.avatar from list l, user u WHERE l.userid = u.id ORDER BY ${sortRule[type]} ${sortby == 1 ? 'ASC' : 'DESC'} limit 10`
         list = await query.query(query_sql)
     } else if (!id) {
         list = await query.query(sql.QUERY_TABLE('list', '*'))
@@ -82,7 +81,7 @@ router.get('/getlist', async (ctx, next) => {
 router.get('/addClick', async (ctx, next) => {
     let list_id = ctx.query.id
     if (list_id) {
-        let add_sql = `update list set clicks=clicks+1 where id=${list_id}`
+        let add_sql = `update list set clicks = clicks + 1 where id=${list_id}`
         await query.query(add_sql)
     }
 })
