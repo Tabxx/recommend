@@ -500,4 +500,8 @@ $(function () {
         //console.log($(this).parent().prev().html());
         // console.log($(this).parent().prev().prev().html());
     });
+   $("body").on('click','#pro_',function(e){
+       e.preventDefault();
+       $(window).attr('location','/programme-list.html');
+   })
 })
