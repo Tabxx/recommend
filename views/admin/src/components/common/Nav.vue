@@ -1,43 +1,39 @@
 <template>
-  <el-row class="tac">
-    <el-col>
-      <el-menu default-active="2"
-               class="el-menu-vertical-demo"
+  <el-row class="tac h-100">
+    <el-col class="h-100">
+      <el-menu default-active="/index"
+               class="el-menu-vertical-demo h-100"
                @open="handleOpen"
                @close="handleClose"
                background-color="#545c64"
                text-color="#fff"
-               active-text-color="#ffd04b">
-        <el-submenu index="1">
+               active-text-color="#ffd04b"
+               router="true">
+        <el-menu-item index="/index">
+          <i class="el-icon-menu"></i>
+          <span slot="title">首页</span>
+        </el-menu-item>
+        <el-submenu index="2">
           <template slot="title">
             <i class="el-icon-location"></i>
-            <span>导航一</span>
+            <span>硬件管理</span>
           </template>
-          <el-menu-item-group>
-            <template slot="title">分组一</template>
-            <el-menu-item index="1-1">选项1</el-menu-item>
-            <el-menu-item index="1-2">选项2</el-menu-item>
+          <el-menu-item-group v-for="(item, index) of hardware"
+                              :key="index">
+            <el-menu-item :index="item.url">{{ item.name }}</el-menu-item>
           </el-menu-item-group>
-          <el-menu-item-group title="分组2">
-            <el-menu-item index="1-3">选项3</el-menu-item>
-          </el-menu-item-group>
-          <el-submenu index="1-4">
-            <template slot="title">选项4</template>
-            <el-menu-item index="1-4-1">选项1</el-menu-item>
-          </el-submenu>
         </el-submenu>
-        <el-menu-item index="2">
+        <el-menu-item index="3">
           <i class="el-icon-menu"></i>
-          <span slot="title">导航二</span>
-        </el-menu-item>
-        <el-menu-item index="3"
-                      disabled>
-          <i class="el-icon-document"></i>
-          <span slot="title">导航三</span>
+          <span slot="title">方案管理</span>
         </el-menu-item>
         <el-menu-item index="4">
+          <i class="el-icon-document"></i>
+          <span slot="title">论坛管理</span>
+        </el-menu-item>
+        <el-menu-item index="5">
           <i class="el-icon-setting"></i>
-          <span slot="title">导航四</span>
+          <span slot="title">用户管理</span>
         </el-menu-item>
       </el-menu>
     </el-col>
@@ -47,6 +43,17 @@
 <script>
 export default {
   name: "Nav",
+  data() {
+    return {
+      hardware: [
+        { name: "CPU", url: "/cpu" },
+        { name: "显卡", url: "/graphics" },
+        { name: "主板", url: "/mainboard" },
+        { name: "内存条", url: "/memory" },
+        { name: "硬盘", url: "/harddisk" }
+      ]
+    };
+  },
   methods: {
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
@@ -59,4 +66,7 @@ export default {
 </script>
 
 <style scoped>
+.h-100 {
+  height: 100%;
+}
 </style>

@@ -63,8 +63,11 @@ router.get('/getlist', async (ctx, next) => {
         let query_sql = `SELECT l.*, u.username, u.avatar from list l, user u WHERE l.userid = u.id ORDER BY ${sortRule[type]} ${sortby == 1 ? 'ASC' : 'DESC'} limit 10`
         list = await query.query(query_sql)
     } else if (!id) {
+        // TODO: 用户信息未获取，后期看页面是否需要
+        // 单个方案详情
         list = await query.query(sql.QUERY_TABLE('list', '*'))
     } else {
+        // 多个方案详情
         list = await query.query(sql.QUERY_TABLE('list', '*', `id in (${id})`))
     }
 
@@ -83,6 +86,11 @@ router.get('/addClick', async (ctx, next) => {
     if (list_id) {
         let add_sql = `update list set clicks = clicks + 1 where id=${list_id}`
         await query.query(add_sql)
+    }
+    ctx.body = {
+        code: 0,
+        msg: '',
+        result: null
     }
 })
 module.exports = router
