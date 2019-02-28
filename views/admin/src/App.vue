@@ -12,6 +12,9 @@
           <router-view />
         </el-main>
       </el-container>
+
+      <!-- 详情弹窗 -->
+      <DetaileInfo></DetaileInfo>
     </el-container>
   </div>
 </template>
@@ -19,11 +22,13 @@
 <script>
 import Nav from "@/components/common/Nav.vue";
 import Headbox from "@/components/common/Head.vue";
+import DetaileInfo from "@/components/common/DetaileInfo.vue";
 export default {
   name: "app",
   components: {
     NavTree: Nav,
-    Headbox
+    Headbox,
+    DetaileInfo
   }
 };
 </script>
@@ -42,5 +47,21 @@ body {
 
 .el-header {
   padding: 0 !important;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background: rgba(221, 221, 221, 0.1);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(48, 48, 48, 0.4);
+  border-radius: 8px;
+  height: 30px;
+  transition: all 0.4s ease-out;
+}
+::-webkit-scrollbar-corner {
+  background: rgba(48, 48, 48, 0);
 }
 </style>
