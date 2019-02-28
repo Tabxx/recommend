@@ -1,26 +1,35 @@
-$(document).ready(function(){
-  var programmes=$('#programme>div');
-  for(var programme of programmes){
-      var type;
-      var sortby=0;
-      var mhtml='';
-      switch(programme.id){
-          case 'latest':
-          type=1;sortby=0;break;
-          case 'hotest':
-          type=2;sortby=0;break;
-          case 'expensive':
-          type=3;sortby=0;break;
-          case 'cheap':
-          type=3;sortby=1;break;
-      }
-      $.ajax({
-          url:`/list/getlist?type=${type}&sortby=${sortby}`,
-          tyep:'get',
-          dataType:'json',
-          success:function(result){
-            for(var list of result.result){
-              mhtml+=` <div class="row mt-3 pb-3 border-bottom">
+$(document).ready(function () {
+    // 节点取的有问题
+    var programmes = $('#programme>div');
+    for (var programme of programmes) {
+        var type;
+        var sortby = 0;
+        var mhtml = '';
+        switch (programme.id) {
+            case 'latest':
+                type = 1;
+                sortby = 0;
+                break;
+            case 'hotest':
+                type = 2;
+                sortby = 0;
+                break;
+            case 'expensive':
+                type = 3;
+                sortby = 0;
+                break;
+            case 'cheap':
+                type = 3;
+                sortby = 1;
+                break;
+        }
+        $.ajax({
+            url: `/list/getlist?type=${type}&sortby=${sortby}`,
+            tyep: 'get',
+            dataType: 'json',
+            success: function (result) {
+                for (var list of result.result) {
+                    mhtml += ` <div class="row mt-3 pb-3 border-bottom">
               <div class="col-4">
                   <img src="/img/display.png" alt="">
                   <img src="/img/chassis.png" alt="">
@@ -44,13 +53,15 @@ $(document).ready(function(){
                   <button class="btn btn-light">查看详情</button>
               </div>
       </div>`;
+                }
+                console.log(mhtml);
+            },
+            error: function (error) {
+                console.log(error);
+                alert('失败');
             }
-            console.log(mhtml); 
-          },error:function(error){
-              console.log(error);
-              alert('失败');
-          }   
-      }) 
-      $(programme).html(mhtml);  
+        })
+        // 这里一定比请求里面先执行
+        $(programme).html(mhtml);
     }
 })
