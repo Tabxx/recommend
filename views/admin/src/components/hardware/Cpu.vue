@@ -1,7 +1,6 @@
 <template>
   <el-row>
     <el-col>
-
       <!-- 操作栏 -->
       <el-row class="mb-15">
         <el-col>
@@ -77,6 +76,13 @@
       </el-row>
       <!-- ./CPU列表 -->
 
+      <el-pagination layout="prev, pager, next"
+                     :total="total"
+                     :page-size="pageSize"
+                     :current-page="page"
+                     @current-change="updateData">
+      </el-pagination>
+
       <!-- 添加CPU弹窗 -->
       <add-cpu></add-cpu>
       <!-- ./添加CPU弹窗 -->
@@ -88,6 +94,12 @@
 import addCpu from "@/components/model/AddCPU.vue";
 export default {
   name: "CPU",
+  created() {
+    this.$eventBus.$on("resize", () => {
+      this.loading = true;
+      this.getCpuList();
+    });
+  },
   mounted() {
     this.getCpuList();
   },
@@ -116,9 +128,11 @@ export default {
     // 获取CPU列表
     getCpuList() {
       this.$api.cpuAPI
-        .getCpuList()
+        .getCpuList(this.page, this.pageSize)
         .then(res => {
           if (res.code === 0 && res.result && res.result.length) {
+            this.total = res.msg;
+            this.tableData = [];
             for (let item of res.result) {
               item.price = `￥${item.price}`;
               item.frequency = `${item.frequency}GHz`;
@@ -138,6 +152,11 @@ export default {
     addCPU() {
       // this.dialogFormVisible = true;
       this.$eventBus.$emit("addCpu");
+    },
+    updateData(page) {
+      console.log(page);
+      this.page = page;
+      this.getCpuList();
     }
   },
 
@@ -172,8 +191,14 @@ export default {
         graphice_base_frequency: "基本频率",
         Integ_graphics: "集成显卡"
       },
-      filter: ["id", "image", "status", "tag", "hardware_name"]
+      filter: ["id", "image", "status", "tag", "hardware_name"],
+      total: 0, // cpu总数
+      page: 1,
+      pageSize: 8
     };
+  },
+  beforeDestroy() {
+    this.$eventBus.$off("resize");
   }
 };
 </script>

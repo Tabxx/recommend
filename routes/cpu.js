@@ -8,10 +8,11 @@ router.get('/', async (ctx, next) => {
 
     // 查询符合条件的cpu
     let cpus = await utils.QUERY_HARDWARE(ctx, 'cpu');
+    let total = await utils.QUERY_COUNT('cpu', '*', 'status=1');
     ctx.body = {
         code: 0,
-        msg: '',
-        result: cpus
+        msg: total[0].total || 0,
+        result: cpus.length ? cpus : []
     };
 })
 
@@ -40,7 +41,7 @@ router.get('/gettypes', async (ctx, next) => {
 
 // 添加cpu
 router.post('/add', async (ctx, next) => {
-    let cpu_data = ctx.request.body;
+    let cpu_data = JSON.parse(ctx.request.body.form);
     let key = Object.getOwnPropertyNames(cpu_data)
     let val = Object.values(cpu_data)
 

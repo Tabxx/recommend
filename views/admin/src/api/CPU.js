@@ -4,8 +4,21 @@ class CPU {
     /**
      * 获取CPU列表
      */
-    getCpuList() {
-        return request.get('http://localhost:3000/cpu');
+    getCpuList(page, pageSize) {
+        return request.get('http://localhost:3000/cpu', {
+            data: {
+                page,
+                pageSize
+            }
+        });
+    }
+
+    createCPU(data) {
+        return request.post(`http://localhost:3000/cpu/add`, {
+            data: {
+                form: JSON.stringify(data)
+            }
+        })
     }
 }
 

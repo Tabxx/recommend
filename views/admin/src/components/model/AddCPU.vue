@@ -163,8 +163,7 @@
                     :key="index"
                     :span="6">
               <el-checkbox name="type"
-                           :label="item.name"
-                           :true-label="item.tid"></el-checkbox>
+                           :label="item.name"></el-checkbox>
             </el-col>
           </el-checkbox-group>
         </el-form-item>
@@ -207,6 +206,7 @@
                      :on-preview="handlePreview"
                      :on-remove="handleRemove"
                      :file-list="fileList"
+                     :on-success="upload"
                      list-type="picture">
             <el-button size="small"
                        type="primary">点击上传</el-button>
@@ -228,6 +228,7 @@
                  v-show="addActive==3"
                  @click="submitCPU">确 定</el-button>
     </div>
+
   </el-dialog>
 </template>
 
@@ -289,14 +290,67 @@ export default {
     },
     // 提交表单
     submitCPU() {
-      console.log(this.form);
-      this.dialogFormVisible = false;
+      // 标签参数处理为字符串
+      let tags = [];
+      this.form.tag.map(item => {
+        tags.push(this.tags.find(t => t.name == item).tid);
+      });
+      this.form.tag = tags.join(",");
+
+      this.$api.cpuAPI.createCPU(this.form).then(res => {
+        if (res.code == 0) {
+          this.dialogFormVisible = false;
+          // 初始化数据
+          this.initData();
+          this.$notify({
+            title: "提示",
+            message: h(
+              "i",
+              { style: "color: teal" },
+              "CPU添加成功，请在列表也刷新查看"
+            )
+          });
+          this.$eventBus.$emit("resize");
+        }
+      });
+    },
+    // 初始化数据
+    initData() {
+      this.form = {
+        name: "",
+        brand: "",
+        price: "",
+        series: "",
+        features: "",
+        slot: "",
+        tag: [],
+        image: "",
+        process: "",
+        frequency: "",
+        core_code: "",
+        core_number: "",
+        threads_number: "",
+        power_consumption: "",
+        max_memory: "",
+        bus_specification: "",
+        tree_cache: "",
+        memory_type: "",
+        is_Integ_graphics: false,
+        graphics_max_frequency: "",
+        graphice_base_frequency: "",
+        Integ_graphics: ""
+      };
+      this.addActive = 1;
+      this.fileList = [];
     },
     handleRemove(file, fileList) {
       console.log(file, fileList);
     },
     handlePreview(file) {
       console.log(file);
+    },
+    upload(response, file, fileList) {
+      this.form.image = `http://localhost:3000${response.result}`;
     }
   },
   beforeDestroy() {

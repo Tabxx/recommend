@@ -9,6 +9,15 @@
           <nav-tree></nav-tree>
         </el-aside>
         <el-main>
+          <el-row class="mb-15"
+                  v-if="!['/', '/index'].includes($route.path)">
+            <el-col>
+              <el-breadcrumb separator-class="el-icon-arrow-right">
+                <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+                <el-breadcrumb-item v-show="navtitle">{{ navtitle }}</el-breadcrumb-item>
+              </el-breadcrumb>
+            </el-col>
+          </el-row>
           <router-view />
         </el-main>
       </el-container>
@@ -41,6 +50,14 @@ export default {
         }
       });
     }
+  },
+  computed: {
+    navtitle() {
+      let rules = {
+        "/cpu": "CPU管理"
+      };
+      return rules[this.$route.path] || "";
+    }
   }
 };
 </script>
@@ -68,7 +85,7 @@ body {
   background: rgba(221, 221, 221, 0.1);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(48, 48, 48, 0.4);
+  background: rgba(196, 196, 196, 0.4);
   border-radius: 8px;
   height: 30px;
   transition: all 0.4s ease-out;

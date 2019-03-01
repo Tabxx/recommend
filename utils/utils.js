@@ -6,7 +6,7 @@ const query = require('../utils/query');
  * @param {*} ctx 
  * @param {*} tablename 数据表名称
  */
-const QUERY_HARDWARE = async(ctx, tablename) => {
+const QUERY_HARDWARE = async (ctx, tablename) => {
     // 获取参数
     let params = ctx.request.query;
     let where = [];
@@ -19,18 +19,23 @@ const QUERY_HARDWARE = async(ctx, tablename) => {
             } else {
                 where.push(`${item} BETWEEN ${prices[0]} AND ${prices[1]}`)
             }
-        } else {
+        } else if (!['page', 'pageSize'].includes(item)) {
             where.push(`${item} = '${params[item]}'`)
         }
     }
+    let limit = '';
+    if (params['page']) {
+        params['pageSize'] = params['pageSize'] || 10;
+        limit = ` limit ${(params['page']-1) * params['pageSize']},${params['pageSize']}`
+    }
 
     // 查询符合条件的列表
-    let lists = await query.query(sql.QUERY_TABLE(tablename, '*', where.join(' AND ')))
+    let lists = await query.query(sql.QUERY_TABLE(tablename, '*', where.join(' AND ')) + limit)
 
     return lists;
 }
 
-const QUERY_TYPES = async(tablename, field, format) => {
+const QUERY_TYPES = async (tablename, field, format) => {
     // 字段分割
     let fields = field.split(',');
     let types = []
@@ -47,7 +52,23 @@ const QUERY_TYPES = async(tablename, field, format) => {
     return types;
 }
 
+/**
+ * 表数据统计
+ * @param {*} tablename 表名
+ * @param {*} field 统计字段
+ * @param {*} where where条件
+ */
+const QUERY_COUNT = async (tablename, field = '*', where) => {
+    if (where) {
+        return await query.query(`SELECT COUNT(${field}) as total FROM ${tablename} WHERE ${where}`)
+    } else {
+        return await query.query(`SELECT COUNT(${field}) as total FROM ${tablename}`)
+    }
+
+}
+
 module.exports = {
     QUERY_HARDWARE,
-    QUERY_TYPES
+    QUERY_TYPES,
+    QUERY_COUNT
 }
