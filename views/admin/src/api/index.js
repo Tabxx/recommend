@@ -1,6 +1,8 @@
 import cpuAPI from './CPU';
+import userAPI from './user';
 
 const api = {
-  cpuAPI
+  cpuAPI,
+  userAPI
 };
 export default api;

@@ -1,0 +1,1 @@
+// export const alertmodal = state => state.alertmodal;

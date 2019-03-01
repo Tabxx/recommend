@@ -2,34 +2,34 @@ const router = require('koa-router')()
 const sql = require('../utils/sql');
 const query = require('../utils/query');
 const utils = require('../utils/utils');
-// ÎÄ¼şÂ·¾¶
+// æ–‡ä»¶å­˜å‚¨è·¯å¾„
 const filepath = 'public/upload/';
 // koa-multer
 const multer = require('koa-multer');
-// ÅäÖÃ
+// ä¸Šä¼ é…ç½®
 const upload_config = multer.diskStorage({
-  //´æ´¢Î»ÖÃ
   destination: function (req, file, cb) {
-    cb(null,filepath )
+    cb(null, filepath)
   },
-  //ÎÄ¼şÃû³Æ
+  //å­˜å‚¨æ–‡ä»¶å
   filename: function (req, file, cb) {
     let fileFormat = (file.originalname).split(".");
-    cb(null,Date.now() + "." + fileFormat[fileFormat.length - 1]);
+    cb(null, Date.now() + "." + fileFormat[fileFormat.length - 1]);
   }
 })
 
-//¼ÓÔØÅäÖÃ
-const upload = multer({ storage: upload_config });
+const upload = multer({
+  storage: upload_config
+});
 
-// Í¼Æ¬ÉÏ´«
+// ä¸Šä¼ æ–‡ä»¶
 router.post('/', upload.single('file'), async (ctx, next) => {
-	let path = filepath.replace(/public/,'');
-	ctx.body = {
-		code: 0,
-		msg: 'ÉÏ´«³É¹¦',
-		result:`${path}${ctx.req.file.filename}`
-	}
+  let path = filepath.replace(/public/, '');
+  ctx.body = {
+    code: 0,
+    msg: 'ä¸Šä¼ æˆåŠŸ',
+    result: `${path}${ctx.req.file.filename}`
+  }
 })
 
 module.exports = router;

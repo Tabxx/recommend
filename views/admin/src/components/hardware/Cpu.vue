@@ -2,6 +2,18 @@
   <el-row>
     <el-col>
 
+      <!-- 操作栏 -->
+      <el-row class="mb-15">
+        <el-col>
+          <el-button>全选</el-button>
+          <el-button type="primary"
+                     @click="addCPU">添加</el-button>
+          <el-button type="danger">删除</el-button>
+        </el-col>
+      </el-row>
+      <!-- ./操作栏 -->
+
+      <!-- CPU列表 -->
       <el-row>
         <el-col>
           <el-table :data="tableData"
@@ -63,15 +75,24 @@
 
         </el-col>
       </el-row>
+      <!-- ./CPU列表 -->
+
+      <!-- 添加CPU弹窗 -->
+      <add-cpu></add-cpu>
+      <!-- ./添加CPU弹窗 -->
     </el-col>
   </el-row>
 </template>
 
 <script>
+import addCpu from "@/components/model/AddCPU.vue";
 export default {
   name: "CPU",
   mounted() {
     this.getCpuList();
+  },
+  components: {
+    addCpu
   },
   methods: {
     // 查看详情
@@ -91,7 +112,6 @@ export default {
         show: true,
         filter: this.filter
       });
-      // this.dialogFormVisible = true;
     },
     // 获取CPU列表
     getCpuList() {
@@ -113,6 +133,11 @@ export default {
           console.log(error);
           this.loading = false;
         });
+    },
+    // 添加CPU
+    addCPU() {
+      // this.dialogFormVisible = true;
+      this.$eventBus.$emit("addCpu");
     }
   },
 
@@ -120,8 +145,6 @@ export default {
     return {
       tableData: [], // 表格数据
       loading: true,
-      dialogFormVisible: false,
-      formLabelWidth: "120px",
       cpuData: [], // cpu详情
       rules: {
         id: "ID",
@@ -157,3 +180,10 @@ export default {
 
 <style scoped>
 </style>
+
+<style>
+.mb-15 {
+  margin-bottom: 15px;
+}
+</style>
+

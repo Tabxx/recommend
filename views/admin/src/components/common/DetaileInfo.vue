@@ -5,7 +5,7 @@
              v-if="detail">
 
     <el-form :inline="true"
-             label-width="100px">
+             label-width="120px">
       <el-row>
         <el-col :span="11"
                 v-for="(attr, index) in detail"

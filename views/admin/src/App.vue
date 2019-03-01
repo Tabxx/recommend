@@ -29,6 +29,18 @@ export default {
     NavTree: Nav,
     Headbox,
     DetaileInfo
+  },
+  mounted() {
+    this.getTags();
+  },
+  methods: {
+    getTags() {
+      this.$api.userAPI.getTags().then(res => {
+        if (res.code == 0 && res.result && res.result.length) {
+          this.$store.commit("setTag", res.result);
+        }
+      });
+    }
   }
 };
 </script>

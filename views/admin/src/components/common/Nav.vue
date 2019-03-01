@@ -1,15 +1,15 @@
 <template>
   <el-row class="tac h-100">
     <el-col class="h-100">
-      <el-menu default-active="/index"
+      <el-menu default-active=$route.path
                class="el-menu-vertical-demo h-100"
                @open="handleOpen"
                @close="handleClose"
                background-color="#545c64"
                text-color="#fff"
                active-text-color="#ffd04b"
-               router="true">
-        <el-menu-item index="/index">
+               router>
+        <el-menu-item index="/">
           <i class="el-icon-menu"></i>
           <span slot="title">首页</span>
         </el-menu-item>
