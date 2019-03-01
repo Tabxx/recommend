@@ -13,6 +13,10 @@ class CPU {
         });
     }
 
+    /**
+     * 添加CPU
+     * @param {*} data 
+     */
     createCPU(data) {
         return request.post(`http://localhost:3000/cpu/add`, {
             data: {

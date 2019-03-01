@@ -89,9 +89,10 @@ router.get('/action', async (ctx, next) => {
         tid
     } = ctx.request.query;
     // 用户是否存在
-    let hasUser = await query.query(sql.QUERY_TABLE('user', 'id,username,tag', `username='${username}' AND password='${md5(password)}'`));
+    let hasUser = await query.query(sql.QUERY_TABLE('user', 'id,username,tag', `id=${userid}`));
     if (hasUser.length) {
-        let add_sql = sql.INERT_TABLE('action', 'uid,tid', `'${userid}','${tid}'`);
+        let time = parseInt(Date.now() / 1000);
+        let add_sql = sql.INERT_TABLE('action', 'uid,tid,time', `'${userid}','${tid}','${time}'`);
         let result = await query.query(add_sql);
     }
     ctx.body = {

@@ -53,3 +53,17 @@ window.Cookie = {
         return ''
     }
 }
+
+/**
+ * 添加用户行为
+ * id 参数id
+ */
+window.UserAction = (id) => {
+    let userid = Cookie.getCookie('userid');
+    if (id && userid) {
+        $.get('http://localhost:3000/user/action', {
+            userid,
+            tid: id,
+        })
+    }
+}

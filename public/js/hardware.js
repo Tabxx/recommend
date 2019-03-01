@@ -1,5 +1,3 @@
-
-
 $(document).ready(function () {
     //var hardware='cpu';
     var href = decodeURI(window.location.href);
@@ -15,7 +13,7 @@ $(document).ready(function () {
     var name = arr[1][1];
     //获取详情
     //获取id
-    var id=arr[2][1];
+    var id = arr[2][1];
     var getdetail = (function () {
         $.ajax({
             url: `/${hardware}?name=${name}`,
@@ -339,6 +337,9 @@ $(document).ready(function () {
                 }
                 $('#hardware_detail').append(html);
                 getComment();
+
+                // 发送用户行为
+                UserAction(id);
             },
             error: function (error) {
                 alert('失败');
@@ -372,9 +373,9 @@ $(document).ready(function () {
             success: function (res) {
                 var result = res.result;
                 var html = `<h4 class="text-primary mt-4 hardware_title pt-2 pb-2">${name}的评论</h4>`;
-                if(result.length!=0){
-                for (var comment of result) {
-                    html += `<div class="border-bottom">
+                if (result.length != 0) {
+                    for (var comment of result) {
+                        html += `<div class="border-bottom">
                             <div class="d-flex mt-3 align-items-center">
                             <img src="${comment.avatar}" class="rounded-circle userhead mr-2">
                             <span class="hardware_small_font mr-2"><strong>${comment.username}</strong></span>
@@ -383,10 +384,10 @@ $(document).ready(function () {
                             <p>${comment.content}</p>
                           </div>
                               `;
-                }
-               html+='</div><p class="hardware_bg_soft text-center">查看所有评论</p>';
-               }else{
-                    html+='<h4 class="text-center mt-5 mb-5">暂无评论....</h4>';
+                    }
+                    html += '</div><p class="hardware_bg_soft text-center">查看所有评论</p>';
+                } else {
+                    html += '<h4 class="text-center mt-5 mb-5">暂无评论....</h4>';
                 }
                 $('#hardware_commend').append(html);
             },
@@ -396,22 +397,28 @@ $(document).ready(function () {
             }
         })
     };
-    var E=window.wangEditor;
-    var editor=new E('#write_commend');
+    var E = window.wangEditor;
+    var editor = new E('#write_commend');
     editor.create();
     $('#write_commend').append('<button class="btn btn-primary float-right mt-2 mr-2">发表评论</button>');
-    $('body').on('click','#write_commend>button',function(){
-        var commend=$(this).prev().children().children().html();
+    $('body').on('click', '#write_commend>button', function () {
+        var commend = $(this).prev().children().children().html();
         console.log(commend);
-        var userid= Cookie.getCookie('userid');
-        if(commend!='<br>'){
+        var userid = Cookie.getCookie('userid');
+        if (commend != '<br>') {
             $.ajax({
-                url:`/comment/sendcomment`,
-                type:'post',
-                data:{uid:`${userid}`,content:`${commend}`,type:`${type}`,pid:`${id}`},
-                success:function(result){
+                url: `/comment/sendcomment`,
+                type: 'post',
+                data: {
+                    uid: `${userid}`,
+                    content: `${commend}`,
+                    type: `${type}`,
+                    pid: `${id}`
+                },
+                success: function (result) {
                     alert(添加成功);
-                },error:function(error){
+                },
+                error: function (error) {
                     console.log(error);
                     alert('失败');
                 }
