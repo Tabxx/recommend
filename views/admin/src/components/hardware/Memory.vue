@@ -6,14 +6,14 @@
         <el-col>
           <el-button>全选</el-button>
           <el-button type="primary"
-                     @click="addGraphics">添加</el-button>
+                     @click="addMemory">添加</el-button>
           <el-button type="danger"
                      @click="delItem()">删除</el-button>
         </el-col>
       </el-row>
       <!-- ./操作栏 -->
 
-      <!-- CPU列表 -->
+      <!-- 内存条列表 -->
       <el-row>
         <el-col>
           <el-table :data="tableData"
@@ -31,8 +31,8 @@
                              width="70">
             </el-table-column>
             <el-table-column prop="name"
-                             label="显卡名称"
-                             width="280">
+                             label="内存条名称"
+                             width="480">
             </el-table-column>
             <el-table-column prop="brand"
                              label="品牌"
@@ -43,23 +43,15 @@
                              width="120">
             </el-table-column>
             <el-table-column prop="capacity"
-                             label="显存容量"
+                             label="内存容量"
                              width="120">
-            </el-table-column>
-            <el-table-column prop="chip"
-                             label="显卡芯片"
-                             width="180">
             </el-table-column>
             <el-table-column prop="frequency"
-                             label="显存频率"
-                             width="120">
-            </el-table-column>
-            <el-table-column prop="existing_type"
-                             label="显存类型"
+                             label="内存频率"
                              width="120">
             </el-table-column>
             <el-table-column prop="type"
-                             label="特性"
+                             label="显存类型"
                              width="120">
             </el-table-column>
             <el-table-column fixed="right"
@@ -81,7 +73,7 @@
 
         </el-col>
       </el-row>
-      <!-- ./CPU列表 -->
+      <!-- ./内存条列表 -->
 
       <el-pagination layout="prev, pager, next"
                      :total="total"
@@ -90,33 +82,33 @@
                      @current-change="updateData">
       </el-pagination>
 
-      <add-graphics></add-graphics>
+      <add-memory></add-memory>
     </el-col>
   </el-row>
 </template>
 
 <script>
-import addGraphics from '@/components/model/AddGraphics.vue';
+import AddMemory from '@/components/model/AddMemory.vue';
 export default {
-  name: 'Graphics',
+  name: 'Memory',
   components: {
-    addGraphics
+    AddMemory
   },
   created() {
     this.$eventBus.$on('resize', () => {
       this.loading = true;
-      this.getGraphicsList();
+      this.getMemoryList();
     });
   },
   mounted() {
-    // 获取显卡
-    this.getGraphicsList();
+    // 获取内存条
+    this.getMemoryList();
   },
   methods: {
-    // 获取显卡列表
-    getGraphicsList() {
-      this.$api.graphicsAPI
-        .getGraphicsList(this.page, this.pageSize)
+    // 获取内存条列表
+    getMemoryList() {
+      this.$api.memoryAPI
+        .getMemoryList(this.page, this.pageSize)
         .then(res => {
           if (res.code === 0 && res.result && res.result.length) {
             this.total = res.msg;
@@ -138,19 +130,19 @@ export default {
           this.loading = false;
         });
     },
-    // 查看显卡
+    // 查看内存条
     handleClick(row) {
       // 初始化弹窗数据
-      this.graphicsData = [];
+      this.memoryData = [];
       for (let item in row) {
-        this.graphicsData.push({
+        this.memoryData.push({
           value: row[item],
           attr: item
         });
       }
       // 显示模态框
       this.$eventBus.$emit('openDialog', {
-        data: this.graphicsData,
+        data: this.memoryData,
         rules: this.rules,
         show: true,
         filter: this.filter
@@ -162,8 +154,8 @@ export default {
       this.getGraphicsList();
     },
     // 添加显卡
-    addGraphics() {
-      this.$eventBus.$emit('addGraphics');
+    addMemory() {
+      this.$eventBus.$emit('addMemory');
     },
     // 删除数据
     delItem(row) {
@@ -177,7 +169,7 @@ export default {
         cid = row.id;
       }
 
-      this.$api.graphicsAPI.delGraphics(cid).then(res => {
+      this.$api.memoryAPI.delMemory(cid).then(res => {
         if (res.code == 0) {
           this.$notify({
             title: '成功',
@@ -185,7 +177,7 @@ export default {
             type: 'success'
           });
           // 重新请求数据
-          this.getGraphicsList();
+          this.getMemoryList();
         } else {
           this.$notify({
             title: '失败',
@@ -205,33 +197,28 @@ export default {
       tableData: [],
       loading: false,
       rules: {
-        id: 'ID',
-        name: '显卡名称',
-        brand: '品牌',
-        price: '价格',
-        capacity: '显存容量',
-        chip: '显卡芯片', //
+        id: 'ID', // 内存条id
+        name: '内存条名称', //
+        brand: '品牌', //
+        price: '价格', //
+        type: '类型', //
+        capacity: '内存容量', //
         image: '图片', //
-        type: '类型', // 显卡
+        frequency: '主频', //
         status: '状态',
-        chip_type: '显示芯片系列', //
-        core_code: '核心代号', //
-        cuda: 'CUDA核心(个)', //
-        frequency: '显存频率（MHz）', //
-        existing_type: '显存类型', //
-        bitwide: '显存位宽(Bit)', //
-        max_resolution: '最大分辨率', //
-        graphics_interface_type: '显卡接口类型',
-        io_interface: 'I/O接口', //
-        power: '电源', //
-        radiating: '散热方式'
+        stitch_count: '针脚数', //
+        slot_type: '插槽类型', //
+        cl_delay: '插槽延迟', //
+        work_voltage: '工作电压', // （V）
+        radiating: '是否有散热片', //
+        tag: '标签'
       },
       page: 1,
       pageSize: 8,
       total: 0, // 显卡总数
-      graphicsData: [],
+      memoryData: [],
       multipleSelection: [],
-      filter: ['id', 'image', 'status']
+      filter: ['id', 'image', 'status', 'hardware_name', 'tag']
     };
   }
 };

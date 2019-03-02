@@ -1,11 +1,11 @@
 import request from './request/fetch';
 
-class Graphics {
+class Memory {
     /**
-     * 获取CPU列表
+     * 获取内存条
      */
-    getGraphicsList(page, pageSize) {
-        return request.get('http://localhost:3000/Graphics', {
+    getMemoryList(page, pageSize) {
+        return request.get('http://localhost:3000/Memory', {
             data: {
                 page,
                 pageSize
@@ -14,11 +14,11 @@ class Graphics {
     }
 
     /**
-     * 添加显卡
+     * 添加内存条
      * @param {*} data 
      */
-    createGraphics(data) {
-        return request.post(`http://localhost:3000/Graphics/add`, {
+    createMemory(data) {
+        return request.post(`http://localhost:3000/Memory/add`, {
             data: {
                 form: JSON.stringify(data)
             }
@@ -26,11 +26,11 @@ class Graphics {
     }
 
     /**
-     * 删除显卡
+     * 删除内存条
      * @param {*} id 
      */
-    delGraphics(id) {
-        return request.get(`http://localhost:3000/Graphics/del`, {
+    delMemory(id) {
+        return request.get(`http://localhost:3000/Memory/del`, {
             data: {
                 cid: id
             }
@@ -38,4 +38,4 @@ class Graphics {
     }
 }
 
-export default new Graphics();
+export default new Memory();

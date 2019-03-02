@@ -23,6 +23,11 @@ export default new Router({
             path: '/graphics',
             name: 'graphics',
             component: () => import( /* webpackChunkName: "graphics" */ './components/hardware/Graphics.vue'),
-        }
+        },
+        {
+            path: '/memory',
+            name: 'memory',
+            component: () => import( /* webpackChunkName: "memory" */ './components/hardware/Memory.vue'),
+        },
     ]
 });
