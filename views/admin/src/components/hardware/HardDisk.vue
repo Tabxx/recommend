@@ -13,7 +13,7 @@
       </el-row>
       <!-- ./操作栏 -->
 
-      <!-- 内存条列表 -->
+      <!-- 硬盘列表 -->
       <el-row>
         <el-col>
           <el-table :data="tableData"
@@ -31,7 +31,7 @@
                              width="70">
             </el-table-column>
             <el-table-column prop="name"
-                             label="内存条名称"
+                             label="硬盘名称"
                              width="480">
             </el-table-column>
             <el-table-column prop="brand"
@@ -43,15 +43,23 @@
                              width="120">
             </el-table-column>
             <el-table-column prop="capacity"
-                             label="内存容量"
+                             label="硬盘容量"
                              width="120">
             </el-table-column>
-            <el-table-column prop="frequency"
-                             label="内存频率"
+            <el-table-column prop="speed"
+                             label="转速"
                              width="120">
             </el-table-column>
-            <el-table-column prop="type"
-                             label="显存类型"
+            <el-table-column prop="cache"
+                             label="缓存"
+                             width="120">
+            </el-table-column>
+            <el-table-column prop="interface_rate"
+                             label="接口速率"
+                             width="120">
+            </el-table-column>
+            <el-table-column prop="interface_type"
+                             label="接口类型"
                              width="120">
             </el-table-column>
             <el-table-column fixed="right"
@@ -82,33 +90,33 @@
                      @current-change="updateData">
       </el-pagination>
 
-      <add-memory></add-memory>
+      <AddHardDisk></AddHardDisk>
     </el-col>
   </el-row>
 </template>
 
 <script>
-import AddMemory from '@/components/model/AddMemory.vue';
+import AddHardDisk from '@/components/model/AddHarddisk.vue';
 export default {
-  name: 'Memory',
+  name: 'HardDisk',
   components: {
-    AddMemory
+    AddHardDisk
   },
   created() {
     this.$eventBus.$on('resize', () => {
       this.loading = true;
-      this.getMemoryList();
+      this.getData();
     });
   },
   mounted() {
     // 获取内存条
-    this.getMemoryList();
+    this.getData();
   },
   methods: {
     // 获取内存条列表
-    getMemoryList() {
-      this.$api.memoryAPI
-        .getMemoryList(this.page, this.pageSize)
+    getData() {
+      this.$api.harddiskAPI
+        .getHarddiskList(this.page, this.pageSize)
         .then(res => {
           if (res.code === 0 && res.result && res.result.length) {
             this.total = res.msg;
@@ -117,7 +125,9 @@ export default {
               // 格式化数据
               item.price = `￥${item.price}`;
               item.capacity = `${item.capacity}GB`;
-              item.frequency = `${item.frequency}MHz`;
+              item.interface_rate = `${item.interface_rate}Gb/秒`;
+              item.cache = `${item.cache}M`;
+              item.speed = `${item.speed}rpm`;
               this.tableData.push(item);
             }
             this.loading = false;
@@ -151,11 +161,11 @@ export default {
     // 分页数据
     updateData(page) {
       this.page = page;
-      this.getMemoryList();
+      this.getData();
     },
     // 添加显卡
     addMemory() {
-      this.$eventBus.$emit('addMemory');
+      this.$eventBus.$emit('addHardDisk');
     },
     // 删除数据
     delItem(row) {
@@ -169,7 +179,7 @@ export default {
         cid = row.id;
       }
 
-      this.$api.memoryAPI.delMemory(cid).then(res => {
+      this.$api.harddiskAPI.delHarddisk(cid).then(res => {
         if (res.code == 0) {
           this.$notify({
             title: '成功',
@@ -177,7 +187,7 @@ export default {
             type: 'success'
           });
           // 重新请求数据
-          this.getMemoryList();
+          this.getData();
         } else {
           this.$notify({
             title: '失败',
@@ -197,21 +207,19 @@ export default {
       tableData: [],
       loading: true,
       rules: {
-        id: 'ID', // 内存条id
-        name: '内存条名称', //
-        brand: '品牌', //
-        price: '价格', //
-        type: '类型', //
-        capacity: '内存容量', //
-        image: '图片', //
-        frequency: '主频', //
-        status: '状态',
-        stitch_count: '针脚数', //
-        slot_type: '插槽类型', //
-        cl_delay: '插槽延迟', //
-        work_voltage: '工作电压', // （V）
-        radiating: '是否有散热片', //
-        tag: '标签'
+        "id": "ID",
+            "name": "名称",   // 
+            "brand": "品牌",    // 
+            "price": "价格",   // 价格
+            "capacity": "容量",    // 
+            "cache": "缓存",    // 
+            "speed": "转速",  // 
+            "image": "图片",  // 
+            "status": "状态",
+            "interface_type": "接口类型",    // 
+            "interface_rate": "接口速率",    // 6Gb/秒
+            "power": '功率',    //
+            "tag":"标签" 
       },
       page: 1,
       pageSize: 8,

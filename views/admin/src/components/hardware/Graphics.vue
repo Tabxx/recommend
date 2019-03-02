@@ -203,7 +203,7 @@ export default {
   data() {
     return {
       tableData: [],
-      loading: false,
+      loading: true,
       rules: {
         id: 'ID',
         name: '显卡名称',
@@ -231,7 +231,7 @@ export default {
       total: 0, // 显卡总数
       graphicsData: [],
       multipleSelection: [],
-      filter: ['id', 'image', 'status']
+      filter: ['id', 'image', 'status','hardware_name']
     };
   }
 };

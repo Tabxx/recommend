@@ -52,7 +52,8 @@ export default {
       let rules = {
         '/cpu': 'CPU管理',
         '/graphics': '显卡管理',
-        '/memory': '内存条管理'
+        '/memory': '内存条管理',
+        '/harddisk': '硬盘管理'
       };
       return rules[this.$route.path] || '';
     }

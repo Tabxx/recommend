@@ -7,8 +7,9 @@
     <el-form :inline="true"
              label-width="120px">
       <el-row>
-        <el-col :span="11"
+        <el-col 
                 v-for="(attr, index) in detail"
+                :span="attr.attr=='name'?24:12"
                 :key="index">
           <template v-if="!hide.includes(attr.attr)">
             <el-form-item :label="((rules && rules[attr.attr]) || attr.attr)+'：'">

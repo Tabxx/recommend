@@ -29,5 +29,10 @@ export default new Router({
             name: 'memory',
             component: () => import( /* webpackChunkName: "memory" */ './components/hardware/Memory.vue'),
         },
+        {
+            path: '/harddisk',
+            name: 'harddisk',
+            component: () => import( /* webpackChunkName: "harddisk" */ './components/hardware/HardDisk.vue'),
+        },
     ]
 });
