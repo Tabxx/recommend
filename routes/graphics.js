@@ -4,17 +4,18 @@ const query = require('../utils/query');
 const utils = require('../utils/utils');
 
 // 获取显卡列表
-router.get('/', async(ctx, next) => {
+router.get('/', async (ctx, next) => {
     let graphics = await utils.QUERY_HARDWARE(ctx, 'graphics');
+    let total = await utils.QUERY_COUNT('graphics', '*', 'status=1');
     ctx.body = {
         code: 0,
-        msg: '',
-        result: graphics
+        msg: total[0].total || 0,
+        result: graphics.length ? graphics : []
     };
 })
 
 // 获取显卡分类列表
-router.get('/gettypes', async(ctx, next) => {
+router.get('/gettypes', async (ctx, next) => {
     let types = [];
     // 获取分类字段
     let field = ctx.request.query.field;
@@ -35,6 +36,30 @@ router.get('/gettypes', async(ctx, next) => {
         msg: '',
         result: types
     };
+})
+
+// 添加显卡
+router.post('/add', async (ctx, next) => {
+    let Graphics_data = JSON.parse(ctx.request.body.form);
+    let key = Object.getOwnPropertyNames(Graphics_data)
+    let val = Object.values(Graphics_data)
+
+    let add_sql = sql.INERT_TABLE('graphics', key.join(','), val.map(item => `'${item}'`).join(','));
+    // 插入数据库
+    let result = await query.query(add_sql);
+    if (result.affectedRows == 1) {
+        ctx.body = {
+            code: 0,
+            msg: '添加成功',
+            result: result.insertId
+        }
+    } else {
+        ctx.body = {
+            code: 1,
+            msg: '添加失败',
+            result: null
+        }
+    }
 })
 
 module.exports = router;

@@ -1,5 +1,5 @@
 <template>
-  <el-dialog title="添加CPU"
+  <el-dialog title="添加显卡"
              :visible.sync="dialogFormVisible">
     <el-form :model="form"
              label-width="120px">
@@ -12,7 +12,7 @@
 
       <!-- 重要参数 -->
       <template v-if="addActive==1">
-        <el-form-item label="CPU名称">
+        <el-form-item label="显卡名称">
           <el-input v-model="form.name"
                     autocomplete="off"
                     clearable></el-input>
@@ -21,15 +21,7 @@
           <el-col :span="10">
             <el-input v-model="form.brand"
                       autocomplete="off"
-                      placeholder="AMD"
-                      clearable></el-input>
-          </el-col>
-        </el-form-item>
-        <el-form-item label="系列">
-          <el-col :span="10">
-            <el-input v-model="form.series"
-                      autocomplete="off"
-                      placeholder="酷睿i3"
+                      placeholder="影驰"
                       clearable></el-input>
           </el-col>
         </el-form-item>
@@ -48,52 +40,36 @@
                       autocomplete="off"></el-input>
           </el-col>
         </el-form-item>
+        <el-form-item label="显存容量">
+          <el-col :span="10">
+            <el-input v-model="form.capacity"
+                      autocomplete="off"
+                      placeholder="11(GB)"
+                      clearable></el-input>
+          </el-col>
+        </el-form-item>
+        <el-form-item label="显卡芯片">
+          <el-col :span="10">
+            <el-input v-model="form.chip"
+                      autocomplete="off"
+                      placeholder="GeForce GTX 1060"
+                      clearable></el-input>
+          </el-col>
+        </el-form-item>
 
-        <el-form-item label="CPU主频">
+        <el-form-item label="显示芯片系列">
+          <el-col :span="10">
+            <el-input v-model="form.chip_type"
+                      autocomplete="off"
+                      placeholder="NVIDIA RTX 20系列"
+                      clearable></el-input>
+          </el-col>
+        </el-form-item>
+        <el-form-item label="显存频率">
           <el-col :span="10">
             <el-input v-model="form.frequency"
                       autocomplete="off"
-                      placeholder="3.6(GHz)"
-                      clearable></el-input>
-          </el-col>
-        </el-form-item>
-
-        <el-form-item label="特性">
-          <el-select v-model="form.features"
-                     placeholder="特性">
-            <el-option label="高性能"
-                       value="高性能"></el-option>
-            <el-option label="中高性能"
-                       value="中高性能"></el-option>
-            <el-option label="中性能"
-                       value="中性能"></el-option>
-            <el-option label="中低性能"
-                       value="中低性能"></el-option>
-            <el-option label="低性能"
-                       value="低性能"></el-option>
-          </el-select>
-        </el-form-item>
-
-        <el-form-item label="插槽">
-          <el-col :span="10">
-            <el-input v-model="form.slot"
-                      autocomplete="off"
-                      clearable></el-input>
-          </el-col>
-        </el-form-item>
-        <el-form-item label="功耗">
-          <el-col :span="6">
-            <el-input v-model="form.power_consumption"
-                      autocomplete="off"
-                      placeholder="90(W)"
-                      clearable></el-input>
-          </el-col>
-        </el-form-item>
-        <el-form-item label="三级缓存">
-          <el-col :span="6">
-            <el-input v-model="form.tree_cache"
-                      autocomplete="off"
-                      placeholder="16(M)"
+                      placeholder="14000(MHz)"
                       clearable></el-input>
           </el-col>
         </el-form-item>
@@ -102,58 +78,50 @@
 
       <!-- 基础参数 -->
       <template v-if="addActive==2">
-        <el-form-item label="制作工艺">
-          <el-col :span="10">
-            <el-input v-model="form.process"
-                      autocomplete="off"
-                      placeholder="14纳米"
-                      clearable></el-input>
-          </el-col>
-        </el-form-item>
         <el-form-item label="核心代号">
           <el-col :span="10">
             <el-input v-model="form.core_code"
                       autocomplete="off"
+                      placeholder="TU102-300A"
                       clearable></el-input>
           </el-col>
         </el-form-item>
-        <el-form-item label="核心数量">
+        <el-form-item label="CUDA核心">
           <el-col :span="10">
-            <el-input v-model="form.core_number"
+            <el-input v-model="form.cuda"
                       autocomplete="off"
-                      placeholder="填数字，8"
                       clearable></el-input>
           </el-col>
         </el-form-item>
-        <el-form-item label="线程数量">
+        <el-form-item label="散热方式">
           <el-col :span="10">
-            <el-input v-model="form.threads_number"
+            <el-input v-model="form.radiating"
                       autocomplete="off"
-                      placeholder="填数字，16表示十六线程"
+                      placeholder="三风扇散热"
                       clearable></el-input>
           </el-col>
         </el-form-item>
-        <el-form-item label="最大内存">
-          <el-col :span="6">
-            <el-input v-model="form.max_memory"
-                      autocomplete="off"
-                      placeholder="64(GB)"
-                      clearable></el-input>
-          </el-col>
-        </el-form-item>
-        <el-form-item label="内存类型">
-          <el-col :span="20">
-            <el-input v-model="form.memory_type"
-                      autocomplete="off"
-                      placeholder="DDR4 2666MHz"
-                      clearable></el-input>
-          </el-col>
-        </el-form-item>
-        <el-form-item label="总线规格">
+        <el-form-item label="显存类型">
           <el-col :span="10">
-            <el-input v-model="form.bus_specification"
+            <el-input v-model="form.existing_type"
                       autocomplete="off"
-                      placeholder="DMI3 8GT/s"
+                      placeholder="GDDR6"
+                      clearable></el-input>
+          </el-col>
+        </el-form-item>
+        <el-form-item label="显存位宽">
+          <el-col :span="10">
+            <el-input v-model="form.bitwide"
+                      autocomplete="off"
+                      placeholder="352(Bit)"
+                      clearable></el-input>
+          </el-col>
+        </el-form-item>
+        <el-form-item label="最大分辨率">
+          <el-col :span="10">
+            <el-input v-model="form.max_resolution"
+                      autocomplete="off"
+                      placeholder="7680×4320"
                       clearable></el-input>
           </el-col>
         </el-form-item>
@@ -172,31 +140,42 @@
 
       <!-- 完成添加 -->
       <template v-if="addActive==3">
-        <el-form-item label="是否集成显卡">
-          <el-switch v-model="form.is_Integ_graphics"></el-switch>
+        <el-form-item label="特性">
+          <el-select v-model="form.type"
+                     placeholder="特性">
+            <el-option label="发烧级"
+                       value="发烧级"></el-option>
+            <el-option label="主流级"
+                       value="主流级"></el-option>
+            <el-option label="入门级"
+                       value="入门级"></el-option>
+            <el-option label="专业级"
+                       value="专业级"></el-option>
+            <el-option label="矿机显卡"
+                       value="矿机显卡"></el-option>
+          </el-select>
         </el-form-item>
-        <el-form-item label="集成显卡"
-                      v-show="form.is_Integ_graphics">
+        <el-form-item label="显卡接口类型">
           <el-col :span="10">
-            <el-input v-model="form.Integ_graphics"
+            <el-input v-model="form.graphics_interface_type"
                       autocomplete="off"
-                      placeholder="英特尔 超核芯显卡 630"
+                      placeholder="PCI Express 3.0 16X"
                       clearable></el-input>
           </el-col>
         </el-form-item>
-        <el-form-item label="最大动态频率">
+        <el-form-item label="I/O接口">
           <el-col :span="10">
-            <el-input v-model="form.graphics_max_frequency"
+            <el-input v-model="form.io_interface"
                       autocomplete="off"
-                      placeholder="1.2(GHZ)"
+                      placeholder="HDMI接口，3×DisplayPort接口，USB Type-C接口"
                       clearable></el-input>
           </el-col>
         </el-form-item>
-        <el-form-item label="基本频率">
+        <el-form-item label="电源">
           <el-col :span="10">
-            <el-input v-model="form.graphice_base_frequency"
+            <el-input v-model="form.power"
                       autocomplete="off"
-                      placeholder="350(MHz)"
+                      placeholder="8pin"
                       clearable></el-input>
           </el-col>
         </el-form-item>
@@ -242,32 +221,29 @@ export default {
         name: '',
         brand: '',
         price: '',
-        series: '',
-        features: '',
-        slot: '',
-        tag: [],
-        image: '',
-        process: '',
-        frequency: '',
-        core_code: '',
-        core_number: '',
-        threads_number: '',
-        power_consumption: '',
-        max_memory: '',
-        bus_specification: '',
-        tree_cache: '',
-        memory_type: '',
-        is_Integ_graphics: false,
-        graphics_max_frequency: '',
-        graphice_base_frequency: '',
-        Integ_graphics: ''
+        capacity: '',
+        chip: '', //
+        image: '', //
+        type: '', // 显卡
+        chip_type: '', //
+        core_code: '', //
+        cuda: '', //
+        frequency: '', //
+        existing_type: '', //
+        bitwide: '', //
+        max_resolution: '', //
+        graphics_interface_type: '',
+        io_interface: '', //
+        power: '', //
+        radiating: '',
+        tag: []
       },
       addActive: 1,
       fileList: []
     };
   },
   created() {
-    this.$eventBus.$on('addCpu', () => {
+    this.$eventBus.$on('addGraphics', () => {
       this.init();
     });
   },
@@ -277,7 +253,7 @@ export default {
     }
   },
   methods: {
-    init(cpu) {
+    init() {
       this.dialogFormVisible = true;
     },
     // 下一步
@@ -297,14 +273,14 @@ export default {
       });
       this.form.tag = tags.join(',');
 
-      this.$api.cpuAPI.createCPU(this.form).then(res => {
+      this.$api.graphicsAPI.createGraphics(this.form).then(res => {
         if (res.code == 0) {
           this.dialogFormVisible = false;
           // 初始化数据
           this.initData();
           this.$notify({
             title: '成功',
-            message: 'CPU添加成功，请在列表也刷新查看',
+            message: '显卡添加成功，请在列表也刷新查看',
             type: 'success'
           });
           this.$eventBus.$emit('resize');
@@ -314,28 +290,27 @@ export default {
     // 初始化数据
     initData() {
       this.form = {
+        id: '',
         name: '',
         brand: '',
         price: '',
-        series: '',
-        features: '',
-        slot: '',
-        tag: [],
-        image: '',
-        process: '',
-        frequency: '',
-        core_code: '',
-        core_number: '',
-        threads_number: '',
-        power_consumption: '',
-        max_memory: '',
-        bus_specification: '',
-        tree_cache: '',
-        memory_type: '',
-        is_Integ_graphics: false,
-        graphics_max_frequency: '',
-        graphice_base_frequency: '',
-        Integ_graphics: ''
+        capacity: '',
+        chip: '', //
+        image: '', //
+        type: '', // 显卡
+        status: '',
+        chip_type: '', //
+        core_code: '', //
+        cuda: '', //
+        frequency: '', //
+        existing_type: '', //
+        bitwide: '', //
+        max_resolution: '', //
+        graphics_interface_type: '',
+        io_interface: '', //
+        power: '', //
+        radiating: '',
+        tag: []
       };
       this.addActive = 1;
       this.fileList = [];
@@ -351,7 +326,7 @@ export default {
     }
   },
   beforeDestroy() {
-    this.$eventBus.$off('addCpu');
+    this.$eventBus.$off('addGraphics');
   }
 };
 </script>

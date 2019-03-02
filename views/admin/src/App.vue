@@ -29,11 +29,16 @@
 </template>
 
 <script>
-import Nav from "@/components/common/Nav.vue";
-import Headbox from "@/components/common/Head.vue";
-import DetaileInfo from "@/components/common/DetaileInfo.vue";
+import Nav from '@/components/common/Nav.vue';
+import Headbox from '@/components/common/Head.vue';
+import DetaileInfo from '@/components/common/DetaileInfo.vue';
 export default {
-  name: "app",
+  name: 'app',
+  data() {
+    return {
+      path: '/'
+    };
+  },
   components: {
     NavTree: Nav,
     Headbox,
@@ -42,21 +47,22 @@ export default {
   mounted() {
     this.getTags();
   },
+  computed: {
+    navtitle() {
+      let rules = {
+        '/cpu': 'CPU管理',
+        '/graphics': '显卡管理'
+      };
+      return rules[this.$route.path] || '';
+    }
+  },
   methods: {
     getTags() {
       this.$api.userAPI.getTags().then(res => {
         if (res.code == 0 && res.result && res.result.length) {
-          this.$store.commit("setTag", res.result);
+          this.$store.commit('setTag', res.result);
         }
       });
-    }
-  },
-  computed: {
-    navtitle() {
-      let rules = {
-        "/cpu": "CPU管理"
-      };
-      return rules[this.$route.path] || "";
     }
   }
 };
@@ -68,7 +74,7 @@ body {
   padding: 0;
 }
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
@@ -92,5 +98,9 @@ body {
 }
 ::-webkit-scrollbar-corner {
   background: rgba(48, 48, 48, 0);
+}
+
+.mb-15 {
+  margin-bottom: 15px;
 }
 </style>

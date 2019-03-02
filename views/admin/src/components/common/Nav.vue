@@ -1,7 +1,7 @@
 <template>
   <el-row class="tac h-100">
     <el-col class="h-100">
-      <el-menu default-active=$route.path
+      <el-menu :default-active="path"
                class="el-menu-vertical-demo h-100"
                @open="handleOpen"
                @close="handleClose"
@@ -42,17 +42,27 @@
 
 <script>
 export default {
-  name: "Nav",
+  name: 'Nav',
   data() {
     return {
       hardware: [
-        { name: "CPU", url: "/cpu" },
-        { name: "显卡", url: "/graphics" },
-        { name: "主板", url: "/mainboard" },
-        { name: "内存条", url: "/memory" },
-        { name: "硬盘", url: "/harddisk" }
-      ]
+        { name: 'CPU', url: '/cpu' },
+        { name: '显卡', url: '/graphics' },
+        { name: '主板', url: '/mainboard' },
+        { name: '内存条', url: '/memory' },
+        { name: '硬盘', url: '/harddisk' }
+      ],
+      path: '/'
     };
+  },
+  watch: {
+    $route: {
+      handler(newval, oldval) {
+        this.path = newval.path;
+      },
+      deep: true,
+      immediate: true
+    }
   },
   methods: {
     handleOpen(key, keyPath) {

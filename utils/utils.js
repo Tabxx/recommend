@@ -28,7 +28,7 @@ const QUERY_HARDWARE = async (ctx, tablename) => {
         params['pageSize'] = params['pageSize'] || 10;
         limit = ` limit ${(params['page']-1) * params['pageSize']},${params['pageSize']}`
     }
-
+    where.push(`status=1`);
     // 查询符合条件的列表
     let lists = await query.query(sql.QUERY_TABLE(tablename, '*', where.join(' AND ')) + limit)
 

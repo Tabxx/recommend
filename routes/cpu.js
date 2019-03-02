@@ -63,4 +63,38 @@ router.post('/add', async (ctx, next) => {
     }
 })
 
+// 删除CPU
+router.get('/del', async (ctx, next) => {
+    let {
+        cid
+    } = ctx.request.query;
+
+    // 缺少参数
+    if (!cid) {
+        ctx.body = {
+            code: 0,
+            msg: '缺少参数',
+            result: null
+        }
+        return;
+    }
+
+    let result = await query.query(sql.UPDATE_TABLE('cpu', 'status = 0', `id IN (${cid})`));
+    // 删除成功
+    if (result.affectedRows) {
+        ctx.body = {
+            code: 0,
+            msg: "删除成功",
+            result: null
+        }
+    } else {
+        ctx.body = {
+            code: 1,
+            msg: "删除失败",
+            result: null
+        }
+    }
+
+
+})
 module.exports = router

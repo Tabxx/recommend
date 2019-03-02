@@ -18,6 +18,11 @@ export default new Router({
             path: '/cpu',
             name: 'cpu',
             component: () => import( /* webpackChunkName: "cpu" */ './components/hardware/Cpu.vue'),
+        },
+        {
+            path: '/graphics',
+            name: 'graphics',
+            component: () => import( /* webpackChunkName: "graphics" */ './components/hardware/Graphics.vue'),
         }
     ]
 });

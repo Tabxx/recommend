@@ -339,7 +339,7 @@ $(document).ready(function () {
                 getComment();
 
                 // 发送用户行为
-                UserAction(id);
+                UserAction(a.tag);
             },
             error: function (error) {
                 alert('失败');

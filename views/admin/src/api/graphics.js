@@ -1,11 +1,11 @@
 import request from './request/fetch';
 
-class CPU {
+class Graphics {
     /**
      * 获取CPU列表
      */
-    getCpuList(page, pageSize) {
-        return request.get('http://localhost:3000/cpu', {
+    getGraphicsList(page, pageSize) {
+        return request.get('http://localhost:3000/Graphics', {
             data: {
                 page,
                 pageSize
@@ -14,11 +14,11 @@ class CPU {
     }
 
     /**
-     * 添加CPU
+     * 添加显卡
      * @param {*} data 
      */
-    createCPU(data) {
-        return request.post(`http://localhost:3000/cpu/add`, {
+    createGraphics(data) {
+        return request.post(`http://localhost:3000/Graphics/add`, {
             data: {
                 form: JSON.stringify(data)
             }
@@ -38,4 +38,4 @@ class CPU {
     }
 }
 
-export default new CPU();
+export default new Graphics();
