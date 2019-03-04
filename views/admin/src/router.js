@@ -34,5 +34,10 @@ export default new Router({
             name: 'harddisk',
             component: () => import( /* webpackChunkName: "harddisk" */ './components/hardware/HardDisk.vue'),
         },
+        {
+            path: '/mainboard',
+            name: 'mainboard',
+            component: () => import( /* webpackChunkName: "mainboard" */ './components/hardware/MainBoard.vue'),
+        }
     ]
 });

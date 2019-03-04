@@ -1,5 +1,5 @@
 <template>
-  <el-dialog title="添加显卡"
+  <el-dialog title="添加内存条"
              :visible.sync="dialogFormVisible">
     <el-form :model="form"
              label-width="120px">
@@ -152,11 +152,11 @@
 </template>
 
 <script>
+import addItem from '@/mixins/addItem.js';
 export default {
   name: 'AddMemory',
   data() {
     return {
-      dialogFormVisible: false,
       form: {
         name: '', // 内存条名称
         brand: '', // 品牌
@@ -170,91 +170,12 @@ export default {
         cl_delay: '', // 插槽延迟
         work_voltage: '', // 工作电压（V）
         radiating: false, // 是否有散热片，1-有，0-没有
-        tag: []
-      },
-      addActive: 1,
-      fileList: []
+        tag: [],
+        url: 'memory'
+      }
     };
   },
-  created() {
-    this.$eventBus.$on('addMemory', () => {
-      this.init();
-    });
-  },
-  computed: {
-    tags() {
-      return this.$store.state.Tag;
-    }
-  },
-  methods: {
-    init() {
-      this.dialogFormVisible = true;
-    },
-    // 下一步
-    nextStep() {
-      this.addActive++;
-    },
-    // 上一步
-    preStep() {
-      this.addActive--;
-    },
-    // 提交表单
-    submitCPU() {
-      // 标签参数处理为字符串
-      let tags = [];
-      this.form.tag.map(item => {
-        tags.push(this.tags.find(t => t.name == item).tid);
-      });
-      this.form.tag = tags.join(',');
-      this.form.radiating = Number(this.form.radiating);
-
-      this.$api.memoryAPI.createMemory(this.form).then(res => {
-        if (res.code == 0) {
-          this.dialogFormVisible = false;
-          // 初始化数据
-          this.initData();
-          this.$notify({
-            title: '成功',
-            message: '显卡添加成功，请在列表也刷新查看',
-            type: 'success'
-          });
-          this.$eventBus.$emit('resize');
-        }
-      });
-    },
-    // 初始化数据
-    initData() {
-      this.form = {
-        name: '', // 内存条名称
-        brand: '', // 品牌
-        price: '', // 价格
-        type: '', // 类型
-        capacity: '', // 内存容量
-        image: '', // 图片
-        frequency: '', // 主频
-        stitch_count: '', // 针脚数pin
-        slot_type: '', // 插槽类型
-        cl_delay: '', // 插槽延迟
-        work_voltage: '', // 工作电压（V）
-        radiating: false, // 是否有散热片，1-有，0-没有
-        tag: []
-      };
-      this.addActive = 1;
-      this.fileList = [];
-    },
-    handleRemove(file, fileList) {
-      console.log(file, fileList);
-    },
-    handlePreview(file) {
-      console.log(file);
-    },
-    upload(response, file, fileList) {
-      this.form.image = `http://localhost:3000${response.result}`;
-    }
-  },
-  beforeDestroy() {
-    this.$eventBus.$off('addMemory');
-  }
+  mixins: [addItem]
 };
 </script>
 

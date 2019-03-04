@@ -8,6 +8,7 @@ const list = require('./list');
 const user = require('./user');
 const upload = require('./upload');
 const comment = require('./comment');
+const admin = require('./admin');
 
 // CPU
 router.use('/cpu', cpu.routes());
@@ -27,6 +28,8 @@ router.use('/user', user.routes());
 router.use('/upload', upload.routes());
 // 评论
 router.use('/comment', comment.routes());
+// 管理员相关
+router.use('/admin', admin.routes());
 
 router.get('/', async (ctx, next) => {
     await ctx.render('index', {

@@ -2,10 +2,14 @@ import request from './request/fetch';
 
 class CPU {
     /**
-     * 获取CPU列表
+     * 获取硬件列表
      */
-    getCpuList(page, pageSize) {
-        return request.get('http://localhost:3000/cpu', {
+    getList({
+        url = 'cpu',
+        page = 1,
+        pageSize = 10
+    }) {
+        return request.get(`http://localhost:3000/${url}`, {
             data: {
                 page,
                 pageSize
@@ -14,11 +18,11 @@ class CPU {
     }
 
     /**
-     * 添加CPU
+     * 添加硬件
      * @param {*} data 
      */
-    createCPU(data) {
-        return request.post(`http://localhost:3000/cpu/add`, {
+    createItem(url, data) {
+        return request.post(`http://localhost:3000/${url}/add`, {
             data: {
                 form: JSON.stringify(data)
             }
@@ -26,11 +30,14 @@ class CPU {
     }
 
     /**
-     * 删除cpu
+     * 删除硬件
      * @param {*} id 
      */
-    delCPU(id) {
-        return request.get(`http://localhost:3000/cpu/del`, {
+    delItem({
+        url,
+        id
+    }) {
+        return request.get(`http://localhost:3000/${url}/del`, {
             data: {
                 cid: id
             }

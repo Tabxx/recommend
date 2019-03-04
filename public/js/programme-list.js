@@ -1,7 +1,8 @@
 $(document).ready(function () {
     // 节点取的有问题
     var programmes = $('#programme>div');
-    for (var programme of programmes) {
+
+    for (let programme of programmes) {
         var type;
         var sortby = 0;
         var mhtml = '';
@@ -28,18 +29,18 @@ $(document).ready(function () {
             tyep: 'get',
             dataType: 'json',
             success: function (result) {
+                mhtml = '';
                 for (var list of result.result) {
                     mhtml += ` <div class="row mt-3 pb-3 border-bottom">
-              <div class="col-4">
+              <div class="col-2">
                   <img src="/img/display.png" alt="">
-                  <img src="/img/chassis.png" alt="">
               </div>
-              <div class="col-6 p-0 text_small">
+              <div class="col-8 p-0 text_small">
                   <h6>${list.intro}</h6>
                   <ul class="list-unstyled d-flex mb-1">
                       <li class="mr-5"><img src="/img/message.png" alt="">${list.name}</li>
-                      <li class="mr-5"><img src="/img/user-icon.png" alt="">${list.userid}</li>
-                      <li class="mr-5"><img src="/img/time.png" alt="">${list.time}</li>
+                      <li class="mr-5"><img src="/img/user-icon.png" alt="">${list.username}</li>
+                      <li class="mr-5"><img src="/img/time.png" alt="">${new Date(list.time*1000).format('yyyy-MM-dd hh:mm:ss')}</li>
                   </ul>
                   <div class="row">
                       <div class="col-6">C P U: ${list.cpu}</div>
@@ -54,7 +55,8 @@ $(document).ready(function () {
               </div>
       </div>`;
                 }
-                console.log(mhtml);
+                $(programme).html(mhtml);
+                // console.log(programme);
             },
             error: function (error) {
                 console.log(error);
@@ -62,6 +64,6 @@ $(document).ready(function () {
             }
         })
         // 这里一定比请求里面先执行
-        $(programme).html(mhtml);
+        // $(programme).html(mhtml);
     }
 })

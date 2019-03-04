@@ -1,5 +1,5 @@
 <template>
-  <el-dialog title="添加硬盘"
+  <el-dialog title="添加主板"
              :visible.sync="dialogFormVisible">
     <el-form :model="form"
              label-width="120px">
@@ -12,7 +12,7 @@
 
       <!-- 重要参数 -->
       <template v-if="addActive==1">
-        <el-form-item label="硬盘名称">
+        <el-form-item label="主板名称">
           <el-input v-model="form.name"
                     autocomplete="off"
                     clearable></el-input>
@@ -21,7 +21,7 @@
           <el-col :span="10">
             <el-input v-model="form.brand"
                       autocomplete="off"
-                      placeholder="影驰"
+                      placeholder="AMD"
                       clearable></el-input>
           </el-col>
         </el-form-item>
@@ -40,11 +40,40 @@
                       autocomplete="off"></el-input>
           </el-col>
         </el-form-item>
-        <el-form-item label="硬盘容量">
+
+        <el-form-item label="CPU插槽">
           <el-col :span="10">
-            <el-input v-model="form.capacity"
+            <el-input v-model="form.cpu_slot"
                       autocomplete="off"
-                      placeholder="11(GB)"
+                      clearable></el-input>
+          </el-col>
+        </el-form-item>
+
+        <el-form-item label="板型">
+          <el-col :span="10">
+            <el-input v-model="form.version"
+                      autocomplete="off"
+                      clearable></el-input>
+          </el-col>
+        </el-form-item>
+        <el-form-item label="主芯片组">
+          <el-col :span="10">
+            <el-input v-model="form.chipset"
+                      autocomplete="off"
+                      clearable></el-input>
+          </el-col>
+        </el-form-item>
+        <el-form-item label="显示芯片">
+          <el-col :span="20">
+            <el-input v-model="form.display_chip"
+                      autocomplete="off"
+                      clearable></el-input>
+          </el-col>
+        </el-form-item>
+        <el-form-item label="音频芯片">
+          <el-col :span="20">
+            <el-input v-model="form.audio_chips"
+                      autocomplete="off"
                       clearable></el-input>
           </el-col>
         </el-form-item>
@@ -53,44 +82,56 @@
 
       <!-- 基础参数 -->
       <template v-if="addActive==2">
-        <el-form-item label="缓存">
-          <el-col :span="10">
-            <el-input v-model="form.cache"
+        <el-form-item label="网卡芯片">
+          <el-col :span="20">
+            <el-input v-model="form.network_chip"
                       autocomplete="off"
-                      placeholder="64(MB)"
                       clearable></el-input>
           </el-col>
         </el-form-item>
-        <el-form-item label="转速">
-          <el-col :span="10">
-            <el-input v-model="form.speed"
+        <el-form-item label="CPU类型">
+          <el-col :span="24">
+            <el-input v-model="form.cpu_type"
                       autocomplete="off"
-                      placeholder="7200(rpm)"
                       clearable></el-input>
           </el-col>
         </el-form-item>
-        <el-form-item label="接口类型">
+        <el-form-item label="内存类型">
           <el-col :span="10">
-            <el-input v-model="form.interface_type"
+            <el-input v-model="form.memory_type"
                       autocomplete="off"
-                      placeholder="SATA3.0"
                       clearable></el-input>
           </el-col>
         </el-form-item>
-        <el-form-item label="接口速率">
+        <el-form-item label="内存大小">
           <el-col :span="10">
-            <el-input v-model="form.interface_rate"
+            <el-input v-model="form.memory_size"
                       autocomplete="off"
-                      placeholder="6(Gb/秒)"
+                      placeholder="8(GB)"
                       clearable></el-input>
           </el-col>
         </el-form-item>
-      </template>
-      <!-- ./基础参数 -->
-
-      <!-- 完成添加 -->
-      <template v-if="addActive==3">
-
+        <el-form-item label="PCI-E标准">
+          <el-col :span="10">
+            <el-input v-model="form.pcie"
+                      autocomplete="off"
+                      clearable></el-input>
+          </el-col>
+        </el-form-item>
+        <el-form-item label="PCI-E插槽">
+          <el-col :span="20">
+            <el-input v-model="form.pcie_slot"
+                      autocomplete="off"
+                      clearable></el-input>
+          </el-col>
+        </el-form-item>
+        <el-form-item label="存储接口">
+          <el-col :span="24">
+            <el-input v-model="form.storage_interface"
+                      autocomplete="off"
+                      clearable></el-input>
+          </el-col>
+        </el-form-item>
         <el-form-item label="标签">
           <el-checkbox-group v-model="form.tag">
             <el-col v-for="(item, index) in tags"
@@ -101,11 +142,36 @@
             </el-col>
           </el-checkbox-group>
         </el-form-item>
-        <el-form-item label="功率">
-          <el-col :span="10">
-            <el-input v-model="form.power"
+      </template>
+      <!-- ./基础参数 -->
+
+      <!-- 完成添加 -->
+      <template v-if="addActive==3">
+        <el-form-item label="USB接口">
+          <el-col :span="24">
+            <el-input v-model="form.usb_interface"
                       autocomplete="off"
-                      placeholder="12(W)"
+                      clearable></el-input>
+          </el-col>
+        </el-form-item>
+        <el-form-item label="视频接口">
+          <el-col :span="24">
+            <el-input v-model="form.video_interface"
+                      autocomplete="off"
+                      clearable></el-input>
+          </el-col>
+        </el-form-item>
+        <el-form-item label="电源接口">
+          <el-col :span="24">
+            <el-input v-model="form.power_interface"
+                      autocomplete="off"
+                      clearable></el-input>
+          </el-col>
+        </el-form-item>
+        <el-form-item label="供电模式">
+          <el-col :span="10">
+            <el-input v-model="form.power_mode"
+                      autocomplete="off"
                       clearable></el-input>
           </el-col>
         </el-form-item>
@@ -145,23 +211,33 @@
 import addItem from '@/mixins/addItem.js';
 
 export default {
-  name: 'AddHarddisk',
+  name: 'AddMainBoard',
   data() {
     return {
       form: {
-        name: '', // 名称
-        brand: '', // 品牌
-        price: '', // 价格
-        capacity: '', // 容量
-        cache: '', // 缓存
-        speed: '', // 转速
-        image: '', // 图片
-        interface_type: '', // 接口类型
-        interface_rate: '', // 接口速率6Gb/秒
-        power: '', // 功率
+        name: '',
+        brand: '',
+        price: '',
+        cpu_slot: '',
+        version: '',
+        chipset: '', //
+        image: [], //
+        display_chip: '', //
+        audio_chips: '', //
+        network_chip: '', //
+        cpu_type: '', //
+        memory_type: '', //
+        memory_size: '', //
+        pcie: '', //
+        pcie_slot: '', //
+        storage_interface: '', //
+        usb_interface: '', //
+        video_interface: '', //
+        power_interface: '', //
+        power_mode: '', //
         tag: []
       },
-      url: 'harddisk'
+      url: 'mainboard'
     };
   },
   mixins: [addItem]

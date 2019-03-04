@@ -1,14 +1,10 @@
-import cpuAPI from './CPU';
 import userAPI from './user';
-import graphicsAPI from './graphics';
-import memoryAPI from './memory';
-import harddiskAPI from './harddisk';
+import hardwareAPI from './hardware';
+import chartsAPI from './charts';
 
 const api = {
-  cpuAPI,
   userAPI,
-  graphicsAPI,
-  memoryAPI,
-  harddiskAPI
+  hardwareAPI,
+  chartsAPI
 };
 export default api;
