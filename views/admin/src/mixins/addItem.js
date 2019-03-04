@@ -37,7 +37,7 @@ export default {
             });
             this.form.tag = tags.join(',');
 
-            this.$api.cpuAPI.createCPU(this.form).then(res => {
+            this.$api.hardwareAPI.createItem(this.url, this.form).then(res => {
                 if (res.code == 0) {
                     this.dialogFormVisible = false;
                     // 初始化数据
