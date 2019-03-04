@@ -233,11 +233,12 @@
 </template>
 
 <script>
+import addItem from '@/mixins/addItem.js';
+
 export default {
   name: 'AddCPU',
   data() {
     return {
-      dialogFormVisible: false,
       form: {
         name: '',
         brand: '',
@@ -261,98 +262,10 @@ export default {
         graphics_max_frequency: '',
         graphice_base_frequency: '',
         Integ_graphics: ''
-      },
-      addActive: 1,
-      fileList: []
+      }
     };
   },
-  created() {
-    this.$eventBus.$on('addCpu', () => {
-      this.init();
-    });
-  },
-  computed: {
-    tags() {
-      return this.$store.state.Tag;
-    }
-  },
-  methods: {
-    init(cpu) {
-      this.dialogFormVisible = true;
-    },
-    // 下一步
-    nextStep() {
-      this.addActive++;
-    },
-    // 上一步
-    preStep() {
-      this.addActive--;
-    },
-    // 提交表单
-    submitCPU() {
-      // 标签参数处理为字符串
-      let tags = [];
-      this.form.tag.map(item => {
-        tags.push(this.tags.find(t => t.name == item).tid);
-      });
-      this.form.tag = tags.join(',');
-
-      this.$api.cpuAPI.createCPU(this.form).then(res => {
-        if (res.code == 0) {
-          this.dialogFormVisible = false;
-          // 初始化数据
-          this.initData();
-          this.$notify({
-            title: '成功',
-            message: 'CPU添加成功，请在列表也刷新查看',
-            type: 'success'
-          });
-          this.$eventBus.$emit('resize');
-        }
-      });
-    },
-    // 初始化数据
-    initData() {
-      this.form = {
-        name: '',
-        brand: '',
-        price: '',
-        series: '',
-        features: '',
-        slot: '',
-        tag: [],
-        image: '',
-        process: '',
-        frequency: '',
-        core_code: '',
-        core_number: '',
-        threads_number: '',
-        power_consumption: '',
-        max_memory: '',
-        bus_specification: '',
-        tree_cache: '',
-        memory_type: '',
-        is_Integ_graphics: false,
-        graphics_max_frequency: '',
-        graphice_base_frequency: '',
-        Integ_graphics: ''
-      };
-      this.addActive = 1;
-      this.fileList = [];
-    },
-    handleRemove(file, fileList) {
-      console.log(file, fileList);
-    },
-    handlePreview(file) {
-      console.log(file);
-    },
-    upload(response, file, fileList) {
-      this.form.image = `http://localhost:3000${response.result}`;
-    }
-  },
-  beforeDestroy() {
-    this.$eventBus.$off('addCpu');
-  }
+  mixins: [addItem]
 };
 </script>
 

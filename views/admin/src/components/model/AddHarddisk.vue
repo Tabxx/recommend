@@ -90,7 +90,7 @@
 
       <!-- 完成添加 -->
       <template v-if="addActive==3">
-        
+
         <el-form-item label="标签">
           <el-checkbox-group v-model="form.tag">
             <el-col v-for="(item, index) in tags"
@@ -142,104 +142,28 @@
 </template>
 
 <script>
+import addItem from '@/mixins/addItem.js';
+
 export default {
   name: 'AddHarddisk',
   data() {
     return {
-      dialogFormVisible: false,
       form: {
-            "name": "",   // 名称
-            "brand": "",    // 品牌
-            "price": "",   // 价格
-            "capacity": "",    // 容量
-            "cache": "",    // 缓存
-            "speed": "",  // 转速
-            "image": "",  // 图片
-            "interface_type": "",    // 接口类型
-            "interface_rate": "",    // 接口速率6Gb/秒
-            "power": '',    // 功率
+        name: '', // 名称
+        brand: '', // 品牌
+        price: '', // 价格
+        capacity: '', // 容量
+        cache: '', // 缓存
+        speed: '', // 转速
+        image: '', // 图片
+        interface_type: '', // 接口类型
+        interface_rate: '', // 接口速率6Gb/秒
+        power: '', // 功率
         tag: []
-      },
-      addActive: 1,
-      fileList: []
+      }
     };
   },
-  created() {
-    this.$eventBus.$on('addHardDisk', () => {
-      this.init();
-    });
-  },
-  computed: {
-    tags() {
-      return this.$store.state.Tag;
-    }
-  },
-  methods: {
-    init() {
-      this.dialogFormVisible = true;
-    },
-    // 下一步
-    nextStep() {
-      this.addActive++;
-    },
-    // 上一步
-    preStep() {
-      this.addActive--;
-    },
-    // 提交表单
-    submitCPU() {
-      // 标签参数处理为字符串
-      let tags = [];
-      this.form.tag.map(item => {
-        tags.push(this.tags.find(t => t.name == item).tid);
-      });
-      this.form.tag = tags.join(',');
-
-      this.$api.harddiskAPI.createHarddisk(this.form).then(res => {
-        if (res.code == 0) {
-          this.dialogFormVisible = false;
-          // 初始化数据
-          this.initData();
-          this.$notify({
-            title: '成功',
-            message: '显卡添加成功，请在列表也刷新查看',
-            type: 'success'
-          });
-          this.$eventBus.$emit('resize');
-        }
-      });
-    },
-    // 初始化数据
-    initData() {
-      this.form = {
-        "name": "",   // 名称
-            "brand": "",    // 品牌
-            "price": "",   // 价格
-            "capacity": "",    // 容量
-            "cache": "",    // 缓存
-            "speed": "",  // 转速
-            "image": "",  // 图片
-            "interface_type": "",    // 接口类型
-            "interface_rate": "",    // 接口速率6Gb/秒
-            "power": '',    // 功率
-        tag: []
-      };
-      this.addActive = 1;
-      this.fileList = [];
-    },
-    handleRemove(file, fileList) {
-      console.log(file, fileList);
-    },
-    handlePreview(file) {
-      console.log(file);
-    },
-    upload(response, file, fileList) {
-      this.form.image = `http://localhost:3000${response.result}`;
-    }
-  },
-  beforeDestroy() {
-    this.$eventBus.$off('addHardDisk');
-  }
+  mixins: [addItem]
 };
 </script>
 

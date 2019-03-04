@@ -6,7 +6,7 @@
         <el-col>
           <el-button>全选</el-button>
           <el-button type="primary"
-                     @click="addMemory">添加</el-button>
+                     @click="addItem">添加</el-button>
           <el-button type="danger"
                      @click="delItem()">删除</el-button>
         </el-col>
@@ -89,113 +89,15 @@
 
 <script>
 import AddMemory from '@/components/model/AddMemory.vue';
+import detail from '@/mixins/detail.js';
+
 export default {
   name: 'Memory',
   components: {
     AddMemory
   },
-  created() {
-    this.$eventBus.$on('resize', () => {
-      this.loading = true;
-      this.getMemoryList();
-    });
-  },
-  mounted() {
-    // 获取内存条
-    this.getMemoryList();
-  },
-  methods: {
-    // 获取内存条列表
-    getMemoryList() {
-      this.$api.memoryAPI
-        .getMemoryList(this.page, this.pageSize)
-        .then(res => {
-          if (res.code === 0 && res.result && res.result.length) {
-            this.total = res.msg;
-            this.tableData = [];
-            for (let item of res.result) {
-              // 格式化数据
-              item.price = `￥${item.price}`;
-              item.capacity = `${item.capacity}GB`;
-              item.frequency = `${item.frequency}MHz`;
-              this.tableData.push(item);
-            }
-            this.loading = false;
-          } else {
-            this.loading = false;
-          }
-        })
-        .catch(error => {
-          console.log(error);
-          this.loading = false;
-        });
-    },
-    // 查看内存条
-    handleClick(row) {
-      // 初始化弹窗数据
-      this.memoryData = [];
-      for (let item in row) {
-        this.memoryData.push({
-          value: row[item],
-          attr: item
-        });
-      }
-      // 显示模态框
-      this.$eventBus.$emit('openDialog', {
-        data: this.memoryData,
-        rules: this.rules,
-        show: true,
-        filter: this.filter
-      });
-    },
-    // 分页数据
-    updateData(page) {
-      this.page = page;
-      this.getMemoryList();
-    },
-    // 添加显卡
-    addMemory() {
-      this.$eventBus.$emit('addMemory');
-    },
-    // 删除数据
-    delItem(row) {
-      let cid = null;
-
-      if (!row) {
-        cid = [];
-        this.multipleSelection.map(item => cid.push(item.id));
-        cid = cid.join(',');
-      } else {
-        cid = row.id;
-      }
-
-      this.$api.memoryAPI.delMemory(cid).then(res => {
-        if (res.code == 0) {
-          this.$notify({
-            title: '成功',
-            message: '删除成功',
-            type: 'success'
-          });
-          // 重新请求数据
-          this.getMemoryList();
-        } else {
-          this.$notify({
-            title: '失败',
-            message: '删除失败',
-            type: 'error'
-          });
-        }
-      });
-    },
-    // 选中状态改变
-    handleSelectionChange(val) {
-      this.multipleSelection = val;
-    }
-  },
   data() {
     return {
-      tableData: [],
-      loading: true,
       rules: {
         id: 'ID', // 内存条id
         name: '内存条名称', //
@@ -213,19 +115,13 @@ export default {
         radiating: '是否有散热片', //
         tag: '标签'
       },
-      page: 1,
-      pageSize: 8,
-      total: 0, // 显卡总数
-      memoryData: [],
-      multipleSelection: [],
-      filter: ['id', 'image', 'status', 'hardware_name', 'tag']
+      filter: ['id', 'image', 'status', 'hardware_name', 'tag'],
+      url: 'memory'
     };
-  }
+  },
+  mixins: [detail]
 };
 </script>
 
 <style scoped>
-.mb-15 {
-  margin-bottom: 15px;
-}
 </style>

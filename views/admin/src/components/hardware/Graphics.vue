@@ -6,7 +6,7 @@
         <el-col>
           <el-button>全选</el-button>
           <el-button type="primary"
-                     @click="addGraphics">添加</el-button>
+                     @click="addItem">添加</el-button>
           <el-button type="danger"
                      @click="delItem()">删除</el-button>
         </el-col>
@@ -32,18 +32,21 @@
             </el-table-column>
             <el-table-column prop="name"
                              label="显卡名称"
-                             width="280">
+                             width="310">
             </el-table-column>
             <el-table-column prop="brand"
                              label="品牌"
+                             align="center"
                              width="120">
             </el-table-column>
             <el-table-column prop="price"
-                             label="价格"
+                             label="价格(元)"
+                             align="center"
                              width="120">
             </el-table-column>
             <el-table-column prop="capacity"
-                             label="显存容量"
+                             label="显存容量(GB)"
+                             align="center"
                              width="120">
             </el-table-column>
             <el-table-column prop="chip"
@@ -51,15 +54,18 @@
                              width="180">
             </el-table-column>
             <el-table-column prop="frequency"
-                             label="显存频率"
+                             label="显存频率(GHz)"
+                             align="center"
                              width="120">
             </el-table-column>
             <el-table-column prop="existing_type"
                              label="显存类型"
+                             align="center"
                              width="120">
             </el-table-column>
             <el-table-column prop="type"
                              label="特性"
+                             align="center"
                              width="120">
             </el-table-column>
             <el-table-column fixed="right"
@@ -97,113 +103,15 @@
 
 <script>
 import addGraphics from '@/components/model/AddGraphics.vue';
+import detail from '@/mixins/detail.js';
+
 export default {
   name: 'Graphics',
   components: {
     addGraphics
   },
-  created() {
-    this.$eventBus.$on('resize', () => {
-      this.loading = true;
-      this.getGraphicsList();
-    });
-  },
-  mounted() {
-    // 获取显卡
-    this.getGraphicsList();
-  },
-  methods: {
-    // 获取显卡列表
-    getGraphicsList() {
-      this.$api.graphicsAPI
-        .getGraphicsList(this.page, this.pageSize)
-        .then(res => {
-          if (res.code === 0 && res.result && res.result.length) {
-            this.total = res.msg;
-            this.tableData = [];
-            for (let item of res.result) {
-              // 格式化数据
-              item.price = `￥${item.price}`;
-              item.capacity = `${item.capacity}GB`;
-              item.frequency = `${item.frequency}MHz`;
-              this.tableData.push(item);
-            }
-            this.loading = false;
-          } else {
-            this.loading = false;
-          }
-        })
-        .catch(error => {
-          console.log(error);
-          this.loading = false;
-        });
-    },
-    // 查看显卡
-    handleClick(row) {
-      // 初始化弹窗数据
-      this.graphicsData = [];
-      for (let item in row) {
-        this.graphicsData.push({
-          value: row[item],
-          attr: item
-        });
-      }
-      // 显示模态框
-      this.$eventBus.$emit('openDialog', {
-        data: this.graphicsData,
-        rules: this.rules,
-        show: true,
-        filter: this.filter
-      });
-    },
-    // 分页数据
-    updateData() {
-      this.page = page;
-      this.getGraphicsList();
-    },
-    // 添加显卡
-    addGraphics() {
-      this.$eventBus.$emit('addGraphics');
-    },
-    // 删除数据
-    delItem(row) {
-      let cid = null;
-
-      if (!row) {
-        cid = [];
-        this.multipleSelection.map(item => cid.push(item.id));
-        cid = cid.join(',');
-      } else {
-        cid = row.id;
-      }
-
-      this.$api.graphicsAPI.delGraphics(cid).then(res => {
-        if (res.code == 0) {
-          this.$notify({
-            title: '成功',
-            message: '删除成功',
-            type: 'success'
-          });
-          // 重新请求数据
-          this.getGraphicsList();
-        } else {
-          this.$notify({
-            title: '失败',
-            message: '删除失败',
-            type: 'error'
-          });
-        }
-      });
-    },
-    // 选中状态改变
-    handleSelectionChange(val) {
-      this.multipleSelection = val;
-    }
-  },
   data() {
     return {
-      tableData: [],
-      loading: true,
       rules: {
         id: 'ID',
         name: '显卡名称',
@@ -226,14 +134,11 @@ export default {
         power: '电源', //
         radiating: '散热方式'
       },
-      page: 1,
-      pageSize: 8,
-      total: 0, // 显卡总数
-      graphicsData: [],
-      multipleSelection: [],
-      filter: ['id', 'image', 'status','hardware_name']
+      filter: ['id', 'image', 'status', 'hardware_name'],
+      url: 'graphics'
     };
-  }
+  },
+  mixins: [detail]
 };
 </script>
 
