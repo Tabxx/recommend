@@ -1,5 +1,5 @@
 <template>
-  <el-dialog title="添加显卡"
+  <el-dialog title="添加内存条"
              :visible.sync="dialogFormVisible">
     <el-form :model="form"
              label-width="120px">
@@ -170,7 +170,8 @@ export default {
         cl_delay: '', // 插槽延迟
         work_voltage: '', // 工作电压（V）
         radiating: false, // 是否有散热片，1-有，0-没有
-        tag: []
+        tag: [],
+        url: 'memory'
       }
     };
   },

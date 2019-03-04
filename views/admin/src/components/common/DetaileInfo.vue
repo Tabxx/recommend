@@ -7,9 +7,8 @@
     <el-form :inline="true"
              label-width="120px">
       <el-row>
-        <el-col 
-                v-for="(attr, index) in detail"
-                :span="attr.attr=='name'?24:12"
+        <el-col v-for="(attr, index) in detail"
+                :span="showBlock.includes(attr.attr)?24:12"
                 :key="index">
           <template v-if="!hide.includes(attr.attr)">
             <el-form-item :label="((rules && rules[attr.attr]) || attr.attr)+'：'">
@@ -25,18 +24,19 @@
 
 <script>
 export default {
-  name: "DetailInfo",
+  name: 'DetailInfo',
   created() {
-    this.$eventBus.$on("openDialog", data => {
+    this.$eventBus.$on('openDialog', data => {
       this.init(data);
     });
   },
   data() {
     return {
       dialogFormVisible: false,
-      detail: [],
-      rules: null,
-      hide: []
+      detail: [], // 硬件详情
+      rules: null, // 字段-> 文本
+      hide: [], // 隐藏字段
+      showBlock: [] // 单行显示字段
     };
   },
   methods: {
@@ -44,11 +44,12 @@ export default {
       this.dialogFormVisible = data.show;
       this.detail = data.data;
       this.rules = data.rules;
+      this.showBlock = data.block;
       this.hide = data.filter || [];
     }
   },
   beforeDestroy() {
-    this.$eventBus.$off("openDialog");
+    this.$eventBus.$off('openDialog');
   }
 };
 </script>

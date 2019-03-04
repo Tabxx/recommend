@@ -238,7 +238,8 @@ export default {
         power: '', //
         radiating: '',
         tag: []
-      }
+      },
+      url: 'graphics'
     };
   },
   mixins: [addItem]

@@ -262,7 +262,8 @@ export default {
         graphics_max_frequency: '',
         graphice_base_frequency: '',
         Integ_graphics: ''
-      }
+      },
+      url: 'cpu'
     };
   },
   mixins: [addItem]

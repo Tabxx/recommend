@@ -37,7 +37,8 @@ export default {
                 data: this.detail, // 弹窗数据
                 rules: this.rules, // 字段->文本规则，name->名称
                 show: true, // 显示弹窗
-                filter: this.filter // 过滤不展示的字段
+                filter: this.filter, // 过滤不展示的字段
+                block: this.showBlock
             });
         },
         /**
