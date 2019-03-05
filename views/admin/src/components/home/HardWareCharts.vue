@@ -10,20 +10,20 @@ export default {
   name: 'HardWareCharts',
   data() {
     return {
-      charts: null,
-      data: [],
-      colors: ['#6EE8CB', '#F5A623', '#FF5646', '#2F97FF', '#2DCDCD']
+      charts: null, // echarts 对象
+      data: [], // 数据
+      colors: ['#6EE8CB', '#F5A623', '#FF5646', '#2F97FF', '#2DCDCD'] // 饼图颜色配置
     };
   },
   mounted() {
     this.getData();
-    // this.init();
   },
   methods: {
     getData() {
       this.$api.chartsAPI.getHardWareCount().then(res => {
         if (res.code == 0 && res.result) {
           for (let item in res.result) {
+            // 饼图颜色配置
             res.result[item].itemStyle = {
               color: this.colors[item]
             };
@@ -34,9 +34,10 @@ export default {
       });
     },
     init() {
-      let _this = this;
+      // 初始化节点
       this.charts = echarts.init(document.getElementById('hard-container'));
 
+      // 配置项
       let option = {
         tooltip: {
           trigger: 'item',
@@ -48,7 +49,7 @@ export default {
             type: 'pie',
             radius: '55%',
             center: ['50%', '50%'],
-            data: _this.data,
+            data: this.data,
             roseType: 'radius',
             animationType: 'scale',
             animationEasing: 'elasticOut',
@@ -59,6 +60,7 @@ export default {
         ]
       };
 
+      // 渲染图表
       this.charts.setOption(option);
     }
   }
