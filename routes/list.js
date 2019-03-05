@@ -3,7 +3,7 @@ const sql = require('../utils/sql')
 const query = require('../utils/query')
 const utils = require('../utils/utils')
 
-// 获取硬盘列表
+// 添加方案列表
 router.post('/add', async (ctx, next) => {
     let param = ctx.request.body
 

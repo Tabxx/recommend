@@ -1,9 +1,8 @@
 <template>
   <el-row>
-    <el-col :span="12">
+    <el-col :span="10">
       <el-card class="box-card">
-        <div slot="header"
-             class="clearfix">
+        <div slot="header" class="clearfix">
           <span>硬件分布</span>
         </div>
         <div class="text item">
@@ -15,13 +14,13 @@
 </template>
 
 <script>
-import hardware from '@/components/home/HardWareCharts';
-export default {
-  name: 'index',
-  components: {
-    hardware
-  }
-};
+  import hardware from '@/components/home/HardWareCharts';
+  export default {
+    name: 'index',
+    components: {
+      hardware
+    }
+  };
 </script>
 
 <style scoped>
