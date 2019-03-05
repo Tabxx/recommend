@@ -40,6 +40,7 @@
       </el-card>
     </el-col>
     <list-info></list-info>
+
   </el-row>
 </template>
 

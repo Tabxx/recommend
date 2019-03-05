@@ -18,8 +18,7 @@
 
       <el-col :span="24"
               class="list-content">
-        <el-tabs v-model="activeName"
-                 @tab-click="handleClick">
+        <el-tabs v-model="activeName">
           <el-tab-pane label="硬件信息"
                        name="hardware">
             <el-row>
@@ -44,7 +43,27 @@
             </el-row>
           </el-tab-pane>
           <el-tab-pane label="相关评论"
-                       name="comment">相关评论</el-tab-pane>
+                       name="comment">
+            <div class="comments block">
+              <el-timeline v-if="activities.length">
+                <el-timeline-item v-for="(item, index) in activities"
+                                  :key="index"
+                                  :timestamp="$moment(item.time*1000).format('YYYY-MM-DD HH:mm:ss')"
+                                  placement="top"
+                                  reverse="true">
+                  <el-card>
+                    <h4>{{ item.content }}</h4>
+                    <p>{{ item.username }} 提交于 {{ $moment(item.time*1000).format('YYYY-MM-DD HH:mm:ss') }}</p>
+                  </el-card>
+                </el-timeline-item>
+              </el-timeline>
+
+              <div class="time"
+                   type="flex"
+                   justify="center"
+                   v-else>暂无评论</div>
+            </div>
+          </el-tab-pane>
         </el-tabs>
       </el-col>
     </el-row>
@@ -59,7 +78,8 @@ export default {
     return {
       dialogFormVisible: false,
       detail: {}, // 方案详情
-      activeName: 'hardware'
+      activeName: 'hardware',
+      activities: []
     };
   },
   created() {
@@ -68,12 +88,20 @@ export default {
     });
   },
   methods: {
+    // 初始化模态框
     init(list) {
       this.detail = list;
       this.dialogFormVisible = true;
+      this.getComment();
     },
-    handleClick(tab, event) {
-      console.log(tab, event);
+    // 方案相关评论
+    getComment(list) {
+      this.activities = [];
+      this.$api.listAPI.getComment(this.detail.id).then(res => {
+        if (res.code == 0 && res.result && res.result.length) {
+          this.activities = res.result;
+        }
+      });
     }
   },
   beforeDestroy() {
@@ -128,5 +156,10 @@ h2 {
 
 .value {
   padding-left: 8px;
+}
+
+.comments {
+  max-height: 200px;
+  overflow: auto;
 }
 </style>
