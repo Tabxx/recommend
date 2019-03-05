@@ -3,7 +3,7 @@ const sql = require('../utils/sql')
 const query = require('../utils/query')
 const utils = require('../utils/utils')
 
-// 获取硬盘列表
+// 添加方案列表
 router.post('/add', async (ctx, next) => {
     let param = ctx.request.body
 
@@ -64,8 +64,10 @@ router.get('/getlist', async (ctx, next) => {
         list = await query.query(query_sql)
     } else if (!id) {
         // TODO: 用户信息未获取，后期看页面是否需要
+        let sql = `SELECT l.*, u.username, u.avatar from list l, user u WHERE l.userid = u.id and l.id = ${id}`;
         // 单个方案详情
-        list = await query.query(sql.QUERY_TABLE('list', '*'))
+        // list = await query.query(sql.QUERY_TABLE('list', '*'))
+        list = await query.query(sql)
     } else {
         // 多个方案详情
         list = await query.query(sql.QUERY_TABLE('list', '*', `id in (${id})`))
@@ -93,4 +95,87 @@ router.get('/addClick', async (ctx, next) => {
         result: null
     }
 })
+
+/**
+ * 个性化推荐
+ * 传入userid
+ */
+router.get('/recommend', async (ctx, next) => {
+    let {
+        userid
+    } = ctx.request.query;
+
+    // 未传userid
+    if (!userid) {
+        ctx.body = {
+            code: 1,
+            msg: 'userid不存在',
+            result: null
+        }
+        return;
+    }
+
+    // 获取用户自身标签
+    let userTags = await query.query(sql.QUERY_TABLE('user', 'tag', `id=${userid}`));
+    // 标签集合
+    let tags = userTags[0].tag.split(',');
+
+    // 用户行为标签集合
+    let actionTags = await query.query(sql.QUERY_TABLE('action', 'tid', `uid=${userid}`));
+    actionTags.map(item => {
+        tags = tags.concat(item.tid.split(','));
+    })
+
+    // 标签统计
+    let tagscount = [];
+
+    tags.map(item => {
+        let index = tagscount.findIndex(obj => obj.tid == item)
+        if (index === -1) {
+            tagscount.push({
+                tid: item,
+                nums: 1
+            });
+        } else {
+            tagscount[index].nums++;
+        }
+    });
+
+    // 标签排序
+    tagscount.sort((obj1, obj2) => {
+        return obj2.nums - obj1.nums;
+    });
+
+    // 用户行为总和
+    const actions = tagscount.reduce((n, m) => n + m.nums, 0);
+
+    // 标签使用率计算
+    tagscount.map(item => {
+        item.rate = item.nums / actions;
+    });
+
+    // 取标签使用率大于60%，且排名前二的标签
+    let topTwoTags = tagscount.filter(item => item.rate >= 0.6).slice(0, 2);
+
+    // 如果没有大于60%的使用概率，取前2推荐
+    if (topTwoTags.length === 0) {
+        topTwoTags = tagscount.slice(0, 2);
+    }
+
+    // 最终推荐标签
+    let finalTags = [];
+    topTwoTags.map(item => finalTags.push(item.tid));
+
+    // 查询对应方案
+    let rsql = `select l.*,u.username from list l, user u where l.tag like '%${finalTags[0]},%' or l.tag like '%${finalTags[0]}%' and l.userid = u.id`;
+    let recommend = await query.query(rsql);
+
+    ctx.body = {
+        code: 0,
+        msg: '',
+        result: recommend
+    }
+})
+
+
 module.exports = router

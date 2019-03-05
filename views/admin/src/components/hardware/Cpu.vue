@@ -70,6 +70,12 @@
                              align="center"
                              width="120">
             </el-table-column>
+            <el-table-column prop="status"
+                             label="状态"
+                             align="center"
+                             :formatter="fmtstatus"
+                             width="120">
+            </el-table-column>
             <el-table-column fixed="right"
                              label="操作"
                              width="100">
@@ -152,4 +158,3 @@ export default {
 
 <style scoped>
 </style>
-

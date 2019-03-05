@@ -38,6 +38,11 @@ export default new Router({
             path: '/mainboard',
             name: 'mainboard',
             component: () => import( /* webpackChunkName: "mainboard" */ './components/hardware/MainBoard.vue'),
-        }
+        },
+        {
+            path: '/list',
+            name: 'list',
+            component: () => import( /* webpackChunkName: "list" */ './components/list/list.vue'),
+        },
     ]
 });
