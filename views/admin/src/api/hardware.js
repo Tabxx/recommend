@@ -43,6 +43,13 @@ class CPU {
             }
         })
     }
+
+    /**
+     * 获取所有硬件列表信息
+     */
+    getAllList() {
+        return request.get(`/admin/gethardware`);
+    }
 }
 
 export default new CPU();
