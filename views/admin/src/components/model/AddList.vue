@@ -215,6 +215,7 @@ export default {
         this.calcTotal();
       }
     },
+    // 计算总价
     calcTotal(edit) {
       let hardware = ['cpu', 'memory', 'graphics', 'harddisk', 'mainboard'];
       this.$set(this.form, 'total', 0);
