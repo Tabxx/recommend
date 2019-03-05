@@ -3,6 +3,7 @@ const sql = require('../utils/sql');
 const query = require('../utils/query');
 const utils = require('../utils/utils');
 
+// 硬件信息统计
 router.get('/hardcount', async (ctx, next) => {
     let cpu_count = await utils.QUERY_COUNT('cpu', '*', 'status=1');
     let graphics_count = await utils.QUERY_COUNT('graphics', '*', 'status=1');
@@ -32,6 +33,16 @@ router.get('/hardcount', async (ctx, next) => {
         },
     ]
 
+    ctx.body = {
+        code: 0,
+        msg: '',
+        result
+    }
+})
+
+// 管理员获取所有方案列表
+router.get('/getlist', async (ctx, next) => {
+    let result = await query.query(sql.QUERY_TABLE('list', '*', 'status=1'));
     ctx.body = {
         code: 0,
         msg: '',

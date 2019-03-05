@@ -117,6 +117,9 @@ export default {
                     });
                 }
             });
+        },
+        fmtstatus(row, column, cellValue, index) {
+            return cellValue ? '正常' : '禁用';
         }
     },
     beforeDestroy() {

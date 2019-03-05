@@ -5,7 +5,6 @@ const utils = require('../utils/utils');
 
 // 获取cpu列表
 router.get('/', async (ctx, next) => {
-
     // 查询符合条件的cpu
     let cpus = await utils.QUERY_HARDWARE(ctx, 'cpu');
     let total = await utils.QUERY_COUNT('cpu', '*', 'status=1');

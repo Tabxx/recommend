@@ -23,7 +23,7 @@
             <el-menu-item :index="item.url">{{ item.name }}</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
-        <el-menu-item index="3">
+        <el-menu-item index="/list">
           <i class="el-icon-menu"></i>
           <span slot="title">方案管理</span>
         </el-menu-item>
