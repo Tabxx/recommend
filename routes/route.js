@@ -9,6 +9,7 @@ const user = require('./user');
 const upload = require('./upload');
 const comment = require('./comment');
 const admin = require('./admin');
+const bbs = require('./bbs');
 
 // CPU
 router.use('/cpu', cpu.routes());
@@ -30,6 +31,8 @@ router.use('/upload', upload.routes());
 router.use('/comment', comment.routes());
 // 管理员相关
 router.use('/admin', admin.routes());
+// 论坛发帖相关
+router.use('/bbs', bbs.routes());
 
 router.get('/', async (ctx, next) => {
     await ctx.render('index', {
