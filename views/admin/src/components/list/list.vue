@@ -1,5 +1,12 @@
 <template>
   <el-row>
+    <!-- 操作栏 -->
+    <el-col class="mb-15">
+      <el-button type="primary"
+                 @click="addItem">添加</el-button>
+    </el-col>
+    <!-- ./操作栏 -->
+
     <el-col :span="7"
             v-for="(item, index) in list"
             :key="index"
@@ -39,12 +46,15 @@
         </div>
       </el-card>
     </el-col>
+
     <list-info></list-info>
+    <add-list></add-list>
   </el-row>
 </template>
 
 <script>
 import ListInfo from '@/components/list/ListInfo';
+import AddList from '@/components/model/AddList';
 
 export default {
   name: 'list',
@@ -56,12 +66,19 @@ export default {
     };
   },
   components: {
-    ListInfo
+    ListInfo,
+    AddList
+  },
+  created() {
+    this.$eventBus.$on('resize', () => {
+      this.getData();
+    });
   },
   mounted() {
     this.getData();
   },
   methods: {
+    // 获取方案列表
     getData() {
       this.$api.listAPI.getList().then(res => {
         if (res.code == 0 && res.result && res.result.length) {
@@ -69,9 +86,17 @@ export default {
         }
       });
     },
+    // 方案详情模态框
     listinfo(list) {
       this.$eventBus.$emit('listinfo', list);
+    },
+    // 添加方案
+    addItem() {
+      this.$eventBus.$emit('addList');
     }
+  },
+  beforeDestroy() {
+    this.$eventBus.$off('resize');
   }
 };
 </script>

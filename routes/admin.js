@@ -50,4 +50,25 @@ router.get('/getlist', async (ctx, next) => {
     }
 })
 
+// 获取所有硬件列表
+router.get('/gethardware', async (ctx, next) => {
+    let cpu = await query.query(sql.QUERY_TABLE('cpu', '*', 'status=1'));
+    let graphics = await query.query(sql.QUERY_TABLE('graphics', '*', 'status=1'));
+    let mainboard = await query.query(sql.QUERY_TABLE('mainboard', '*', 'status=1'));
+    let harddisk = await query.query(sql.QUERY_TABLE('hard_disk', '*', 'status=1'));
+    let memory = await query.query(sql.QUERY_TABLE('memory', '*', 'status=1'));
+
+    ctx.body = {
+        code: 0,
+        msg: '',
+        result: {
+            cpu,
+            graphics,
+            mainboard,
+            harddisk,
+            memory
+        }
+    }
+})
+
 module.exports = router;

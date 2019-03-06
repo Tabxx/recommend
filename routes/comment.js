@@ -44,6 +44,7 @@ router.post('/sendcomment', async (ctx, next) => {
     }
 });
 
+// 获取评论
 router.get('/getcomment', async (ctx, next) => {
     let {
         type,
@@ -61,6 +62,11 @@ router.get('/getcomment', async (ctx, next) => {
     // 字段过滤
     let field = 'username,avatar,c.id as cid,content,time'
     let comments = await query.query(sql.QUERY_TABLE('user u,comments c', field, `c.uid = u.id AND c.pid = ${pid} AND c.type = ${type}`));
+
+    // 排序
+    comments.sort((obj1, obj2) => {
+        return obj2.time - obj1.time;
+    })
     ctx.body = {
         code: 0,
         msg: 'success',
