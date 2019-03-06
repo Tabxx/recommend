@@ -2,6 +2,8 @@ const router = require('koa-router')()
 const sql = require('../utils/sql');
 const query = require('../utils/query');
 const utils = require('../utils/utils');
+// 时间插件
+const moment = require('moment');
 
 // 硬件信息统计
 router.get('/hardcount', async (ctx, next) => {
@@ -68,6 +70,31 @@ router.get('/gethardware', async (ctx, next) => {
             harddisk,
             memory
         }
+    }
+})
+
+// 用户日点击量
+router.get('/dayclick', async (ctx, next) => {
+    let actions = await query.query(sql.QUERY_TABLE('action', '*'));
+    let clicks = [];
+
+    for (let item of actions) {
+        item.date = moment(item.time * 1000).format('YYYY-MM-DD');
+
+        let index = clicks.findIndex(action => action.date == item.date);
+        if (index > -1) {
+            clicks[index].clicks++;
+        } else {
+            clicks.push({
+                date: item.date,
+                clicks: 0
+            })
+        }
+    }
+    ctx.body = {
+        code: 0,
+        msg: '',
+        result: clicks
     }
 })
 

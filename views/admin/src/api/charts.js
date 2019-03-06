@@ -7,6 +7,13 @@ class Charts {
     getHardWareCount() {
         return request.get('http://localhost:3000/admin/hardcount');
     }
+
+    /**
+     * 获取用户日点击量
+     */
+    getDayClicks() {
+        return request.get('/admin/dayclick');
+    }
 }
 
 export default new Charts();
