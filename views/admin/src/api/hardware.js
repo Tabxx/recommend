@@ -22,7 +22,7 @@ class CPU {
      * @param {*} data 
      */
     createItem(url, data) {
-        return request.post(`http://localhost:3000/${url}/add`, {
+        return request.post(`/${url}/add`, {
             data: {
                 form: JSON.stringify(data)
             }
@@ -37,7 +37,7 @@ class CPU {
         url,
         id
     }) {
-        return request.get(`http://localhost:3000/${url}/del`, {
+        return request.get(`/${url}/del`, {
             data: {
                 cid: id
             }

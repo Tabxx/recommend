@@ -5,7 +5,7 @@ class List {
      * 获取方案列表
      */
     getList() {
-        return request.get('admin/getlist');
+        return request.get('/admin/getlist');
     }
 
     /**
@@ -14,7 +14,7 @@ class List {
      * @param {*} type 1-方案
      */
     getComment(pid, type = 1) {
-        return request.get(`comment/getcomment`, {
+        return request.get(`/comment/getcomment`, {
             data: {
                 pid,
                 type
@@ -39,7 +39,7 @@ class List {
         total,
         userid = 1
     }) {
-        return request.post(`list/add`, {
+        return request.post(`/list/add`, {
             data: {
                 cpu,
                 graphics,
