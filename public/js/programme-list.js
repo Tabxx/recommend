@@ -1,15 +1,9 @@
 $(document).ready(function () {
        /* 
     // 节点取的有问题
-<<<<<<< HEAD
-    var programmes = $('#programme');
-    var pros=programmes.children();
-    for(let pro of pros){
-=======
     var programmes = $('#programme>div');
 
     for (let programme of programmes) {
->>>>>>> bee01157c13b07f1c9595f8404402748a236fcb6
         var type;
         var sortby = 0;
         console.log(pro.id);
@@ -81,7 +75,6 @@ $(document).ready(function () {
     for (let programme of programmes) {
         var type;
         var sortby = 0;
-        console.log(programme.id);
         switch (programme.id) {
             case 'latest':
                 type = 1;
@@ -105,60 +98,52 @@ $(document).ready(function () {
             tyep: 'get',
             dataType: 'json',
             success: function (result) {
-<<<<<<< HEAD
-                console.log(result);
-                var html = '';
+                mhtml = '<div class="row">';
                 for (var list of result.result) {
-                    html += ` <div class="row mt-3 pb-3 border-bottom">
-              <div class="col-4">
-=======
-                mhtml = '';
-                for (var list of result.result) {
-                    mhtml += ` <div class="row mt-3 pb-3 border-bottom">
-              <div class="col-2">
->>>>>>> bee01157c13b07f1c9595f8404402748a236fcb6
-                  <img src="/img/display.png" alt="">
-              </div>
-              <div class="col-8 p-0 text_small">
-                  <h6>${list.intro}</h6>
-                  <ul class="list-unstyled d-flex mb-1">
-                      <li class="mr-5"><img src="/img/message.png" alt="">${list.name}</li>
-                      <li class="mr-5"><img src="/img/user-icon.png" alt="">${list.username}</li>
-                      <li class="mr-5"><img src="/img/time.png" alt="">${new Date(list.time*1000).format('yyyy-MM-dd hh:mm:ss')}</li>
-                  </ul>
-                  <div class="row">
-                      <div class="col-6">C P U: ${list.cpu}</div>
-                      <div class="col-6">主 板: ${list.mainboard}</div>
-                      <div class="col-6">内 存: ${list.memory}</div>
-                      <div class="col-6">显 卡: ${list.graphics}</div>
-                  </div>
-              </div>
-              <div class="col-2">
-                  <p class="h4 mt-4 text-danger">￥${list.total}</p>
-                  <button id="hDetail" class="btn btn-light" data-toggle="modal" data-target="#detail">查看详情</button>
-              </div>
-             </div>`;
+                    mhtml += `<div class="col-md-6 mt-5">
+                    <div class="card" data-toggle="modal" data-target="#detail" data-id="${list.id}">
+                        <img class="card-img-top" src="${list.image}" alt="Card-img">
+                        <div class="card-body">
+                            <h6 class="text-center">${list.name}</h4>
+                            <p class="small_font">${list.intro}</p>
+                        </div>
+                    </div>
+                </div>`;
                 }
-<<<<<<< HEAD
-                $(programme).html(html);
-=======
                 $(programme).html(mhtml);
                 // console.log(programme);
->>>>>>> bee01157c13b07f1c9595f8404402748a236fcb6
             },
             error: function (error) {
                 console.log(error);
                 alert('失败');
             }
-<<<<<<< HEAD
-        }) 
-=======
         })
         // 这里一定比请求里面先执行
         // $(programme).html(mhtml);
->>>>>>> bee01157c13b07f1c9595f8404402748a236fcb6
     }
-   $('body').on('click','#hDetail',function(){
-       
+   $('body').on('click','.card',function(){
+        var contant=$(this).data('id');
+        $.ajax({
+            url:`/list/getlist?id=${contant}`,
+            type:'get',
+            dataType:'json',
+            success:function(result){
+                var contant=result.result[0];
+               $('#contant').html(`
+               <h4 class="text-center">${contant.name}</h4>
+               <ul class="list-unstyled">
+                   <li class="md_font"><p>cpu:<br><span class="light">${contant.cpu}</span></p></li>
+                   <li class="md_font"><p>显卡:<br><span class="light">${contant.graphics}</span></p></li>
+                   <li class="md_font"><p>内存:<br><span class="light">${contant.memory}</span></p></li>
+                   <li class="md_font"><p>硬盘:<br><span class="light">${contant.harddisk}</span></p></li>
+                   <li class="md_font"><p>主板:<br><span class="light">${contant.mainboard}</span></p></li>
+               </ul>
+               `);
+               UserAction(contant.tag);
+            },error:function(error){
+               console.log(error);
+               alert('失败');
+            }
+        })
    })
 })
