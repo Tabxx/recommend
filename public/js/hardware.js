@@ -401,11 +401,11 @@ $(document).ready(function () {
     var editor = new E('#write_commend');
     editor.create();
     $('#write_commend').append('<button class="btn btn-primary float-right mt-2 mr-2">发表评论</button>');
-    $('body').on('click', '#write_commend>button', function () {
-        var commend = $(this).prev().children().children().html();
+    $('body').on('click', '#write_commend>button', function (){
+        var commend =$('.w-e-text>p').html();
         console.log(commend);
         var userid = Cookie.getCookie('userid');
-        if (commend != '<br>') {
+        if (userid) {
             $.ajax({
                 url: `/comment/sendcomment`,
                 type: 'post',
@@ -416,13 +416,15 @@ $(document).ready(function () {
                     pid: `${id}`
                 },
                 success: function (result) {
-                    alert(添加成功);
+                    alert('添加成功');
                 },
                 error: function (error) {
                     console.log(error);
                     alert('失败');
                 }
             })
+        }else{
+            alert('请先登录');
         }
     })
 })
