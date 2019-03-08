@@ -95,6 +95,10 @@ router.get('/recommend', async (ctx, next) => {
     let userTags = await query.query(sql.QUERY_TABLE('user', 'tag', `id=${userid}`));
     // 标签集合
     let tags = userTags[0].tag.split(',');
+    // 去除split生成空字符串问题
+    if (tags.length === 1 && tags[0] == '') {
+        tags = [];
+    }
 
     // 用户行为标签集合
     let actionTags = await query.query(sql.QUERY_TABLE('action', 'tid', `uid=${userid}`));
@@ -146,10 +150,11 @@ router.get('/recommend', async (ctx, next) => {
     if (finalTags.length == 0) {
         let all_tags = await utils.QUERY_COUNT('tag', '*');
         finalTags.push(Math.ceil(Math.random() * all_tags[0].total));
+        finalTags.push(Math.ceil(Math.random() * all_tags[0].total));
     }
-
+    // TODO: 未去重
     // 查询对应方案
-    let rsql = `select l.*,u.username from list l, user u where l.tag like '%${finalTags[0]},%' or l.tag like '%${finalTags[0]}%' and l.userid = u.id`;
+    let rsql = `select l.*,u.username from list l, user u where (l.tag like '%${finalTags[1]}%' or l.tag like '%${finalTags[0]}%') and l.userid = u.id`;
     let recommend = await query.query(rsql);
 
     ctx.success('', recommend)
