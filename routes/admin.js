@@ -98,4 +98,37 @@ router.get('/dayclick', async (ctx, next) => {
     }
 })
 
+// 标签统计
+router.get('/usetag', async (ctx, next) => {
+    let actions = await query.query(sql.QUERY_TABLE('action', '*'));
+    let tags = await query.query(sql.QUERY_TABLE('tag', '*'));
+    // tid解析
+    let tids = actions.reduce((tag, value, index) => {
+        tag = tag.concat(value.tid.split(','));
+        return tag;
+    }, []);
+
+    // 统计
+    let count = [];
+    tids.map(item => {
+        let index = count.findIndex(obj => obj.tid == item);
+        if (index === -1) {
+            let tag = tags.find(tag => tag.tid == item);
+            count.push({
+                tid: item,
+                value: 1, // 出现次数
+                name: tag && tag.name // 标签名
+            });
+        } else {
+            count[index].value++;
+        }
+    })
+
+    ctx.body = {
+        code: 0,
+        msg: '',
+        result: count
+    }
+})
+
 module.exports = router;

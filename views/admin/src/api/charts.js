@@ -14,6 +14,13 @@ class Charts {
   getDayClicks() {
     return request.get('/admin/dayclick');
   }
+
+  /**
+   * 获取标签热度
+   */
+  getUseTag() {
+    return request.get('/admin/usetag');
+  }
 }
 
 export default new Charts();

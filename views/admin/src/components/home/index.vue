@@ -24,20 +24,37 @@
         </div>
       </el-card>
     </el-col>
+
+    <el-col :span="10">
+      <el-card class="box-card">
+        <div slot="header"
+             class="clearfix">
+          <span>标签热度</span>
+        </div>
+        <div class="text item">
+          <tag-map></tag-map>
+        </div>
+      </el-card>
+    </el-col>
   </el-row>
 </template>
 
 <script>
 import hardware from '@/components/home/HardWareCharts';
 import DayClicks from '@/components/home/DayClicks';
+import TagMap from '@/components/home/TagMap';
 export default {
   name: 'index',
   components: {
     hardware,
-    DayClicks
+    DayClicks,
+    TagMap
   }
 };
 </script>
 
 <style scoped>
+.box-card {
+  margin-bottom: 20px;
+}
 </style>
