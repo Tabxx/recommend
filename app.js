@@ -31,11 +31,30 @@ app.use(views(__dirname + '/views', {
 app.use(cors());
 
 // logger
-app.use(async(ctx, next) => {
+app.use(async (ctx, next) => {
     const start = new Date()
     await next()
     const ms = new Date() - start
     console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
+})
+
+// response 返回
+app.use(async (ctx, next) => {
+    ctx.error = (msg, result) => {
+        ctx.body = {
+            code: 1,
+            msg: msg || '',
+            result: result || null
+        }
+    };
+    ctx.success = (msg, result) => {
+        ctx.body = {
+            code: 0,
+            msg: msg || '',
+            result: result || null
+        }
+    }
+    await next();
 })
 
 // routes

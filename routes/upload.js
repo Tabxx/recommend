@@ -25,11 +25,7 @@ const upload = multer({
 // 上传文件
 router.post('/', upload.single('file'), async (ctx, next) => {
   let path = filepath.replace(/public/, '');
-  ctx.body = {
-    code: 0,
-    msg: '上传成功',
-    result: `${path}${ctx.req.file.filename}`
-  }
+  ctx.success('上传成功', `${path}${ctx.req.file.filename}`);
 })
 
 module.exports = router;

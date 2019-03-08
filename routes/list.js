@@ -9,11 +9,7 @@ router.post('/add', async (ctx, next) => {
 
     // 用户信息
     if (!param.userid) {
-        ctx.body = {
-            code: 1,
-            msg: '用户信息不存在',
-            result: null
-        }
+        ctx.error('用户信息不存在')
         return
     }
     // 添加当前时间
@@ -28,17 +24,9 @@ router.post('/add', async (ctx, next) => {
     let result = await query.query(add_sql)
 
     if (result.affectedRows == 1) {
-        ctx.body = {
-            code: 0,
-            msg: '添加成功',
-            result: result.insertId
-        }
+        ctx.success('添加成功', result.insertId);
     } else {
-        ctx.body = {
-            code: 1,
-            msg: '添加失败',
-            result: null
-        }
+        ctx.error('添加失败');
     }
 })
 
@@ -73,11 +61,7 @@ router.get('/getlist', async (ctx, next) => {
         list = await query.query(sql.QUERY_TABLE('list', '*', `id in (${id})`))
     }
 
-    ctx.body = {
-        code: 0,
-        msg: '',
-        result: list
-    }
+    ctx.success('', list);
 })
 
 /**
@@ -89,11 +73,7 @@ router.get('/addClick', async (ctx, next) => {
         let add_sql = `update list set clicks = clicks + 1 where id=${list_id}`
         await query.query(add_sql)
     }
-    ctx.body = {
-        code: 0,
-        msg: '',
-        result: null
-    }
+    ctx.success();
 })
 
 /**
@@ -107,11 +87,7 @@ router.get('/recommend', async (ctx, next) => {
 
     // 未传userid
     if (!userid) {
-        ctx.body = {
-            code: 1,
-            msg: 'userid不存在',
-            result: null
-        }
+        ctx.error('userid不存在')
         return;
     }
 
@@ -176,11 +152,7 @@ router.get('/recommend', async (ctx, next) => {
     let rsql = `select l.*,u.username from list l, user u where l.tag like '%${finalTags[0]},%' or l.tag like '%${finalTags[0]}%' and l.userid = u.id`;
     let recommend = await query.query(rsql);
 
-    ctx.body = {
-        code: 0,
-        msg: '',
-        result: recommend
-    }
+    ctx.success('', recommend)
 })
 
 

@@ -4,18 +4,14 @@ const query = require('../utils/query');
 const utils = require('../utils/utils');
 
 // 获取硬盘列表
-router.get('/', async(ctx, next) => {
+router.get('/', async (ctx, next) => {
     let disks = await utils.QUERY_HARDWARE(ctx, 'hard_disk');
     let total = await utils.QUERY_COUNT('graphics', '*', 'status=1');
-    ctx.body = {
-        code: 0,
-        msg: total[0].total || 0,
-        result: disks.length ? disks : []
-    };
+    ctx.success(total[0].total || 0, disks.length ? disks : []);
 })
 
 // 获取硬盘分类列表
-router.get('/gettypes', async(ctx, next) => {
+router.get('/gettypes', async (ctx, next) => {
     let types = [];
     // 获取分类字段
     let field = ctx.request.query.field;
@@ -31,11 +27,7 @@ router.get('/gettypes', async(ctx, next) => {
     field = field ? field : 'brand,capacity,cache,price,speed';
 
     types = await utils.QUERY_TYPES('hard_disk', field, format);
-    ctx.body = {
-        code: 0,
-        msg: '',
-        result: types
-    };
+    ctx.success('', types);
 })
 
 // 添加硬盘
@@ -48,17 +40,9 @@ router.post('/add', async (ctx, next) => {
     // 插入数据库
     let result = await query.query(add_sql);
     if (result.affectedRows == 1) {
-        ctx.body = {
-            code: 0,
-            msg: '添加成功',
-            result: result.insertId
-        }
+        ctx.success('添加成功', result.insertId);
     } else {
-        ctx.body = {
-            code: 1,
-            msg: '添加失败',
-            result: null
-        }
+        ctx.error('添加失败')
     }
 })
 
@@ -70,28 +54,17 @@ router.get('/del', async (ctx, next) => {
 
     // 缺少参数
     if (!cid) {
-        ctx.body = {
-            code: 0,
-            msg: '缺少参数',
-            result: null
-        }
+        ctx.error('缺少参数');
         return;
     }
 
     let result = await query.query(sql.UPDATE_TABLE('hard_disk', 'status = 0', `id IN (${cid})`));
     // 删除成功
     if (result.affectedRows) {
-        ctx.body = {
-            code: 0,
-            msg: "删除成功",
-            result: null
-        }
+        ctx.success('删除成功');
     } else {
-        ctx.body = {
-            code: 1,
-            msg: "删除失败",
-            result: null
-        }
+        ctx.error('删除失败')
     }
 })
+
 module.exports = router;

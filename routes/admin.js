@@ -35,21 +35,13 @@ router.get('/hardcount', async (ctx, next) => {
         },
     ]
 
-    ctx.body = {
-        code: 0,
-        msg: '',
-        result
-    }
+    ctx.success('', result);
 })
 
 // 管理员获取所有方案列表
 router.get('/getlist', async (ctx, next) => {
     let result = await query.query(sql.QUERY_TABLE('list', '*', 'status=1'));
-    ctx.body = {
-        code: 0,
-        msg: '',
-        result
-    }
+    ctx.success('', result);
 })
 
 // 获取所有硬件列表
@@ -60,17 +52,13 @@ router.get('/gethardware', async (ctx, next) => {
     let harddisk = await query.query(sql.QUERY_TABLE('hard_disk', '*', 'status=1'));
     let memory = await query.query(sql.QUERY_TABLE('memory', '*', 'status=1'));
 
-    ctx.body = {
-        code: 0,
-        msg: '',
-        result: {
-            cpu,
-            graphics,
-            mainboard,
-            harddisk,
-            memory
-        }
-    }
+    ctx.success('', {
+        cpu,
+        graphics,
+        mainboard,
+        harddisk,
+        memory
+    })
 })
 
 // 用户日点击量
@@ -91,11 +79,8 @@ router.get('/dayclick', async (ctx, next) => {
             })
         }
     }
-    ctx.body = {
-        code: 0,
-        msg: '',
-        result: clicks
-    }
+
+    ctx.success('', clicks);
 })
 
 // 标签统计
@@ -124,11 +109,7 @@ router.get('/usetag', async (ctx, next) => {
         }
     })
 
-    ctx.body = {
-        code: 0,
-        msg: '',
-        result: count
-    }
+    ctx.success('', count);
 })
 
 module.exports = router;

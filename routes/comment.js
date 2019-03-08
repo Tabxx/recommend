@@ -15,11 +15,7 @@ router.post('/sendcomment', async (ctx, next) => {
 
     // 参数验证
     if ([uid, content, type, pid].includes(undefined)) {
-        ctx.body = {
-            code: 0,
-            msg: '缺少参数',
-            result: null
-        }
+        ctx.error('缺少参数');
         return;
     }
     // 获取当前时间戳
@@ -30,17 +26,9 @@ router.post('/sendcomment', async (ctx, next) => {
     let result = await query.query(add_sql);
 
     if (result.affectedRows == 1) {
-        ctx.body = {
-            code: 0,
-            msg: 'success',
-            result: result.insertId
-        }
+        ctx.success('success', result.insertId)
     } else {
-        ctx.body = {
-            code: 1,
-            msg: 'error',
-            result: null
-        }
+        ctx.error('error');
     }
 });
 
@@ -52,11 +40,7 @@ router.get('/getcomment', async (ctx, next) => {
     } = ctx.request.query;
 
     if ([type, pid].includes(undefined)) {
-        ctx.body = {
-            code: 0,
-            msg: '缺少参数',
-            result: null
-        }
+        ctx.error('缺少参数');
         return;
     }
     // 字段过滤
@@ -67,11 +51,7 @@ router.get('/getcomment', async (ctx, next) => {
     comments.sort((obj1, obj2) => {
         return obj2.time - obj1.time;
     })
-    ctx.body = {
-        code: 0,
-        msg: 'success',
-        result: comments
-    }
+    ctx.success('success', comments);
 })
 
 module.exports = router;

@@ -13,20 +13,12 @@ router.post('/add', async (ctx, next) => {
 
     // 空值判断
     if (!username || !password) {
-        ctx.body = {
-            code: 0,
-            msg: '用户名、密码不能为空',
-            result: null
-        }
+        ctx.error('用户名、密码不能为空')
     }
     // 用户是否存在
     let hasUser = await query.query(sql.QUERY_TABLE('user', 'username', `username='${username}'`));
     if (hasUser.length) {
-        ctx.body = {
-            code: 0,
-            msg: '用户名已存在',
-            result: null
-        }
+        ctx.error('用户名已存在')
         return;
     }
 
@@ -35,17 +27,9 @@ router.post('/add', async (ctx, next) => {
     let result = await query.query(add_sql);
 
     if (result.affectedRows == 1) {
-        ctx.body = {
-            code: 0,
-            msg: '注册成功',
-            result: result.insertId
-        }
+        ctx.success('注册成功', result.insertId);
     } else {
-        ctx.body = {
-            code: 1,
-            msg: '注册失败',
-            result: null
-        }
+        ctx.error('注册失败');
     }
 })
 
@@ -58,28 +42,16 @@ router.get('/login', async (ctx, next) => {
     let hasUser = await query.query(sql.QUERY_TABLE('user', 'id,username,tag', `username='${username}' AND password='${md5(password)}'`));
 
     if (hasUser.length) {
-        ctx.body = {
-            code: 0,
-            msg: '登录成功',
-            result: hasUser[0]
-        }
+        ctx.success('登录成功', hasUser[0]);
     } else {
-        ctx.body = {
-            code: 0,
-            msg: '用户名或者密码错误',
-            result: null
-        }
+        ctx.error('用户名或者密码错误');
     }
 })
 
 // 获取所有标签
 router.get('/getTags', async (ctx, next) => {
     let tags = await query.query(sql.QUERY_TABLE('tag', 'tid,name', 'status=1'));
-    ctx.body = {
-        code: 0,
-        msg: '',
-        result: tags
-    }
+    ctx.success('', tags);
 })
 
 // 用户行为记录
@@ -95,11 +67,7 @@ router.get('/action', async (ctx, next) => {
         let add_sql = sql.INERT_TABLE('action', 'uid,tid,time', `'${userid}','${tid}','${time}'`);
         let result = await query.query(add_sql);
     }
-    ctx.body = {
-        code: 0,
-        msg: '',
-        result: null
-    }
+    ctx.success();
 })
 
 // 设置用户标签
@@ -110,27 +78,15 @@ router.post('/setTag', async (ctx, next) => {
     } = ctx.request.body;
 
     if ([userid, tid].includes(undefined)) {
-        ctx.body = {
-            code: 0,
-            msg: '缺少参数',
-            result: null
-        }
+        ctx.error('缺少参数');
         return;
     }
     let result = await query.query(sql.UPDATE_TABLE('user', `tag='${tid}'`, `id=${userid}`));
     // 添加成功
     if (result.affectedRows) {
-        ctx.body = {
-            code: 0,
-            msg: "添加标签成功",
-            result: null
-        }
+        ctx.success('添加标签成功');
     } else {
-        ctx.body = {
-            code: 1,
-            msg: "添加标签失败",
-            result: null
-        }
+        ctx.error('添加标签失败');
     }
 })
 

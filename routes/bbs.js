@@ -12,11 +12,7 @@ router.post('/post', async (ctx, next) => {
     } = ctx.request.body;
     // 用户id
     if (!userid) {
-        ctx.body = {
-            code: 1,
-            msg: '缺少userid',
-            result: null
-        }
+        ctx.error('缺少userid');
         return;
     }
     // 发布时间
@@ -26,17 +22,9 @@ router.post('/post', async (ctx, next) => {
     let result = await query.query(add_sql);
 
     if (result.affectedRows == 1) {
-        ctx.body = {
-            code: 0,
-            msg: 'success',
-            result: result.insertId
-        }
+        ctx.success('success', result.insertId);
     } else {
-        ctx.body = {
-            code: 1,
-            msg: 'error',
-            result: null
-        }
+        ctx.success('error');
     }
 })
 
@@ -69,11 +57,7 @@ router.get('/getpost', async (ctx, next) => {
                         `;
         result[0].comments = await query.query(c_sql);
     }
-    ctx.body = {
-        code: 0,
-        msg: '',
-        result
-    }
+    ctx.success('', result);
 })
 
 module.exports = router;
