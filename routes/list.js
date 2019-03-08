@@ -166,6 +166,12 @@ router.get('/recommend', async (ctx, next) => {
     let finalTags = [];
     topTwoTags.map(item => finalTags.push(item.tid));
 
+    // 新用户未设置标签且没有任何行为，随机获取标签
+    if (finalTags.length == 0) {
+        let all_tags = await utils.QUERY_COUNT('tag', '*');
+        finalTags.push(Math.ceil(Math.random() * all_tags[0].total));
+    }
+
     // 查询对应方案
     let rsql = `select l.*,u.username from list l, user u where l.tag like '%${finalTags[0]},%' or l.tag like '%${finalTags[0]}%' and l.userid = u.id`;
     let recommend = await query.query(rsql);

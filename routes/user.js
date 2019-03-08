@@ -102,4 +102,36 @@ router.get('/action', async (ctx, next) => {
     }
 })
 
+// 设置用户标签
+router.post('/setTag', async (ctx, next) => {
+    let {
+        userid,
+        tid
+    } = ctx.request.body;
+
+    if ([userid, tid].includes(undefined)) {
+        ctx.body = {
+            code: 0,
+            msg: '缺少参数',
+            result: null
+        }
+        return;
+    }
+    let result = await query.query(sql.UPDATE_TABLE('user', `tag='${tid}'`, `id=${userid}`));
+    // 添加成功
+    if (result.affectedRows) {
+        ctx.body = {
+            code: 0,
+            msg: "添加标签成功",
+            result: null
+        }
+    } else {
+        ctx.body = {
+            code: 1,
+            msg: "添加标签失败",
+            result: null
+        }
+    }
+})
+
 module.exports = router;
