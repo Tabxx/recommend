@@ -35,10 +35,10 @@ router.get('/getpost', async(ctx, next) => {
     } = ctx.request.query;
 
     // 批量帖子
-    let query_sql = `SELECT p.*, u.username FROM post p,user u WHERE p.userid=u.id AND p.status=1 ORDER BY p.time DESC`;
+    let query_sql = `SELECT p.*, u.username, u.avatar FROM post p,user u WHERE p.userid=u.id AND p.status=1 ORDER BY p.time DESC`;
     // 单个帖子详情,返回所有评论
     if (pid) {
-        query_sql = `SELECT p.*, u.username, COUNT(*) AS replys 
+        query_sql = `SELECT p.*, u.username, COUNT(*) AS replys, u.avatar
                         FROM post p,user u, comments c 
                         WHERE 
                         p.status=1 AND p.id=${pid} 
@@ -51,7 +51,7 @@ router.get('/getpost', async(ctx, next) => {
     let result = await query.query(query_sql);
     if (pid) {
         // 单个帖子返回所有评论
-        let c_sql = `SELECT c.content,c.time,u.username 
+        let c_sql = `SELECT c.content,c.time,u.username, u.avatar
                     FROM comments c, user u
                     WHERE c.pid = ${pid} AND c.type=0 AND c.uid = u.id 
                         `;
