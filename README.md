@@ -590,6 +590,7 @@ POST 请求，请求参数略。
 **<span id="add-click">增加点击量</span>**
 
 请求地址：/list/addClick
+帖子点击量：/bbs/addClick
 
 请求参数（必选）：
 
