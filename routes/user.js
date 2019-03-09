@@ -5,7 +5,7 @@ const utils = require('../utils/utils');
 const md5 = require('md5');
 
 // 注册用户
-router.post('/add', async (ctx, next) => {
+router.post('/add', async(ctx, next) => {
     let {
         username,
         password
@@ -34,7 +34,7 @@ router.post('/add', async (ctx, next) => {
 })
 
 // 用户登录
-router.get('/login', async (ctx, next) => {
+router.get('/login', async(ctx, next) => {
     let {
         username,
         password
@@ -49,13 +49,13 @@ router.get('/login', async (ctx, next) => {
 })
 
 // 获取所有标签
-router.get('/getTags', async (ctx, next) => {
+router.get('/getTags', async(ctx, next) => {
     let tags = await query.query(sql.QUERY_TABLE('tag', 'tid,name', 'status=1'));
     ctx.success('', tags);
 })
 
 // 用户行为记录
-router.get('/action', async (ctx, next) => {
+router.get('/action', async(ctx, next) => {
     let {
         userid,
         tid
@@ -71,13 +71,13 @@ router.get('/action', async (ctx, next) => {
 })
 
 // 设置用户标签
-router.post('/setTag', async (ctx, next) => {
+router.post('/setTag', async(ctx, next) => {
     let {
         userid,
         tid
     } = ctx.request.body;
 
-    if ([userid, tid].includes(undefined)) {
+    if (!userid || !tid) {
         ctx.error('缺少参数');
         return;
     }
