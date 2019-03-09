@@ -110,4 +110,9 @@ body{margin:0;padding:0;
 .my_list .price-choose{
     text-align: center;
 }
-
+.forum_title{  
+   cursor: pointer;
+}
+.forum_title:hover{
+   color:#f00;
+}

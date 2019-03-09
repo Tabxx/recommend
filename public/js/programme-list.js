@@ -68,6 +68,15 @@ $(document).ready(function () {
                </ul>
                `);
                UserAction(contant.tag);
+               $.ajax({
+                   url:`/list/addClick?id=${contant.id}`,
+                   type:'get',
+                   success:function(){
+                       alert('成功');
+                   },error:function(error){
+                       alert("失败");
+                   }
+               })
             },error:function(error){
                console.log(error);
                alert('失败');
@@ -90,20 +99,20 @@ $(document).ready(function () {
     success:function(res){
         var results=res.result;
         //console.log(results);
-        var time=results[0].time;
-        var date=new Date();
-        console.log(date.format(time));
         var html='';
-        for(let result of results){
+        for(var result of results){
+            var time=result.time;
+            // console.log(time);
+             var date=new Date(time*1000);
+             date=date.format('yyyy-MM-dd hh:mm:ss');
+             //console.log(date);
              html+=`<div class="border comments">
-                       <h5>${result.username}说:</h5>
-                       <p>${result.content}</p>
-                       
-                    </div>`;      
-        }
-
+             <h5>${result.username}说:</h5>
+             <p>${result.content}</p> 
+             <span class="float-right">${date}</span>  
+             </div>`; 
+            }
         $('#command').html(html);
-
     },error:function(error){
         alert('失败');
     }

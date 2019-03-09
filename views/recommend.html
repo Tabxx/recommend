@@ -30,31 +30,58 @@
        .my_btn:hover,.cc{
            background:rgb(0,122,204);
        }
+       #demo{margin-top:100px;}
     </style>
     <title>方案推荐</title>
 </head>
 <body>
     <div class="container">
-        <button class="btn btn-danger" data-toggle="modal" data-target="#demo">开始</button>
         <div id="demo" class="modal">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4>选择你的个性</h4>
+                        <h4>请选择(可多选)</h4>
                         <button class="close" type="button" data-dismiss="modal">&times;</button>
                     </div>
                     <div id="label" class="modal-body">
-                        <button class="my_btn btn mb-2 btn-sm btn-light">程序员</button>
-                        <button class="my_btn btn mb-2 btn-sm btn-light">设计专业</button>
-                        <button class="my_btn btn mb-2 btn-sm btn-light">热爱娱乐</button>
-                        <button class="my_btn btn mb-2 btn-sm btn-light">游戏玩家</button>
-                        <button class="my_btn btn mb-2 btn-sm btn-light">学生人群</button>
-                        <button class="my_btn btn mb-2 btn-sm btn-light">追求完美</button>
-                        <button class="my_btn btn mb-2 btn-sm btn-light">追求性价比</button>
-                        <button class="my_btn btn mb-2 btn-sm btn-light">追求实惠</button>
-                        <button class="my_btn btn mb-2 btn-sm btn-light">电影爱好者</button>
-                        <button class="my_btn btn mb-2 btn-sm btn-light">挖矿专家</button>  
-                        <button class="my_btn btn mb-2 btn-sm btn-light">工作室</button>  
+                        <div id="price">
+                            <h4>您的价格区间:</h4>
+                            <span>最小价格：</span>
+                            <select id="min_price">
+                                <option value="">3000</option>
+                                <option value="">4000</option>
+                                <option value="">5000</option>
+                                <option value="">7000</option>
+                                <option value="">8000</option>
+                                <option value="">10000</option>
+                                <option value="">12000</option>
+                                <option value="">15000</option>
+                            </select>~最大价格
+                            <select id="max_price">
+                                <option value="">5000</option>
+                                <option value="">6000</option>
+                                <option value="">7000</option>
+                                <option value="">9000</option>
+                                <option value="">11000</option>
+                                <option value="">13000</option>
+                                <option value="">15000</option>
+                                <option value="">19000</option>
+                            </select>
+                        </div>
+                        <div id="personality" class="mt-5">
+                            <h4>选择您感兴趣的:</h4>
+                            <button class="my_btn btn mb-2 btn-sm btn-light" data-tid='1'>程序员</button>
+                            <button class="my_btn btn mb-2 btn-sm btn-light" data-tid='2'>设计专业</button>
+                            <button class="my_btn btn mb-2 btn-sm btn-light" data-tid='3'>热爱娱乐</button>
+                            <button class="my_btn btn mb-2 btn-sm btn-light" data-tid='4'>游戏玩家</button>
+                            <button class="my_btn btn mb-2 btn-sm btn-light" data-tid='5'>学生人群</button>
+                            <button class="my_btn btn mb-2 btn-sm btn-light" data-tid='6'>追求完美</button>
+                            <button class="my_btn btn mb-2 btn-sm btn-light" data-tid='7'>追求性价比</button>
+                            <button class="my_btn btn mb-2 btn-sm btn-light" data-tid='8'>追求实惠</button>
+                            <button class="my_btn btn mb-2 btn-sm btn-light" data-tid='9'>电影爱好者</button>
+                            <button class="my_btn btn mb-2 btn-sm btn-light" data-tid='10'>挖矿专家</button>  
+                            <button class="my_btn btn mb-2 btn-sm btn-light" data-tid='11'>工作室</button> 
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="remove" class="btn btn-warning">重置</button>  
@@ -149,23 +176,6 @@
                                     <button class="btn btn-danger float-right">评价</button>                              
                             </div>                    
                 </div>
-                <script>
-                        $(function () {
-                            $("ul li").hover(function(){
-                                $(this).addClass('hs');
-                                $(this).prevAll().addClass('hs');
-                            },function(){
-                                $(this).removeClass('hs');
-                                $(this).prevAll().removeClass('hs');
-                            })
-                    
-                            $("ul li").click(function () {
-                                $(this).addClass('cs');
-                                $(this).prevAll().addClass('cs');
-                                $(this).nextAll().removeClass('cs');
-                            })
-                        })
-                </script>
             </div>
             <div class="col-4">
                 <div class="border mt-5">
@@ -176,7 +186,7 @@
                     <div class="p-2"><span>海盗船H100iv2</span><span class="float-right text-danger">￥859</span></div>
                     <div class="p-2"><span>Tt零度水冷装备</span><span class="float-right text-danger">￥2899</span></div>
                 </div>
-                <div class="border mt-5">
+                <div class="border mt-2">
                     <h5 class="text-center bg-light p-2">优秀固态硬盘推荐</h5>
                     <div class="p-1"><span>三星860EVOSATA3(250GB)</span><span class="float-right text-danger">￥399</span></div>
                     <div class="p-2"><span>金士顿A400（240GB）</span><span class="float-right text-danger">￥399</span></div>
@@ -184,7 +194,7 @@
                     <div class="p-2"><span>Intel 760P M.2 2280（256GB）</span><span class="float-right text-danger">￥5298</span></div>
                     <div class="p-2"><span>惠普EX950 M.2（2TB）</span><span class="float-right text-danger">￥3499</span></div>
                 </div>
-                <div class="border mt-5">
+                <div class="border mt-2">
                     <h5 class="text-center bg-light p-2">优秀外设推荐</h5>
                     <div class="p-1"><span>Razer 酷黑特别版游戏外设套装</span><span class="float-right text-danger">￥999</span></div>
                     <div class="p-2"><span>海盗船GLAIVE RGB游戏鼠标</span><span class="float-right text-danger">￥399</span></div>
@@ -202,5 +212,6 @@
         
     </div>
     <script src="/js/recommend.js"></script>
+    <script src="/js/util.js"></script>
 </body>
 </html>
