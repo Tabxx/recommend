@@ -4,7 +4,7 @@ const query = require('../utils/query')
 const utils = require('../utils/utils')
 
 // 添加方案列表
-router.post('/add', async (ctx, next) => {
+router.post('/add', async(ctx, next) => {
     let param = ctx.request.body
 
     // 用户信息
@@ -14,13 +14,13 @@ router.post('/add', async (ctx, next) => {
     }
     // 添加当前时间
     param.time = parseInt(Date.now() / 1000)
-    // 获取参数信息
+        // 获取参数信息
     let key = Object.getOwnPropertyNames(param)
     let val = Object.values(param)
 
     // 拼接sql
     let add_sql = sql.INERT_TABLE('list', key.join(','), val.map(item => `'${item}'`).join(','))
-    // 插入数据库
+        // 插入数据库
     let result = await query.query(add_sql)
 
     if (result.affectedRows == 1) {
@@ -31,14 +31,14 @@ router.post('/add', async (ctx, next) => {
 })
 
 // 获取方案列表
-router.get('/getlist', async (ctx, next) => {
+router.get('/getlist', async(ctx, next) => {
     let {
         id,
         sortby = 0,
         type
     } = ctx.request.query
     let list = []
-    // 排序规则
+        // 排序规则
     let sortRule = {
         1: 'time',
         2: 'clicks',
@@ -67,7 +67,7 @@ router.get('/getlist', async (ctx, next) => {
 /**
  * 方案点击量添加
  */
-router.get('/addClick', async (ctx, next) => {
+router.get('/addClick', async(ctx, next) => {
     let list_id = ctx.query.id
     if (list_id) {
         let add_sql = `update list set clicks = clicks + 1 where id=${list_id}`
@@ -80,7 +80,7 @@ router.get('/addClick', async (ctx, next) => {
  * 个性化推荐
  * 传入userid
  */
-router.get('/recommend', async (ctx, next) => {
+router.get('/recommend', async(ctx, next) => {
     let {
         userid
     } = ctx.request.query;
@@ -152,12 +152,20 @@ router.get('/recommend', async (ctx, next) => {
         finalTags.push(Math.ceil(Math.random() * all_tags[0].total));
         finalTags.push(Math.ceil(Math.random() * all_tags[0].total));
     }
-    // TODO: 未去重
-    // 查询对应方案
-    let rsql = `select l.*,u.username from list l, user u where (l.tag like '%${finalTags[1]}%' or l.tag like '%${finalTags[0]}%') and l.userid = u.id`;
-    let recommend = await query.query(rsql);
 
-    ctx.success('', recommend)
+    // 查询对应方案
+    let rsql = `select DISTINCT l.*,u.username from list l, user u 
+                where ( FIND_IN_SET(${finalTags[1]}, l.tag) or FIND_IN_SET(${finalTags[0]}, l.tag)) 
+                and l.userid = u.id`;
+    let recommend = await query.query(rsql);
+    // 去重
+    let hash = {};
+    let result = recommend.reduce((item, value) => {
+        hash[value.id] ? '' : hash[value.id] = value.id && item.push(value);
+        return item;
+    }, []);
+
+    ctx.success('', result)
 })
 
 
