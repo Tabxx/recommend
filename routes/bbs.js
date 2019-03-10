@@ -55,14 +55,18 @@ router.get('/getpost', async(ctx, next) => {
                     FROM comments c, user u
                     WHERE c.pid = ${pid} AND c.type=0 AND c.uid = u.id 
                         `;
-        result[0].comments = await query.query(c_sql);
+        let comments = await query.query(c_sql);
+        result[0].comments = comments.sort((obj1, obj2) => {
+            return obj2.time - obj1.time;
+        })
     }
     ctx.success('', result);
 })
 
 // 帖子点击量
-router.get("addClick", async(ctx, next) => {
-    let list_id = ctx.query.id
+router.get("/addClick", async(ctx, next) => {
+    let list_id = ctx.query.id;
+    console.log(list_id);
     if (list_id) {
         let add_sql = `update post set clicks = clicks + 1 where id=${list_id}`
         await query.query(add_sql)
