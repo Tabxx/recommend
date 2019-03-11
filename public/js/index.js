@@ -1,5 +1,5 @@
-$(document).ready(function () {
-    $('#login').click(function () {
+$(document).ready(function() {
+    $('#login').click(function() {
         var username = $('#username').val();
         console.log(username);
         var password = $('#pwd').val();
@@ -12,18 +12,18 @@ $(document).ready(function () {
                 password: `${password}`
             },
             success(result) {
-                console.log(result);
-                //   document.cookie=`userid=${result.result.userid};username=${result.result.username};tag=${result.result.tag}`; 
                 Cookie.setCookie('userid', result.result.id);
+                Cookie.setCookie('tag', result.result.tag);
                 alert(result.msg);
+                $('#modal').modal('hide')
             },
-            error: function (error) {
+            error: function(error) {
                 console.log(error);
                 alert('登录失败');
             }
         })
     })
-    $('#register').click(function () {
+    $('#register').click(function() {
         $(window).attr('location', 'register.html');
     })
 })

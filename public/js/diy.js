@@ -113,9 +113,7 @@ $(function () {
                     //获取全部列表
                     var hardware_li = $('.founded>ul');
                     //console.log(hardware_li);
-                    for (var i of hardware_li) {
-                        console.log(i.id);
-                    }
+
                     var lists = $('#cpu-list').children();
                     //获取列表的长度除以4向上取整
                     var length = Math.ceil(($(lists).length / 4));
@@ -503,5 +501,36 @@ $(function () {
    $("body").on('click','#pro_',function(e){
        e.preventDefault();
        $(window).attr('location','/programme-list.html');
+   });
+   $('body').on('click','#write_post',function(){
+       $(window).attr('location','/posting.html');
+   });
+   $.ajax({
+       url:'/bbs/getpost',
+       type:'get',
+       dataTye:'json',
+       success:function(result){
+           var data=result.result;
+           console.log(data);
+           var html='';
+           for(let i=0;i<5;i++){
+              var time=new Date(data[i].time*1000);
+              //console.log(time);
+              var date=time.format('yyyy-MM-dd hh:mm:ss');
+              html+=`<tr>
+              <td class="w-50"><span class="forum_title" data-id="${data[i].id}">${data[i].title}</span></td>
+              <td><span class="float-right">${date}</span></td>
+              <td class=""><span class="float-right w-50"><img src="/img/user-icon.png" alt=""><a href="#">${data[i].username}</a></span></td>   
+              </tr>`;
+           }
+           $('#diy_forum').html(html);
+       },error:function(error){
+           console.log(error);
+           alert('失败');
+       }
+   })
+   $('body').on('click','.forum_title',function(){
+        var id=$(this).attr('data-id');
+        $(window).attr('location',`/forum.html?id=${id}`);
    })
 })

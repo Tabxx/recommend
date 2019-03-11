@@ -25,19 +25,35 @@ git push
 
 - [CPU](#cpu)
   - [CPU 分类](#cputypes)
+  - [CPU 添加](#addcpu)
+  - [CPU 删除](#delcpu)
 - [显卡](#graphics)
   - [显卡分类](#graphicstypes)
+  - [显卡添加](#addgraphics)
+  - [显卡删除](#delgraphics)
 - [内存条](#memory)
   - [内存条分类](#memorytypes)
+  - [内存条添加](#addmemory)
+  - [内存条删除](#delmemory)
 - [硬盘](#hard-disk)
   - [硬盘分类](#harddisktypes)
+  - [硬盘添加](#addharddisk)
+  - [硬盘删除](#delharddisk)
 - [主板](#main-board)
   - [主板分类](#mainboardtypes)
+  - [主板添加](#addmainboard)
+  - [主板删除](#delmainboard)
 - [配置清单](#list-add)
   - [清单查询](#list-get)
+  - [增加点击量](#add-click)
 - [评论相关](#comments)
   - [发布评论](#send-comment)
   - [获取评论](#get-comment)
+- [论坛相关](#bbs)
+  - [发帖](#post)
+  - [获取帖子](#getpost)
+- [用户相关](#user)
+  - [设置标签](#settag)
 
 ### 接口说明
 
@@ -145,6 +161,26 @@ git push
 
 ---
 
+**<span id="addcpu">CPU 添加</span>**
+
+请求地址：/cpu/add
+
+POST 请求，请求参数略。
+
+---
+
+**<span id="delcpu">CPU 删除</span>**
+
+请求地址：/cpu/del
+
+请求参数（必选）：
+
+| 参数名 |  含义  | 说明 |
+| ------ | :----: | ---: |
+| cid    | cpu id | 必选 |
+
+---
+
 **<span id="graphics">显卡</span>**
 
 请求地址：/graphics?name=...
@@ -202,6 +238,26 @@ git push
 
 ---
 
+**<span id="addgraphics">显卡添加</span>**
+
+请求地址：/graphics/add
+
+POST 请求，请求参数略。
+
+---
+
+**<span id="delgraphics">显卡删除</span>**
+
+请求地址：/graphics/del
+
+请求参数（必选）：
+
+| 参数名 |  含义   | 说明 |
+| ------ | :-----: | ---: |
+| cid    | 显卡 id | 必选 |
+
+---
+
 **<span id="memory">内存条</span>**
 请求地址：/memory?name=...
 请求参数（可选）：
@@ -251,6 +307,26 @@ git push
 
 ---
 
+**<span id="addmemory">内存条添加</span>**
+
+请求地址：/memory/add
+
+POST 请求，请求参数略。
+
+---
+
+**<span id="delmemory">内存条删除</span>**
+
+请求地址：/memory/del
+
+请求参数（必选）：
+
+| 参数名 |   含义    | 说明 |
+| ------ | :-------: | ---: |
+| cid    | 内存条 id | 必选 |
+
+---
+
 **<span id="hard-disk">硬盘</span>**
 
 请求地址：/harddisk?name=...
@@ -297,6 +373,26 @@ git push
 请求地址：/harddisk/gettypes?filed=...
 
 同 CPU 分类
+
+---
+
+**<span id="addharddisk">硬盘添加</span>**
+
+请求地址：/harddisk/add
+
+POST 请求，请求参数略。
+
+---
+
+**<span id="delharddisk">硬盘删除</span>**
+
+请求地址：/harddisk/del
+
+请求参数（必选）：
+
+| 参数名 |  含义   | 说明 |
+| ------ | :-----: | ---: |
+| cid    | 硬盘 id | 必选 |
 
 ---
 
@@ -356,6 +452,26 @@ git push
 请求地址：/mainborad/gettypes?filed=...
 
 同 CPU 分类
+
+---
+
+**<span id="addmainboard">主板添加</span>**
+
+请求地址：/mainboard/add
+
+POST 请求，请求参数略。
+
+---
+
+**<span id="delmainboard">主板删除</span>**
+
+请求地址：/mainboard/del
+
+请求参数（必选）：
+
+| 参数名 |  含义   | 说明 |
+| ------ | :-----: | ---: |
+| cid    | 主板 id | 必选 |
 
 ---
 
@@ -468,5 +584,111 @@ git push
             "time": "1551083634"    // 时间戳，格式化时间时记得*1000
         }
     ]
+}
+```
+
+**<span id="add-click">增加点击量</span>**
+
+请求地址：/list/addClick
+帖子点击量：/bbs/addClick
+
+请求参数（必选）：
+
+| 参数名 |  含义   |    说明 |
+| ------ | :-----: | ------: |
+| id     | 方案 id | 方案 id |
+
+返回数据：
+
+```
+{
+    "code": 0,  // 错误代码，0-请求正常
+    "msg": "",  // 错误信息
+    "result": 1 // 帖子id
+}
+```
+
+**<span id="recommend">个性化推荐方案</span>**
+
+请求地址：/list/recommend
+
+请求参数（必选）：
+
+| 参数名 |  含义   |    说明 |
+| ------ | :-----: | ------: |
+| userid | 用户 id | 用户 id |
+
+返回数据：
+
+```
+{
+    "code": 0,  // 错误代码，0-请求正常
+    "msg": "",  // 错误信息
+    "result": 1 // 帖子id
+}
+```
+
+---
+
+**<span id="post">发帖</span>**
+
+请求地址：/bbs/post
+
+请求参数（必选）：
+
+| 参数名 |  含义   |           说明 |
+| ------ | :-----: | -------------: |
+| title  |  标题   |       帖子标题 |
+| intro  |  描述   |       帖子描述 |
+| userid | 用户 id | 用户 id 必须传 |
+
+返回数据：
+
+```
+{
+    "code": 0,  // 错误代码，0-请求正常
+    "msg": "",  // 错误信息
+    "result": 1 // 帖子id
+}
+```
+
+**<span id="getpost">获取帖子</span>**
+
+请求地址：/bbs/getpost
+
+请求参数（必选）：
+
+| 参数名 |  含义   |                                                       说明 |
+| ------ | :-----: | ---------------------------------------------------------: |
+| pid    | 帖子 id | 不传 pid 返回评论相关，不传 pid 返回所有不包括帖子相关评论 |
+
+返回数据：
+
+```
+{
+    "code": 0,  // 错误代码，0-请求正常
+    "msg": "",  // 错误信息
+    "result": 1 // 帖子id
+}
+```
+
+**<span id="settag">设置标签</span>**
+
+请求地址：/user/setTag
+
+请求参数（必选）：
+
+| 参数名 |  含义   |     说明 |
+| ------ | :-----: | -------: |
+| userid | 用户 id |  用户 id |
+| tid    | 标签 id | 逗号隔开 |
+
+返回数据：
+
+```
+{
+    "code": 0,  // 错误代码，0-请求正常
+    "msg": "",  // 错误信息
+    "result": 1 // 帖子id
 }
 ```
