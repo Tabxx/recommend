@@ -15,11 +15,15 @@
     <script>
         $("#send").click(() => {
             $.ajax({
-                url: 'http://localhost:3000/bbs/post',
+                url: 'http://localhost:3000/user/edit',
                 data: {
                     userid: 1,
-                    intro: '帖子详情支持富文本',
-                    title: '帖子标题'
+                    data: JSON.stringify({
+                        username: 'xxTab',
+                        password: '123456',
+                        tag: '3,4',
+                        avatar: 'http://localhost:3000/upload/avatar.jpeg'
+                    })
                 },
                 type: 'POST',
                 success(result) {

@@ -90,4 +90,41 @@ router.post('/setTag', async (ctx, next) => {
     }
 })
 
+// 获取用户信息
+router.get('/info', async (ctx, next) => {
+    let userid = ctx.query.id;
+    if (!userid) {
+        ctx.error("缺少参数");
+        return;
+    }
+    let user = await query.query(sql.QUERY_TABLE('user', 'id,username,avatar,tag,email', `id=${userid}`));
+    ctx.success("", user);
+})
+
+/**
+ * 修改用户信息
+ */
+router.get('/edit', async (ctx, next) => {
+    let {
+        data,
+        userid
+    } = ctx.request.query;
+
+    if (!field || !data || !userid) {
+        ctx.error("缺少参数");
+        return;
+    }
+
+    console.log(JSON.parse(data));
+
+    // let result = await query.query(sql.UPDATE_TABLE('user', ``, `id=${userid}`));
+    // // 修改成功
+    // if (result.affectedRows) {
+    //     ctx.success('修改成功');
+    // } else {
+    //     ctx.error('修改失败');
+    // }
+})
+
+
 module.exports = router;
