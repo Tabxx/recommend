@@ -92,7 +92,7 @@ router.post('/setTag', async (ctx, next) => {
 
 // 获取用户信息
 router.get('/info', async (ctx, next) => {
-    let userid = ctx.query.id;
+    let userid = ctx.query.userid;
     if (!userid) {
         ctx.error("缺少参数");
         return;

@@ -30,6 +30,16 @@
                     console.log(result);
                 }
             })
+            $.ajax({
+                url: 'http://localhost:3000/user/info',
+                data: {
+                    userid: 1,
+                },
+                type: 'GET',
+                success(result) {
+                    console.log(result);
+                }
+            })
         })
     </script>
 </body>
