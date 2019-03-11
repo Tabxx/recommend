@@ -1,6 +1,7 @@
 $(document).ready(function() {
     var userid = Cookie.getCookie('userid');
-    if (!userid) {
+    var tag=Cookie.getCookie('tag');
+    if (tag=='null') {
         $('#demo').modal('show');
     } else {
         recommend();
@@ -13,15 +14,15 @@ $(document).ready(function() {
             $(this).addClass('cc');
         }
     })
-    $("ul li").hover(function() {
-        $(this).addClass('hs');
-        $(this).prevAll().addClass('hs');
-    }, function() {
-        $(this).removeClass('hs');
-        $(this).prevAll().removeClass('hs');
-    })
+    $('body').on('mouseover','ul li',function() {
+        movein(this);
+    });
 
-    $("ul li").click(function() {
+    $('body').on('mouseout','ul li',function() {
+         moveout(this);
+    });
+    //点击星星当前所有变色包括自身
+    $('body').on('click','ul li',function() {
         $(this).addClass('cs');
         $(this).prevAll().addClass('cs');
         $(this).nextAll().removeClass('cs');
@@ -43,31 +44,48 @@ $(document).ready(function() {
             },
             success: function(result) {
                 console.log(result);
+                console.log(tids);
+                Cookie.setCookie('tag',tids);
             },
             error: function(error) {
                 console.log(error);
                 alert('失败');
             }
         }).then(
-            function() {
-                $.ajax({
-                    url: `/list/recommend?userid=${userid}`,
-                    type: 'get',
-                    dataType: 'json',
-                    success: function(result) {
-                        //console.log(result.result.length);
-                        if (result.code == 0 && result.result) {
-                            var data = result.result;
-                            var l = data.length;
-                            console.log(data[l - 1]);
-                        }
-                    },
-                    error: function(error) {
-                        console.log(error);
-                    }
-                })
-            }
+           recommend()
         )
+    })
+    $('body').on('click','.eva',function(e){
+        e.preventDefault();
+        //console.log(userid);
+        var pid=$(this).attr('data-pid');
+        //console.log(pid);
+        var content=$(this).parent().children('textarea').val();
+        var goods=$(this).prev().children();
+        var arr=[];
+        for(var i of goods){
+            if($(i).hasClass('cs')){
+              arr.push(i);
+            }
+        }
+        var score=arr.length;
+        $.ajax({
+            url:'/comment/sendcomment',
+            type:'post',
+            data:{
+              uid:userid,
+              content:content,
+              type:1,
+              pid:pid,
+              score:score
+            },
+            success:function(result){
+                console.log(result);
+            },error:function(error){
+                console.log(error);
+                alert('失败');
+            }
+        })
     })
 });
 
@@ -81,6 +99,7 @@ function recommend() {
         type: 'get',
         dataType: 'json',
         success: function(result) {
+            console.log(result.result)
             if (result.code == 0 && result.result) {
                 render(result.result);
             }
@@ -103,7 +122,7 @@ function render(html) {
         render_html += `
         <div class="card mt-5">
         <div class="card-header">
-            <h4>方案一</h4>
+            <h4>方案一<span class="float-right">￥${item.total}</span></h4>
         </div>
         <div class="card-body">
             <table class="table border">
@@ -140,11 +159,19 @@ function render(html) {
                 <li class="assess"> &#9733; </li>
                 <li class="assess"> &#9733; </li>
             </ul>
-            <button class="btn btn-danger float-right">评价</button>
+            <button class="btn btn-danger float-right eva" data-pid="${item.id}">评价</button>
         </div>
     </div>
         `
     }
 
     $('.recommend').html(render_html);
+}
+function movein(s){
+    $(s).addClass('hs');
+    $(s).prevAll().addClass('hs');
+}
+function moveout(s){
+    $(s).removeClass('hs');
+    $(s).prevAll().removeClass('hs');
 }

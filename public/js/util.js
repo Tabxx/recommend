@@ -34,7 +34,7 @@ window.Cookie = {
         let date = new Date()
         date.setTime(date.getTime() + exdays * 24 * 60 * 60 * 1000)
         let expires = 'expires=' + date.toGMTString()
-        console.log("飒飒大")
+        //console.log("飒飒大")
         document.cookie = cname + '=' + cvalue + '; ' + expires
     },
     /**

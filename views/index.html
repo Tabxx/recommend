@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="/stylesheets/index.css">
     <title>主页</title>
 </head>
-
 <body>
     <div class="top">
         <div class="container">
@@ -21,9 +20,16 @@
                     <li class="nav-item"><a class="nav-link text-white mt-2" href="#">关于我们</a></li>
                     <li class="nav-item"><a class="nav-link text-white mt-2" href="#">开始</a></li>
                     <li class="nav-item"><a class="nav-link text-white mt-2" href="#">硬件分析</a></li>
-                    <li class="nav-item"><a class="nav-link text-white mt-2" href="#">帮助</a></li>
-                    <li class="nav-item"><a class="nav-link text-white mt-2" href="#" data-toggle="modal" data-target="#modal">登录</a></li>
-                    <li class="nav-item"><a class="nav-link text-white mt-2" href="#">个人中心</a></li>
+                    <li class="nav-item"><a class="nav-link text-white mt-2" href="#" id="log" data-toggle="modal" data-target="#modal">登录</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white mt-2" href="#">个人中心</a>
+                        <div class="dropdown hid">
+                            <a href="#">个人信息</a>
+                            <a href="#">消息</a>
+                            <a href="#">帮助</a>
+                            <a id="cancel" href="#">注销</a>
+                        </div>
+                    </li>
                 </ul>
             </div>
             <div class="modal fade" id="modal">
@@ -293,5 +299,4 @@
     <script src="/js/util.js"></script>
     <script src="/js/index.js"></script>
 </body>
-
 </html>

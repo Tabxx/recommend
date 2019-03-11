@@ -62,3 +62,24 @@ body {
 .mt-15 {
     margin-top: 30px;
 }
+.navbar ul li:last-child{
+    position: relative;
+}
+.dropdown{
+    position: absolute;
+    top:40px;;left:16px;
+}
+.dropdown>a{
+    display:block;
+    text-align: center;
+    text-decoration: none;
+    color:#fff;
+    margin-top: 5px;
+}
+.dropdown>a:hover{
+    background:#fff;
+    color:rgb(50,200,200);
+}
+.hid{
+    display:none;
+}
