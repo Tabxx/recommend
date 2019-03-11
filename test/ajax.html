@@ -15,13 +15,27 @@
     <script>
         $("#send").click(() => {
             $.ajax({
-                url: 'http://localhost:3000/bbs/post',
+                url: 'http://localhost:3000/user/edit',
                 data: {
                     userid: 1,
-                    intro: '帖子详情支持富文本',
-                    title: '帖子标题'
+                    data: JSON.stringify({
+                        username: 'Tab',
+                        password: '666',
+                        tag: '1,2',
+                        avatar: 'http://localhost:3000/upload/avatar1.jpeg'
+                    })
                 },
                 type: 'POST',
+                success(result) {
+                    console.log(result);
+                }
+            })
+            $.ajax({
+                url: 'http://localhost:3000/user/info',
+                data: {
+                    userid: 1,
+                },
+                type: 'GET',
                 success(result) {
                     console.log(result);
                 }

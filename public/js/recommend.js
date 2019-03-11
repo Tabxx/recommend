@@ -1,12 +1,18 @@
-$(document).ready(function() {
+$(document).ready(function () {
     var userid = Cookie.getCookie('userid');
+<<<<<<< HEAD
     var tag=Cookie.getCookie('tag');
     if (tag=='null') {
+=======
+    var tag = Cookie.getCookie('tag');
+
+    if (!tag) {
+>>>>>>> 49cf64cd439c6011a790ed740f5e1fb7acd94ba0
         $('#demo').modal('show');
     } else {
         recommend();
     }
-    $("body").on("click", ".my_btn", function(e) {
+    $("body").on("click", ".my_btn", function (e) {
         e.stopPropagation();
         if ($(this).hasClass('cc')) {
             $(this).removeClass("cc");
@@ -14,6 +20,7 @@ $(document).ready(function() {
             $(this).addClass('cc');
         }
     })
+<<<<<<< HEAD
     $('body').on('mouseover','ul li',function() {
         movein(this);
     });
@@ -23,11 +30,22 @@ $(document).ready(function() {
     });
     //点击星星当前所有变色包括自身
     $('body').on('click','ul li',function() {
+=======
+    $("ul li").hover(function () {
+        $(this).addClass('hs');
+        $(this).prevAll().addClass('hs');
+    }, function () {
+        $(this).removeClass('hs');
+        $(this).prevAll().removeClass('hs');
+    })
+
+    $("ul li").click(function () {
+>>>>>>> 49cf64cd439c6011a790ed740f5e1fb7acd94ba0
         $(this).addClass('cs');
         $(this).prevAll().addClass('cs');
         $(this).nextAll().removeClass('cs');
     })
-    $('body').on('click', '[data-dismiss="modal"]', function() {
+    $('body').on('click', '[data-dismiss="modal"]', function () {
         var s = $('.cc');
         var arr = [];
         for (var i of s) {
@@ -42,17 +60,38 @@ $(document).ready(function() {
                 userid: userid,
                 tid: tids
             },
-            success: function(result) {
+            success: function (result) {
                 console.log(result);
                 console.log(tids);
                 Cookie.setCookie('tag',tids);
             },
-            error: function(error) {
+            error: function (error) {
                 console.log(error);
                 alert('失败');
             }
         }).then(
+<<<<<<< HEAD
            recommend()
+=======
+            function () {
+                $.ajax({
+                    url: `/list/recommend?userid=${userid}`,
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (result) {
+                        //console.log(result.result.length);
+                        if (result.code == 0 && result.result) {
+                            var data = result.result;
+                            var l = data.length;
+                            console.log(data[l - 1]);
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                })
+            }
+>>>>>>> 49cf64cd439c6011a790ed740f5e1fb7acd94ba0
         )
     })
     $('body').on('click','.eva',function(e){
@@ -98,13 +137,17 @@ function recommend() {
         url: `/list/recommend?userid=${userid}`,
         type: 'get',
         dataType: 'json',
+<<<<<<< HEAD
         success: function(result) {
             console.log(result.result)
+=======
+        success: function (result) {
+>>>>>>> 49cf64cd439c6011a790ed740f5e1fb7acd94ba0
             if (result.code == 0 && result.result) {
                 render(result.result);
             }
         },
-        error: function(error) {
+        error: function (error) {
             console.log(error);
         }
     })

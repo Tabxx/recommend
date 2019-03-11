@@ -5,7 +5,7 @@ const utils = require('../utils/utils');
 const md5 = require('md5');
 
 // 注册用户
-router.post('/add', async(ctx, next) => {
+router.post('/add', async (ctx, next) => {
     let {
         username,
         password
@@ -34,7 +34,7 @@ router.post('/add', async(ctx, next) => {
 })
 
 // 用户登录
-router.get('/login', async(ctx, next) => {
+router.get('/login', async (ctx, next) => {
     let {
         username,
         password
@@ -49,13 +49,13 @@ router.get('/login', async(ctx, next) => {
 })
 
 // 获取所有标签
-router.get('/getTags', async(ctx, next) => {
+router.get('/getTags', async (ctx, next) => {
     let tags = await query.query(sql.QUERY_TABLE('tag', 'tid,name', 'status=1'));
     ctx.success('', tags);
 })
 
 // 用户行为记录
-router.get('/action', async(ctx, next) => {
+router.get('/action', async (ctx, next) => {
     let {
         userid,
         tid
@@ -71,7 +71,7 @@ router.get('/action', async(ctx, next) => {
 })
 
 // 设置用户标签
-router.post('/setTag', async(ctx, next) => {
+router.post('/setTag', async (ctx, next) => {
     let {
         userid,
         tid
@@ -89,5 +89,50 @@ router.post('/setTag', async(ctx, next) => {
         ctx.error('添加标签失败');
     }
 })
+
+// 获取用户信息
+router.get('/info', async (ctx, next) => {
+    let userid = ctx.query.userid;
+    if (!userid) {
+        ctx.error("缺少参数");
+        return;
+    }
+    let user = await query.query(sql.QUERY_TABLE('user', 'id,username,avatar,tag,email', `id=${userid}`));
+    ctx.success("", user);
+})
+
+/**
+ * 修改用户信息
+ */
+router.post('/edit', async (ctx, next) => {
+    let {
+        data,
+        userid
+    } = ctx.request.body;
+
+    if (!data || !userid) {
+        ctx.error("缺少参数");
+        return;
+    }
+
+    let params = JSON.parse(data);
+    let fields = [];
+
+    for (let item in params) {
+        if (item == 'password') {
+            fields.push(`password='${md5(params[item])}'`);
+        } else {
+            fields.push(`${item}='${params[item]}'`);
+        }
+    }
+    let result = await query.query(sql.UPDATE_TABLE('user', fields.join(','), `id=${userid}`));
+    // 修改成功
+    if (result.affectedRows) {
+        ctx.success('修改成功');
+    } else {
+        ctx.error('修改失败');
+    }
+})
+
 
 module.exports = router;
