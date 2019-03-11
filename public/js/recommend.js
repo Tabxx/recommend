@@ -1,11 +1,13 @@
-$(document).ready(function() {
+$(document).ready(function () {
     var userid = Cookie.getCookie('userid');
-    if (!userid) {
+    var tag = Cookie.getCookie('tag');
+
+    if (!tag) {
         $('#demo').modal('show');
     } else {
         recommend();
     }
-    $("body").on("click", ".my_btn", function(e) {
+    $("body").on("click", ".my_btn", function (e) {
         e.stopPropagation();
         if ($(this).hasClass('cc')) {
             $(this).removeClass("cc");
@@ -13,20 +15,20 @@ $(document).ready(function() {
             $(this).addClass('cc');
         }
     })
-    $("ul li").hover(function() {
+    $("ul li").hover(function () {
         $(this).addClass('hs');
         $(this).prevAll().addClass('hs');
-    }, function() {
+    }, function () {
         $(this).removeClass('hs');
         $(this).prevAll().removeClass('hs');
     })
 
-    $("ul li").click(function() {
+    $("ul li").click(function () {
         $(this).addClass('cs');
         $(this).prevAll().addClass('cs');
         $(this).nextAll().removeClass('cs');
     })
-    $('body').on('click', '[data-dismiss="modal"]', function() {
+    $('body').on('click', '[data-dismiss="modal"]', function () {
         var s = $('.cc');
         var arr = [];
         for (var i of s) {
@@ -41,20 +43,20 @@ $(document).ready(function() {
                 userid: userid,
                 tid: tids
             },
-            success: function(result) {
+            success: function (result) {
                 console.log(result);
             },
-            error: function(error) {
+            error: function (error) {
                 console.log(error);
                 alert('失败');
             }
         }).then(
-            function() {
+            function () {
                 $.ajax({
                     url: `/list/recommend?userid=${userid}`,
                     type: 'get',
                     dataType: 'json',
-                    success: function(result) {
+                    success: function (result) {
                         //console.log(result.result.length);
                         if (result.code == 0 && result.result) {
                             var data = result.result;
@@ -62,7 +64,7 @@ $(document).ready(function() {
                             console.log(data[l - 1]);
                         }
                     },
-                    error: function(error) {
+                    error: function (error) {
                         console.log(error);
                     }
                 })
@@ -80,12 +82,12 @@ function recommend() {
         url: `/list/recommend?userid=${userid}`,
         type: 'get',
         dataType: 'json',
-        success: function(result) {
+        success: function (result) {
             if (result.code == 0 && result.result) {
                 render(result.result);
             }
         },
-        error: function(error) {
+        error: function (error) {
             console.log(error);
         }
     })
