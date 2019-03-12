@@ -3,10 +3,59 @@ body {
     padding: 0;
     background: #fff;
 }
-
-.top {
-    width: 100%;
-    background: -webkit-gradient(linear, 0 100%, 100% 0, from(#1de099), to(#31ccd0));
+#banner{
+    width:100%;
+    height:621.81px; 
+    transition: all 1s;
+}
+#banner1,#banner2{
+    width:100%;
+    height:621.81px;
+    position: absolute;
+    color:#fff;
+}
+#banner h1,#banner h5{
+    text-align: center;
+    margin-top:100px;
+}
+#banner a{
+    display:block;
+    width:330px;
+    height:70px;
+    line-height: 70px;
+    text-decoration: none;
+    text-align: center;
+    background:rgb(0,145,234);
+    border-radius: 35px;
+    margin:100px auto;
+    color:#fff;
+    font-size: 1.4rem;
+}
+.top span{
+    width:50px;
+    height:50px;
+    background:#fff;
+    position: absolute;
+    text-align: center;
+    line-height:50px;
+    font-size: 1.8rem;
+    color:#666;
+    top:305px;
+    cursor: pointer;
+}
+#left{left:40px;}
+#right{left:1429.2px}
+.main{   
+    margin:0 200px;
+}
+#banner{position: relative;}
+#banner1{background-image: url('/img/banner1.jpg')}
+#banner2{
+background-image: url('/img/banner2.jpg');
+top:0;left:1519.2px;
+}
+.container-fluid{
+    padding:0;
 }
 
 .start_btn {

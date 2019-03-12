@@ -1,4 +1,10 @@
 $(document).ready(function() {
+    $('body').on('click','#left',function(){
+       $('#banner').css('margin-left','-1519.2px');
+    })
+    $('body').on('click','#right',function(){
+       $('#banner').css('margin-left','0');
+    })
     var uname=Cookie.getCookie('username');
     $(".navbar ul li:last-child").hover(function (){  
         $(".dropdown").show();  
