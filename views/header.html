@@ -10,36 +10,89 @@
     <script src="/js/bootstrap.min.js"></script>
     <title>公共头</title>
     <style>
-      *{margin:0;padding:0}
-      #header>div>img{
-          border:1px soled rgb(79,144,210);
-          border-radius: 50%;
-      }
-      #header>div>button{
-          width:50px;
-          height:30px;
-          background:rgb(255,169,22);
-          background-image: url('/img/search-icon.png');
-          background-repeat: no-repeat;
-      }
+    *{margin:0;padding:0}
+    .container-fluid{
+        padding:0;
+    }
+    .top1{
+        background:rgb(0,145,234);
+        padding:20px 200px;
+    }
+    .h3{margin-top:13px;}
+    .nav{
+        margin-left:400px;
+    }
+    .dropdown>li{
+        list-style: none;
+        text-align: center;    
+        height:40px;
+        line-height: 40px;  
+    }
+    .dropdown>li:hover{
+        background:rgb(0,145,234);
+    }
+    .dropdown>li>a{
+        color:#000;
+        text-decoration: none;
+    }
+    .dropdown>li>a:hover{
+        color:#fff;
+    }
+    #usercenter{
+        position:relative;
+    }
+    .dropdown{
+        display:none;
+        width:100px;
+        height:160px;
+        position:absolute;
+        left:0;top:50px;
+        border:1px solid #000;
+        background:#fff;
+        z-index:1000;
+
+    }
+    #ul1>li{
+       display:inline-block;
+       border-radius: 18px;
+       margin-left:10px;
+    }
+    #ul1>li:hover{
+        background:#fff;
+        color:rgb(0,145,234);
+    }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div id="header" class="row mt-4">
-            <div class="col-md-3 col-sm-12 pl-5">
-                <h4>OSOCM</h4>
+    <div class="container-fluid">
+         <div class="top1 d-flex">
+             <p class="h3 text-white">Computer</p>
+            <div class="nav">
+                <ul id="ul1" class="list-unstyled d-flex">
+                    <li class="nav-item"><a class="nav-link text-white mt-2" href="index.html">首页</a></li>
+                    <li class="nav-item"><a class="nav-link text-white mt-2" href="diy.html">DIY专区</a></li>
+                    <li class="nav-item"><a class="nav-link text-white mt-2" href="recommend.html">推荐专区</a></li>
+                    <li class="nav-item"><a class="nav-link text-white mt-2" href="programme-list.html">方案专区</a></li>
+                    <li class="nav-item"><a class="nav-link text-white mt-2" href="#" id="log" data-toggle="modal" data-target="#modal">登录</a></li>
+                    <li id="usercenter" class="nav-item">
+                        <a id="u_center" class="nav-link text-white mt-2" href="#">个人中心</a>
+                        <ul class="dropdown hid">
+                            <li><a href="#">个人信息</a></li>
+                            <li><a href="#">消息</a></li>
+                            <li><a href="#">帮助</a></li>
+                            <li><a id="cancel" href="#">注销</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
-            <div class="col-md-4 col-sm-12 pl-5">
-                <input type="text" class="w-75">
-                <button class="btn btn-sm"></button>
-            </div>
-            <div class="col-md-3 offset-md-2 col-sm-12">
-                 
-                 <a href="#">登录</a>
-                 <img src="/img/user-icon.png" alt="">
-            </div>
-        </div>
+         </div>
     </div>
+    <script>
+       $('body').on('mouseover','#u_center, .dropdown',function(){
+           $('.dropdown').css('display','block');
+       }).on('mouseout','#u_center ,.dropdown',function(){
+           $('.dropdown ').css('display','none');
+       })
+    </script>
 </body>
 </html>

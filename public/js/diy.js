@@ -1,6 +1,7 @@
-$(function () {
-    //获取分类函数
-    function getType(hardware, type, id) {
+
+$(document).ready(function(){
+     //获取分类函数
+     function getType(hardware, type, id) {
         $.ajax({
             url: '/' + hardware + '/gettypes?field=' + type,
             type: 'get',
@@ -373,16 +374,8 @@ $(function () {
                 tr.children[2].innerHTML = b.innerHTML;
             }
         }
+        getTotal();
 
-        //计算总价
-        let total = document.querySelector('#get_total');
-        let prices = table.querySelectorAll('.prices');
-        var sum = 0;
-        for (price of prices) {
-            let a = price.innerHTML.slice(1);
-            sum += +a;
-        }
-        total.innerHTML = `￥${sum}`;
     })
 
     //方案提交
@@ -446,6 +439,7 @@ $(function () {
         let brother2 = brother1.prev();
         brother1.empty();
         brother2.empty();
+        getTotal();
         //console.log($(this).parent().prev().html());
         // console.log($(this).parent().prev().prev().html());
     });
@@ -462,7 +456,7 @@ $(function () {
        dataTye:'json',
        success:function(result){
            var data=result.result;
-           console.log(data);
+           //console.log(data);
            var html='';
            for(let i=0;i<5;i++){
               var time=new Date(data[i].time*1000);
@@ -484,66 +478,80 @@ $(function () {
         var id=$(this).attr('data-id');
         $(window).attr('location',`/forum.html?id=${id}`);
    })
+    //计算总价
+    function getTotal(){
+        var total = $('#get_total');
+        var prices = $('.prices');
+        var sum = 0;
+        for (var price of prices) {
+            let a = $(price).html().slice(1);
+            sum += +a;
+        }
+        $(total).html(`￥${sum}`);
+    }
 })
-                    //分页显示
-function pageshow(list){
-     //获取全部列表
-     var hardware_li = $('.founded>ul');
-     //console.log(hardware_li);
 
-     var lists = $(list).children();
-     //获取列表的长度除以4向上取整
-     var length = Math.ceil(($(lists).length / 4));
-     //默认第四个以后全部隐藏
-     $(lists[3]).nextAll().addClass('hid');
-     var pages = $('.pag');
-     var len = pages.length;
-     for (var page of pages) {
-         //隐藏掉多余的页码
-         if ($(page).html() > length) {
-             $(page).parent().addClass('hid');
-         }
-         //显示当前页码对应的页
-         function get_list(index, pa) {
-             var first = 4 * (index - 1);
-             var last = 4 * index - 1;
-             $(lists).removeClass('hid');
-             console.log(first, last, index);
-             $(lists[first]).prevAll().addClass('hid');
-             $(lists[last]).nextAll().addClass('hid');
-             $(pages).parent().removeClass('active');
-             $(pa).parent().addClass('active');
-         }
-         //改变按钮样式
-         $(page).click(function (e) {
-             e.preventDefault();
-             var index = $(this).html();
-             get_list(index, this);
-         })
-     }
-     //上一页
-     $('#prev').click(function (e) {
-         e.preventDefault();
-         //获得当前active的元素
-         var k = $('.pages>.active').prev().children();
-         var j = $('.pages>.active').children().html();
-         j = Number(j);
-         if (j > 1) {
-             get_list(j - 1, k);
-         }
-     })
-     //下一页
-     $('#next').click(function (e) {
-         e.preventDefault();
-         var j = $('.pages>.active').children().html();
-         // 字符串转数字
-         j = Number(j);
-         if (j < length) {
-             var k = $('.pages>.active').next().children();
-             console.log(j);
-             //1 2 3 4 5
-             get_list(Number(j) + 1, k);
-         }
-     })
+ //分页显示
+ function pageshow(list){
+    //获取全部列表
+    var hardware_li = $('.founded>ul');
+    //console.log(hardware_li);
+
+    var lists = $(list).children();
+    //获取列表的长度除以4向上取整
+    var length = Math.ceil(($(lists).length/4));
+    //console.log(length);
+    //默认第四个以后全部隐藏
+    $(lists[3]).nextAll().addClass('hid');
+    var pages = $('.pag');
+    //var len = pages.length;
+    for (let page of pages) {
+        //隐藏掉多余的页码
+        //console.log($(page).html());
+        if ($(page).html() > length) {
+           // console.log($(page).html());
+            $(page).parent().addClass('hid');
+        }
+        //显示当前页码对应的页
+        function get_list(index, pa) {
+            var first = 4 * (index - 1);
+            var last = 4 * index - 1;
+            $(lists).removeClass('hid');
+            console.log(first, last, index);
+            $(lists[first]).prevAll().addClass('hid');
+            $(lists[last]).nextAll().addClass('hid');
+            $(pages).parent().removeClass('active');
+            $(pa).parent().addClass('active');
+        }
+        //改变按钮样式
+        $(page).click(function (e) {
+            e.preventDefault();
+            var index = $(this).html();
+            get_list(index, this);
+        })
+    }
+    //上一页
+    $('#prev').click(function (e) {
+        e.preventDefault();
+        //获得当前active的元素
+        var k = $('.pages>.active').prev().children();
+        var j = $('.pages>.active').children().html();
+        j = Number(j);
+        if (j > 1) {
+            get_list(j - 1, k);
+        }
+    })
+    //下一页
+    $('#next').click(function (e) {
+        e.preventDefault();
+        var j = $('.pages>.active').children().html();
+        // 字符串转数字
+        j = Number(j);
+        if (j < length-1) {
+            var k = $('.pages>.active').next().children();
+            console.log(j);
+            //1 2 3 4 5
+            get_list(Number(j) + 1, k);
+        }
+    })
 }
-                   

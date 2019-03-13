@@ -1,7 +1,6 @@
 body {
     margin: 0;
     padding: 0;
-    background: #fff;
 }
 #banner{
     width:100%;
@@ -13,10 +12,12 @@ body {
     height:621.81px;
     position: absolute;
     color:#fff;
+    opacity: 0.7;
 }
 #banner h1,#banner h5{
     text-align: center;
     margin-top:100px;
+    z-index:999;
 }
 #banner a{
     display:block;
@@ -30,6 +31,7 @@ body {
     margin:100px auto;
     color:#fff;
     font-size: 1.4rem;
+    z-index:999;
 }
 .top span{
     width:50px;
@@ -42,17 +44,50 @@ body {
     color:#666;
     top:305px;
     cursor: pointer;
+    z-index:999;
 }
-#left{left:40px;}
-#right{left:1429.2px}
-.main{   
+#left,#right{
+    background:rgba(0,0,0,.2);
+    color:#fff;
+}
+#left:hover,#right:hover{
+    background:rgba(0,0,0,.4);
+    color:#fff;
+}
+#left{left:2%;
+}
+#right{left:94%;
+}
+#parent,#about{   
     margin:0 200px;
 }
+#hard_answ{
+    margin-top:80px;
+    margin-bottom:50px;
+    width:100%;
+    padding-top:20px;
+    height:120px;
+    background:rgb(30,152,220);
+    color:#fff;
+    text-align: center;
+}
 #banner{position: relative;}
-#banner1{background-image: url('/img/banner1.jpg')}
+#banner1{background-image: url('/img/banner1.jpg');
+    background-size: 100% auto;    
+}
 #banner2{
 background-image: url('/img/banner2.jpg');
-top:0;left:1519.2px;
+background-size: 100% auto;
+}
+#shade{
+    position:absolute;
+    background:linear-gradient(to right, rgb(10, 114, 32) 0%,rgb(116, 88, 175) 53%,rgb(21, 109, 160) 100%);
+    width:100%;
+    height:100%;
+    z-index:-1;
+    top:0;left:0;
+    opacity: .7;
+    
 }
 .container-fluid{
     padding:0;

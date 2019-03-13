@@ -1,13 +1,10 @@
 $(document).ready(function () {
     var userid = Cookie.getCookie('userid');
-<<<<<<< HEAD
     var tag=Cookie.getCookie('tag');
     if (tag=='null') {
-=======
     var tag = Cookie.getCookie('tag');
-
+    }
     if (!tag) {
->>>>>>> 49cf64cd439c6011a790ed740f5e1fb7acd94ba0
         $('#demo').modal('show');
     } else {
         recommend();
@@ -20,7 +17,6 @@ $(document).ready(function () {
             $(this).addClass('cc');
         }
     })
-<<<<<<< HEAD
     $('body').on('mouseover','ul li',function() {
         movein(this);
     });
@@ -30,7 +26,6 @@ $(document).ready(function () {
     });
     //点击星星当前所有变色包括自身
     $('body').on('click','ul li',function() {
-=======
     $("ul li").hover(function () {
         $(this).addClass('hs');
         $(this).prevAll().addClass('hs');
@@ -40,7 +35,6 @@ $(document).ready(function () {
     })
 
     $("ul li").click(function () {
->>>>>>> 49cf64cd439c6011a790ed740f5e1fb7acd94ba0
         $(this).addClass('cs');
         $(this).prevAll().addClass('cs');
         $(this).nextAll().removeClass('cs');
@@ -70,28 +64,7 @@ $(document).ready(function () {
                 alert('失败');
             }
         }).then(
-<<<<<<< HEAD
            recommend()
-=======
-            function () {
-                $.ajax({
-                    url: `/list/recommend?userid=${userid}`,
-                    type: 'get',
-                    dataType: 'json',
-                    success: function (result) {
-                        //console.log(result.result.length);
-                        if (result.code == 0 && result.result) {
-                            var data = result.result;
-                            var l = data.length;
-                            console.log(data[l - 1]);
-                        }
-                    },
-                    error: function (error) {
-                        console.log(error);
-                    }
-                })
-            }
->>>>>>> 49cf64cd439c6011a790ed740f5e1fb7acd94ba0
         )
     })
     $('body').on('click','.eva',function(e){
@@ -126,7 +99,8 @@ $(document).ready(function () {
             }
         })
     })
-});
+    });
+})
 
 /**
  * 推荐方案
@@ -137,17 +111,12 @@ function recommend() {
         url: `/list/recommend?userid=${userid}`,
         type: 'get',
         dataType: 'json',
-<<<<<<< HEAD
         success: function(result) {
-            console.log(result.result)
-=======
-        success: function (result) {
->>>>>>> 49cf64cd439c6011a790ed740f5e1fb7acd94ba0
             if (result.code == 0 && result.result) {
                 render(result.result);
             }
         },
-        error: function (error) {
+        error: function(error) {
             console.log(error);
         }
     })
