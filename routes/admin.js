@@ -112,4 +112,15 @@ router.get('/usetag', async (ctx, next) => {
     ctx.success('', count);
 })
 
+// 返回用户数量和方案数量
+router.get('/getcount', async (ctx, next) => {
+    let users = await utils.QUERY_COUNT('user', '*', 'status=1');
+    let lists = await utils.QUERY_COUNT('list', '*', 'status=1');
+
+    ctx.success('', {
+        user: users[0].total,
+        list: lists[0].total
+    })
+})
+
 module.exports = router;
