@@ -2,6 +2,9 @@ body{margin:0;padding:0;
     background:rgb(79,144,210)}
     .main{background:white;}
     li{list-style:none;}
+#mains{
+    margin:0 200px;
+}
  a.my_a_style{
      display:inline-block;
      text-decoration: none;
@@ -115,4 +118,20 @@ body{margin:0;padding:0;
 }
 .forum_title:hover{
    color:#f00;
+}
+.ul1_li{
+    margin-right:0 !important;
+}
+.lis{
+    color:#888;
+    height:60px;
+}
+.lis h5{
+    line-height:60px;
+}
+.gm h4,.gm h5{
+    display:inline-block;
+}
+.lis span{
+    color:#000;
 }

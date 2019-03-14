@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录</title>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <style>
+     body{margin:0;padding:0;}
+     #main{
+         background-image:url('/img/bg.jpg');
+         height:100%;
+         opacity:.8;
+     }
+     #logi{
+         width:30%;
+         margin:230px auto;
+     }
+     .card-header h4{
+         width:70px;
+         display:block;
+         margin:0 auto;
+     }
+     #login{ 
+        margin-left:42%;}
+     #register{
+         float:right;
+     }
+    </style>
+</head>
+<body>
+    <div class="containter-fluid">
+        <div id="main">
+            <table></table>
+            <div class="card" id="logi">           
+                <div class="card-header">
+                    <h4 class="text-primary lg">登录</h4>
+                </div>
+                <div class="card-body text-center">
+                    用户名：<input type="text" class="mt-4 mb-4" id="username"><br> &nbsp;&nbsp;密码：&nbsp;&nbsp;
+                    <input type="password" id="pwd" class="mb-4">
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-primary bn" id="login">登录</button>
+                    <button type="button" class="btn btn-sm btn-warning" id="register">注册</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/login.js"></script>
+    <script src="/js/util.js"></script>
+</body>
+</html>

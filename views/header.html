@@ -19,47 +19,46 @@
         padding:20px 200px;
     }
     .h3{margin-top:13px;}
-    .nav{
-        margin-left:400px;
+    #header_nav{
+        margin-left:260px;
     }
-    .dropdown>li{
+    #header_drop>li{
         list-style: none;
         text-align: center;    
         height:40px;
         line-height: 40px;  
     }
-    .dropdown>li:hover{
+    #header_drop>li:hover{
         background:rgb(0,145,234);
     }
-    .dropdown>li>a{
+    #header_drop>li>a{
         color:#000;
         text-decoration: none;
     }
-    .dropdown>li>a:hover{
+    #header_drop>li>a:hover{
         color:#fff;
     }
     #usercenter{
         position:relative;
     }
-    .dropdown{
+    #header_drop{
         display:none;
         width:100px;
         height:160px;
         position:absolute;
-        left:0;top:50px;
+        left:25px;top:42px;
         border:1px solid #000;
         background:#fff;
         z-index:1000;
 
     }
-    #ul1>li{
-       display:inline-block;
+    #ul1>li.ul1_li{
+        width:120px;
+       display:block;
        border-radius: 18px;
-       margin-left:10px;
     }
-    #ul1>li:hover{
-        background:#fff;
-        color:rgb(0,145,234);
+    li.ul1_li>a{
+        float: right;
     }
     </style>
 </head>
@@ -67,16 +66,16 @@
     <div class="container-fluid">
          <div class="top1 d-flex">
              <p class="h3 text-white">Computer</p>
-            <div class="nav">
+            <div id="header_nav" class="nav">
                 <ul id="ul1" class="list-unstyled d-flex">
-                    <li class="nav-item"><a class="nav-link text-white mt-2" href="index.html">首页</a></li>
-                    <li class="nav-item"><a class="nav-link text-white mt-2" href="diy.html">DIY专区</a></li>
-                    <li class="nav-item"><a class="nav-link text-white mt-2" href="recommend.html">推荐专区</a></li>
-                    <li class="nav-item"><a class="nav-link text-white mt-2" href="programme-list.html">方案专区</a></li>
-                    <li class="nav-item"><a class="nav-link text-white mt-2" href="#" id="log" data-toggle="modal" data-target="#modal">登录</a></li>
-                    <li id="usercenter" class="nav-item">
+                    <li class="nav-item ul1_li"><a class="nav-link text-white mt-2" href="index.html">首页</a></li>
+                    <li class="nav-item ul1_li"><a class="nav-link text-white mt-2" href="diy.html">DIY专区</a></li>
+                    <li class="nav-item ul1_li"><a class="nav-link text-white mt-2" href="recommend.html">推荐专区</a></li>
+                    <li class="nav-item ul1_li"><a class="nav-link text-white mt-2" href="programme-list.html">方案专区</a></li>
+                    <li id="lo" class="nav-item ul1_li"><a class="nav-link text-white mt-2" href="javascript:;" id="log">登录</a></li>
+                    <li id="usercenter" class="nav-item ul1_li">
                         <a id="u_center" class="nav-link text-white mt-2" href="#">个人中心</a>
-                        <ul class="dropdown hid">
+                        <ul id="header_drop" class="dropdown hid">
                             <li><a href="#">个人信息</a></li>
                             <li><a href="#">消息</a></li>
                             <li><a href="#">帮助</a></li>
@@ -92,6 +91,22 @@
            $('.dropdown').css('display','block');
        }).on('mouseout','#u_center ,.dropdown',function(){
            $('.dropdown ').css('display','none');
+       })
+       var username=Cookie.getCookie('username');
+       console.log(username);
+       if(username){
+         $('#log').html(username);
+       }
+       $('body').on('click','#log',function(){
+           if($(this).html()=='登录'){
+               $(window).attr('location','login.html');
+           }
+       })
+       $('body').on('click','#cancel',function(){ 
+        $('#log').html(`登录`); 
+        Cookie.setCookie('userid', ''); 
+        Cookie.setCookie('username', ''); 
+        Cookie.setCookie('tag', '');   
        })
     </script>
 </body>

@@ -1,4 +1,4 @@
-
+$('#tops').load('header.html');
 $(document).ready(function(){
      //获取分类函数
      function getType(hardware, type, id) {
@@ -25,7 +25,6 @@ $(document).ready(function(){
                     }
                     $(`${id}`).html(html);
                 }
-                $('')
             },
             error: function (error) {
                 console.log(error);
@@ -110,8 +109,13 @@ $(document).ready(function(){
                                </li>`
                     }
                     $('#cpu-list').html(html);
+                    var length=res.result.length;
+                    //根据请求的数据个数生成页数
+                   create_page(length,'#cpu_page');
                     //分页显示
-                    pageshow('#cpu-list');
+                    pageshow('#cpu-list','#cpu_page');
+                    
+ 
                 }
             },
             error: function (error) {
@@ -164,8 +168,10 @@ $(document).ready(function(){
                                    </li>`
                     }
                     $('#gpu-list').html(html);
+                    var length=res.result.length;
+                    create_page(length,'#gp_page');
                     //分页显示
-                    pageshow('#gpu-list');
+                    pageshow('#gpu-list','#gp_page');
                 }
             },
             error: function (error) {
@@ -194,6 +200,7 @@ $(document).ready(function(){
             type: 'get',
             dataType: 'json',
             success: function (res) {
+                console.log(res.result.length);
                 if (res.code == 0 && res.result && res.result.length) {
                     let html = '';
                     for (let item of res.result) {
@@ -219,8 +226,10 @@ $(document).ready(function(){
                                    </li>`
                     }
                     $('#memory_list').html(html);
+                    var length=res.result.length;
+                    create_page(length,'#mm_page');
                     //分页显示
-                    pageshow('#memory_list');
+                    pageshow('#memory_list','#mm_page');
                 }
             },
             error: function (error) {
@@ -248,6 +257,7 @@ $(document).ready(function(){
             type: 'get',
             dataType: 'json',
             success: function (res) {
+                console.log(res.result.length);
                 if (res.code == 0 && res.result && res.result.length) {
                     let html = '';
                     for (let item of res.result) {
@@ -273,8 +283,10 @@ $(document).ready(function(){
                                    </li>`
                     }
                     $('#hard_disk_list').html(html);
+                    var length=res.result.length;
+                    create_page(length,'#hd_page');
                     //分页显示
-                    pageshow('#hard_disk_list');
+                    pageshow('#hard_disk_list','#hd_page');
                 }
             },
             error: function (error) {
@@ -303,6 +315,7 @@ $(document).ready(function(){
             type: 'get',
             dataType: 'json',
             success: function (res) {
+                console.log(res.result.length);
                 if (res.code == 0 && res.result && res.result.length) {
                     let html = '';
                     for (let item of res.result) {
@@ -327,8 +340,10 @@ $(document).ready(function(){
                                        </li>`
                     }
                     $('#main_board_list').html(html);
+                    var length=res.result.length;
+                    create_page(length,'#mb_page');
                     //分页显示
-                    pageshow('#main_board_list');
+                   pageshow('#main_board_list','#mb_page');
                 }
             },
             error: function (error) {
@@ -492,7 +507,7 @@ $(document).ready(function(){
 })
 
  //分页显示
- function pageshow(list){
+ function pageshow(list,html){
     //获取全部列表
     var hardware_li = $('.founded>ul');
     //console.log(hardware_li);
@@ -503,15 +518,9 @@ $(document).ready(function(){
     //console.log(length);
     //默认第四个以后全部隐藏
     $(lists[3]).nextAll().addClass('hid');
-    var pages = $('.pag');
-    //var len = pages.length;
+    var pages = $(`${html} .pag`);
+    //遍历所有页
     for (let page of pages) {
-        //隐藏掉多余的页码
-        //console.log($(page).html());
-        if ($(page).html() > length) {
-           // console.log($(page).html());
-            $(page).parent().addClass('hid');
-        }
         //显示当前页码对应的页
         function get_list(index, pa) {
             var first = 4 * (index - 1);
@@ -531,27 +540,43 @@ $(document).ready(function(){
         })
     }
     //上一页
-    $('#prev').click(function (e) {
+    $('body').on('click',`${html} #prev`,function (e) {
         e.preventDefault();
         //获得当前active的元素
-        var k = $('.pages>.active').prev().children();
-        var j = $('.pages>.active').children().html();
+        var k = $(`${html}>.active`).prev().children();
+        var j = $(`${html}>.active`).children().html();
         j = Number(j);
         if (j > 1) {
             get_list(j - 1, k);
         }
     })
     //下一页
-    $('#next').click(function (e) {
+    $('body').on('click',`${html} #next`,function (e) {
         e.preventDefault();
-        var j = $('.pages>.active').children().html();
+        var j = $(`${html}>.active`).children().html();
         // 字符串转数字
         j = Number(j);
-        if (j < length-1) {
-            var k = $('.pages>.active').next().children();
+        if (j < length) {
+            var k = $(`${html}.pages>.active`).next().children();
             console.log(j);
             //1 2 3 4 5
             get_list(Number(j) + 1, k);
         }
     })
+}
+//根据请求的数据个数生成页数
+function create_page(len,html){
+    var page_count=Math.ceil(len/4);
+    //console.log(page_count);
+    var html1='<li class="page-item"><a href="#" class="page-link" id="prev">上一页</a></li>';
+    for(var i=1;i<=page_count;i++){
+        if(i==1){html1+=`<li class="page-item active">
+        <a href="#" class="page-link pag">${i}</a></li>`;}else{
+        html1+=`<li class="page-item">
+        <a href="#" class="page-link pag">${i}</a></li>`;
+        }
+    }
+    html1+='<li class="page-item"><a href="#" class="page-link" id="next">下一页</a></li>';
+
+    $(html).html(html1);
 }
