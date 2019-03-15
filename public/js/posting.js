@@ -1,4 +1,4 @@
-
+$('#post_nav').load('header.html');
 $(document).ready(function () {
     var E = window.wangEditor;
     var editor = new E('#text_a');

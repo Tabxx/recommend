@@ -1,3 +1,4 @@
+$('#nav').load('header.html');
 $(document).ready(function () { 
     var programmes=$('#programme').children();
     for (let programme of programmes) {
@@ -49,14 +50,16 @@ $(document).ready(function () {
         // 这里一定比请求里面先执行
         // $(programme).html(mhtml);
     }
+    //点击方案卡片显示详情
    $('body').on('click','.card',function(){
-        var contant=$(this).data('id');
+        var con=$(this).data('id');
         $.ajax({
-            url:`/list/getlist?id=${contant}`,
+            url:`/list/getlist?id=${con}`,
             type:'get',
             dataType:'json',
             success:function(result){
                 var contant=result.result[0];
+                //console.log(contant);
                $('#contant').html(`
                <h4 class="text-center">${contant.name}</h4>
                <ul class="list-unstyled">
@@ -72,7 +75,7 @@ $(document).ready(function () {
                    url:`/list/addClick?id=${contant.id}`,
                    type:'get',
                    success:function(){
-                       alert('成功');
+                       //alert('成功');
                    },error:function(error){
                        alert("失败");
                    }
@@ -82,7 +85,33 @@ $(document).ready(function () {
                alert('失败');
             }
         })
+        $.ajax({
+            url:`/comment/getcomment?type=1&&pid=${con}`,
+            type:'get',
+            dataType:'json',
+            success:function(res){
+                var results=res.result;
+                //console.log(results);
+                var html='';
+                for(var result of results){
+                    var time=result.time;
+                    // console.log(time);
+                     var date=new Date(time*1000);
+                     date=date.format('yyyy-MM-dd hh:mm:ss');
+                     //console.log(date);
+                     html+=`<div class="border comments">
+                     <h5>${result.username}说:</h5>
+                     <p>${result.content}</p> 
+                     <span class="float-right">${date}</span>  
+                     </div>`; 
+                    }
+                $('#command').html(html);
+            },error:function(error){
+                alert('失败');
+            }
+            })
    })
+   //点击评论显示评论
    $('body').on('click','#com_btn',function(){
        if($(this).html()=='评论'){
            $('#contant').css('margin-top','-500px');
@@ -92,29 +121,9 @@ $(document).ready(function () {
             $(this).html('评论');
         } 
    })
-   $.ajax({
-    url:'/comment/getcomment?type=1&&pid=2',
-    type:'get',
-    dataType:'json',
-    success:function(res){
-        var results=res.result;
-        //console.log(results);
-        var html='';
-        for(var result of results){
-            var time=result.time;
-            // console.log(time);
-             var date=new Date(time*1000);
-             date=date.format('yyyy-MM-dd hh:mm:ss');
-             //console.log(date);
-             html+=`<div class="border comments">
-             <h5>${result.username}说:</h5>
-             <p>${result.content}</p> 
-             <span class="float-right">${date}</span>  
-             </div>`; 
-            }
-        $('#command').html(html);
-    },error:function(error){
-        alert('失败');
-    }
-    })
+   //关闭时返回详情在上，评论在下的默认状态
+   $('body').on('click','#close',function(){
+       $('#contant').css('margin-top','0px');
+   })
+
 })

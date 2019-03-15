@@ -1,3 +1,4 @@
+$('#forum_nav').load('header.html');
 $(document).ready(function() {
     var id = window.location.search.split('=')[1];
     var E = window.wangEditor;

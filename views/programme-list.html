@@ -46,125 +46,131 @@
         .comments{
             height:100px;
         }
+        #main{
+            margin:0 200px;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-9" id="left">
-                <h4>装机方案</h4>
-                <ul class="nav nav-tabs">
-                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#latest">最新</a></li>
-                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#hotest">最热</a></li>
-                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#expensive">最贵</a></li>
-                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#cheap">最便宜</a></li>
-                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#cost-performance">最具性价比</a></li>
-                </ul>
-                <div class="tab-content" id="programme">
-                    <div id="latest" class="tab-pane active">
-                    </div>
-                    <div id="hotest" class="tab-pane ">    
-                    </div>
-                    <div id="expensive" class="tab-pane ">                      
-                    </div>
-                    <div id="cheap" class="tab-pane ">
-                    </div>
-                    <div id="cost-performance" class="tab-pane">  
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <img class="mt-5 pt-5" src="/img/guanggao.png" alt="">
-                <img class="mt-4 mb-5" src="/img/guanggao2.png" alt="">
-                <div class="">
-                    <h5 class="text-primary text-center">最佳配置</h5>
-                    <ul class="list-unstyled">
-                        <li class="d-flex">
-                            <p class="text-danger">1</p><a class="ml-3" href="#">我家配置</a>
-                        </li>
-                        <li class="d-flex">
-                            <p class="text-warning">2</p><a class="ml-3" href="#">4000价位高性价比方案</a>
-                        </li>
-                        <li class="d-flex">
-                            <p class="text-warning">3</p><a class="ml-3" href="#">4000价位高性价比方案</a>
-                        </li>
-                        <li class="d-flex">
-                            <p class="text-secondary">4</p><a class="ml-3" href="#">我的电脑</a>
-                        </li>
-                        <li class="d-flex">
-                            <p class="text-secondary">5</p><a class="ml-3" href="#">家有宝贝</a>
-                        </li>
-                        <li class="d-flex">
-                            <p class="text-secondary">6</p><a class="ml-3" href="#">无敌是多么寂寞</a>
-                        </li>
-                        <li class="d-flex">
-                            <p class="text-secondary">7</p><a class="ml-3" href="#">怎么样</a>
-                        </li>
-                        <li class="d-flex">
-                            <p class="text-secondary">8</p><a class="ml-3" href="#">AMD水冷游戏主机</a>
-                        </li>
-                        <li class="d-flex">
-                            <p class="text-secondary">9</p><a class="ml-3" href="#">程序猿专用电脑</a>
-                        </li>
-                        <li class="d-flex">
-                            <p class="text-secondary">10</p><a class="ml-3" href="#">就这样</a>
-                        </li>
+    <div class="container-fluid">
+        <div id="nav">
+        </div> 
+        <div id="main">
+            <div class="row">
+                <div class="col-9" id="left">
+                    <h4>装机方案</h4>
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#latest">最新</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#hotest">最热</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#expensive">最贵</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#cheap">最便宜</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#cost-performance">最具性价比</a></li>
                     </ul>
-                </div>
-                <div class="">
-                    <h5 class="text-primary text-center">最差配置</h5>
-                    <ul class="list-unstyled">
-                        <li class="d-flex">
-                            <p class="text-danger">1</p><a class="ml-3" href="#">史上最贵电脑</a>
-                        </li>
-                        <li class="d-flex">
-                            <p class="text-warning">2</p><a class="ml-3" href="#">设计专用</a>
-                        </li>
-                        <li class="d-flex">
-                            <p class="text-warning">3</p><a class="ml-3" href="#">设计专用</a>
-                        </li>
-                        <li class="d-flex">
-                            <p class="text-secondary">4</p><a class="ml-3" href="#">打英雄联盟和3D游戏</a>
-                        </li>
-                        <li class="d-flex">
-                            <p class="text-secondary">5</p><a class="ml-3" href="#">1</a>
-                        </li>
-                        <li class="d-flex">
-                            <p class="text-secondary">6</p><a class="ml-3" href="#">1111</a>
-                        </li>
-                        <li class="d-flex">
-                            <p class="text-secondary">7</p><a class="ml-3" href="#">绘图员的性价之王</a>
-                        </li>
-                        <li class="d-flex">
-                            <p class="text-secondary">8</p><a class="ml-3" href="#">垃圾一片</a>
-                        </li>
-                        <li class="d-flex">
-                            <p class="text-secondary">9</p><a class="ml-3" href="#">Lumi配置</a>
-                        </li>
-                        <li class="d-flex">
-                            <p class="text-secondary">10</p><a class="ml-3" href="#">s</a>
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
-        <div id="detail" class="modal">
-            <div class="modal-dialog">
-                <div class="modal-content">      
-                    <div class="modal-body">
-                        <div id="contant"></div>
-                        <div id="command">
+                    <div class="tab-content" id="programme">
+                        <div id="latest" class="tab-pane active">
+                        </div>
+                        <div id="hotest" class="tab-pane ">    
+                        </div>
+                        <div id="expensive" class="tab-pane ">                      
+                        </div>
+                        <div id="cheap" class="tab-pane ">
+                        </div>
+                        <div id="cost-performance" class="tab-pane">  
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" id="com_btn" class="btn btn-warning text-white">评论</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">关闭</button>
+                </div>
+                <div class="col-3">
+                    <img class="mt-5 pt-5" src="/img/guanggao.png" alt="">
+                    <img class="mt-4 mb-5" src="/img/guanggao2.png" alt="">
+                    <div class="">
+                        <h5 class="text-primary text-center">最佳配置</h5>
+                        <ul class="list-unstyled">
+                            <li class="d-flex">
+                                <p class="text-danger">1</p><a class="ml-3" href="#">我家配置</a>
+                            </li>
+                            <li class="d-flex">
+                                <p class="text-warning">2</p><a class="ml-3" href="#">4000价位高性价比方案</a>
+                            </li>
+                            <li class="d-flex">
+                                <p class="text-warning">3</p><a class="ml-3" href="#">4000价位高性价比方案</a>
+                            </li>
+                            <li class="d-flex">
+                                <p class="text-secondary">4</p><a class="ml-3" href="#">我的电脑</a>
+                            </li>
+                            <li class="d-flex">
+                                <p class="text-secondary">5</p><a class="ml-3" href="#">家有宝贝</a>
+                            </li>
+                            <li class="d-flex">
+                                <p class="text-secondary">6</p><a class="ml-3" href="#">无敌是多么寂寞</a>
+                            </li>
+                            <li class="d-flex">
+                                <p class="text-secondary">7</p><a class="ml-3" href="#">怎么样</a>
+                            </li>
+                            <li class="d-flex">
+                                <p class="text-secondary">8</p><a class="ml-3" href="#">AMD水冷游戏主机</a>
+                            </li>
+                            <li class="d-flex">
+                                <p class="text-secondary">9</p><a class="ml-3" href="#">程序猿专用电脑</a>
+                            </li>
+                            <li class="d-flex">
+                                <p class="text-secondary">10</p><a class="ml-3" href="#">就这样</a>
+                            </li>
+                        </ul>
                     </div>
+                    <div class="">
+                        <h5 class="text-primary text-center">最差配置</h5>
+                        <ul class="list-unstyled">
+                            <li class="d-flex">
+                                <p class="text-danger">1</p><a class="ml-3" href="#">史上最贵电脑</a>
+                            </li>
+                            <li class="d-flex">
+                                <p class="text-warning">2</p><a class="ml-3" href="#">设计专用</a>
+                            </li>
+                            <li class="d-flex">
+                                <p class="text-warning">3</p><a class="ml-3" href="#">设计专用</a>
+                            </li>
+                            <li class="d-flex">
+                                <p class="text-secondary">4</p><a class="ml-3" href="#">打英雄联盟和3D游戏</a>
+                            </li>
+                            <li class="d-flex">
+                                <p class="text-secondary">5</p><a class="ml-3" href="#">1</a>
+                            </li>
+                            <li class="d-flex">
+                                <p class="text-secondary">6</p><a class="ml-3" href="#">1111</a>
+                            </li>
+                            <li class="d-flex">
+                                <p class="text-secondary">7</p><a class="ml-3" href="#">绘图员的性价之王</a>
+                            </li>
+                            <li class="d-flex">
+                                <p class="text-secondary">8</p><a class="ml-3" href="#">垃圾一片</a>
+                            </li>
+                            <li class="d-flex">
+                                <p class="text-secondary">9</p><a class="ml-3" href="#">Lumi配置</a>
+                            </li>
+                            <li class="d-flex">
+                                <p class="text-secondary">10</p><a class="ml-3" href="#">s</a>
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
-        </div>        
+            <div id="detail" class="modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">      
+                        <div class="modal-body">
+                            <div id="contant"></div>
+                            <div id="command"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="com_btn" class="btn btn-warning text-white">评论</button>
+                            <button id="close" type="button" class="btn btn-danger" data-dismiss="modal">关闭</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>   
     </div>
     <script src="/js/util.js"></script>
     <script src="/js/programme-list.js"></script>
