@@ -5,7 +5,7 @@ class User {
      * 获取标签列表
      */
     getTags() {
-        return request.get('user/getTags');
+        return request.get('/user/getTags');
     }
 }
 

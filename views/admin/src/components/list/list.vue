@@ -16,7 +16,7 @@
                shadow="hover">
         <div @mouseenter="showmask=index"
              @mouseleave="showmask=-1">
-          <img :src="item.images"
+          <img :src="item.image"
                class="image">
           <div style="padding: 14px;">
             <span>{{ item.name }}</span>
