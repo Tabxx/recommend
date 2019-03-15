@@ -11,6 +11,7 @@ $(document).ready(function () {
     var hardware = arr[0][1];
     //详细名称
     var name = arr[1][1];
+    console.log(name);
     //获取详情
     //获取id
     var id = arr[2][1];
@@ -21,13 +22,14 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (res) {
                 var a = res.result[0];
+                console.log(a);
                 for (var x in a) {
                     if (a[x] == null) {
                         a[x] = '暂无数据';
                     }
                 }
                 var html;
-                switch (a.hardware_name) {
+                switch (hardware) {
                     case 'cpu':
                         html = ` <h4 class="text-primary hardware_title pt-2 pb-2">${a.name}</h4>
                   <h5 class="pt-2 pb-2 bg-light mb-0 mt-4">基本参数</h5>
@@ -98,7 +100,7 @@ $(document).ready(function () {
                       </tr>
                   </table>`;
                         break;
-                    case 'gpu':
+                    case 'graphics':
                         html = ` <h4 class="text-primary hardware_title pt-2 pb-2">${a.name}</h4>
                   <h5 class="pt-2 pb-2 bg-light mb-0 mt-4">显卡核心</h5>
                   <table class="table">

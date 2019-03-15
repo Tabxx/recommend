@@ -126,12 +126,14 @@ $(document).ready(function(){
     }
     //cpu默认(不限)
     get_cpu('/cpu');
-    $("body").on("click", "#cpu_select .all", function () {
+    $("body").on("click", "#cpu_select .all", function (e) {
+        e.preventDefault();
         let b = this.getAttribute('data-type');
         get_cpu(`/cpu`);
     })
     //cpu条件
-    $("body").on("click", "#cpu_select .selector ", function () {
+    $("body").on("click", "#cpu_select .selector ", function (e) {
+        e.preventDefault();
         let a = this.innerHTML;
         let b = this.getAttribute('data-type');
         get_cpu(`/cpu?${b}=${a}`);
@@ -182,12 +184,14 @@ $(document).ready(function(){
     }
     //默认
     get_gpu('/graphics');
-    $("body").on("click", "#xianka_select .all", function () {
+    $("body").on("click", "#xianka_select .all", function (e) {
+        e.preventDefault();
         let b = this.getAttribute('data-type');
         get_gpu(`/graphics`);
     })
     //显卡条件
-    $("body").on("click", "#xianka_select .selector ", function () {
+    $("body").on("click", "#xianka_select .selector ", function (e) {
+        e.preventDefault();
         let a = this.innerHTML;
         let b = this.getAttribute('data-type');
         get_gpu(`/graphics?${b}=${a}`);
@@ -240,12 +244,14 @@ $(document).ready(function(){
     }
     //默认
     get_memory('/memory');
-    $("body").on("click", "#neicun_select .all", function () {
+    $("body").on("click", "#neicun_select .all", function (e) {
+        e.preventDefault();
         let b = this.getAttribute('data-type');
         get_memory(`/memory`);
     })
     //内存条件
-    $("body").on("click", "#neicun_select .selector ", function () {
+    $("body").on("click", "#neicun_select .selector ", function (e) {
+        e.preventDefault();
         let a = this.innerHTML;
         let b = this.getAttribute('data-type');
         get_memory(`/memory?${b}=${a}`);
@@ -297,12 +303,14 @@ $(document).ready(function(){
     }
     //默认
     get_harddisk('/harddisk');
-    $("body").on("click", "#yingpan_select .all", function () {
+    $("body").on("click", "#yingpan_select .all", function (e) {
+        e.preventDefault();
         let b = this.getAttribute('data-type');
         get_harddisk(`/harddisk`);
     })
     //硬盘条件
-    $("body").on("click", "#yingpan_select .selector ", function () {
+    $("body").on("click", "#yingpan_select .selector ", function (e) {
+        e.preventDefault();
         let a = this.innerHTML;
         let b = this.getAttribute('data-type');
         get_harddisk(`/harddisk?${b}=${a}`);
@@ -354,12 +362,14 @@ $(document).ready(function(){
     }
     //默认
     get_mainboard('/mainboard');
-    $("body").on("click", "#zhuban_select .all", function () {
+    $("body").on("click", "#zhuban_select .all", function (e) {
+        e.preventDefault();
         let b = this.getAttribute('data-type');
         get_mainboard(`/mainboard`);
     })
     //主板条件
-    $("body").on("click", "#zhuban_select .selector ", function () {
+    $("body").on("click", "#zhuban_select .selector ", function (e) {
+        e.preventDefault();
         let a = this.innerHTML;
         let b = this.getAttribute('data-type');
         get_mainboard(`/mainboard?${b}=${a}`);
