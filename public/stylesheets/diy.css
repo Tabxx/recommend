@@ -34,6 +34,21 @@ body{margin:0;padding:0;
  .my_group{
      padding-bottom: 10px;
      padding-top: 10px;
+     border:0 !important;
+     position:relative;
+ }
+ .my_group .media i{
+     width:27px;
+     height:27px;
+     background-image: url('/img/sprite1.png');
+     position: absolute;
+     left:18px;
+ }
+ .my_group .media{
+     padding-left:30px;
+ }
+  #r1{
+     background-position: -29px 0;
  }
  .tab-content img {
     width: 100px;
@@ -134,6 +149,8 @@ body{margin:0;padding:0;
 }
 .lis span{
     color:#000;
+    line-height: 60px;
+    font-size: 0.9rem;
 }
 #post,#list_commend{
     padding-bottom:0.6rem;
@@ -153,4 +170,36 @@ body{margin:0;padding:0;
     margin-left:0px;
     padding:0 8px;
     text-decoration: none;
+}
+.lis span i{
+    width:28px;
+    height:25px;
+    display:block;
+    float:left;
+    margin-top:19px;
+    background-image:url('/img/sprite1.png');
+}
+i.icon-cpu{
+    background-position: 0 0;
+}
+i.icon-gpu{
+    background-position: 0 -75px;
+}
+i.icon-memory{
+    background-position: 0 -52px;
+}
+i.icon-harddisk{
+    background-position: 0 -102px;
+}
+i.icon-mainboard{
+    background-position: 0 -25px;
+}
+.red{
+    color:#f00;
+}
+.boxcontent{
+    box-sizing: content-box;
+}
+#d1,#d2,#d3{
+    padding:15px;
 }
