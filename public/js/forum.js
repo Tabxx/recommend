@@ -1,4 +1,5 @@
 $('#forum_nav').load('header.html');
+$('#footer').load('footer.html');
 $(document).ready(function() {
     var id = window.location.search.split('=')[1];
     var E = window.wangEditor;

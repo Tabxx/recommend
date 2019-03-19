@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,12 +31,14 @@
             height: 30px;
             width: 30px;
         }
+        #main{margin:0 200px;}
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
+    <div class="container-fluid">
+        <div id="nav"></div>
+        <div class="row mt-5" id="main">
             <div class="col-9">
                 <div id="hardware_detail"></div>
                 <div id="hardware_commend"></div>
@@ -193,8 +194,8 @@
                 </div>
             </div>
         </div>
+        <div id="footer"></div>
     </div>
-
     <script src="/js/util.js"></script>
     <script src="/js/hardware.js"></script>
     <script src="/js/wangEditor.min.js"></script>

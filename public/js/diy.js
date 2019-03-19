@@ -1,4 +1,5 @@
 $('#tops').load('header.html');
+$('#footer').load('footer.html');
 $(document).ready(function(){
      //获取分类函数
      function getType(hardware, type, id) {
@@ -9,21 +10,22 @@ $(document).ready(function(){
             success: function (res) {
                 if (res.code == 0 && res.result && res.result.length) {
                     let a = res.result[0].data;
-                    let html = `<li>${res.result[0].title}</li><li><a href="#" class="my_a_style all">不限</a></li>`;
+                    let html = `<li>${res.result[0].title}</li><li class="chosed selected"><a href="#" class="my_a_style all ">不限</a></li>`;
                     for (let i = 0; i < a.length; i++) {
                         var obj = res.result[0].data[i];
                         for (let j in obj) {
                             let pp = obj[j];
                             if (j == 'capacity') {
-                                html += `<li><a href="#" class="my_a_style selector" data-type="${j}">${pp}GB</a></li>`;
+                                html += `<li class="chosed"><a href="#" class="my_a_style selector" data-type="${j}" data-s="${pp}">${pp}GB</a></li>`;
                             } else if (j == 'cache') {
-                                html += `<li><a href="#" class="my_a_style selector" data-type="${j}">${pp}MB</a></li>`;
+                                html += `<li class="chosed"><a href="#" class="my_a_style selector" data-type="${j}" data-s="${pp}">${pp}MB</a></li>`;
                             } else {
-                                html += `<li><a href="#" class="my_a_style selector" data-type="${j}">${pp}</a></li>`;
+                                html += `<li class="chosed"><a href="#" class="my_a_style selector" data-type="${j}" data-s="${pp}">${pp}</a></li>`;
                             }
                         }
                     }
                     $(`${id}`).html(html);
+                    //console.log(a.length);
                 }
             },
             error: function (error) {
@@ -87,7 +89,7 @@ $(document).ready(function(){
                 if (res.code == 0 && res.result && res.result.length) {
                     let html = '';
                     for (let item of res.result) {
-                        html += `<li class="my_list page_show">
+                        html += `<li class="my_list page_show" data-brand="${item.brand}" data-series="${item.series}" data-slot="${item.slot}">
                                    <div class=" row intr">
                                        <div class="col-2"><img src="${item.image}" alt="">
                                        </div>
@@ -114,8 +116,6 @@ $(document).ready(function(){
                    create_page(length,'#cpu_page');
                     //分页显示
                     pageshow('#cpu-list','#cpu_page');
-                    
- 
                 }
             },
             error: function (error) {
@@ -124,20 +124,12 @@ $(document).ready(function(){
             }
         })
     }
-    //cpu默认(不限)
-    get_cpu('/cpu');
-    $("body").on("click", "#cpu_select .all", function (e) {
-        e.preventDefault();
-        let b = this.getAttribute('data-type');
-        get_cpu(`/cpu`);
-    })
+    //cpu默认
+    get_cpu('/cpu');    
     //cpu条件
-    $("body").on("click", "#cpu_select .selector ", function (e) {
-        e.preventDefault();
-        let a = this.innerHTML;
-        let b = this.getAttribute('data-type');
-        get_cpu(`/cpu?${b}=${a}`);
-    })
+    //condition('#cpu_select','cpu',get_cpu)
+
+    condition('#cpu_select','cpu',get_cpu);
     //显卡列表
     function get_gpu(url) {
         $.ajax({
@@ -148,7 +140,7 @@ $(document).ready(function(){
                 if (res.code == 0 && res.result && res.result.length) {
                     let html = '';
                     for (let item of res.result) {
-                        html += `<li class="my_list page_show">
+                        html += `<li class="my_list page_show" data-brand="${item.brand}" data-series="${item.capacity}" data-type="${item.type}">
                                        <div class=" row intr">
                                            <div class="col-2"><img src="${item.image}" alt="">
                                            </div>
@@ -184,19 +176,8 @@ $(document).ready(function(){
     }
     //默认
     get_gpu('/graphics');
-    $("body").on("click", "#xianka_select .all", function (e) {
-        e.preventDefault();
-        let b = this.getAttribute('data-type');
-        get_gpu(`/graphics`);
-    })
-    //显卡条件
-    $("body").on("click", "#xianka_select .selector ", function (e) {
-        e.preventDefault();
-        let a = this.innerHTML;
-        let b = this.getAttribute('data-type');
-        get_gpu(`/graphics?${b}=${a}`);
-    })
-
+    condition('#xianka_select','graphics',get_gpu);
+    
     //内存列表
     function get_memory(url) {
         $.ajax({
@@ -204,12 +185,11 @@ $(document).ready(function(){
             type: 'get',
             dataType: 'json',
             success: function (res) {
-                console.log(res.result.length);
                 if (res.code == 0 && res.result && res.result.length) {
                     let html = '';
                     for (let item of res.result) {
-                        html += `<li class="my_list">
-                                       <div class=" row intr page_show">
+                        html += `<li class="my_list" >
+                                       <div class=" row intr page_show" data-brand="${item.brand}" data-series="${item.capacity}" data-type="${item.type}">
                                            <div class="col-2"><img src="${item.image}" alt="">
                                            </div>
                                            <div class="col-7">
@@ -244,18 +224,8 @@ $(document).ready(function(){
     }
     //默认
     get_memory('/memory');
-    $("body").on("click", "#neicun_select .all", function (e) {
-        e.preventDefault();
-        let b = this.getAttribute('data-type');
-        get_memory(`/memory`);
-    })
-    //内存条件
-    $("body").on("click", "#neicun_select .selector ", function (e) {
-        e.preventDefault();
-        let a = this.innerHTML;
-        let b = this.getAttribute('data-type');
-        get_memory(`/memory?${b}=${a}`);
-    })
+    condition('#neicun_select','memory',get_memory);
+    
     //硬盘列表
     function get_harddisk(url) {
         $.ajax({
@@ -263,11 +233,10 @@ $(document).ready(function(){
             type: 'get',
             dataType: 'json',
             success: function (res) {
-                console.log(res.result.length);
                 if (res.code == 0 && res.result && res.result.length) {
                     let html = '';
                     for (let item of res.result) {
-                        html += `<li class="my_list page_show">
+                        html += `<li class="my_list page_show" data-brand="${item.brand}" data-series="${item.capacity}" data-cache="${item.cache}">
                                        <div class=" row intr">
                                            <div class="col-2"><img src="${item.image}" alt="">
                                            </div>
@@ -303,19 +272,7 @@ $(document).ready(function(){
     }
     //默认
     get_harddisk('/harddisk');
-    $("body").on("click", "#yingpan_select .all", function (e) {
-        e.preventDefault();
-        let b = this.getAttribute('data-type');
-        get_harddisk(`/harddisk`);
-    })
-    //硬盘条件
-    $("body").on("click", "#yingpan_select .selector ", function (e) {
-        e.preventDefault();
-        let a = this.innerHTML;
-        let b = this.getAttribute('data-type');
-        get_harddisk(`/harddisk?${b}=${a}`);
-    })
-
+    condition('#yingpan_select','harddisk',get_harddisk);
     //主板列表
     function get_mainboard(url) {
         $.ajax({
@@ -323,11 +280,10 @@ $(document).ready(function(){
             type: 'get',
             dataType: 'json',
             success: function (res) {
-                console.log(res.result.length);
                 if (res.code == 0 && res.result && res.result.length) {
                     let html = '';
                     for (let item of res.result) {
-                        html += `<li class="my_list page_show">
+                        html += `<li class="my_list page_show" brand="${item.brand}" cpu_slot="${item.cpu_slot}" version="${item.version}">
                                            <div class=" row intr">
                                                <div class="col-2"><img src="${item.image}" alt=""></div>
                                                <div class="col-7">
@@ -351,7 +307,7 @@ $(document).ready(function(){
                     var length=res.result.length;
                     create_page(length,'#mb_page');
                     //分页显示
-                   pageshow('#main_board_list','#mb_page');
+                    pageshow('#main_board_list','#mb_page');
                 }
             },
             error: function (error) {
@@ -362,22 +318,12 @@ $(document).ready(function(){
     }
     //默认
     get_mainboard('/mainboard');
-    $("body").on("click", "#zhuban_select .all", function (e) {
-        e.preventDefault();
-        let b = this.getAttribute('data-type');
-        get_mainboard(`/mainboard`);
-    })
-    //主板条件
-    $("body").on("click", "#zhuban_select .selector ", function (e) {
-        e.preventDefault();
-        let a = this.innerHTML;
-        let b = this.getAttribute('data-type');
-        get_mainboard(`/mainboard?${b}=${a}`);
-    })
+    condition('#zhuban_select','mainboard',get_mainboard);
+  
     $('body').on("click", ".detail", function (e) {
         e.preventDefault();
         var hardware_name = $(this).parent().children(':first').html();
-        console.log(hardware_name);
+        //console.log(hardware_name);
         var name = $(this).parent().parent().parent().parent().prev().html().split('的')[1];
         var id=$(this).attr('data-id');
         $(window).attr('location', `Hardware.html?hardware=${name}&name=${hardware_name}&id=${id}`);
@@ -400,7 +346,6 @@ $(document).ready(function(){
             }
         }
         getTotal();
-
     })
 
     //方案提交
@@ -536,7 +481,7 @@ $(document).ready(function(){
             var first = 4 * (index - 1);
             var last = 4 * index - 1;
             $(lists).removeClass('hid');
-            console.log(first, last, index);
+            //console.log(first, last, index);
             $(lists[first]).prevAll().addClass('hid');
             $(lists[last]).nextAll().addClass('hid');
             $(pages).parent().removeClass('active');
@@ -568,7 +513,7 @@ $(document).ready(function(){
         j = Number(j);
         if (j < length) {
             var k = $(`${html}.pages>.active`).next().children();
-            console.log(j);
+            //console.log(j);
             //1 2 3 4 5
             get_list(Number(j) + 1, k);
         }
@@ -589,4 +534,30 @@ function create_page(len,html){
     html1+='<li class="page-item"><a href="#" class="page-link" id="next">下一页</a></li>';
 
     $(html).html(html1);
+}
+//硬件的多重筛选
+function condition(hws,hw,fn){
+    $("body").on("click", ".chosed", function (e) {
+        e.preventDefault();
+        $(this).prevAll().removeClass('selected');
+        $(this).nextAll().removeClass('selected');
+        $(this).addClass('selected');
+        var list=$(`${hws} li`);
+        var url=`/${hw}?`;
+        for(var item of list){
+            var a=$(item).children().html();
+            var b=$(item).children().attr('data-type');
+            if($(item).hasClass('selected')){
+                if($(item).children().hasClass('my_a_style all')){
+                    url+='';
+                }else{
+                    url+=`${b}=${a}&`;
+                }
+            }
+        }
+        if(url.charAt(url.length-1)=="&"||"?"){
+            url=url.substr(0,url.length-1);
+        };
+        fn(url);
+    })
 }

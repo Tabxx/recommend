@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -75,17 +74,17 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="col-7">
+                    <div class="col-md-7 col-sm-12">
                         <ul class="nav nav-tabs d-flex">
-                            <li class="nav-item"> <a class="btn btn-md nav-link active btn-primary ml-2" data-toggle="tab"
+                            <li class="nav-item"> <a class="btn btn-md nav-link active  ml-2" data-toggle="tab"
                                     href="#cpu_select">cpu</a></li>
-                            <li class="nav-item"> <a id="gpubtn" class="btn btn-md nav-link btn-primary ml-2" data-toggle="tab"
+                            <li class="nav-item"> <a id="gpubtn" class="btn btn-md nav-link  ml-2" data-toggle="tab"
                                     href="#xianka_select">显卡</a></li>
-                            <li class="nav-item"> <a id="memory" class="btn btn-md nav-link btn-primary ml-2" data-toggle="tab"
+                            <li class="nav-item"> <a id="memory" class="btn btn-md nav-link  ml-2" data-toggle="tab"
                                     href="#neicun_select">内存</a></li>
-                            <li class="nav-item"> <a id="hard_disk" class="btn btn-md nav-link btn-primary ml-2"
+                            <li class="nav-item"> <a id="hard_disk" class="btn btn-md nav-link  ml-2"
                                     data-toggle="tab" href="#yingpan_select">硬盘</a></li>
-                            <li class="nav-item"> <a id="main_board" class="btn btn-md nav-link btn-primary ml-2"
+                            <li class="nav-item"> <a id="main_board" class="btn btn-md nav-link  ml-2"
                                     data-toggle="tab" href="#zhuban_select">主板</a></li>
                         </ul>
                         <div class="tab-content" id="select">
@@ -235,9 +234,9 @@
                 </div>
             </div>
             <div>
-                <h3 class="text-primary">装机推荐</h3>
+                <h3 id="list_commend" class="text-primary">装机推荐</h3>
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-md-8 col-sm-12">
                         <ul class="nav nav-tabs">
                             <li class="nav-item"><a class="nav-link active" href="#d1" data-toggle="tab">2000-3000元</a></li>
                             <li class="nav-item"><a class="nav-link" href="#d2" data-toggle="tab">3000-5000元</a></li>
@@ -246,7 +245,7 @@
                         <div class="tab-content">
                             <div id="d1" class="row tab-pane mt-3 active">
                                 <div class="row">
-                                    <div class="col-6 gm">
+                                    <div class="col-md-6 col-sm-12 gm">
                                     <h4>低配高能</h4><span class="float-right">feifei</span>
                                     <ul class="list-unstyled border-top border-bottom">
                                         <li class="lis"><h5>cpu:</h5><span>Intel 奔腾 G4560</span></li>
@@ -257,7 +256,7 @@
                                     </ul>
                                     <h4 class="float-right">总价:￥2875</h4>
                                     </div>
-                                    <div class="col-6 gm">
+                                    <div class="col-md-6 col-sm-12 gm">
                                     <h4>低成本配置</h4><span class="float-right">Tab</span>
                                     <ul class="list-unstyled border-top border-bottom">
                                         <li class="lis"><h5>cpu:</h5><span>Intel 奔腾 G4560</span></li>
@@ -324,7 +323,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4 col-sm-12">
                         <a href="javascipt:;" class="h5 text-primary" id="pro_">方案排行榜</a>
                         <ul class="list-unstyled">
                             <li class="list-group-item my_group">
@@ -371,15 +370,17 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-3">
-                <h3 id="post" class="text-primary">DIY装机交流论坛 <button id="write_post" class="btn btn-primary float-right">我要发帖</button></h3>
+            <div class="mt-3 mb-5">
+                <h3 id="post" class="text-primary">DIY装机交流论坛</h3>
                 <div>
                     <table id="diy_forum" class="table">
                     </table>
-                    
+                    <button id="write_post" class="btn btn-primary float-right">我要发帖</button>
+                    <div id="clearfloat"></div>
                 </div>
             </div>
         </div>
+        <div id="footer"></div>
     </div>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/popper.min.js"></script>
@@ -387,5 +388,4 @@
     <script src="/js/util.js"></script>
     <script src="/js/diy.js"></script>
 </body>
-
 </html>

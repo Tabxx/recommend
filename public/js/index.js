@@ -4,6 +4,7 @@ $('#banner2').css('left',+width+'px');
 //console.log($('#banner2').css('left'));
 $(document).ready(function() { 
     $('#top1').load('header.html');
+    $('#footer').load('footer.html');
     $('.top').css('overflow','hidden');
     setInterval(ban,8000);
     $('body').on('click','#left',function(){

@@ -1,4 +1,5 @@
 $('#nav').load('header.html');
+$('#footer').load('footer.html');
 $(document).ready(function () {
     var userid = Cookie.getCookie('userid');
     var tag=Cookie.getCookie('tag');

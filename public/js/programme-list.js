@@ -1,4 +1,5 @@
 $('#nav').load('header.html');
+$('#footer').load('footer.html');
 $(document).ready(function () { 
     var programmes=$('#programme').children();
     for (let programme of programmes) {

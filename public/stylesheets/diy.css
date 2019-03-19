@@ -135,3 +135,22 @@ body{margin:0;padding:0;
 .lis span{
     color:#000;
 }
+#post,#list_commend{
+    padding-bottom:0.6rem;
+    border-bottom:2px solid #ccc;
+    margin-bottom:0;
+}
+#clearfloat{
+    clear: both;
+}
+.footer{
+    margin-bottom:0 !important;
+}
+.selected{background:rgb(249,170,0);
+   border-radius: 3px;
+}
+#select li a{
+    margin-left:0px;
+    padding:0 8px;
+    text-decoration: none;
+}

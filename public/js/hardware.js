@@ -1,3 +1,5 @@
+$('#nav').load('header.html');
+$('#footer').load('footer.html');
 $(document).ready(function () {
     //var hardware='cpu';
     var href = decodeURI(window.location.href);
