@@ -29,7 +29,7 @@ body{margin:0;padding:0;
      border-top:1px solid #ccc;
  }
  .my_small_font{
-     font-size: 0.4rem;
+     font-size: 0.8rem;
  }
  .my_group{
      padding-bottom: 10px;
@@ -42,6 +42,8 @@ body{margin:0;padding:0;
      height:27px;
      background-image: url('/img/sprite1.png');
      position: absolute;
+     font-style: normal;
+     line-height:90%;
      left:18px;
  }
  .my_group .media{
@@ -50,6 +52,9 @@ body{margin:0;padding:0;
   #r1{
      background-position: -29px 0;
  }
+ #r2{background-position:-29px -28px}
+ #r3{background-position:-29px -56px}
+ #r4{background-position:-29px -84px}
  .tab-content img {
     width: 100px;
     height: 75px;
@@ -203,3 +208,28 @@ i.icon-mainboard{
 #d1,#d2,#d3{
     padding:15px;
 }
+.d-flex.nav-tabs>li>a,.d-flex.nav-tabs>li,.d-flex.nav-tabs>li>a.active{
+    background:rgb(220,220,220);
+    border:0;
+}
+.d-flex.nav-tabs>li{
+    outline:2px solid rgb(220,220,220);
+}
+.d-flex.nav-tabs>li:hover{
+    outline:2px solid rgb(40,139,222);
+}
+.btn:focus, .btn.focus,a:focus,a.focus{
+    outline: 0;
+    box-shadow: none !important;
+  }
+ .clearfloat{
+     clear: both;
+ }
+ .abs{width:88px;}
+ .detail{
+     color:rgb(40,139,222);
+     font-size:0.7rem;
+ }
+ #cpu-list,#gpu-list,#memory_list,#hard_disk_list,#main_board_disk{
+     height:500px;
+ }

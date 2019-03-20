@@ -10,7 +10,7 @@ $(document).ready(function(){
             success: function (res) {
                 if (res.code == 0 && res.result && res.result.length) {
                     let a = res.result[0].data;
-                    let html = `<li>${res.result[0].title}</li><li class="chosed selected"><a href="#" class="my_a_style all ">不限</a></li>`;
+                    let html = `<li class="abs">${res.result[0].title}</li><li class="chosed selected"><a href="#" class="my_a_style all ">不限</a></li>`;
                     for (let i = 0; i < a.length; i++) {
                         var obj = res.result[0].data[i];
                         for (let j in obj) {
@@ -381,6 +381,14 @@ $(document).ready(function(){
             list_data[i] = arr[t];
             t++;
         }
+        //获取复选框的个性
+        var arr1=[];
+        $.each($('input:checkbox:checked'),function(){
+           arr1.push($(this).val());
+        })
+        var str=arr1.join(',');
+        list_data.tag=str;
+        
         // 添加userid
         list_data['userid'] = Cookie.getCookie('userid');
         $.ajax({
@@ -402,6 +410,7 @@ $(document).ready(function(){
                 alert("失败");
             }
         })
+        
     })
     //删除硬件
     $("body").on("click", ".delete", function () {
@@ -459,6 +468,10 @@ $(document).ready(function(){
         }
         $(total).html(`￥${sum}`);
     }
+    $('body').on('click','.d-flex.nav-tabs>li',function(){
+        $(this).parent().children().css('outline','2px solid rgb(220,220,220)');
+        $(this).css('outline','2px solid rgb(40,139,222)');
+    })
 })
 
  //分页显示
@@ -468,18 +481,18 @@ $(document).ready(function(){
     //console.log(hardware_li);
 
     var lists = $(list).children();
-    //获取列表的长度除以4向上取整
-    var length = Math.ceil(($(lists).length/4));
+    //获取列表的长度除以5向上取整
+    var length = Math.ceil(($(lists).length/5));
     //console.log(length);
     //默认第四个以后全部隐藏
-    $(lists[3]).nextAll().addClass('hid');
+    $(lists[4]).nextAll().addClass('hid');
     var pages = $(`${html} .pag`);
     //遍历所有页
     for (let page of pages) {
         //显示当前页码对应的页
         function get_list(index, pa) {
-            var first = 4 * (index - 1);
-            var last = 4 * index - 1;
+            var first = 5 * (index - 1);
+            var last = 5 * index - 1;
             $(lists).removeClass('hid');
             //console.log(first, last, index);
             $(lists[first]).prevAll().addClass('hid');
@@ -521,7 +534,7 @@ $(document).ready(function(){
 }
 //根据请求的数据个数生成页数
 function create_page(len,html){
-    var page_count=Math.ceil(len/4);
+    var page_count=Math.ceil(len/5);
     //console.log(page_count);
     var html1='<li class="page-item"><a href="#" class="page-link" id="prev">上一页</a></li>';
     for(var i=1;i<=page_count;i++){

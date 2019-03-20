@@ -59,7 +59,23 @@
                                 <td><img class="ml-2 delete" src="/img/delete.png" alt=""> </td>
                             </tr>
                         </table>
-                        <div class="h5 float-right pt-2 pb-2 pr-2">总价: <span id="get_total"></span></div>
+                        <div class="h5 float-right pr-2">总价: <span id="get_total">￥0</span></div>
+                        <div class="clearfloat"></div>
+                        <div id="personality">
+                            <div class="row">
+                                <div class="col-md-4 mb-2"><input type="checkbox" name="personality" value="1">程序员</div>
+                                <div class="col-md-4 mb-2"><input type="checkbox" name="personality" value="2">设计专业</div>
+                                <div class="col-md-4 mb-2"><input type="checkbox" name="personality" value="3">热爱娱乐</div>
+                                <div class="col-md-4 mb-2"><input type="checkbox" name="personality" value="4">游戏玩家</div>
+                                <div class="col-md-4 mb-2"><input type="checkbox" name="personality" value="5">学生人群</div>
+                                <div class="col-md-4 mb-2"><input type="checkbox" name="personality" value="6">追求完美</div>
+                                <div class="col-md-4 mb-2"><input type="checkbox" name="personality" value="7">追求性价比</div>
+                                <div class="col-md-4 mb-2"><input type="checkbox" name="personality" value="8">追求实惠</div>
+                                <div class="col-md-4 mb-2"><input type="checkbox" name="personality" value="9">电影爱好者</div>
+                                <div class="col-md-4 mb-2"><input type="checkbox" name="personality" value="10">挖矿专家</div>
+                                <div class="col-md-4 mb-2"><input type="checkbox" name="personality" value="11">工作室</div>
+                            </div>
+                        </div>
                         <table class="table my_submit">
                             <tr>
                                 <td>名称:</td>
@@ -70,21 +86,21 @@
                                 <td><textarea name="" id="intr" cols="43" rows="4"></textarea></td>
                             </tr>
                             <tr>
-                                <td colspan="2"><button class="btn btn-warning  b-1 text-white float-right" id="list_sub">提交方案</button></td>
+                                <td colspan="2"><button class="btn btn-warning  b-1 text-white float-right" id="list_sub">提交方案</button><button class="btn btn-primary float-right mr-3">上传图片</button></td>
                             </tr>
                         </table>
                     </div>
                     <div class="col-md-7 col-sm-12">
-                        <ul class="nav nav-tabs d-flex">
-                            <li class="nav-item"> <a class="btn btn-md nav-link active  ml-2" data-toggle="tab"
+                        <ul class="nav nav-tabs d-flex mb-2">
+                            <li class="nav-item ml-4 cpufirst"> <a class="btn btn-md nav-link active  ml-3 mr-3" data-toggle="tab"
                                     href="#cpu_select">cpu</a></li>
-                            <li class="nav-item"> <a id="gpubtn" class="btn btn-md nav-link  ml-2" data-toggle="tab"
+                            <li class="nav-item ml-3"> <a id="gpubtn" class="btn btn-md nav-link  ml-3 mr-3" data-toggle="tab"
                                     href="#xianka_select">显卡</a></li>
-                            <li class="nav-item"> <a id="memory" class="btn btn-md nav-link  ml-2" data-toggle="tab"
+                            <li class="nav-item ml-3"> <a id="memory" class="btn btn-md nav-link  ml-3 mr-3" data-toggle="tab"
                                     href="#neicun_select">内存</a></li>
-                            <li class="nav-item"> <a id="hard_disk" class="btn btn-md nav-link  ml-2"
+                            <li class="nav-item ml-3"> <a id="hard_disk" class="btn btn-md nav-link  ml-3 mr-3"
                                     data-toggle="tab" href="#yingpan_select">硬盘</a></li>
-                            <li class="nav-item"> <a id="main_board" class="btn btn-md nav-link  ml-2"
+                            <li class="nav-item ml-3"> <a id="main_board" class="btn btn-md nav-link  ml-3 mr-3"
                                     data-toggle="tab" href="#zhuban_select">主板</a></li>
                         </ul>
                         <div class="tab-content" id="select">
@@ -96,7 +112,7 @@
 
                                     </ul>
                                     <ul class="d-flex" id="cpu_price">
-                                        <li>价格</li>
+                                        <li class="abs">价格</li>
                                         <li><a href="#" class="my_a_style">不限</a></li>
                                         <li><a href="#" class="my_a_style">1000以下</a></li>
                                         <li><a href="#" class="my_a_style">1000-2000</a></li>
@@ -124,7 +140,7 @@
 
                                     </ul>
                                     <ul class="d-flex" id="gpu_price">
-                                        <li>价格</li>
+                                        <li class="abs">价格</li>
                                         <li><a href="#" class="my_a_style">不限</a></li>
                                         <li><a href="#" class="my_a_style">1000以下</a></li>
                                         <li><a href="#" class="my_a_style">1000-2000</a></li>
@@ -152,7 +168,7 @@
 
                                     </ul>
                                     <ul class="d-flex" id="memory_price">
-                                        <li>价格</li>
+                                        <li class="abs">价格</li>
                                         <li><a href="#" class="my_a_style">不限</a></li>
                                         <li><a href="#" class="my_a_style">200以下</a></li>
                                         <li><a href="#" class="my_a_style">200-400</a></li>
@@ -180,7 +196,7 @@
 
                                     </ul>
                                     <ul class="d-flex" id="mainboard_price">
-                                        <li>价格</li>
+                                        <li class="abs">价格</li>
                                         <li><a href="#" class="my_a_style">不限</a></li>
                                         <li><a href="#" class="my_a_style">1000以下</a></li>
                                         <li><a href="#" class="my_a_style">1000-2000</a></li>
@@ -209,7 +225,7 @@
 
                                     </ul>
                                     <ul class="d-flex" id="harddisk_price">
-                                        <li>价格</li>
+                                        <li class="abs">价格</li>
                                         <li><a href="#" class="my_a_style">不限</a></li>
                                         <li><a href="#" class="my_a_style">1000以下</a></li>
                                         <li><a href="#" class="my_a_style">1000-2000</a></li>
@@ -291,7 +307,7 @@
                                         <li class="lis"><span class="ml-2"><i class="icon-harddisk"></i>硬盘:</span><span class="ml-3">西部数据500GB 7200转 16MB SATA3 蓝盘</span></li>
                                         <li class="lis"><span class="ml-2"><i class="icon-mainboard"></i>主板:</span><span class="ml-3">影驰B360M-M.2</span></li>
                                     </ul>
-                                    <h4 class="float-right">总价:<span class="red">￥5465</span></h4>
+                                    <h4 class="float-right">总价:<span class="red">￥4262</span></h4>
                                     </div> 
                                 </div>
                             </div>
@@ -329,7 +345,7 @@
                             <li class="list-group-item my_group">
                                 <div class="media">
                                     <img class="rounded mr-3" src="/img/a01.png" />
-                                    <i id="r1" class="text-white">1</i>
+                                    <i id="r1" class="text-white">&nbsp;1</i>
                                     <div class="media-body">
                                         <h5>i7-6700k水冷主机</h5>
                                         <p>￥6666</p>
@@ -340,6 +356,7 @@
                             <li class="list-group-item my_group">
                                 <div class="media">
                                     <img class="rounded mr-3" src="/img/a02.png" />
+                                    <i id="r2" class="text-white">&nbsp;2</i>
                                     <div class="media-body">
                                         <h5>四核i5-4590/GTX950</h5>
                                         <p>￥3099</p>
@@ -350,6 +367,7 @@
                             <li class="list-group-item my_group">
                                 <div class="media">
                                     <img class="rounded mr-3" src="/img/a03.png" />
+                                    <i id="r3" class="text-white">&nbsp;3</i>
                                     <div class="media-body">
                                         <h5>四代i3游戏主机</h5>
                                         <p>￥2574</p>
@@ -360,6 +378,7 @@
                             <li class="list-group-item my_group">
                                 <div class="media">
                                     <img class="rounded mr-3" src="/img/a04.png" />
+                                    <i id="r4" class="text-white">&nbsp;4</i>
                                     <div class="media-body">
                                         <h5>六核独显游戏主机</h5>
                                         <p>￥6999</p>
