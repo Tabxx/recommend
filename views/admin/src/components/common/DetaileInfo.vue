@@ -8,7 +8,7 @@
              label-width="120px">
       <el-row>
         <el-col v-for="(attr, index) in detail"
-                :span="showBlock.includes(attr.attr)?24:12"
+                :span="showBlock && showBlock.includes(attr.attr)?24:12"
                 :key="index">
           <template v-if="!hide.includes(attr.attr)">
             <el-form-item :label="((rules && rules[attr.attr]) || attr.attr)+'：'">

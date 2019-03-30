@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body{margin:0;padding:0;
     background:rgb(79,144,210)}
     .main{background:white;}
@@ -57,22 +58,123 @@ body{margin:0;padding:0;
  #r3{background-position:-29px -56px}
  #r4{background-position:-29px -84px}
  .tab-content img {
+=======
+body {
+    margin: 0;
+    padding: 0;
+    background: rgb(79, 144, 210)
+}
+
+.main {
+    background: white;
+}
+
+li {
+    list-style: none;
+}
+
+#mains {
+    margin: 0 auto;
+    width: 1000px;
+}
+
+a.my_a_style {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: #000;
+    margin-left: 18px;
+}
+
+.my_select {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: rgb(245, 245, 245);
+}
+
+.my_table,
+.my_submit {
+    border: 1px dotted #ccc;
+    margin-bottom: 0;
+}
+
+.my_table tr {
+    height: 60px;
+}
+
+.my_submit {
+    border-top: 0;
+    padding-top: 15px;
+}
+
+.my_list {
+    height: 100px;
+    border-top: 1px solid #ccc;
+}
+
+.my_small_font {
+    font-size: 0.8rem;
+}
+
+.my_group {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border: 0 !important;
+    position: relative;
+}
+
+.my_group .media i {
+    width: 27px;
+    height: 27px;
+    background-image: url('/img/sprite1.png');
+    position: absolute;
+    font-style: normal;
+    line-height: 90%;
+    left: 18px;
+}
+
+.my_group .media {
+    padding-left: 30px;
+}
+
+#r1 {
+    background-position: -29px 0;
+}
+
+#r2 {
+    background-position: -29px -28px
+}
+
+#r3 {
+    background-position: -29px -56px
+}
+
+#r4 {
+    background-position: -29px -84px
+}
+
+.tab-content img {
+>>>>>>> 13b9587ef546c143fee2d36618f8ed18d247cbbc
     width: 100px;
     height: 75px;
- }
- .text_sm{
-     font-size: 0.9rem;
- }
- #get_total{
-     width:100px;
-     height:50px;
- }
- .delete{
-     cursor: pointer;
- }
- .hid{
-     display:none;
- }
+}
+
+.text_sm {
+    font-size: 0.9rem;
+}
+
+#get_total {
+    width: 100px;
+    height: 50px;
+}
+
+.delete {
+    cursor: pointer;
+}
+
+.hid {
+    display: none;
+}
 
 .d-flex {
     margin: 0 0 .5rem 0;
@@ -86,8 +188,8 @@ body{margin:0;padding:0;
     margin-left: 0 !important;
 }
 
-.d-flex .nav-item {
-    margin: 0 10px 0 0;
+.d-flex .nav-item:first-child {
+    margin-left: 2px !important;
 }
 
 .my_select {
@@ -102,6 +204,7 @@ body{margin:0;padding:0;
 #yingpan_select .d-flex,
 #zhuban_select .d-flex {
     padding-left: 1.4rem;
+    flex-wrap: wrap;
 }
 
 #cpu-list,
@@ -118,110 +221,146 @@ body{margin:0;padding:0;
 #hard_disk_list .my_list,
 #main_board_list .my_list {
     border: 0;
-    border-bottom: 1px solid #f0f0f0; 
+    border-bottom: 1px solid #f0f0f0;
 }
 
 .item-title {
     margin-bottom: 10px !important;
 }
 
-.my_list .choose{
+.my_list .choose {
     background-color: #3891ed;
     border-color: #3891ed;
     border-radius: 2px;
 }
 
-.my_list .price-choose{
+.my_list .price-choose {
     text-align: center;
 }
-.forum_title{  
-   cursor: pointer;
+
+.forum_title {
+    cursor: pointer;
 }
-.forum_title:hover{
-   color:#f00;
+
+.forum_title:hover {
+    color: #f00;
 }
-.ul1_li{
-    margin-right:0 !important;
+
+.ul1_li {
+    margin-right: 0 !important;
 }
-.lis{
-    color:#888;
-    height:60px;
+
+.lis {
+    color: #888;
+    height: 60px;
 }
-.lis h5{
-    line-height:60px;
+
+.lis h5 {
+    line-height: 60px;
 }
-.gm h4,.gm h5{
-    display:inline-block;
+
+.gm h4,
+.gm h5 {
+    display: inline-block;
 }
-.lis span{
-    color:#000;
+
+.lis span {
+    color: #000;
     line-height: 60px;
     font-size: 0.9rem;
 }
-#post,#list_commend{
-    padding-bottom:0.6rem;
-    border-bottom:2px solid #ccc;
-    margin-bottom:0;
+
+#post,
+#list_commend {
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 0;
 }
-#clearfloat{
+
+#clearfloat {
     clear: both;
 }
-.footer{
-    margin-bottom:0 !important;
+
+.footer {
+    margin-bottom: 0 !important;
 }
-.selected{background:rgb(249,170,0);
-   border-radius: 3px;
+
+.selected {
+    background: rgb(249, 170, 0);
+    border-radius: 3px;
 }
-#select li a{
-    margin-left:0px;
-    padding:0 8px;
+
+#select li a {
+    margin-left: 0px;
+    padding: 0 8px;
     text-decoration: none;
 }
-.lis span i{
-    width:28px;
-    height:25px;
-    display:block;
-    float:left;
-    margin-top:19px;
-    background-image:url('/img/sprite1.png');
+
+.lis span i {
+    width: 28px;
+    height: 25px;
+    display: block;
+    float: left;
+    margin-top: 19px;
+    background-image: url('/img/sprite1.png');
 }
-i.icon-cpu{
+
+i.icon-cpu {
     background-position: 0 0;
 }
-i.icon-gpu{
+
+i.icon-gpu {
     background-position: 0 -75px;
 }
-i.icon-memory{
+
+i.icon-memory {
     background-position: 0 -52px;
 }
-i.icon-harddisk{
+
+i.icon-harddisk {
     background-position: 0 -102px;
 }
-i.icon-mainboard{
+
+i.icon-mainboard {
     background-position: 0 -25px;
 }
-.red{
-    color:#f00;
+
+.red {
+    color: #f00;
 }
-.boxcontent{
+
+.boxcontent {
     box-sizing: content-box;
 }
-#d1,#d2,#d3{
-    padding:15px;
+
+#d1,
+#d2,
+#d3 {
+    padding: 15px;
 }
-.d-flex.nav-tabs>li>a,.d-flex.nav-tabs>li,.d-flex.nav-tabs>li>a.active{
-    background:rgb(220,220,220);
-    border:0;
+
+.d-flex.nav-tabs>li>a,
+.d-flex.nav-tabs>li,
+.d-flex.nav-tabs>li>a.active {
+    background: rgb(220, 220, 220);
+    border: 0;
 }
-.d-flex.nav-tabs>li{
-    outline:2px solid rgb(220,220,220);
+
+.d-flex.nav-tabs>li {
+    outline: 2px solid rgb(220, 220, 220);
 }
-.d-flex.nav-tabs>li:hover{
-    outline:2px solid rgb(40,139,222);
+
+.d-flex.nav-tabs>li:hover {
+    outline: 2px solid rgb(40, 139, 222);
 }
-.btn:focus, .btn.focus,a:focus,a.focus{
+
+.btn:focus,
+.btn.focus,
+a:focus,
+a.focus {
     outline: 0;
     box-shadow: none !important;
+<<<<<<< HEAD
   }
  .clearfloat{
      clear: both;
@@ -271,3 +410,27 @@ i.icon-mainboard{
      float:right;
      cursor: pointer;
  }
+=======
+}
+
+.clearfloat {
+    clear: both;
+}
+
+.abs {
+    width: 88px;
+}
+
+.detail {
+    color: rgb(40, 139, 222);
+    font-size: 0.7rem;
+}
+
+#cpu-list,
+#gpu-list,
+#memory_list,
+#hard_disk_list,
+#main_board_disk {
+    height: 500px;
+}
+>>>>>>> 13b9587ef546c143fee2d36618f8ed18d247cbbc
