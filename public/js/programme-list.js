@@ -28,12 +28,15 @@ $(document).ready(function () {
             tyep: 'get',
             dataType: 'json',
             success: function (result) {
+                console.log(result.result);
                 mhtml = '<div class="row">';
                 for (var list of result.result) {
                     mhtml += `<div class="col-md-6 mt-5">
-                    <div class="card" data-toggle="modal" data-target="#detail" data-id="${list.id}">
-                        <img class="card-img-top" src="${list.image}" alt="Card-img">
-                        <div class="card-body">
+                    <div class="card" data-toggle="modal" data-target="#detail" data-id="${list.id}">`;
+                    if(list.image!=null){
+                        mhtml+=`<img class="card-img-top" src="${list.image}" alt="Card-img">`
+                    }else{mhtml+='<img class="card-img-top" src="/img/pic_not_found.jpg" alt="Card-img">'}
+                      mhtml += `<div class="card-body">
                             <h6 class="text-center">${list.name}</h4>
                             <p class="small_font">${list.intro}</p>
                         </div>
@@ -92,20 +95,23 @@ $(document).ready(function () {
             dataType:'json',
             success:function(res){
                 var results=res.result;
-                //console.log(results);
                 var html='';
-                for(var result of results){
-                    var time=result.time;
-                    // console.log(time);
-                     var date=new Date(time*1000);
-                     date=date.format('yyyy-MM-dd hh:mm:ss');
-                     //console.log(date);
-                     html+=`<div class="border comments">
-                     <h5>${result.username}说:</h5>
-                     <p>${result.content}</p> 
-                     <span class="float-right">${date}</span>  
-                     </div>`; 
+                if(results.length!=0){
+                    for(var result of results){
+                        var time=result.time;
+                        // console.log(time);
+                         var date=new Date(time*1000);
+                         date=date.format('yyyy-MM-dd hh:mm:ss');
+                         //console.log(date);
+                         html+=`<div class="border comments">
+                         <h5>${result.username}说:</h5>
+                         <p>${result.content}</p> 
+                         <span class="float-right">${date}</span>  
+                         </div>`; 
                     }
+                }else{
+                    html+='<h2 class="text-center mt-5">暂无评论...</h2>'
+                }
                 $('#command').html(html);
             },error:function(error){
                 alert('失败');
@@ -125,6 +131,7 @@ $(document).ready(function () {
    //关闭时返回详情在上，评论在下的默认状态
    $('body').on('click','#close',function(){
        $('#contant').css('margin-top','0px');
+       $('#com_btn').html('评论');
    })
 
 })

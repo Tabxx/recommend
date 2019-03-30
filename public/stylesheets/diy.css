@@ -3,7 +3,8 @@ body{margin:0;padding:0;
     .main{background:white;}
     li{list-style:none;}
 #mains{
-    margin:0 200px;
+    width:1200px;
+    margin:0 auto;
 }
  a.my_a_style{
      display:inline-block;
@@ -231,5 +232,42 @@ i.icon-mainboard{
      font-size:0.7rem;
  }
  #cpu-list,#gpu-list,#memory_list,#hard_disk_list,#main_board_disk{
-     height:500px;
+     height:538px;
+ }
+ #file-input{
+     width:80px !important;
+ }
+ #bottom{
+     height:90px;
+     padding-top:0;
+     padding-bottom:0;
+ }
+ #bottom>button,#file-input{  
+     margin-top:30px;
+ }
+ #file-image{
+     width:100px;
+     height:60px;
+     border:none !important;
+     margin-top:4px;
+     margin-left:8px;
+ }
+ #img_box{
+     width:250px;
+     height:70px;
+     margin-bottom:5px;
+     margin-top:12px;
+     vertical-align: top;
+     margin-left:20px;
+     display:inline-block;
+     border:1px solid rgb(19,206,102);
+ }
+ #img_box>span{
+     font-size:1.2rem;
+     height:15px;
+     line-height: 15px;
+     margin-right:4px;
+     margin-top:4px;
+     float:right;
+     cursor: pointer;
  }

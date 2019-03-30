@@ -1,3 +1,5 @@
+
+
 $('#tops').load('header.html');
 $('#footer').load('footer.html');
 $(document).ready(function() {
@@ -103,7 +105,7 @@ $(document).ready(function() {
                                                    <div class="col-6">接口：${item.slot}</div>
                                                    <div class="col-6">类型：${item.features}</div>
                                                </div>
-                                               <a href="#" class="text-danger detail" data-id="${item.id}">查看详情</a>
+                                               <a href="#" class="detail" data-id="${item.id}">更多参数>></a>
                                        </div> 
                                        <div class="col-3 price-choose">
                                            <p class="h4 text-danger">￥${item.price}</p>
@@ -118,6 +120,8 @@ $(document).ready(function() {
           create_page(length, '#cpu_page');
           //分页显示
           pageshow('#cpu-list', '#cpu_page');
+        }else{
+          $('#cpu-list').html('<h4 class="text-center mt-5">抱歉，暂未找到符合条件的cpu...</h4>').next().html('');
         }
       },
       error: function(error) {
@@ -156,9 +160,9 @@ $(document).ready(function() {
                                                        <div class="col-6">型号：${item.chip}</div>
                                                        <div class="col-6">显示核心型号：Intel HD G</div>
                                                    </div>
-                                                   <a href="#" class="text-danger detail" data-id="${
+                                                   <a href="#" class="detail" data-id="${
                                                      item.id
-                                                   }">查看详情</a> 
+                                                   }">更多参数>></a> 
                                            </div> 
                                            <div class="col-3 price-choose">
                                                <p class="h4 text-danger">￥${item.price}</p>
@@ -172,6 +176,8 @@ $(document).ready(function() {
           create_page(length, '#gp_page');
           //分页显示
           pageshow('#gpu-list', '#gp_page');
+        }else{
+          $('#gpu-list').html('<h4 class="text-center mt-5">抱歉，暂未找到符合条件的显卡...</h4>').next().html('');
         }
       },
       error: function(error) {
@@ -208,9 +214,9 @@ $(document).ready(function() {
                                                        <div class="col-6">容量：${item.capacity}GB</div>
                                                        <div class="col-6">显示核心型号：Intel HD G</div>
                                                    </div>
-                                                   <a href="#" class="text-danger detail" data-id="${
+                                                   <a href="#" class="detail" data-id="${
                                                      item.id
-                                                   }">查看详情</a> 
+                                                   }">更多参数>></a> 
                                            </div> 
                                            <div class="col-3 price-choose">
                                                <p class="h4 text-danger">￥${item.price}</p>
@@ -224,6 +230,8 @@ $(document).ready(function() {
           create_page(length, '#mm_page');
           //分页显示
           pageshow('#memory_list', '#mm_page');
+        }else{
+          $('#memory_list').html('<h4 class="text-center mt-5">抱歉，暂未找到符合条件的内存...</h4>').next().html('');
         }
       },
       error: function(error) {
@@ -260,9 +268,9 @@ $(document).ready(function() {
                                                        <div class="col-6">缓存：${item.cache}MB</div>
                                                        <div class="col-6">转速：${item.speed}RPM</div>
                                                    </div>
-                                                   <a href="#" class="text-danger detail" data-id="${
+                                                   <a href="#" class=" detail" data-id="${
                                                      item.id
-                                                   }">查看详情</a> 
+                                                   }">更多参数>></a> 
                                            </div> 
                                            <div class="col-3 price-choose">
                                                <p class="h4 text-danger">￥${item.price}</p>
@@ -276,6 +284,8 @@ $(document).ready(function() {
           create_page(length, '#hd_page');
           //分页显示
           pageshow('#hard_disk_list', '#hd_page');
+        }else{
+          $('#hard_disk_list').html('<h4 class="text-center mt-5">抱歉，暂未找到符合条件的硬盘...</h4>').next().html('');
         }
       },
       error: function(error) {
@@ -310,9 +320,9 @@ $(document).ready(function() {
                                                            <div class="col-6">版型：${item.version}</div>
                                                            <div class="col-6">型号：${item.chipset}</div>
                                                        </div>
-                                                       <a href="#" class="text-danger detail" data-id="${
+                                                       <a href="#" class=" detail" data-id="${
                                                          item.id
-                                                       }">查看详情</a> 
+                                                       }">更多参数>></a> 
                                                </div> 
                                                <div class="col-3 price-choose">
                                                    <p class="h4 text-danger">￥${item.price}</p>
@@ -326,6 +336,8 @@ $(document).ready(function() {
           create_page(length, '#mb_page');
           //分页显示
           pageshow('#main_board_list', '#mb_page');
+        }else{
+          $('#main_board_list').html('<h4 class="text-center mt-5">抱歉，暂未找到符合条件的主板...</h4>').next().html('');
         }
       },
       error: function(error) {
@@ -421,6 +433,9 @@ $(document).ready(function() {
 
     // 添加userid
     list_data['userid'] = Cookie.getCookie('userid');
+    //获取上传的图片
+    //console.log($('#file-image').attr('src'));
+    list_data['image']=$('#file-image').attr('src');
     $.ajax({
       url: '/list/add',
       type: 'post',
@@ -440,6 +455,7 @@ $(document).ready(function() {
       }
     });
   });
+  
   //删除硬件
   $('body').on('click', '.delete', function() {
     let brother1 = $(this)
@@ -649,3 +665,26 @@ function condition(hws, hw, fn) {
     fn(url);
   });
 }
+//获取本地文件信息
+$('#file-input').on('change',function(e){
+  var name = e.currentTarget.files[0];
+  var url=getObjectURL(name);
+  console.log(url);
+  var path=$(this).val();
+  $('#img_box').append(`<image id="file-image" src="${url}"/><span>×</span>`)
+})
+
+function getObjectURL(file) {  
+  var url = null;  
+  if (window.createObjcectURL != undefined) {  
+      url = window.createOjcectURL(file);  
+  } else if (window.URL != undefined) {  
+      url = window.URL.createObjectURL(file);  
+  } else if (window.webkitURL != undefined) {  
+      url = window.webkitURL.createObjectURL(file);  
+  }  
+  return url;  
+}
+$('body').on('click','#img_box>span',function(){
+    $('#img_box').html('');
+})

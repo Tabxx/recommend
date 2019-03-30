@@ -13,7 +13,6 @@ $(document).ready(function () {
     var hardware = arr[0][1];
     //详细名称
     var name = arr[1][1];
-    console.log(name);
     //获取详情
     //获取id
     var id = arr[2][1];
@@ -24,7 +23,6 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (res) {
                 var a = res.result[0];
-                console.log(a);
                 for (var x in a) {
                     if (a[x] == null) {
                         a[x] = '暂无数据';
@@ -389,11 +387,18 @@ $(document).ready(function () {
                           </div>
                               `;
                     }
-                    html += '</div><p class="hardware_bg_soft text-center">查看所有评论</p>';
+                    html += '</div><p class="watch_all hardware_bg_soft text-center">查看所有评论</p>';
                 } else {
                     html += '<h4 class="text-center mt-5 mb-5">暂无评论....</h4>';
                 }
                 $('#hardware_commend').append(html);
+                var comments=$('#hardware_commend>div');
+                console.log(comments[0]);
+                for(var i=0;i<comments.length;i++){
+                    if(i>2){
+                        $(comments[i]).addClass('hid');
+                    }
+                }
             },
             error: function (error) {
                 console.log(error);
@@ -407,9 +412,8 @@ $(document).ready(function () {
     $('#write_commend').append('<button class="btn btn-primary float-right mt-2 mr-2">发表评论</button>');
     $('body').on('click', '#write_commend>button', function (){
         var commend =$('.w-e-text>p').html();
-        console.log(commend);
-        var userid = Cookie.getCookie('userid');
-        if (userid) {
+        var userid = Cookie.getCookie('userid');    
+        if (userid && commend!='<br>') {
             $.ajax({
                 url: `/comment/sendcomment`,
                 type: 'post',
@@ -426,9 +430,23 @@ $(document).ready(function () {
                     console.log(error);
                     alert('失败');
                 }
-            })
+            }) 
         }else{
             alert('请先登录');
+        }
+    })
+    $('body').on('click','.watch_all',function(){
+        var comments=$('#hardware_commend>div');
+        var hid_comments=$('#hardware_commend>div').hasClass('hid');
+        if(hid_comments==true){
+            $(comments).removeClass('hid');
+            $(this).html('收起所有评论');
+        }else{
+            for(var i=0;i<comments.length;i++){
+                if(i>2){
+                    $(comments[i]).addClass('hid');
+                }
+            }
         }
     })
 })

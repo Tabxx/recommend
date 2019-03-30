@@ -65,7 +65,7 @@ $(document).ready(function () {
        })
     $('body').on('click','.assess',function(e){
         e.preventDefault();
-        alert('123');
+        //alert('123');
         //console.log(userid);
         var pid=$(this).attr('data-pid');
         //console.log(pid);
