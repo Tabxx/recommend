@@ -1,64 +1,3 @@
-<<<<<<< HEAD
-body{margin:0;padding:0;
-    background:rgb(79,144,210)}
-    .main{background:white;}
-    li{list-style:none;}
-#mains{
-    width:1200px;
-    margin:0 auto;
-}
- a.my_a_style{
-     display:inline-block;
-     text-decoration: none;
-     font-size:0.9rem;
-     color:#000;
-     margin-left:18px;
- }
- .my_select{
-     padding-top: 10px;
-     padding-bottom: 10px;
-     background:rgb(245, 245,245);}
- .my_table,.my_submit{
-     border:1px dotted #ccc; 
-     margin-bottom: 0;
- }
- .my_table tr{
-     height:60px;
- }
- .my_submit{border-top:0;padding-top:15px;}
- .my_list{
-     height:100px;
-     border-top:1px solid #ccc;
- }
- .my_small_font{
-     font-size: 0.8rem;
- }
- .my_group{
-     padding-bottom: 10px;
-     padding-top: 10px;
-     border:0 !important;
-     position:relative;
- }
- .my_group .media i{
-     width:27px;
-     height:27px;
-     background-image: url('/img/sprite1.png');
-     position: absolute;
-     font-style: normal;
-     line-height:90%;
-     left:18px;
- }
- .my_group .media{
-     padding-left:30px;
- }
-  #r1{
-     background-position: -29px 0;
- }
- #r2{background-position:-29px -28px}
- #r3{background-position:-29px -56px}
- #r4{background-position:-29px -84px}
- .tab-content img {
-=======
 body {
     margin: 0;
     padding: 0;
@@ -75,7 +14,7 @@ li {
 
 #mains {
     margin: 0 auto;
-    width: 1000px;
+    width: 1125px;
 }
 
 a.my_a_style {
@@ -154,7 +93,6 @@ a.my_a_style {
 }
 
 .tab-content img {
->>>>>>> 13b9587ef546c143fee2d36618f8ed18d247cbbc
     width: 100px;
     height: 75px;
 }
@@ -360,7 +298,6 @@ a:focus,
 a.focus {
     outline: 0;
     box-shadow: none !important;
-<<<<<<< HEAD
   }
  .clearfloat{
      clear: both;
@@ -392,7 +329,7 @@ a.focus {
      margin-left:8px;
  }
  #img_box{
-     width:250px;
+     width:200px;
      height:70px;
      margin-bottom:5px;
      margin-top:12px;
@@ -400,19 +337,12 @@ a.focus {
      margin-left:20px;
      display:inline-block;
      border:1px solid rgb(19,206,102);
- }
- #img_box>span{
-     font-size:1.2rem;
-     height:15px;
-     line-height: 15px;
-     margin-right:4px;
-     margin-top:4px;
-     float:right;
-     cursor: pointer;
- }
-=======
 }
-
+#img_box>span{
+    float:right;
+    margin-right:5px;
+    cursor: pointer;
+}
 .clearfloat {
     clear: both;
 }
@@ -430,7 +360,7 @@ a.focus {
 #gpu-list,
 #memory_list,
 #hard_disk_list,
-#main_board_disk {
-    height: 500px;
+#main_board_list {
+    height: 560px;
 }
->>>>>>> 13b9587ef546c143fee2d36618f8ed18d247cbbc
+

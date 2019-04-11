@@ -6,7 +6,7 @@ $(document).ready(function() {
     $('#top1').load('header.html');
     $('#footer').load('footer.html');
     $('.top').css('overflow','hidden');
-    setInterval(ban,8000);
+    setInterval(ban,4000);
     $('body').on('click','#left',function(){
        $('#banner').css('margin-left','0');
     })

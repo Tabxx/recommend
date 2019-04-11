@@ -94,7 +94,6 @@
            $('.dropdown ').css('display','none');
        })
        var username=Cookie.getCookie('username');
-       console.log(username);
        if(username){
          $('#log').html(username);
        }
@@ -104,10 +103,13 @@
            }
        })
        $('body').on('click','#cancel',function(){ 
-        $('#log').html(`登录`); 
-        Cookie.setCookie('userid', ''); 
-        Cookie.setCookie('username', ''); 
-        Cookie.setCookie('tag', '');   
+        var msg=confirm('确定要注销吗?');
+        if(msg==true){
+            $('#log').html(`登录`); 
+            Cookie.setCookie('userid',''); 
+            Cookie.setCookie('username',''); 
+            Cookie.setCookie('tag','');  
+        }
        })
     </script>
 </body>

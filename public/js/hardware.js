@@ -445,6 +445,7 @@ $(document).ready(function () {
             for(var i=0;i<comments.length;i++){
                 if(i>2){
                     $(comments[i]).addClass('hid');
+                    $(this).html('查看所有评论');
                 }
             }
         }

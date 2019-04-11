@@ -123,7 +123,7 @@ background-size: 100% auto;
 
 .my_title {
     display: block;
-    margin-left: 30%;
+    margin-left: 42%;
 }
 
 .lg {
@@ -166,4 +166,43 @@ background-size: 100% auto;
 }
 .hid{
     display:none;
+}
+.tab-pane{
+    border-top:0 !important;
+}
+.card-body{
+    border-top:none;
+}
+.suggest_title{
+    display:inline-block;
+}
+.icon{
+    display:block;
+    width:150px;
+    height:150px;
+}
+#memory_icon{
+    background-image: url('/img/hardware_icon.jpg');
+    background-size: 400%;
+    background-position: -25px -290px;
+}
+#cpu_icon{
+    background-image: url('/img/hardware_icon.jpg');
+    background-size: 400%;
+    background-position: -25px -145px;
+}
+#gpu_icon{
+    background-image: url('/img/hardware_icon.jpg');
+    background-size: 400%;
+    background-position: -420px -290px;
+}
+#harddisk_icon{
+    background-image: url('/img/hardware_icon.jpg');
+    background-size: 400%;
+    background-position: -25px 5px;
+}
+#mainboard_icon{
+    background-image: url('/img/hardware_icon.jpg');
+    background-size: 400%;
+    background-position: -222px -143px;
 }

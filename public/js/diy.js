@@ -667,11 +667,15 @@ function condition(hws, hw, fn) {
 }
 //获取本地文件信息
 $('#file-input').on('change',function(e){
-  var name = e.currentTarget.files[0];
-  var url=getObjectURL(name);
-  console.log(url);
-  var path=$(this).val();
-  $('#img_box').append(`<image id="file-image" src="${url}"/><span>×</span>`)
+  var files = e.target.files,file;
+  if(files && files.length>0){
+    file=files[0];
+    console.log(file);
+    var URL = window.URL || window.webkitURL; 
+    var imgURL = URL.createObjectURL(file);
+    console.log(imgURL);
+    $('#img_box').append(`<image id="file-image" src="${imgURL}"/><span>×</span>`)
+  }
 })
 
 function getObjectURL(file) {  
