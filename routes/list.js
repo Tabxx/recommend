@@ -172,8 +172,30 @@ router.get('/recommend', async (ctx, next) => {
         return item;
     }, []);
 
+    // 按推荐标签相似度排序
+    result = result.sort((l1, l2) => {
+        return tagCompare(l2.tag.split(','), finalTags) - tagCompare(l1.tag.split(','), finalTags)
+    })
+    // 最多返回三个
+    result = result.length > 3 ? result.slice(0, 3) : result;
     ctx.success('', result)
 })
+
+/**
+ * 数组相似度比较
+ * @param {*} target 目标数组
+ * @param {*} source 原数组
+ */
+function tagCompare(target, source) {
+    let count = 0;
+    target && target.map(item => {
+        if (source.some(value => item == value)) {
+            count++;
+        }
+    })
+
+    return count;
+}
 
 
 module.exports = router
